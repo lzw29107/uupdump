@@ -158,7 +158,6 @@ if NOT [%DETECTED_ERROR%] == [] (
 echo Attempting to download files...
 "%aria2%" --no-conf --log-level=info --log="aria2_download.log" -x16 -s16 -j5 -c -R -d"%destDir%" -i"%aria2Script%"
 if %ERRORLEVEL% GTR 0 goto :DOWNLOAD_UUPS & exit /b 1
-"%aria2%" --no-conf --log-level=info --log="aria2_download.log" --allow-overwrite=true --auto-file-renaming=false -d"%destDir%" "$sha1"
 
 if EXIST convert-UUP.cmd goto :START_CONVERT
 pause
@@ -223,13 +222,6 @@ fi
 
 destDir="UUPs"
 tempScript="aria2_script.\$RANDOM.txt"
-
-echo "Downloading converters..."
-aria2c --no-conf --log-level=info --log="aria2_download.log" -x16 -s16 -j5 --allow-overwrite=true --auto-file-renaming=false -d"files" -i"files/converter_multi"
-if [ $? != 0 ]; then
-  echo "We have encountered an error while downloading files."
-  exit 1
-fi
 
 echo ""
 echo "Retrieving aria2 script..."
@@ -457,7 +449,6 @@ if NOT [%DETECTED_ERROR%] == [] (
 echo Attempting to download files...
 $ariacmd
 if %ERRORLEVEL% GTR 0 goto :DOWNLOAD_UUPS & exit /b 1
-"%aria2%" --no-conf --log-level=info --log="aria2_download.log" --allow-overwrite=true --auto-file-renaming=false -d"%destDir%" "$sha1"
 
 pause
 goto EOF

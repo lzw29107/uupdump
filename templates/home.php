@@ -278,7 +278,7 @@ if(!isset($templateOk)) die();
     </div>
 </h3>
 
-<?php if($idsError == true): echo $s['error_SEARCH_NO_RESULTS']; ?>
+<?php if(isset($idsError) && $idsError == true): echo $s['error_SEARCH_NO_RESULTS']; ?>
 <?php else: ?>
 <table class="ui striped table">
     <thead>
