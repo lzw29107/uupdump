@@ -18,19 +18,14 @@ if(!isset($templateOk)) die();
 ?>
 <h3 class="ui centered header">
     <div class="content">
-        <i class="fitted wizard icon"></i>&nbsp;
-        <?= $s['responseFromServer'] ?>
+        <i class="fitted binoculars icon"></i>&nbsp;
+        <?= $s['foundUpdates'] ?>
     </div>
 </h3>
 
-<div class="ui icon info message">
-    <i class="check info circle icon"></i>
-    <div class="content">
-        <div class="header">
-            <?php printf($s['foundUpdates'], count($updateArray)); ?>
-        </div>
-        <p><?= $s['foundTheseUpdates'] ?></p>
-    </div>
+<div class="ui info message">
+    <i class="check info icon"></i>
+    <?= $s['foundTheseUpdates'] ?>
 </div>
 <table class="ui celled striped table">
     <thead>

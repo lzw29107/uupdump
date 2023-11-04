@@ -122,7 +122,7 @@ $s['noLangsAvailable'] = 'No hay idiomas disponibles para esta compilación.<br>
 $s['browseFiles'] = 'Examinar archivos';
 $s['browseFilesDesc'] = 'Examina rápidamente los archivos en la compilación elegida';
 $s['searchFiles'] = 'Buscar archivos';
-$s['toSearchForCUUseQuery'] = 'Para buscar actualizaciones acumulativas, busca la <i>%s</i>.'; //Para buscar actualizaciones acumulativas, busca la <i>Windows10 KB</i>.
+$s['toSearchForCUUseQuery'] = 'Para buscar actualizaciones acumulativas, busca la <i>%s</i>.'; //Para buscar actualizaciones acumulativas, busca la <i>Windows KB</i>.
 $s['updateNotProcessed'] = 'UUP dump aún no ha procesado los metadatos de esta actualización. Esto ocurre automáticamente una vez cada %d minutos. Recién después de esto podrás explorar la lista con la actualización.'; //UUP dump aún no ha procesado los metadatos de esta actualización. Esto ocurre automáticamente una vez cada 30 minutos. Recién después de esto podrás explorar la lista con la actualización.
 $s['updateIsBlocked'] = 'Esta actualización contiene problemas conocidos que impiden la creación de una ISO funcional. Debido a esto, solo puedes explorar manualmente los archivos.';
 

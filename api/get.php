@@ -77,7 +77,7 @@ function uupGetFiles(
     }
 
     if($usePack) {
-        $genPack = uupGetGenPacks($build, $info['arch'], $updateId);
+        $genPack = uupApiGetPacks($updateId);
         if(empty($genPack)) return array('error' => 'UNSUPPORTED_COMBINATION');
 
         if(!isset($genPack[$usePack])) {
@@ -113,14 +113,18 @@ function uupGetFiles(
             case 'UPDATEONLY': break;
 
             case 'APP': $appEdition = 1;
+            case 'APP_MOMENT': $appEdition = 1;
 
             default:
                 if(!isset($genPack[$usePack][$desiredEdition])) {
                     return array('error' => 'UNSUPPORTED_COMBINATION');
                 }
 
-                $filesPacksList = $genPack[$usePack][$desiredEdition];
                 $fileListSource = 'GENERATEDPACKS';
+                $filesPacksList = $genPack[$usePack][$desiredEdition];
+                if($desiredEdition == 'APP' && isset($genPack[$usePack]['APP_MOMENT'])) {
+                    $filesPacksList = array_merge($filesPacksList, $genPack[$usePack]['APP_MOMENT']);
+                }
                 break;
         }
     } else {
@@ -133,6 +137,7 @@ function uupGetFiles(
                 return array('error' => 'UNSUPPORTED_COMBINATION');
             }
 
+            if($edition == 'APP' || $edition == 'APP_MOMENT') $appEdition = 1;
             $filesPacksList = array_merge($filesPacksList, $genPack[$usePack][$edition]);
         }
     }
@@ -390,8 +395,16 @@ function uupGetOnlineFiles($updateId, $rev, $info, $cacheRequests, $type) {
     } else {
         $fetchTime = time();
         consoleLogger('Fetching information from the server...');
-        $postData = composeFileGetRequest($updateId, uupDevice(), $info, $rev, $type);
-        $out = sendWuPostRequest('https://fe3cr.delivery.mp.microsoft.com/ClientWebService/client.asmx/secured', $postData);
+
+        $composerArgs = [$updateId, $info, $rev, $type];
+        $out = sendWuPostRequestHelper('clientSecured', 'composeFileGetRequest', $composerArgs);
+
+        if($out['error'] != 200) {
+            consoleLogger('The request has failed');
+            return array('error' => 'WU_REQUEST_FAILED');
+        }
+
+        $out = $out['out'];
         consoleLogger('Information has been successfully fetched.');
     }
 

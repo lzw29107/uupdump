@@ -6,7 +6,7 @@ Translation information:
 English language name: English (United States)
 Localized language name: English (United States)
 Language code: en-US
-Authors: whatever127, mspaintmsi, awuctl, eraseyourknees
+Authors: UUP dump authors and contributors
 */
 
 //Language information
@@ -55,6 +55,12 @@ $s['copyrightNew'] = '© %d UUP dump authors and contributors.';
 $s['selectLanguage'] = 'Please select your language';
 $s['uupDumpDesc'] = 'UUP dump lets you download Unified Update Platform files, like Windows Insider updates, directly from Windows Update.';
 $s['uupDumpDescSub'] = '%s on UUP dump. UUP dump lets you download Unified Update Platform files, like Windows Insider updates, directly from Windows Update.'; //Select language for Windows 11 Insider Preview 25188.1000 (rs_prerelease) amd64 on UUP dump. UUP dump lets you download Unified Update Platform files, like Windows Insider updates, directly from Windows Update.
+$s['themeButton'] = 'Theme';
+$s['selectTheme'] = 'Select theme';
+$s['themeAuto'] = 'Automatic';
+$s['themeLight'] = 'Light';
+$s['themeDark'] = 'Dark';
+$s['themeLegacy'] = 'Legacy';
 
 //index.php
 $s['slogan'] = 'Download UUP files from Windows Update servers with ease.';
@@ -79,6 +85,7 @@ $s['newlyAdded'] = 'Recently added builds';
 $s['dateAdded'] = 'Date added';
 $s['latestCanaryRelease'] = 'Latest Canary Channel build';
 $s['latestCanaryReleaseSub'] = 'Somewhat unstable builds with latest platform changes and early features.<br>Ideal for highly technical users.';
+$s['checkOutAddANewBuild'] = 'Haven\'t found a desired option? Check out the <i><a href="newbuild.php">Add a new build</a></i> page.';
 
 //newbuild.php
 $s['newBuild'] = 'New build';
@@ -89,6 +96,10 @@ $s['newBuildUsing'] = 'Using this page';
 $s['newBuildUsingText'] = 'This page is meant to be used by advanced users, who would like to add a build not found on the website. In case you want to use one of the most commonly used parameters, please use one of the <i>Quick options</i> found on the home page.';
 $s['optionsNotice'] = 'Options notice';
 $s['optionsNoticeText'] = 'Options found here configure how the underlying Windows Update client reports itself to the Microsoft servers. It is crucial to set these properly, otherwise you will receive an error.';
+$s['otherOptions'] = 'Other options';
+$s['otherOpt1'] = 'Check only the specified build';
+$s['otherOpt2'] = 'Check for internal updates marked as [Internal Corpnet Required]';
+$s['otherOptNotice'] = ' (Desktop SKU only) ';
 
 //known.php
 $s['browseKnown'] = 'Browse known builds';
@@ -119,10 +130,12 @@ $s['selectLangInfoText2'] = 'WindowsUpdateBox.exe and Cumulative updates can be 
 $s['allLangsWarn'] = 'The <i>All languages</i> option does not support edition selection.';
 $s['clickNextToOpenFindFiles'] = 'Click the <i>Next</i> button to open the page, which allows finding files.';
 $s['noLangsAvailable'] = 'There are no languages available for this build.<br>This build cannot be converted to an ISO image.<br>See the FAQ for details.';
+$s['Metadatanotgenerated'] = 'Metadata for this update is not generated.';
+$s['Generatemetadata'] = 'Generate metadata';
 $s['browseFiles'] = 'Browse files';
 $s['browseFilesDesc'] = 'Quickly browse files in selected build';
 $s['searchFiles'] = 'Search files';
-$s['toSearchForCUUseQuery'] = 'To search for Cumulative Updates use the <i>%s</i> search query.'; //To search for Cumulative Updates use the <i>Windows10 KB</i> search query.
+$s['toSearchForCUUseQuery'] = 'To search for Cumulative Updates use the <i>%s</i> search query.'; //To search for Cumulative Updates use the <i>Windows KB</i> search query.
 $s['updateNotProcessed'] = 'UUP dump hasn\'t processed this update\'s metadata yet - this happens automatically once every %d minutes. You can only browse the update\'s file list until then.'; //UUP dump hasn't processed this update's metadata yet - this happens automatically once every 30 minutes. You can only browse the update's file list until then.
 $s['updateIsBlocked'] = 'This update has known issues preventing the creation of a working ISO. Because of this, you can only manually browse its files.';
 
@@ -148,6 +161,7 @@ $s['aria2Opt2'] = 'Download and convert to ISO';
 $s['aria2Opt2Desc'] = 'Easily download the selected UUP set using aria2 and convert it to ISO.';
 $s['aria2Opt3'] = 'Download, add additional editions and convert to ISO';
 $s['aria2Opt3Desc'] = 'Easily download the selected UUP set using aria2, convert, create additional editions and finally create an ISO image.';
+$s['aria2Opt4'] = 'Create download package for these updates';
 $s['jsRequiredToConf'] = 'JavaScript is required to configure and use this option.';
 $s['selAdditionalEditions'] = 'Select additional editions';
 $s['noAdditionalEditions'] = 'No additional editions are available for your selected editions.';
@@ -168,14 +182,15 @@ $s['convOpt1'] = 'Use solid (ESD) compression';
 $s['convOpt2'] = 'Include updates (Windows converter only)';
 $s['convOpt3'] = 'Run component cleanup (Windows converter only)';
 $s['convOpt4'] = 'Integrate .NET Framework 3.5 (Windows converter only)';
+$s['convOpt5'] = 'Cleanup all superseded components in the component store (run component cleanup option needs to be checked)';
+$s['conversionAdvOptions'] = 'Advanced options';
 $s['startDownload'] = 'Create download package';
 $s['legalCopeHarder'] = 'By clicking the <i>Create download package</i> button you agree with the following:';
 $s['legalCope1'] = 'Installation images created using the scripts provided by UUP dump are meant only for <b>evaluation purposes</b>';
 $s['legalCope2'] = 'The images and their deployments are <b>not supported</b> in any way by Microsoft Corporation';
 $s['legalCope3v2'] = '<b>The authors are not liable for any damages</b> caused by a misuse of the website';
-$s['win1122h2OrLater'] = 'Windows 11, version 22H2 or later';
-$s['requiresWindows102004'] = 'This build requires using Windows 10, version 2004 or later for the ISO to be properly created. Scripts for other platforms will output a broken ISO.';
-$s['aria2Opt4'] = 'Create download package for updates only';
+$s['win1122h2OrLaterv2'] = 'Windows is required to create the ISO image';
+$s['requiresWindows102004v2'] = 'You\'ll need to use a modern version of Windows such as Windows 10, version 2004 or Windows 11 to create an ISO image of this build. Other platforms won\'t work.';
 
 //get.php
 $s['listOfFilesFor'] = 'List of files for %s'; //List of files for Windows 10 Insider Preview 18890.1000 (rs_prerelease) amd64
@@ -201,12 +216,14 @@ $s['searchForFiles'] = 'Search for files...';
 $s['weFoundFiles'] = '<b>%d</b> files were found for your query.'; //<b>692</b> files were found for your query.
 $s['sizeOfShownFiles'] = 'Size of shown files: %s'; //Size of shown files: 2.86 GiB
 
+//style.php
+$s['render'] = 'Page rendered in %s ms.'; //Page rendered in 1 ms.
+
 //Error pages
 $s['error'] = 'Error';
 $s['requestNotSuccessful'] = 'Request not successful';
 $s['anErrorHasOccurred'] = 'An error has occurred while attempting to process your request.';
-$s['arm64Warning2022h'] = 'This is an ARM64 build';
-$s['arm64Warning2022b'] = '<p>This build is only compatible with:</p><ul><li>Surface Pro X</li><li>Raspberry Pi</li><li>Apple Mac M1</li><li>other glorified mobile phones</li></ul><p>UUP dump authors <i>don\'t have a single one of these</i> and therefore <b>will provide absolutely no support</b>.</p>';
+$s['arm64Warning2023'] = '<b>This is an <a href="https://support.microsoft.com/en-us/windows/477f51df-2e3b-f68f-31b0-06f5e4f8ebb5">ARM64</a> build.</b> UUP dump authors don\'t have a single device compatible with it and therefore <b>will provide absolutely no support</b>.';
 
 //Error messages
 $s['error_ERROR'] = 'Generic error.';
@@ -240,9 +257,11 @@ $s['error_RATE_LIMITED'] = 'You are being rate limited. Please try again in a fe
 $s['error_UNSPECIFIED_VE'] = 'You have not selected any additional editions. If do not wish to create additional editions, please use the (Download using aria2 and convert) option.';
 $s['error_VE_UNAVAILABLE'] = 'Additional editions are not supported for this selection.';
 $s['error_INVALID_PAGE'] = 'Specified page is invalid';
+$s['error_WU_REQUEST_FAILED'] = 'A request to the Windows Update service has failed.';
 $s['errorNoMessage'] = 'Error message unavailable.';
 
 //Languages
+$s['lang_neutral'] = 'Any Language';
 $s['lang_ar-sa'] = 'Arabic (Saudi Arabia)';
 $s['lang_bg-bg'] = 'Bulgarian';
 $s['lang_cs-cz'] = 'Czech';
@@ -292,3 +311,50 @@ $s['channel_dev'] = 'Dev Channel';
 $s['channel_beta'] = 'Beta Channel';
 $s['channel_releasepreview'] = 'Release Preview Channel';
 $s['channel_retail'] = 'Retail';
+
+//Editions
+$s['edition_APP'] = 'Microsoft Store Inbox Apps';
+$s['edition_APP_MOMENT'] = 'Microsoft Store Moment Apps';
+$s['edition_FOD'] = 'Features on Demand (Capabilities)';
+$s['edition_CLOUD'] = 'Windows S';
+$s['edition_CLOUDN'] = 'Windows S N';
+$s['edition_CLOUDE'] = 'Windows Lean';
+$s['edition_CLOUDEDITION'] = 'Windows SE';
+$s['edition_CLOUDEDITIONN'] = 'Windows SE N';
+$s['edition_CORE'] = 'Windows Home';
+$s['edition_CORECOUNTRYSPECIFIC'] = 'Windows Home China';
+$s['edition_COREN'] = 'Windows Home N';
+$s['edition_CORESINGLELANGUAGE'] = 'Windows Home Single Language';
+$s['edition_EDUCATION'] = 'Windows Education';
+$s['edition_EDUCATIONN'] = 'Windows Education N';
+$s['edition_ENTERPRISE'] = 'Windows Enterprise';
+$s['edition_ENTERPRISEEVAL'] = 'Windows Enterprise Evaluation';
+$s['edition_ENTERPRISEN'] = 'Windows Enterprise N';
+$s['edition_ENTERPRISES'] = 'Windows Enterprise LTSC';
+$s['edition_ENTERPRISESEVAL'] = 'Windows Enterprise LTSC Evaluation';
+$s['edition_ENTERPRISESN'] = 'Windows Enterprise N LTSC';
+$s['edition_ENTERPRISESNEVAL'] = 'Windows Enterprise N LTSC Evaluation';
+$s['edition_HOLOGRAPHIC'] = 'Windows Holographic';
+$s['edition_IOTENTERPRISE'] = 'Windows IoT Enterprise';
+$s['edition_IOTENTERPRISEK'] = 'Windows IoT Enterprise Subscription';
+$s['edition_IOTENTERPRISES'] = 'Windows IoT Enterprise LTSC';
+$s['edition_IOTENTERPRISESK'] = 'Windows IoT Enterprise LTSC Subscription';
+$s['edition_LITE'] = 'Windows 10X';
+$s['edition_PPIPRO'] = 'Windows Team';
+$s['edition_PROFESSIONAL'] = 'Windows Pro';
+$s['edition_PROFESSIONALN'] = 'Windows Pro N';
+$s['edition_PROFESSIONALWORKSTATION'] = 'Windows Pro for Workstations';
+$s['edition_PROFESSIONALWORKSTATIONN'] = 'Windows Pro N for Workstations';
+$s['edition_PROFESSIONALEDUCATION'] = 'Windows Pro Education';
+$s['edition_PROFESSIONALEDUCATIONN'] = 'Windows Pro Education N';
+$s['edition_SERVERRDSH'] = 'Windows Enterprise multi-session / Virtual Desktops';
+$s['edition_SERVERARM64'] = 'Windows Server ARM64';
+$s['edition_SERVERAZURESTACKHCICOR'] = 'Azure Stack HCI';
+$s['edition_SERVERDATACENTER'] = 'Windows Server Datacenter';
+$s['edition_SERVERDATACENTERCORE'] = 'Windows Server Datacenter (Core)';
+$s['edition_SERVERSTANDARD'] = 'Windows Server Standard';
+$s['edition_SERVERSTANDARDCORE'] = 'Windows Server Standard (Core)';
+$s['edition_SERVERTURBINE'] = 'Windows Server Datacenter: Azure Edition';
+$s['edition_SERVERTURBINECOR'] = 'Windows Server Datacenter: Azure Edition (Core)';
+$s['edition_SERVERSTANDARDACOR'] = 'Windows Server Standard (Semi-Annual Channel)';
+$s['edition_SERVERDATACENTERACOR'] = 'Windows Server Datacenter (Semi-Annual Channel)';

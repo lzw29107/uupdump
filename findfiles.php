@@ -21,7 +21,7 @@ $aria2 = isset($_GET['aria2']) ? $_GET['aria2'] : null;
 
 require_once 'api/get.php';
 require_once 'api/updateinfo.php';
-require_once 'public/get.php';
+require_once 'contrib/get.php';
 require_once 'shared/style.php';
 require_once 'shared/ratelimits.php';
 

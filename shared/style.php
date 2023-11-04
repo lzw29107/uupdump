@@ -18,7 +18,7 @@ limitations under the License.
 require_once dirname(__FILE__).'/main.php';
 
 function styleUpper($pageType = 'home', $subtitle = '') {
-    global $websiteVersion, $s, $languageCoreSelectorModal;
+    global $websiteVersion, $s;
 
     if($subtitle) {
         $title = sprintf($s['uupdumpSub'], $subtitle);
@@ -32,12 +32,12 @@ function styleUpper($pageType = 'home', $subtitle = '') {
 
     if($_SERVER['SERVER_NAME'] == '0.0.0.0') {
         //$domain = $_SERVER['REMOTE_ADDR'];
-        $domain = substr_replace($_SERVER['HTTP_HOST'], '', -(strlen($_SERVER['SERVER_PORT'])+1));
+        $domain = preg_replace('/:.*/', '', $_SERVER['HTTP_HOST']);
     } else {
         $domain = $_SERVER['SERVER_NAME'];
     }
 
-    $darkModeOptions = array(
+    $ThemeOptions = array(
         'expires' => time()+60*60*24*30,
         'path' => '/',
         'domain' => $domain,
@@ -46,98 +46,105 @@ function styleUpper($pageType = 'home', $subtitle = '') {
         'samesite' => 'Strict'
     );
 
-    $enableDarkMode = -1;
-    if(isset($_GET['dark'])) {
-        switch($_GET['dark']) {
-            case 0:
-                setcookie('Dark-Mode', 0, $darkModeOptions);
-                $enableDarkMode = 0;
+    $theme = 'auto';
+    if(isset($_GET['theme'])) {
+        switch($_GET['theme']) {
+            case 'auto':
+                setcookie('Website-Theme', 'auto', $ThemeOptions);
+                $theme = 'auto';
                 break;
 
-            case 1:
-                setcookie('Dark-Mode', 1, $darkModeOptions);
-                $enableDarkMode = 1;
+            case 'light':
+                setcookie('Website-Theme', 'light', $ThemeOptions);
+                $theme = 'light';
+                break;
+          
+            case 'dark':
+                setcookie('Website-Theme', 'dark', $ThemeOptions);
+                $theme = 'dark';
+                break;
+          
+            case 'legacy':
+                setcookie('Website-Theme', 'legacy', $ThemeOptions);
+                $theme = 'legacy';
                 break;
 
             default:
-                setcookie('Dark-Mode', 0, $darkModeOptions);
-                $enableDarkMode = -1;
+                setcookie('Website-Theme', 'auto', $ThemeOptions);
+                $theme = 'auto';
                 break;
         }
-    } elseif(isset($_COOKIE['Dark-Mode'])) {
-        switch($_COOKIE['Dark-Mode']) {
-            case 0:
-                setcookie('Dark-Mode', 0, $darkModeOptions);
-                $enableDarkMode = 0;
+    } elseif(isset($_COOKIE['Website-Theme'])) {
+        switch($_COOKIE['Website-Theme']) {
+            case 'auto':
+                setcookie('Website-Theme', 'auto', $ThemeOptions);
+                $theme = 'auto';
                 break;
 
-            case 1:
-                setcookie('Dark-Mode', 1, $darkModeOptions);
-                $enableDarkMode = 1;
+            case 'light':
+                setcookie('Website-Theme', 'light', $ThemeOptions);
+                $theme = 'light';
+                break;
+
+            case 'dark':
+                setcookie('Website-Theme', 'dark', $ThemeOptions);
+                $theme = 'dark';
+                break;
+
+            case 'legacy':
+                setcookie('Website-Theme', 'legacy', $ThemeOptions);
+                $theme = 'legacy';
                 break;
 
             default:
-                setcookie('Dark-Mode', 0, $darkModeOptions);
-                $enableDarkMode = -1;
+                setcookie('Website-Theme', 'auto', $ThemeOptions);
+                $theme = 'auto';
                 break;
         }
     }
 
     $baseUrl = getBaseUrl();
     $fullUrl = htmlentities(getBaseUrl().$_SERVER['REQUEST_URI']);
-    $url = htmlentities(getUrlWithoutParam('dark'));
+    $url = htmlentities(getUrlWithoutParam('theme'));
 
-    $darkSwitch = <<<EOD
-<a class="item light-mode-btn" href="{$url}dark=0">
-    <i class="eye slash icon"></i>
-    {$s['lightMode']}
-</a>
-<a class="item dark-mode-btn" href="{$url}dark=1">
-    <i class="eye icon"></i>
-    {$s['darkMode']}
-</a>
-EOD;
-
-    $darkMode = '';
-    if($enableDarkMode == 1) {
-        $darkMode = '<link rel="stylesheet" href="/css/darkmode.css">'."\n";
-    } elseif($enableDarkMode < 0) {
-        $darkMode = '<style>@import url(\'/css/darkmode.css\') (prefers-color-scheme: dark);</style>';
+    if($theme == 'auto') {
+        $ThemeMode = '<style>@import url(\'css/darkmode.css\') (prefers-color-scheme: dark);</style>';
+    } elseif($theme == 'light') {
+      $ThemeMode = '';
+    } elseif($theme == 'dark') {
+      $ThemeMode = '<link rel="stylesheet" href="css/darkmode.css">';
+    } elseif($theme == 'legacy') {
+      $ThemeMode = '<link rel="stylesheet" href="css/legacy.css">';
     }
 
     switch ($pageType) {
         case 'home':
             $navbarLink = '<a class="active item" href="./"><i class="home icon"></i>'.$s['home'].'</a>'.
                           '<a class="item" href="known.php"><i class="download icon"></i>'.$s['downloads'].'</a>'.
-                          '<a class="item" href="newbuild.php"><i class="plus circle icon"></i>'.$s['newBuild'].'</a>'.
-                          '<a class="item" target=_blank href="https://github.com/uup-dump-dev/website-public/blob/master/FAQ.md"><i class="question circle icon"></i>'.$s['faq'].'</a>';
+                          '<a class="item" target=_blank href="https://git.uupdump.net/uup-dump/containment-zone/src/branch/master/FAQ.md"><i class="question circle icon"></i>'.$s['faq'].'</a>';
+            $pageheader = '<div class="page-header extended">';
         break;
 
         case 'downloads':
             $navbarLink = '<a class="item" href="./"><i class="home icon"></i>'.$s['home'].'</a>'.
                           '<a class="active item" href="known.php"><i class="download icon"></i>'.$s['downloads'].'</a>'.
-                          '<a class="item" href="newbuild.php"><i class="plus circle icon"></i>'.$s['newBuild'].'</a>'.
-                          '<a class="item" target=_blank href="https://github.com/uup-dump-dev/website-public/blob/master/FAQ.md"><i class="question circle icon"></i>'.$s['faq'].'</a>';
-        break;
-
-        case 'newbuild':
-            $navbarLink = '<a class="item" href="./"><i class="home icon"></i>'.$s['home'].'</a>'.
-                          '<a class="item" href="known.php"><i class="download icon"></i>'.$s['downloads'].'</a>'.
-                          '<a class="active item" href="newbuild.php"><i class="plus circle icon"></i>'.$s['newBuild'].'</a>'.
-                          '<a class="item" target=_blank href="https://github.com/uup-dump-dev/website-public/blob/master/FAQ.md"><i class="question circle icon"></i>'.$s['faq'].'</a>';
+                          '<a class="item" target=_blank href="https://git.uupdump.net/uup-dump/containment-zone/src/branch/master/FAQ.md"><i class="question circle icon"></i>'.$s['faq'].'</a>';
+            $pageheader = '<div class="page-header regular">';
         break;
 
         default:
             $navbarLink = '<a class="active item" href="./">'.$s['home'].'</a>';
+            $pageheader = '<div class="page-header regular">';
         break;
     }
 
-    $langSelect = '<a class="item" onClick="openLanguageSelector();"><i class="globe icon"></i>'.$s['currentLanguage'].'</a>';
-    $sourceCodeLink = '<a class="item" target=_blank href="https://github.com/uup-dump"><i class="code icon"></i>'.$s['sourceCode'].'</a>';
-    $discordInvite = '<a class="item" target=_blank href="https://discord.gg/yVRbtb2"><i class="discord icon"></i>Discord</a>';
+    $langSelect = '<a class="item language-selector-btn"><i class="globe icon"></i>'.$s['currentLanguage'].'</a>';
+    $ThemeSelect = '<a class="item theme-selector-btn"><i class="paint brush icon"></i>'.$s['themeButton'].'</a>';
+    $sourceCodeLink = '<a class="item" href="https://git.uupdump.net/uup-dump"><i class="code icon"></i>'.$s['sourceCode'].'</a>';
+    $discordInvite = '<a class="item" href="https://discord.gg/yVRbtb2"><i class="discord icon"></i>Discord</a>';
 
-    $navbarRight = $langSelect.$darkSwitch.$sourceCodeLink.$discordInvite;
-    $navbarMobile = $darkSwitch.$sourceCodeLink.$discordInvite.$langSelect;
+    $navbarRight = $langSelect.$ThemeSelect.$sourceCodeLink.$discordInvite;
+    $navbarMobile = $ThemeSelect.$sourceCodeLink.$discordInvite.$langSelect;
 
     $iso639lang = preg_replace("/-.*/i", "", $s['code']);
     $title = htmlentities($title);
@@ -158,28 +165,13 @@ EOD;
         <meta property="og:image" content="$baseUrl/img/cover.png">
         <meta property="og:url" content="$fullUrl">
 
-        <link rel="stylesheet" href="/css/semantic.min.css">
-        <link rel="stylesheet" href="/css/style.css">
-
-        <script src="/js/jquery.min.js"></script>
-        <script src="/js/semantic.min.js"></script>
+        <link rel="stylesheet" href="css/semantic.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        $ThemeMode
+        <script src="js/jquery.min.js"></script>
+        <script src="js/semantic.min.js"></script>
 
         <title>$title</title>
-
-        <script>
-            function openLanguageSelector() {
-                $('.ui.modal.select-language').modal('show');
-                $('.ui.sidebar').sidebar('hide');
-            }
-
-            function sidebar() {
-                $('.ui.sidebar').sidebar('setting', 'transition', 'overlay');
-                $('.ui.sidebar').sidebar('setting', 'mobileTransition', 'overlay');
-                $('.ui.sidebar').sidebar('toggle');
-            }
-        </script>
-
-        $darkMode
     </head>
     <body>
         <div class="ui sidebar inverted vertical menu">
@@ -188,10 +180,10 @@ EOD;
             </div>
         </div>
         <div class="pusher">
-            <div class="page-header">
+            $pageheader
                 <div class="ui title container">
                     <h1 title="{$s['uupdump']} v$websiteVersion">
-                        <img src="/img/logo.svg" class="logo" alt="">{$s['uupdump']}
+                        <img src="img/logo.svg" class="logo" alt="">{$s['uupdump']}
                     </h1>
                 </div>
 
@@ -206,36 +198,68 @@ EOD;
                     </div>
                     <div class="ui attached secondary menu mobile tablet only column">
                         <div class="ui container">
-                            <a class="item" onClick="sidebar();"><i class="bars icon"></i>{$s['menu']}</a>
+                            <a class="item sidebar-open-btn"><i class="bars icon"></i>{$s['menu']}</a>
                         </div>
                     </div>
                 </div>
-
-                <div class="shadow"></div>
             </div>
-
-            $languageCoreSelectorModal
 
             <div class="ui container">
 HTML;
 }
 
 function styleLower() {
-    global $websiteVersion, $s;
+    global $websiteVersion, $s, $languageCoreSelectorModal;
     $api = uupApiVersion();
 
     $config = uupDumpApiGetConfig();
     $renderText = '';
     if(isset($config['show_render_time']) && $config['show_render_time']) {
         $render = floor((microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"])*1000);
-        $renderText = "Page rendered in $render ms.";
+        $renderText = sprintf($s['render'], $render);
     }
 
     $copyright = sprintf(
         $s['copyrightNew'],
         date('Y')
     );
+  
+    $ThemeCoreSelectorModal = <<<EOD
+    <div class="ui normal mini modal select-theme">
+        <div class="header">
+            {$s['selectTheme']}
+        </div>
+        <div class="content">
+            <p><a class="ui primary fluid labeled icon button" href="./?theme=auto">
+                <i class="magic icon"></i>
+                {$s['themeAuto']}
+            </a></p>
 
+            <div class="ui divider"></div>
+
+            <p><a class="ui fluid labeled icon button" href="./?theme=light">
+                <i class="sun icon"></i>
+                {$s['themeLight']}
+            </a></p>
+            <p><a class="ui fluid labeled icon button" href="./?theme=dark">
+                <i class="moon icon"></i>
+                {$s['themeDark']}
+            </a></p>
+            <p><a class="ui fluid labeled icon button" href="./?theme=legacy">
+                <i class="undo icon"></i>
+                {$s['themeLegacy']}
+            </a></p>
+        </div>
+        <div class="actions">
+            <div class="ui ok button">
+                <i class="close icon"></i>
+                {$s['cancel']}
+            </div>
+        </div>
+    </div>
+
+    EOD;
+  
     echo <<<HTML
                 <div class="footer">
                     <div class="ui divider"></div>
@@ -248,6 +272,9 @@ function styleLower() {
                 </div>
             </div>
         </div>
+        $ThemeCoreSelectorModal
+        $languageCoreSelectorModal
+        <script src="js/common.js"></script>
     </body>
 </html>
 HTML;
@@ -372,15 +399,18 @@ function fancyError($errorCode = 'ERROR', $pageType = 'home', $moreText = 0) {
             $errorNumber = 400;
             $errorFancy = $s['error_INVALID_PAGE'];
             break;
+        case 'WU_REQUEST_FAILED':
+            $errorFancy = $s['error_WU_REQUEST_FAILED'];
+            break;
         default:
             $errorFancy = "<i>{$s['errorNoMessage']}</i><br><br>$errorCode";
             break;
     }
 
-    $safeError = htmlentities($errorFancy);
+    $safeError = $errorFancy;
 
     if($moreText) {
-        $safeError = $safeError.'<br>'.htmlentities($moreText);
+        $safeError = $safeError.'<br>'.$moreText;
     }
 
     http_response_code($errorNumber);
@@ -417,12 +447,9 @@ function styleCluelessUserArm64Warn() {
     global $s;
 
     echo <<<INFO
-<div class="ui negative icon message">
-    <i class="exclamation triangle icon"></i>
-    <div class="content">
-        <div class="header">{$s['arm64Warning2022h']}</div>
-        {$s['arm64Warning2022b']}
-    </div>
+<div class="ui warning message">
+    <i class="mobile alternate icon"></i>
+    {$s['arm64Warning2023']}
 </div>
 
 INFO;

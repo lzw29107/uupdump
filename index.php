@@ -14,13 +14,22 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-
+require_once 'api/listid.php';
 require_once 'shared/style.php';
 
-$retailLatestBuild = "22621.1";
-$rpLatestBuild = "22000.1";
-$betaLatestBuild = "22621.1";
-$devLatestBuild = "22621.1";
+$retailLatestBuild = "22631.1";
+$rpLatestBuild = "22631.1";
+$betaLatestBuild = "22635.1";
+$devLatestBuild = "22631.1";
+
+$buildsAvailable = 1;
+$ids = uupListIds(null, 1);
+
+if(isset($ids['error']) || !isset($ids['builds']) || empty($ids['builds'])) {
+    $idsError = true;
+} else {
+    $ids = $ids['builds'];
+}
 
 $templateOk = true;
 

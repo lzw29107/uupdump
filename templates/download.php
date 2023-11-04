@@ -32,25 +32,25 @@ if(!isset($templateOk)) die();
 
         <p><b><?= $s['learnMoreAdditionalEditions2'] ?></b></p>
 
-        <p><b>Windows Home</b></p>
+        <p><b>$s['edition_CORE']</b></p>
         <ul>
-            <li>Windows Home Single Language</li>
+            <li>$s['edition_CORESINGLELANGUAGE']</li>
         </ul>
-        <p><b>Windows Pro</b></p>
+        <p><b>$s['edition_PROFESSIONAL']</b></p>
         <ul>
-            <li>Windows Pro for Workstations</li>
-            <li>Windows Pro Education</li>
-            <li>Windows Education</li>
-            <li>Windows Enterprise</li>
-            <li>Windows Enterprise multi-session / Virtual Desktops</li>
-            <li>Windows IoT Enterprise</li>
+            <li>$s['edition_PROFESSIONALWORKSTATION']</li>
+            <li>$s['edition_PROFESSIONALEDUCATION']</li>
+            <li>$s['edition_EDUCATION']</li>
+            <li>$s['edition_ENTERPRISE']</li>
+            <li>$s['edition_SERVERRDSH']</li>
+            <li>$s['edition_IOTENTERPRISE']</li>
         </ul>
-        <p><b>Windows Pro N</b></p>
+        <p><b>$s['edition_PROFESSIONALN']</b></p>
         <ul>
-            <li>Windows Pro for Workstations N</li>
-            <li>Windows Pro Education N</li>
-            <li>Windows Education N</li>
-            <li>Windows Enterprise N</li>
+            <li>$s['edition_PROFESSIONALWORKSTATIONN']</li>
+            <li>$s['edition_PROFESSIONALEDUCATIONN']</li>
+            <li>$s['edition_EDUCATIONN']</li>
+            <li>$s['edition_ENTERPRISEN']</li>
         </ul>
     </div>
     <div class="actions">
@@ -155,6 +155,12 @@ if(!isset($templateOk)) die();
                     </div>
                     <div class="field">
                         <div class="ui checkbox">
+                            <input type="checkbox" name="resetbase" value="1" disabled class="conversion-option">
+                            <label><?= $s['convOpt5'] ?></label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui checkbox">
                             <input type="checkbox" name="netfx" value="1" class="conversion-option">
                             <label><?= $s['convOpt4'] ?></label>
                         </div>
@@ -165,6 +171,7 @@ if(!isset($templateOk)) die();
                             <label><?= $s['convOpt1'] ?></label>
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -241,14 +248,13 @@ if(!isset($templateOk)) die();
         <h4 class="ui red header">
             <i class="exclamation triangle icon"></i>
             <div class="content">
-                <?= $s['win1122h2OrLater'] ?>
-                <div class="sub header"><?= $s['requiresWindows102004'] ?></div>
+                <?= $s['win1122h2OrLaterv2'] ?>
+                <div class="sub header"><?= $s['requiresWindows102004v2'] ?></div>
             </div>
         </h4>
         <?php endif; ?>
 
         <?php if($hasUpdates): ?>
-            <div class="ui divider"></div>
             <h4 class="ui header">
                 <i class="info icon"></i>
                 <div class="content">
@@ -305,7 +311,7 @@ if(!isset($templateOk)) die();
         <br>
         <?php printf($s['aria2NoticeText4'], '<a href="https://forums.mydigitallife.net/members/abbodi1406.204274/">abbodi1406</a>'); ?>
         <br>
-        <?php printf($s['aria2NoticeText5'], '<a href="https://github.com/uup-dump/converter">https://github.com/uup-dump/converter</a>'); ?>
+        <?php printf($s['aria2NoticeText5'], '<a href="https://git.uupdump.net/uup-dump/converter">https://git.uupdump.net/uup-dump/converter</a>'); ?>
     </p>
 </div>
 
@@ -346,6 +352,7 @@ function learnMoreUpdates() {
 
 function checkDlOpt() {
     autodl = $('input[name="autodl"]:checked').val();
+    cleanup = $('input[name="cleanup"]').prop('checked');
 
 	if(autodl < 2) {
 		$('#legal-cope').slideUp(300);
@@ -371,14 +378,20 @@ function checkDlOpt() {
 
     $('.virtual-edition').prop('disabled', disabled_ve);
     $('.conversion-option').prop('disabled', disabled_co);
+
+  if(cleanup == true) {
+    $('input[name="resetbase"]').prop('disabled',false);
+  } else {
+    $('input[name="resetbase"]').prop('checked',false);
+    $('input[name="resetbase"]').prop('disabled',true);
+  }
+
 }
 
-$('.ui.checkbox').checkbox();
-
-$('input[name="autodl"]').on('click change', function() {
+$('input[name="autodl"], input[name="cleanup"]').on('click change', function() {
     checkDlOpt();
 });
-
+  
 $('#additional-editions-list').hide();
 $('#VEConvertLearnMoreLink').css('display', 'inline');
 checkDlOpt();

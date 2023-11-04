@@ -7,10 +7,10 @@ Fetches latest update information from Windows Update servers.
 
 Parameters:
  - `arch` - Architecture of build to find
-   - **Supported values:** `amd64`, `x86`, `arm64`, `all`
+   - **Supported values:** `amd64`, `x86`, `arm`, `arm64`, `all`
 
  - `ring` - Channel to use when fetching information (Previously called Ring)
-   - **Supported values:** `Canary`, `Dev`, `Beta`, `ReleasePreview`, `Retail`
+   - **Supported values:** `Canary`, `Dev`, `Beta`, `ReleasePreview`, `Retail`, `MSIT`
    - **Supported Ring values :** `WIF`, `WIS`, `RP`
 
  - `flight` - Content type to use when fetching information (Previously called Flight)
@@ -18,10 +18,10 @@ Parameters:
    - **Supported Flight values:** `Active`, `Skip`, `Current`
    - **NOTE:** `Skip` is for `WIF` ring only. `Current` is for `RP` ring only.
 
- - `build` - Build number to use when fetching information
-   - **Supported values:** >= 9841 and <= PHP_INT_MAX-1
+ - `build` - Build number to use when fetching information. Can also be used to provide optional fetch flags in `major.minor+flag1,flag2` format.
+   - **Supported values:** Any correctly formatted build (`major` or `major.minor`) from range of 9841 and `PHP_INT_MAX-1`.
 
- - `minor` - Build minor to use when fetching information
+ - `minor` - Build minor to use when fetching information. Unused when build is formatted in `major.minor` format
    - **Supported values:** >= 0 and <= PHP_INT_MAX-1
 
  - `sku` - SKU number to use when fetching information
@@ -80,7 +80,8 @@ Outputs list of languages supported for specified Update ID.
 Parameters:
  - `updateId` - Update identifier (optional)
    - **Supported values:** any update UUID
-
+ - `returnInfo` - Should the full update inforation be returned with a list of languages
+   - **Supported values:** `true` or `false`
 
 #### updateinfo.php: `uupUpdateInfo($updateId, $onlyInfo, $ignoreFiles);`
 Outputs specified information of specified `updateId`.
@@ -132,6 +133,7 @@ Parameters:
  - ILLEGAL_MINOR
  - NO_UPDATE_FOUND
  - EMPTY_FILELIST
+ - WU_REQUEST_FAILED
 
 **get.php**
  - UNSUPPORTED_LANG
@@ -142,6 +144,7 @@ Parameters:
  - MISSING_FILES
  - NO_FILES
  - XML_PARSE_ERROR
+ - WU_REQUEST_FAILED
 
 **listeditions.php**
  - UNSUPPORTED_LANG

@@ -97,7 +97,7 @@ $s['weFoundBuilds'] = 'A lekérdezés során <b>%d</b> építményeket találtuk
 $s['sortByDate'] = 'Az eredmények rendezése a hozzáadás dátuma szerint';
 $s['nextPage'] = 'Következő';
 $s['prevPage'] = 'Előző';
-$s['pageOf'] = '%d oldal %d-ből %d'; //1. oldal a 48-ból
+$s['pageOf'] = '%d oldal %d-ből'; //1. oldal a 48-ból
 
 //fetchupd.php
 $s['responseFromServer'] = 'Kiszolgáló válasza';
@@ -122,7 +122,7 @@ $s['noLangsAvailable'] = 'Ehhez a buildhez nem állnak rendelkezésre nyelvek.<b
 $s['browseFiles'] = 'Böngészés a fájlok között';
 $s['browseFilesDesc'] = 'Gyorsan keresheti a fájlokat a kiválasztott építményben';
 $s['searchFiles'] = 'Fájlok keresése';
-$s['toSearchForCUUseQuery'] = 'Összesítő frissítések kereséséhez használja a <i>%s</i> keresési lekérdezést.'; //Összesítő frissítések kereséséhez használja a <i>Windows10 KB</i> keresési lekérdezést.
+$s['toSearchForCUUseQuery'] = 'Összesítő frissítések kereséséhez használja a <i>%s</i> keresési lekérdezést.'; //Összesítő frissítések kereséséhez használja a <i>Windows KB</i> keresési lekérdezést.
 $s['updateNotProcessed'] = 'Az UUP dump még nem dolgozta fel az update\ metaadatait - ez automatikusan megtörténik %d percenként egyszer. Addig csak az update\ fájllistáját böngészheti.'; //UUP dump még nem dolgozta fel a frissítés metaadatait - ez automatikusan 30 percenként egyszer történik. Addig csak a frissítés fájllistáját böngészheti.
 $s['updateIsBlocked'] = 'Ez a frissítés ismert problémákat okoz, amelyek megakadályozzák a működő ISO létrehozását. Emiatt csak manuálisan böngészheti a fájlokat.';
 

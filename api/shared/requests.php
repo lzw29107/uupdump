@@ -16,7 +16,7 @@ limitations under the License.
 */
 
 // Composes DeviceAttributes parameter needed to fetch data
-function composeDeviceAttributes($flight, $ring, $build, $arch, $sku, $type) {
+function composeDeviceAttributes($flight, $ring, $build, $arch, $sku, $type, $flags) {
     $branch = branchFromBuild($build);
     $blockUpgrades = 0;
     $flightEnabled = 1;
@@ -39,23 +39,34 @@ function composeDeviceAttributes($flight, $ring, $build, $arch, $sku, $type) {
         $insType = 'Server';
         $blockUpgrades = 1;
     }
-    /*/ Hololens
+if(uupApiConfigIsTrue('enable_unsupported_features')) {
+    // Hololens
     if($sku == 135) {
         $dvcFamily = 'Windows.Holographic';
         $insType = 'FactoryOS';
-    }*/
+    }
     // HubOS Andromeda Lite
     if($sku == 180 || $sku == 184 || $sku == 189) {
         $dvcFamily = 'Windows.Core';
         $insType = 'FactoryOS';
     }
-
+    // Mobile
+    if($sku == 104 || $sku == 133) {
+        $dvcFamily = 'Windows.Mobile';
+        $insType = 'MobileCore';
+    }
+    // IoTUAP
+    if($sku == 123 || $sku == 131) {
+        $dvcFamily = 'Windows.IoTUAP';
+        $insType = 'IoTUAP';
+    }
+}
+    $fltBranch = '';
     $fltContent = 'Mainline';
     $fltRing = 'External';
     $flight = 'Active';
 
     if($ring == 'RETAIL') {
-        $fltBranch = '';
         $fltContent = $flight;
         $fltRing = 'Retail';
         $flightEnabled = 0;
@@ -109,12 +120,16 @@ function composeDeviceAttributes($flight, $ring, $build, $arch, $sku, $type) {
         $fltRing = $ring;
     }
 
+    $internal = (in_array('corpnet', $flags) && uupApiConfigIsTrue('allow_corpnet')) ? '1' : '0';
     $attrib = array(
+        'ActivationChannel=Retail',
         'App=WU_OS',
         'AppVer='.$build,
-        'AttrDataVer=226',
+        'AttrDataVer=247',
         'AllowInPlaceUpgrade=1',
         'AllowUpgradesWithUnsupportedTPMOrCPU=1',
+        'AllowOptionalContent=1',
+        'Bios=2019',
         'BlockFeatureUpdates='.$blockUpgrades,
         'BranchReadinessLevel=CB',
         'CIOptin=1',
@@ -132,10 +147,15 @@ function composeDeviceAttributes($flight, $ring, $build, $arch, $sku, $type) {
         'DataExpDateEpoch_20H1='.(time()+82800),
         'DataExpDateEpoch_19H1='.(time()+82800),
         'DataVer_RS5=2000000000',
+        'DchuAmdGrfxExists=1',
+        'DchuAmdGrfxVen=4098',
         'DefaultUserRegion=191',
+        'DeploymentAction=*',
         'DeviceFamily='.$dvcFamily,
+        'DeviceInfoGatherSuccessful=1',
         'EKB19H2InstallCount=1',
         'EKB19H2InstallTimeEpoch=1255000000',
+        'FirmwareVersion=7704',
         'FlightingBranchName='.$fltBranch,
         //'FlightContent='.$fltContent,
         'FlightRing='.$fltRing,
@@ -156,16 +176,27 @@ function composeDeviceAttributes($flight, $ring, $build, $arch, $sku, $type) {
         'GStatus_19H1Setup=2',
         'GStatus_RS5=2',
         'GenTelRunTimestamp_19H1='.(time()-3600),
+        'HidparseDriversVer='.$build,
+        //'HotPatchEKBInstalled=1',
         'InstallDate=1438196400',
         'InstallLanguage=en-US',
         'InstallationType='.$insType,
+        'IsAutopilotRegistered=0',
+        'IsCloudDomainJoined=0',
+        'IsContainerMgrInstalled=1',
         'IsDeviceRetailDemo=0',
+        'IsEdgeWithChromiumInstalled=1',
         'IsFlightingEnabled='.$flightEnabled,
+        'IsMDMEnrolled=0',
         'IsRetailOS='.$isRetail,
-        'MediaBranch=',
+        'IsWDAGEnabled=1',
+        'IsVbsEnabled=1',
+        'MediaBranch='.$branch,
         'MediaVersion='.$build,
+        'MobileOperatorCommercialized=000-88',
         'CloudPBR=1',
         'DUScan=1',
+        'DUInternal='.$internal,
         'OEMModel=Asus ROG Maximus Z690 Extreme',
         'OEMModelBaseBoard=ROG MAXIMUS Z690 EXTREME',
         'OEMName_Uncleaned=Contoso Corporation',
@@ -174,6 +205,7 @@ function composeDeviceAttributes($flight, $ring, $build, $arch, $sku, $type) {
         'OSSkuId='.$sku,
         'OSUILocale=en-US',
         'OSVersion='.$build,
+        'PhoneTargetingName=Lumia 960 XL',
         'ProcessorIdentifier=Intel64 Family 6 Model 151 Stepping 2',
         'ProcessorManufacturer=GenuineIntel',
         'ProcessorModel=12th Gen Intel(R) Core(TM) i9-12900K',
@@ -181,7 +213,10 @@ function composeDeviceAttributes($flight, $ring, $build, $arch, $sku, $type) {
         'SdbVer_20H1=2000000000',
         'SdbVer_19H1=2000000000',
         'SecureBootCapable=1',
+        'Steam=URL:steam protocol',
         'TelemetryLevel=3',
+        'TencentType=1',
+        'TencentReg=79 d0 01 d7 9f 54 d5 01',
         'TimestampEpochString_CU23H2='.(time()-3600),
         'TimestampEpochString_CU23H2Setup='.(time()-3600),
         'TimestampEpochString_NI22H2='.(time()-3600),
@@ -214,17 +249,8 @@ function composeDeviceAttributes($flight, $ring, $build, $arch, $sku, $type) {
         'WuClientVer='.$build,
     );
 
-    if(uupApiConfigIsTrue('fetch_sync_current_only')) {
-        $attrib[] = 'MediaBranch='.$branch;
-    }
-
-    if($ring == 'MSIT' && uupApiConfigIsTrue('allow_corpnet')) {
-        $attrib[] = 'DUInternal=1';
-    }
-
     return htmlentities('E:'.implode('&', $attrib));
 }
-
 // Returns the most possible branch for selected build
 function branchFromBuild($build) {
     $build = explode('.', $build);
@@ -233,6 +259,10 @@ function branchFromBuild($build) {
     switch($build) {
         case 15063:
             $branch = 'rs2_release';
+            break;
+
+        case 15254:
+            $branch = 'feature2';
             break;
 
         case 16299:
@@ -261,7 +291,6 @@ function branchFromBuild($build) {
         case 19043:
         case 19044:
         case 19045:
-        case 19046:
             $branch = 'vb_release';
             break;
 
@@ -271,7 +300,6 @@ function branchFromBuild($build) {
 
         case 20348:
         case 20349:
-        case 20350:
             $branch = 'fe_release';
             break;
 
@@ -280,6 +308,11 @@ function branchFromBuild($build) {
             break;
 
         case 22621:
+        case 22622:
+        case 22623:
+        case 22624:
+        case 22631:
+        case 22635:
             $branch = 'ni_release';
             break;
 
@@ -296,7 +329,8 @@ function branchFromBuild($build) {
 }
 
 // Composes POST data for gathering list of urls for download
-function composeFileGetRequest($updateId, $device, $info, $rev = 1, $type = 'Production') {
+function composeFileGetRequest($updateId, $info, $rev = 1, $type = 'Production') {
+    $device = uupDevice();
     $uuid = genUUID();
 
     $createdTime = time();
@@ -308,12 +342,13 @@ function composeFileGetRequest($updateId, $device, $info, $rev = 1, $type = 'Pro
     //$branch = branchFromBuild($info['checkBuild']);
 
     $deviceAttributes = composeDeviceAttributes(
-        $info['flight'],
-        $info['ring'],
-        $info['checkBuild'],
-        $info['arch'],
-        $info['sku'],
-        $type
+        isset($info['flight']) ? $info['flight'] : 'Active',
+        isset($info['ring']) ? $info['ring'] : 'RETAIL',
+        isset($info['checkBuild']) ? $info['checkBuild'] : '10.0.19041.1',
+        isset($info['arch']) ? $info['arch'] : 'amd64',
+        isset($info['sku']) ? $info['sku'] : 48,
+        $type,
+        isset($info['flags']) ? $info['flags'] : [],
     );
 
     return <<<XML
@@ -357,7 +392,9 @@ XML;
 }
 
 // Composes POST data for fetching the latest update information from Windows Update
-function composeFetchUpdRequest($device, $encData, $arch, $flight, $ring, $build, $sku = 48, $type = 'Production') {
+function composeFetchUpdRequest($arch, $flight, $ring, $build, $sku = 48, $type = 'Production', $flags = []) {
+    $device = uupDevice();
+    $encData = uupEncryptedData();
     $uuid = genUUID();
 
     $createdTime = time();
@@ -374,10 +411,11 @@ function composeFetchUpdRequest($device, $encData, $arch, $flight, $ring, $build
     if(uupApiIsServer($sku)) {
         $mainProduct = 'Server.OS';
     }
-    /*/ Hololens
+if(uupApiConfigIsTrue('enable_unsupported_features')) {
+    // Hololens
     if($sku == 135) {
         $mainProduct = 'HoloLens.OS.RS2';
-    }*/
+    }
     // HubOS
     if($sku == 180) {
         $mainProduct = 'WCOSDevice2.OS';
@@ -390,7 +428,15 @@ function composeFetchUpdRequest($device, $encData, $arch, $flight, $ring, $build
     if($sku == 189) {
         $mainProduct = 'WCOSDevice0.OS';
     }
-
+    // Mobile
+    if($sku == 104 || $sku == 133) {
+        $mainProduct = 'Mobile.OS.rs2';
+    }
+    // IoTUAP
+    if($sku == 123 || $sku == 131) {
+        $mainProduct = 'IoTCore.OS.rs2';
+    }
+}
     if($arch == 'all') {
         $arch = array(
             'amd64',
@@ -410,6 +456,8 @@ function composeFetchUpdRequest($device, $encData, $arch, $flight, $ring, $build
         $products[] = "PN=Adobe.Flash.$currArch&Repairable=1&V=0.0.0.0";
         $products[] = "PN=Microsoft.Edge.Stable.$currArch&Repairable=1&V=0.0.0.0";
         $products[] = "PN=Microsoft.NETFX.$currArch&V=2018.12.2.0";
+        $products[] = "PN=Windows.Autopilot.$currArch&Repairable=1&V=0.0.0.0";
+        $products[] = "PN=Windows.AutopilotOOBE.$currArch&Repairable=1&V=0.0.0.0";
         $products[] = "PN=Windows.Appraiser.$currArch&Repairable=1&V=$build";
         $products[] = "PN=Windows.AppraiserData.$currArch&Repairable=1&V=$build";
         $products[] = "PN=Windows.EmergencyUpdate.$currArch&V=$build";
@@ -421,6 +469,7 @@ function composeFetchUpdRequest($device, $encData, $arch, $flight, $ring, $build
         $products[] = "PN=MSRT.$currArch&Source=UpdateOrchestrator&V=0.0.0.0";
         $products[] = "PN=SedimentPack.$currArch&Source=UpdateOrchestrator&V=0.0.0.0";
         $products[] = "PN=UUS.$currArch&Source=UpdateOrchestrator&V=0.0.0.0";
+        //$products[] = "PN=Hotpatch.$currArch&Name=Hotpatch Enrollment Package&V=10.0.20348.465";
     }
 
     $callerAttrib = array(
@@ -441,12 +490,11 @@ function composeFetchUpdRequest($device, $encData, $arch, $flight, $ring, $build
         $build,
         $arch,
         $sku,
-        $type
+        $type,
+        $flags
     );
-
-    $syncCurrent = uupApiConfigIsTrue('fetch_sync_current_only');
-    $syncCurrentStr = $syncCurrent ? 'true' : 'false';
-
+  
+    $syncCurrent = in_array('thisonly', $flags) ? 'true' : 'false';
     return <<<XML
 <s:Envelope xmlns:a="http://www.w3.org/2005/08/addressing" xmlns:s="http://www.w3.org/2003/05/soap-envelope">
     <s:Header>
@@ -568,7 +616,7 @@ function composeFetchUpdRequest($device, $encData, $arch, $flight, $ring, $build
                 </ExtendedUpdateInfoParameters>
                 <ClientPreferredLanguages/>
                 <ProductsParameters>
-                    <SyncCurrentVersionOnly>$syncCurrentStr</SyncCurrentVersionOnly>
+                    <SyncCurrentVersionOnly>$syncCurrent</SyncCurrentVersionOnly>
                     <DeviceAttributes>$deviceAttributes</DeviceAttributes>
                     <CallerAttributes>$callerAttrib</CallerAttributes>
                     <Products>$products</Products>
@@ -581,7 +629,8 @@ XML;
 }
 
 // Composes POST data for Get Cookie request
-function composeGetCookieRequest($device) {
+function composeGetCookieRequest() {
+    $device = uupDevice();
     $uuid = genUUID();
 
     $createdTime = time();

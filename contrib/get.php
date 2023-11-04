@@ -36,6 +36,7 @@ function createUupConvertPackage(
 ) {
     $updates = isset($moreOptions['updates']) ? $moreOptions['updates'] : 0;
     $cleanup = isset($moreOptions['cleanup']) ? $moreOptions['cleanup'] : 0;
+    $resetbase = isset($moreOptions['resetbase']) ? $moreOptions['resetbase'] : 0;
     $netfx = isset($moreOptions['netfx']) ? $moreOptions['netfx'] : 0;
     $esd = isset($moreOptions['esd']) ? $moreOptions['esd'] : 0;
 
@@ -157,6 +158,7 @@ if NOT [%DETECTED_ERROR%] == [] (
 echo Attempting to download files...
 "%aria2%" --no-conf --log-level=info --log="aria2_download.log" -x16 -s16 -j5 -c -R -d"%destDir%" -i"%aria2Script%"
 if %ERRORLEVEL% GTR 0 goto :DOWNLOAD_UUPS & exit /b 1
+"%aria2%" --no-conf --log-level=info --log="aria2_download.log" --allow-overwrite=true --auto-file-renaming=false -d"%destDir%" "$sha1"
 
 if EXIST convert-UUP.cmd goto :START_CONVERT
 pause
@@ -222,6 +224,13 @@ fi
 destDir="UUPs"
 tempScript="aria2_script.\$RANDOM.txt"
 
+echo "Downloading converters..."
+aria2c --no-conf --log-level=info --log="aria2_download.log" -x16 -s16 -j5 --allow-overwrite=true --auto-file-renaming=false -d"files" -i"files/converter_multi"
+if [ $? != 0 ]; then
+  echo "We have encountered an error while downloading files."
+  exit 1
+fi
+
 echo ""
 echo "Retrieving aria2 script..."
 aria2c --no-conf --log-level=info --log="aria2_download.log" -o"\$tempScript" --allow-overwrite=true --auto-file-renaming=false "$url"
@@ -272,7 +281,7 @@ foreach($desiredVE as $edition) {
 AutoStart    =1
 AddUpdates   =$updates
 Cleanup      =$cleanup
-ResetBase    =0
+ResetBase    =$resetbase
 NetFx3       =$netfx
 StartVirtual =$virtualEditions
 wim2esd      =$esd
@@ -291,6 +300,7 @@ DisableUpdatingUpgrade=0
 [Store_Apps]
 SkipApps     =0
 AppsLevel    =0
+StubAppsFull =0
 CustomList   =0
 
 [create_virtual_editions]
@@ -447,6 +457,7 @@ if NOT [%DETECTED_ERROR%] == [] (
 echo Attempting to download files...
 $ariacmd
 if %ERRORLEVEL% GTR 0 goto :DOWNLOAD_UUPS & exit /b 1
+"%aria2%" --no-conf --log-level=info --log="aria2_download.log" --allow-overwrite=true --auto-file-renaming=false -d"%destDir%" "$sha1"
 
 pause
 goto EOF

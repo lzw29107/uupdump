@@ -117,7 +117,7 @@ $s['noLangsAvailable'] = '這個組建沒有可用的語言。';
 $s['browseFiles'] = '瀏覽檔案';
 $s['browseFilesDesc'] = '快速瀏覽選取組建版本的檔案';
 $s['searchFiles'] = '搜尋檔案';
-$s['toSearchForCUUseQuery'] = '請搜尋 <b>%s</b> 以尋找累積更新。'; //To search for Cumulative Updates use the <i>Windows10 KB</i> search query.
+$s['toSearchForCUUseQuery'] = '請搜尋 <b>%s</b> 以尋找累積更新。'; //To search for Cumulative Updates use the <i>Windows KB</i> search query.
 
 //selectedition.php
 $s['selectEditionFor'] = '選取 %s 的版本'; //Select edition for Windows 10 Insider Preview 18890.1000 (rs_prerelease) amd64, English (United States)

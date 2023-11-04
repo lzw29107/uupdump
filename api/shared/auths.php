@@ -25,19 +25,43 @@ function uupDevice() {
     return base64_encode(chunk_split($data, 1, "\0"));
 }
 
+function uupSaveCookieFromResponse($out) {
+    $outDecoded = html_entity_decode($out);
+    preg_match('/<NewCookie>.*?<\/NewCookie>|<GetCookieResult>.*?<\/GetCookieResult>/', $outDecoded, $cookieData);
+
+    if(empty($cookieData))
+        return false;
+
+    preg_match('/<Expiration>.*<\/Expiration>/', $cookieData[0], $expirationDate);
+    preg_match('/<EncryptedData>.*<\/EncryptedData>/', $cookieData[0], $encryptedData);
+
+    $expirationDate = preg_replace('/<Expiration>|<\/Expiration>/', '', $expirationDate[0]);
+    $encryptedData = preg_replace('/<EncryptedData>|<\/EncryptedData>/', '', $encryptedData[0]);
+
+    $cookieData = array(
+        'expirationDate' => $expirationDate,
+        'encryptedData' => $encryptedData,
+    );
+
+    $cookieStorage = new UupDumpCache('WuRequestCookie', false);
+    $cookieStorage->put($cookieData, false);
+
+    return $cookieData;
+}
+
+function uupInvalidateCookie() {
+    $cookieStorage = new UupDumpCache('WuRequestCookie', false);
+    $cookieInfo = $cookieStorage->delete();
+}
+
 function uupEncryptedData() {
-    $cookieInfo = @file_get_contents(dirname(__FILE__).'/cookie.json');
-    $cookieInfo = json_decode($cookieInfo, 1);
+    $cookieStorage = new UupDumpCache('WuRequestCookie', false);
+    $cookieInfo = $cookieStorage->get();
 
     if(empty($cookieInfo)) {
-        $postData = composeGetCookieRequest(uupDevice());
-        sendWuPostRequest('https://fe3.delivery.mp.microsoft.com/ClientWebService/client.asmx', $postData);
-
-        $encData = uupEncryptedData();
-    } else {
-        $encData = $cookieInfo['encryptedData'];
+        $data = sendWuPostRequestHelper('client', 'composeGetCookieRequest', [], false);
+        $cookieInfo = uupSaveCookieFromResponse($data['out']);
     }
 
-    return $encData;
+    return $cookieInfo['encryptedData'];
 }
-?>

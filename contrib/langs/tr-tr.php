@@ -103,7 +103,7 @@ $s['noLangsAvailable'] = 'Bu derleme için kullanılabilir dil yok.';
 $s['browseFiles'] = 'Dosyalara göz at';
 $s['browseFilesDesc'] = 'Seçili derlemenin dosyalarına hızlıca göz atın';
 $s['searchFiles'] = 'Dosyaları ara';
-$s['toSearchForCUUseQuery'] = 'Toplu Güncelleştirmeleri aramak için <i>%s</i> arama sorgusunu kullanın.'; //To search for Cumulative Updates use the <i>Windows10 KB</i> search query.
+$s['toSearchForCUUseQuery'] = 'Toplu Güncelleştirmeleri aramak için <i>%s</i> arama sorgusunu kullanın.'; //To search for Cumulative Updates use the <i>Windows KB</i> search query.
 
 //selectedition.php
 $s['selectEditionFor'] = '%s için versiyon seçin'; //Select edition for Windows 10 Insider Preview 18890.1000 (rs_prerelease) amd64, English (United States)

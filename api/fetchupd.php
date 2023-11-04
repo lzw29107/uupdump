@@ -21,6 +21,33 @@ require_once dirname(__FILE__).'/shared/cache.php';
 require_once dirname(__FILE__).'/shared/fileinfo.php';
 require_once dirname(__FILE__).'/listid.php';
 
+function uupApiPrivateParseFlags($str) {
+    $split = explode('+', $str);
+    $flags = [];
+
+    if(isset($split[1]))
+        $flags = explode(',', strtolower($split[1]));
+
+    return [$split[0], $flags];
+}
+
+function uupApiPrivateGetLatestBuild() {
+    $builds = array('22000.1');
+
+    $ids = uupListIds();
+    if(isset($ids['error'])) {
+        $ids['builds'] = array();
+    }
+
+    if(empty($ids['builds'])) {
+        $build = $builds[0];
+    } else {
+        $build = $ids['builds'][0]['build'];
+    }
+
+    return $build;
+}
+
 function uupFetchUpd(
     $arch = 'amd64',
     $ring = 'WIF',
@@ -29,7 +56,7 @@ function uupFetchUpd(
     $minor = '0',
     $sku = '48',
     $type = 'Production',
-    $cacheRequests = 0
+    $cacheRequests = 0,
 ) {
     uupApiPrintBrand();
 
@@ -38,20 +65,11 @@ function uupFetchUpd(
     $flight = ucwords(strtolower($flight));
     $flight = 'Active';
 
+    $buildWithFlags = $build;
+    [$build, $flags] = uupApiPrivateParseFlags($build);
+
     if($build == 'latest' || (!$build)) {
-        $builds = array('22000.1');
-
-        $ids = uupListIds();
-        if(isset($ids['error'])) {
-            $ids['builds'] = array();
-        }
-
-        if(empty($ids['builds'])) {
-            $build = $builds[0];
-        } else {
-            $build = $ids['builds'][0]['build'];
-        }
-        unset($builds, $ids);
+    $build = uupApiPrivateGetLatestBuild();
     }
 
     $build = explode('.', $build);
@@ -95,17 +113,21 @@ function uupFetchUpd(
     if(!($type == 'Production' || $type == 'Test')) {
         $type = 'Production';
     }
-
-    $res = "api-fetch-$arch-$ring-$flight-$build-$minor-$sku-$type";
+  
+    $res = "api-fetch-$arch-$ring-$flight-$buildWithFlags-$minor-$sku-$type";
     $cache = new UupDumpCache($res);
     $fromCache = $cache->get();
     if($fromCache !== false) return $fromCache;
 
     consoleLogger('Fetching information from the server...');
-    $postData = composeFetchUpdRequest(uupDevice(), uupEncryptedData(), $arch, $flight, $ring, $build, $sku, $type);
-    $out = sendWuPostRequest('https://fe3cr.delivery.mp.microsoft.com/ClientWebService/client.asmx', $postData);
+    $composerArgs = [$arch, $flight, $ring, $build, $sku, $type, $flags];
+    $out = sendWuPostRequestHelper('client', 'composeFetchUpdRequest', $composerArgs);
+    if($out['error'] != 200) {
+        consoleLogger('The request has failed');
+        return array('error' => 'WU_REQUEST_FAILED');
+    }
 
-    $out = html_entity_decode($out);
+    $out = html_entity_decode($out['out']);
     consoleLogger('Information has been successfully fetched.');
 
     preg_match_all('/<UpdateInfo>.*?<\/UpdateInfo>/', $out, $updateInfos);
@@ -126,7 +148,7 @@ function uupFetchUpd(
         $num++;
         consoleLogger("Checking build information for update {$num} of {$updatesNum}...");
 
-        $info = parseFetchUpdate($val, $out, $arch, $ring, $flight, $build, $sku, $type);
+        $info = parseFetchUpdate($val, $out, $arch, $ring, $flight, $build, $sku, $type, $flags);
         if(isset($info['error'])) {
             $errorCount++;
             continue;
@@ -156,7 +178,7 @@ function uupFetchUpd(
     return $data;
 }
 
-function parseFetchUpdate($updateInfo, $out, $arch, $ring, $flight, $build, $sku, $type) {
+function parseFetchUpdate($updateInfo, $out, $arch, $ring, $flight, $build, $sku, $type, $flags) {
     $updateNumId = preg_replace('/<UpdateInfo><ID>|<\/ID>.*/i', '', $updateInfo);
 
     $updates = preg_replace('/<Update>/', "\n<Update>", $out);
@@ -211,7 +233,7 @@ function parseFetchUpdate($updateInfo, $out, $arch, $ring, $flight, $build, $sku
         $updateTitle = 'Windows 10 build '.$foundBuild;
     }
 
-    if($foundType == 'hololens' || $foundType == 'wcosdevice0')
+    if($foundType == 'hololens' || $foundType == 'wcosdevice0'|| $foundType == 'mobile'|| $foundType == 'iotcore')
         $updateTitle = preg_replace('/ for .{3,5}-based/i', ' for', $updateTitle);
 
     $isCumulativeUpdate = 0;
@@ -233,7 +255,7 @@ function parseFetchUpdate($updateInfo, $out, $arch, $ring, $flight, $build, $sku
     if($foundType == 'sedimentpack')
         $updateTitle = $updateTitle.' - KB4023057';
 
-    if($foundType == 'hololens' || $foundType == 'wcosdevice0')
+    if($foundType == 'hololens' || $foundType == 'wcosdevice0'|| $foundType == 'mobile'|| $foundType == 'iotcore')
         $updateTitle = $updateTitle.' - '.$type;
 
     if(!preg_match("/$foundBuild/i", $updateTitle))
@@ -347,6 +369,10 @@ function parseFetchUpdate($updateInfo, $out, $arch, $ring, $flight, $build, $sku
             $temp['releasetype'] = $type;
         }
 
+        if(!empty($flags)) {
+            $temp['flags'] = $flags;
+        }
+      
         $temp['created'] = time();
         $temp['sha256ready'] = true;
         $temp['files'] = $shaArray;

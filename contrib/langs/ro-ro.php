@@ -115,7 +115,7 @@ $s['noLangsAvailable'] = 'Nu sunt limbi disponibile pentru această compilare.<b
 $s['browseFiles'] = 'Răsfoiți fișierele';
 $s['browseFilesDesc'] = 'Răsfoiți rapid fișierele în compilarea selectată';
 $s['searchFiles'] = 'Caută fișiere';
-$s['toSearchForCUUseQuery'] = 'Pentru a căuta după Actualizări cumulative folosiți solicitare căutare <i>%s</i>.'; //Pentru a căuta după Actualizări cumulative folosiți solicitare căutare <i>Windows10 KB</i>.
+$s['toSearchForCUUseQuery'] = 'Pentru a căuta după Actualizări cumulative folosiți solicitare căutare <i>%s</i>.'; //Pentru a căuta după Actualizări cumulative folosiți solicitare căutare <i>Windows KB</i>.
 
 //selectedition.php
 $s['selectEditionFor'] = 'Selectați ediția pentru %s'; //Selectați ediția pentru Windows 10 Insider Preview 18890.1000 (rs_prerelease) amd64, Engleză (Statele Unite)
