@@ -36,6 +36,7 @@ function createUupConvertPackage(
 ) {
     $updates = isset($moreOptions['updates']) ? $moreOptions['updates'] : 0;
     $cleanup = isset($moreOptions['cleanup']) ? $moreOptions['cleanup'] : 0;
+    $resetbase = isset($moreOptions['resetbase']) ? $moreOptions['resetbase'] : 0;
     $netfx = isset($moreOptions['netfx']) ? $moreOptions['netfx'] : 0;
     $esd = isset($moreOptions['esd']) ? $moreOptions['esd'] : 0;
 
@@ -272,7 +273,7 @@ foreach($desiredVE as $edition) {
 AutoStart    =1
 AddUpdates   =$updates
 Cleanup      =$cleanup
-ResetBase    =0
+ResetBase    =$resetbase
 NetFx3       =$netfx
 StartVirtual =$virtualEditions
 wim2esd      =$esd
@@ -291,6 +292,7 @@ DisableUpdatingUpgrade=0
 [Store_Apps]
 SkipApps     =0
 AppsLevel    =0
+StubAppsFull =0
 CustomList   =0
 
 [create_virtual_editions]

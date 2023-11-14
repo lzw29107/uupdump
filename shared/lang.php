@@ -14,13 +14,13 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-
-require_once dirname(__FILE__).'/../public/langs/en-us.php';
+require_once dirname(__FILE__).'/../contrib/langconf.php';
+require_once dirname(__FILE__).'/../contrib/langs/en-us.php';
 $lang = 'en-us';
 
 if($_SERVER['SERVER_NAME'] == '0.0.0.0') {
     //$domain = $_SERVER['REMOTE_ADDR'];
-    $domain = substr_replace($_SERVER['HTTP_HOST'], '', -(strlen($_SERVER['SERVER_PORT'])+1));
+    $domain = preg_replace('/:.*/', '', $_SERVER['HTTP_HOST']);
 } else {
     $domain = $_SERVER['SERVER_NAME'];
 }
@@ -41,34 +41,57 @@ if(isset($_GET['lang'])) {
 } elseif(isset($_COOKIE['Page-Language'])) {
     $lang = strtolower($_COOKIE['Page-Language']);
     $sendCookie = true;
-}
+} elseif(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) && strlen($_SERVER['HTTP_ACCEPT_LANGUAGE']) > 0) {
+    // regex inspired from @GabrielAnderson on http://stackoverflow.com/questions/6038236/http-accept-language
+    $acceptLanguage = preg_replace('/-han[st]/', '', strtolower($_SERVER['HTTP_ACCEPT_LANGUAGE']));
+    preg_match_all('/([a-z]{1,8}(-[a-z]{1,8})*)\s*(;\s*q\s*=\s*(1|0\.[0-9]+))?/i', $acceptLanguage, $lang_parse);
+    $languageArray = $lang_parse[1];
+    $q = $lang_parse[4];
+    $lcount = count($languageArray); 
+    $qualityfactor = array();
+    for($i=0; $i<$lcount; $i++) {
+      if(isset($languageArray[$i]) && preg_match('/^[^-]*$/', $languageArray[$i])) {
+      $languageArray[$i] = str_replace(array_keys($autoLangMappings), $autoLangMappings, $languageArray[$i]);
+        }
+      $languageArray = array_unique($languageArray);
+      if(isset($languageArray[$i])) {
+      $qualityfactor[$languageArray[$i]] = (float) (!empty($q[$i]) ? $q[$i] : 1);
+      }
+    }
+        // comparison function for uksort (inspired from @200_success on https://codereview.stackexchange.com/questions/54948/detect-prefered-language)
+    $cmpLangs = function ($a, $b) use ($qualityfactor) {
+        if ($qualityfactor[$a] > $qualityfactor[$b])
+            return -1;
+        elseif ($qualityfactor[$a] < $qualityfactor[$b])
+            return 1;
+        elseif (strlen($a) > strlen($b))
+            return -1;
+        elseif (strlen($a) < strlen($b))
+            return 1;
+        else
+            return 0;
+    };
 
-$supportedLangs = array(
-    'en-us',
-    'pl-pl',
-    'de-de',
-    'pt-br',
-    'pt-pt',
-    'nl-nl',
-    'fr-fr',
-    'zh-cn',
-    'ja-jp',
-    'es-ar',
-    'it-it',
-    'ar-sa',
-    'ko-kr',
-    'zh-tw',
-    'hu-hu',
-    'tr-tr',
-    'ro-ro',
-    'ru-ru',
-);
+        // sort the languages by qualityfactor
+    uksort($qualityfactor, $cmpLangs);
+  
+    $LangArray = array_keys($qualityfactor);
+    $langcount = count($qualityfactor); 
+    if(isset($langcount)) {
+        for($langnum = 0; $langnum<$langcount; ++$langnum) {
+            if(in_array($LangArray[$langnum], $supportedLangs)) break;
+        }
+        if(isset($LangArray[$langnum])) {
+            $lang = $LangArray[$langnum];
+        }
+    }
+}
 
 if(!in_array("$lang", $supportedLangs)) {
     $lang = 'en-us';
 }
 
-require_once "public/langs/$lang.php";
+require_once "contrib/langs/$lang.php";
 
 if($sendCookie) {
     setcookie('Page-Language', $lang, $pageLanguageOptions);

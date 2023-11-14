@@ -114,7 +114,7 @@ $s['noLangsAvailable'] = '이 빌드에는 사용할 수 있는 언어가 없습
 $s['browseFiles'] = '파일 찾아보기';
 $s['browseFilesDesc'] = '선택한 빌드에서 빠르게 파일 찾아보기';
 $s['searchFiles'] = '파일 검색';
-$s['toSearchForCUUseQuery'] = '누적 업데이트를 검색하려면 <i>%s</i> 검색 쿼리를 사용 하십시오.'; //To search for Cumulative Updates use the <i>Windows10 KB</i> search query.
+$s['toSearchForCUUseQuery'] = '누적 업데이트를 검색하려면 <i>%s</i> 검색 쿼리를 사용 하십시오.'; //To search for Cumulative Updates use the <i>Windows KB</i> search query.
 
 //selectedition.php
 $s['selectEditionFor'] = '%s의 에디션 선택'; //Select edition for Windows 10 Insider Preview 18890.1000 (rs_prerelease) amd64, English (United States)

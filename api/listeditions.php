@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2022 UUP dump API authors
+Copyright 2023 UUP dump API authors
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -17,60 +17,35 @@ limitations under the License.
 
 require_once dirname(__FILE__).'/shared/main.php';
 require_once dirname(__FILE__).'/shared/packs.php';
-require_once dirname(__FILE__).'/updateinfo.php';
 
 function uupListEditions($lang = 'en-us', $updateId = 0) {
-    if($updateId) {
-        $info = uupUpdateInfo($updateId, false, true);
-    }
-
     if(!$lang) {
         return array('error' => 'UNSUPPORTED_LANG');
     }
 
-    if(isset($info['info'])) $info = $info['info'];
+    $lang = strtolower($lang);
+    $genPack = uupApiGetPacks($updateId);
+    $fancyEditionNames = uupGetInfoTexts()['fancyEditionNames'];
 
-    if(isset($info['build'])) {
-        $build = explode('.', $info['build']);
-        $build = $build[0];
-    } else {
-        $build = 15063;
+    if(!isset($genPack[$lang])) {
+        return array('error' => 'UNSUPPORTED_LANG');
     }
 
-    if(!isset($info['arch'])) {
-        $info['arch'] = null;
-    }
+    $editionList = [];
+    $editionListFancy = [];
 
-    $genPack = uupGetGenPacks($build, $info['arch'], $updateId);
-    $fancyTexts = uupGetInfoTexts();
-    $fancyEditionNames = $fancyTexts['fancyEditionNames'];
-
-    if($lang) {
-        $lang = strtolower($lang);
-        if(!isset($genPack[$lang])) {
-            return array('error' => 'UNSUPPORTED_LANG');
-        }
-    }
-
-    $editionList = array();
-    $editionListFancy = array();
     foreach(array_keys($genPack[$lang]) as $edition) {
-        if($edition == 'LXP') continue;
-        if($edition == 'FOD') continue;
+        if(in_array($edition, ['LXP', 'FOD'])) continue;
 
-        if(isset($fancyEditionNames[$edition])) {
-            $fancyName = $fancyEditionNames[$edition];
-        } else {
-            $fancyName = $edition;
-        }
+        $fancyName = isset($fancyEditionNames[$edition]) ? $fancyEditionNames[$edition] : $edition;
 
         $editionList[] = $edition;
         $editionListFancy[$edition] = $fancyName;
     }
 
-    return array(
+    return [
         'apiVersion' => uupApiVersion(),
         'editionList' => $editionList,
         'editionFancyNames' => $editionListFancy,
-    );
+    ];
 }

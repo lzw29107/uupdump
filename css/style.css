@@ -1,5 +1,5 @@
 /*
-Copyright 2020 whatever127
+Copyright 2023 UUP dump authors
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -16,13 +16,41 @@ limitations under the License.
 
 .page-header {
     position: relative;
+    padding: 0.75em;
+    margin-bottom: 1.125em;
+}
+
+.page-header.regular {
     background-image: url('/img/bg_light.png');
+    background-color: #f2f4f6;
+    box-shadow: 0 0 48px #0003;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.page-header,
+.page-header.extended::before {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background-color: #f3f9fb;
-    padding: 0.75em;
-    margin-bottom: 1.2rem;
+}
+
+.page-header.extended {
+    padding: 1.2em;
+}
+
+.page-header.extended::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    height: calc(100% + 32rem);
+    background-image: linear-gradient(#fff0, #fff), url('/img/bg_light_extended.png');
+}
+
+.page-header.extended .title {
+    display: none;
 }
 
 .page-header .title {
@@ -38,33 +66,12 @@ limitations under the License.
 .page-header .title h1 {
     text-align: center;
     font-weight: 700;
-    letter-spacing: 0.02em;
-}
-
-.page-header .version {
-    display: inline;
-    position: relative;
-    bottom: 1em;
-    font-size: 9pt;
-    opacity: 0.5;
-    line-height: 1rem;
 }
 
 .page-header-menu {
     margin-left: 0 !important;
     margin-right: 0 !important;
     max-width: 100%;
-}
-
-.page-header .shadow {
-    position: absolute;
-    pointer-events: none;
-    left: -16px;
-    right: -16px;
-    height: 48px;
-    bottom: -48px;
-    box-shadow: inset 0 22px 50px -50px #000;
-    border-top: 1px solid #ccc;
 }
 
 .page-header .ui.attached.menu {
@@ -93,8 +100,13 @@ limitations under the License.
     text-align: center;
 }
 
+.welcome-text .logo {
+    height: 96px;
+}
+
 .welcome-text .header {
     font-size: 30pt;
+    font-weight: 700;
     margin: 0;
 }
 
@@ -103,14 +115,18 @@ limitations under the License.
     opacity: 0.5;
 }
 
-.light-mode-btn {
-    display: none !important;
-}
-
 .quick-search-buttons {
     text-align: center;
     margin-top: .5em;
     line-height: 250%;
+}
+
+body.pushable {
+    background-color: revert !important;
+}
+
+.pushable .pusher {
+    background-color: revert !important;
 }
 
 @media only screen and (min-width: 1392px) {

@@ -120,7 +120,7 @@ $s['noLangsAvailable'] = 'Для этой сборки нет доступных
 $s['browseFiles'] = 'Обзор файлов';
 $s['browseFilesDesc'] = 'Быстрый просмотр файлов в выбранной сборке';
 $s['searchFiles'] = 'Поиск фалов';
-$s['toSearchForCUUseQuery'] = 'Для поиска кумулятивных обновлений используйте поисковый запрос <i>%s</i>.'; //To search for Cumulative Updates use the <i>Windows10 KB</i> search query.
+$s['toSearchForCUUseQuery'] = 'Для поиска кумулятивных обновлений используйте поисковый запрос <i>%s</i>.'; //To search for Cumulative Updates use the <i>Windows KB</i> search query.
 $s['updateNotProcessed'] = 'UUP dump еще не обработал метаданные этого обновления - это происходит автоматически раз в %d мин. До тех пор вы можете просматривать только список файлов обновления.'; //UUP dump hasn't processed this update's metadata yet - this happens automatically once every 30 minutes. You can only browse the update's file list until then.
 $s['updateIsBlocked'] = 'Это обновление имеет известные проблемы, препятствующие созданию рабочего ISO. Из-за этого возможно просматривать эти файлы только вручную.';
 

@@ -51,12 +51,12 @@ function genUUID() {
     );
 }
 
-function sendWuPostRequest($url, $postData) {
+function sendWuPostRequestInternal($url, $postData, $saveCookie = true) {
     $req = curl_init($url);
 
-    $proxy = uupDumpApiGetConfig();
-    if(isset($proxy['proxy'])) {
-        curl_setopt($req, CURLOPT_PROXY, $proxy['proxy']);
+    $config = uupDumpApiGetConfig();
+    if(isset($config['proxy'])) {
+        curl_setopt($req, CURLOPT_PROXY, $config['proxy']);
     }
 
     curl_setopt($req, CURLOPT_HEADER, 0);
@@ -65,7 +65,12 @@ function sendWuPostRequest($url, $postData) {
     curl_setopt($req, CURLOPT_ENCODING, '');
     curl_setopt($req, CURLOPT_POSTFIELDS, $postData);
     curl_setopt($req, CURLOPT_CONNECTTIMEOUT, 5);
-    curl_setopt($req, CURLOPT_TIMEOUT, 15);
+  
+    if(isset($config['fetch_timeout']) && intval($config['fetch_timeout']) > 0) {
+      curl_setopt($req, CURLOPT_TIMEOUT, $config['fetch_timeout']);
+    } else {
+      curl_setopt($req, CURLOPT_TIMEOUT, 15);
+    }
     curl_setopt($req, CURLOPT_SSL_VERIFYPEER, 0);
     curl_setopt($req, CURLOPT_HTTPHEADER, array(
         'User-Agent: Windows-Update-Agent/10.0.10011.16384 Client-Protocol/2.50',
@@ -77,38 +82,40 @@ function sendWuPostRequest($url, $postData) {
 
     curl_close($req);
 
-    /*
-    Replace an expired cookie with a new one by replacing it in existing
-    postData. This has to be done this way, because handling it properly would
-    most likely require a rewrite of half of the project.
-    */
-    if($error == 500 && preg_match('/<ErrorCode>(ConfigChanged|CookieExpired)<\/ErrorCode>/', $out)) {
-        $oldCookie = uupEncryptedData();
-        @unlink(dirname(__FILE__).'/cookie.json');
-        $postData = str_replace($oldCookie, uupEncryptedData(), $postData);
+    if($saveCookie === true)
+        uupSaveCookieFromResponse($out);
 
-        return sendWuPostRequest($url, $postData);
+    return [
+        'error' => $error,
+        'out' => $out
+    ];
+}
+
+function sendWuPostRequest($url, $postData) {
+    return sendWuPostRequestInternal($url, $postData)['out'];
+}
+
+function sendWuPostRequestHelper(
+    $endpoint,
+    $postComposer,
+    $postComposerArgs,
+    $saveCookie = true
+) {
+    $endpoints = [
+        'client' => 'https://fe3.delivery.mp.microsoft.com/ClientWebService/client.asmx',
+        'clientSecured' => 'https://fe3cr.delivery.mp.microsoft.com/ClientWebService/client.asmx/secured'
+    ];
+
+    $postData = call_user_func_array($postComposer, $postComposerArgs);
+    $data = sendWuPostRequestInternal($endpoints[$endpoint], $postData, $saveCookie);
+
+    if($data['error'] == 500 && preg_match('/<ErrorCode>(ConfigChanged|CookieExpired|InvalidCookie)<\/ErrorCode>/', $data['out'])) {
+        uupInvalidateCookie();
+        $postData = call_user_func_array($postComposer, $postComposerArgs);
+        return sendWuPostRequestInternal($endpoints[$endpoint], $postData, $saveCookie);
     }
 
-    $outDecoded = html_entity_decode($out);
-    preg_match('/<NewCookie>.*?<\/NewCookie>|<GetCookieResult>.*?<\/GetCookieResult>/', $outDecoded, $cookieData);
-
-    if(!empty($cookieData)) {
-        preg_match('/<Expiration>.*<\/Expiration>/', $cookieData[0], $expirationDate);
-        preg_match('/<EncryptedData>.*<\/EncryptedData>/', $cookieData[0], $encryptedData);
-
-        $expirationDate = preg_replace('/<Expiration>|<\/Expiration>/', '', $expirationDate[0]);
-        $encryptedData = preg_replace('/<EncryptedData>|<\/EncryptedData>/', '', $encryptedData[0]);
-
-        $fileData = array(
-            'expirationDate' => $expirationDate,
-            'encryptedData' => $encryptedData,
-        );
-
-        @file_put_contents(dirname(__FILE__).'/cookie.json', json_encode($fileData));
-    }
-
-    return $out;
+    return $data;
 }
 
 function consoleLogger($message, $showTime = 1) {

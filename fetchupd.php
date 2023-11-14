@@ -41,8 +41,10 @@ if(isset($fetchUpd['error'])) {
 
 $updateArray = $fetchUpd['updateArray'];
 
+$title = sprintf($s['foundUpdates'], count($updateArray));
+  
 $templateOk = true;
 
-styleUpper('downloads', $s['responseFromServer']);
+styleUpper('downloads', $title);
 require 'templates/fetchupd.php';
 styleLower();

@@ -88,5 +88,3 @@ if(!isset($templateOk)) die();
 <p class="pagination-text">
     <?php printf($s['pageOf'], $page, $pages); ?>
 </p>
-
-<script>$('.ui.checkbox').checkbox();</script>

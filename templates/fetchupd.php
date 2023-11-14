@@ -18,19 +18,14 @@ if(!isset($templateOk)) die();
 ?>
 <h3 class="ui centered header">
     <div class="content">
-        <i class="fitted wizard icon"></i>&nbsp;
-        <?= $s['responseFromServer'] ?>
+        <i class="fitted binoculars icon"></i>&nbsp;
+        <?php printf($s['foundUpdates'], count($updateArray)); ?>
     </div>
 </h3>
 
-<div class="ui icon info message">
-    <i class="check info circle icon"></i>
-    <div class="content">
-        <div class="header">
-            <?php printf($s['foundUpdates'], count($updateArray)); ?>
-        </div>
-        <p><?= $s['foundTheseUpdates'] ?></p>
-    </div>
+<div class="ui info message">
+    <i class="check info icon"></i>
+    <?= $s['foundTheseUpdates'] ?>
 </div>
 <table class="ui celled striped table">
     <thead>
@@ -42,15 +37,17 @@ if(!isset($templateOk)) die();
     </thead>
     <?php foreach($updateArray as $update): ?>
         <tr><td>
-            <a href="./selectlang.php?id=<?= $update['updateId'] ?>">
-                <big><b><?= $update['updateTitle'] ?></b></big>
-            </a>
-            <p><i>
-                <?php printf($s['buildNumber'], $update['foundBuild']); ?>
-            </i></p>
+            <h4 class="ui header">
+                <i class="windows icon"></i>
+                <div class="content">
+                    <a href="./selectlang.php?id=a86b89c3-c593-4b6f-9be5-da1a081f2307">
+                        <?= $update['updateTitle'] ?>                        <?= $update['arch'] ?>                    </a>
+                    <div class="sub header">
+                        <?php printf($s['buildNumber'], $update['foundBuild']); ?>                    </div>
+                </div>
+            </h4>
         </td><td>
-            <?= $update['arch'] ?>
-        </td><td>
+            <?= $update['arch'] ?>        </td><td>
             <code><?= $update['updateId'] ?></code>
         </td></tr>
     <?php endforeach; ?>

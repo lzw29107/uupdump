@@ -17,6 +17,7 @@ limitations under the License.
 if(!isset($templateOk)) die();
 ?>
 <div class="welcome-text">
+    <img src="img/logo.svg" class="logo" alt="">
     <p class="header"><?= $s['uupdump'] ?></p>
     <p class="sub"><i><?= $s['slogan'] ?></i></p>
 </div>
@@ -52,8 +53,27 @@ if(!isset($templateOk)) die();
             <i class="dropdown icon"></i>
 
             <div class="menu">
-                <a class="item" href="known.php?q=regex:Insider.*226[2-4]\d.*a..64">
-                    22H2 Beta
+                <a class="item" href="known.php?q=regex:11.*Insider.*22635.*">
+                    23H2 Post Moment Beta
+                </a>
+                <a class="item" href="known.php?q=regex:\(22631">
+                    23H2
+                </a>
+			
+                <a class="item" href="known.php?q=regex:11.*Insider.*22631.*">
+                    22H2 Moment 4/23H2 Beta
+                </a>
+			
+                <a class="item" href="known.php?q=regex:11.*Insider.*2262[1-4]\.1[3-7]\d{2}.*">
+                    22H2 Moment 3 Beta
+                </a>
+			
+                <a class="item" href="known.php?q=regex:11.*Insider.*2262[1-3]\.(1)?(?(1)[0-3]|[7-9])\d{2}\s.*">
+                    22H2 Moment 2 Beta
+                </a>
+			
+                <a class="item" href="known.php?q=regex:11.*Insider.*2262[1-2]\.[1-6]\d{2}\s.*">
+                    22H2 Moment 1 Beta
                 </a>
 			
                 <a class="item" href="known.php?q=regex:\(2262\d">
@@ -78,10 +98,37 @@ if(!isset($templateOk)) die();
                     23H2
                 </a>
                 <a class="item" href="known.php?q=20349">
-                    22H2
+                    22H2 (HCI only)
                 </a>
                 <a class="item" href="known.php?q=20348">
-                    21H2
+                    2022/21H2
+                </a>
+                <a class="item" href="known.php?q=regex:Server.*19043.*">
+                    21H1
+                </a>
+                <a class="item" href="known.php?q=regex:Server.*19042.*">
+                    20H2(2009)
+                </a>
+                <a class="item" href="known.php?q=regex:Server.*19041.*">
+                    20H1(2004)
+                </a>
+                <a class="item" href="known.php?q=regex:Server.*18363.*">
+                    19H2(1909)
+                </a>
+                <a class="item" href="known.php?q=regex:Server.*18362.*">
+                    19H1(1903)
+                </a>
+                <a class="item" href="known.php?q=17784">
+                    20H2(HCI only)
+                </a>
+                <a class="item" href="known.php?q=regex:Server.*17763.*">
+                    2019/1809
+                </a>
+                <a class="item" href="known.php?q=regex:Server.*17134.*">
+                    1803
+                </a>
+                <a class="item" href="known.php?q=regex:Server.*16299\.\d{2}.*">
+                    1709
                 </a>
             </div>
         </div>
@@ -99,18 +146,48 @@ if(!isset($templateOk)) die();
                 </a>
 
                 <a class="item" href="known.php?q=19044">
-                    21H2
+                    2022/21H2
+                </a>
+
+                <a class="item" href="known.php?q=19043">
+                    21H1
+                </a>
+
+                <a class="item" href="known.php?q=19042">
+                    20H2(2009)
+                </a>
+
+                <a class="item" href="known.php?q=19041">
+                    20H1(2004)
+                </a>
+
+                <a class="item" href="known.php?q=18363">
+                    19H2(1909)
+                </a>
+
+                <a class="item" href="known.php?q=18362">
+                    19H1(1903)
                 </a>
 
                 <a class="item" href="known.php?q=17763">
-                    1809
+                    2019/1809
+                </a>
+
+                <a class="item" href="known.php?q=17134">
+                    1803
+                </a>
+
+                <a class="item" href="known.php?q=regex:16299.\d{2}.*">
+                    1709
+                </a>
+
+                <a class="item" href="known.php?q=15063">
+                    1703
                 </a>
             </div>
         </div>
     </div>
 </div>
-
-<script>$('.ui.dropdown').dropdown();</script>
 
 <h3 class="ui centered header">
     <div class="content">
@@ -119,7 +196,7 @@ if(!isset($templateOk)) die();
     </div>
 </h3>
 
-<table class="ui large tablet stackable padded table">
+<table class="ui large tablet stackable padded top attached table">
     <thead>
         <tr>
             <th><?= $s['tHeadReleaseType'] ?></th>
@@ -178,7 +255,7 @@ if(!isset($templateOk)) die();
         </tr>
         <tr>
             <td class="collapsing">
-                <i class="large bomb icon"></i>
+                <i class="large flask icon"></i>
                 <b><?= $s['latestCanaryRelease'] ?></b>
             </td>
             <td><?= $s['latestCanaryReleaseSub'] ?></td>
@@ -190,6 +267,9 @@ if(!isset($templateOk)) die();
         </tr>
     </tbody>
 </table>
+<div class="ui bottom attached info message">
+  <i class="icon lightbulb outline"></i>
+  <?= $s['checkOutAddANewBuild'] ?></div>
 
 <h3 class="ui centered header">
     <div class="content">
@@ -198,22 +278,38 @@ if(!isset($templateOk)) die();
     </div>
 </h3>
 
-<div id="recentBuildsTable">
-    <div class="ui segment" style="height: 40em;">
-        <p></p>
-        <div class="ui active dimmer">
-            <div class="ui loader"></div>
-        </div>
-    </div>
-</div>
+<?php if(isset($idsError) && $idsError == true): echo $s['error_SEARCH_NO_RESULTS']; ?>
+<?php else: ?>
+<table class="ui striped table">
+    <thead>
+        <tr>
+            <th><?= $s['build'] ?></th>
+            <th><?= $s['arch'] ?></th>
+            <th><?= $s['dateAdded'] ?></th>
+        </tr>
+    </thead>
 
-<script>
-fetch('buildstable.php')
-    .then((response) => response.text())
-    .then((text) => {
-        document.getElementById('recentBuildsTable').innerHTML = text
-    })
-    .catch((error) => {
-        console.error(error);
-    });
-</script>
+    <?php $i = 0; foreach($ids as $val): ?>
+        <?php if(++$i > 15) break; ?>
+
+        <?php $arch = $val['arch']; ?>
+        <?php if($arch == 'amd64') $arch = 'x64'; ?>
+
+        <tr><td>
+            <i class="windows icon"></i>
+            <a href="selectlang.php?id=<?= htmlentities($val['uuid']) ?>">
+                <?= htmlentities($val['title']) ?> <?= htmlentities($val['arch']) ?>
+            </a>
+            </td><td>
+                <?= htmlentities($arch) ?>
+            </td><td>
+
+            <?php if($val['created'] == null): ?>
+                <?= $s['unknown'] ?>
+            <?php else: ?>
+                <?= date("Y-m-d H:i:s T", $val['created']) ?>
+            <?php endif; ?>
+        </td></tr>
+    <?php endforeach; ?>
+</table>
+<?php endif; ?>

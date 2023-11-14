@@ -143,7 +143,7 @@ $generatePacksButton = false;
 
 if(!$packsAvailable) {
     $noLangsIcon = 'industry';
-    $noLangsCause = 'Metadata for this update is not generated.';
+    $noLangsCause = $s['Metadatanotgenerated'];
     $updateBlocked = true;
 	$generatePacksButton = true;
 } else if(!$updateBlocked && !$langsAvailable) {

@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2022 UUP dump API authors
+Copyright 2023 UUP dump API authors
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -19,63 +19,45 @@ require_once dirname(__FILE__).'/shared/main.php';
 require_once dirname(__FILE__).'/shared/packs.php';
 require_once dirname(__FILE__).'/updateinfo.php';
 
-function uupListLangs($updateId = 0) {
-    if($updateId) {
-        $info = uupUpdateInfo($updateId, false, true);
-    }
+function uupListLangsInternal($updateId) {
+    $genPack = uupApiGetPacks($updateId);
+    $fancyLangNames = uupGetInfoTexts()['fancyLangNames'];
 
-    if(isset($info['info'])) {
-        $info = $info['info'];
-        unset($info['files']);
-    }
+    $langList = [];
+    $langListFancy = [];
 
-    if(isset($info['build'])) {
-        $build = explode('.', $info['build']);
-        $build = $build[0];
-    } else {
-        $build = 15063;
-    }
-
-    if(!isset($info['arch'])) {
-        $info['arch'] = null;
-    }
-
-    $genPack = uupGetGenPacks($build, $info['arch'], $updateId);
-    $fancyTexts = uupGetInfoTexts();
-    $fancyLangNames = $fancyTexts['fancyLangNames'];
-
-    $langList = array();
-    $langListFancy = array();
     foreach($genPack as $key => $val) {
-        if(!count(array_diff(array_keys($val), array('LXP')))) {
-            continue;
-        }
-        if(!count(array_diff(array_keys($val), array('FOD')))) {
+        if(!count(array_diff(array_keys($val), ['LXP', 'FOD']))) {
             continue;
         }
 
-        if(isset($fancyLangNames[$key])) {
-            $fancyName = $fancyLangNames[$key];
-        } else {
-            $fancyName = $key;
-        }
+        $fancyName = isset($fancyLangNames[$key]) ? $fancyLangNames[$key] : $key;
 
         $langList[] = $key;
         $langListFancy[$key] = $fancyName;
     }
-   
-    if(isset($info)) {
-        return array(
-            'apiVersion' => uupApiVersion(),
-            'langList' => $langList,
-            'langFancyNames' => $langListFancy,
-            'updateInfo' => $info
-        );
-    } else {
-        return array(
-            'apiVersion' => uupApiVersion(),
-            'langList' => $langList,
-            'langFancyNames' => $langListFancy
-        );
+
+    return [
+        'langList' => $langList,
+        'langFancyNames' => $langListFancy,
+    ];
+}
+
+function uupListLangs($updateId = 0, $returnInfo = true) {
+    if($returnInfo) {
+        $info = uupUpdateInfo($updateId, ignoreFiles: true);
+        $info = isset($info['info']) ? $info['info'] : false;
     }
+
+    $langList = uupListLangsInternal($updateId);
+
+    $response = [
+        'apiVersion' => uupApiVersion(),
+        'langList' => $langList['langList'],
+        'langFancyNames' => $langList['langFancyNames'],
+    ];
+
+    if($returnInfo) $response['updateInfo'] = $info;
+
+    return $response;
 }

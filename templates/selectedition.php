@@ -90,48 +90,48 @@ if(!isset($templateOk)) die();
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Windows Home Single Language</td>
-                        <td>Windows Home</td>
+                        <td><?= $s['edition_CORESINGLELANGUAGE'] ?></td>
+                        <td><?= $s['edition_CORE'] ?></td>
                     </tr>
                     <tr>
-                        <td>Windows Pro for Workstations</td>
-                        <td>Windows Pro</td>
+                        <td><?= $s['edition_PROFESSIONALWORKSTATION'] ?></td>
+                        <td><?= $s['edition_PROFESSIONAL'] ?></td>
                     </tr>
                     <tr>
-                        <td>Windows Pro Education</td>
-                        <td>Windows Pro</td>
+                        <td><?= $s['edition_PROFESSIONALEDUCATION'] ?></td>
+                        <td><?= $s['edition_PROFESSIONAL'] ?></td>
                     </tr>
                     <tr>
-                        <td>Windows Education</td>
-                        <td>Windows Pro</td>
+                        <td><?= $s['edition_EDUCATION'] ?></td>
+                        <td><?= $s['edition_PROFESSIONAL'] ?></td>
                     </tr>
                     <tr>
-                        <td>Windows Enterprise</td>
-                        <td>Windows Pro</td>
+                        <td><?= $s['edition_ENTERPRISE'] ?></td>
+                        <td><?= $s['edition_PROFESSIONAL'] ?></td>
                     </tr>
                     <tr>
-                        <td>Windows Enterprise multi-session / Virtual Desktops</td>
-                        <td>Windows Pro</td>
+                        <td><?= $s['edition_SERVERRDSH'] ?></td>
+                        <td><?= $s['edition_PROFESSIONAL'] ?></td>
                     </tr>
                     <tr>
-                        <td>Windows IoT Enterprise</td>
-                        <td>Windows Pro</td>
+                        <td><?= $s['edition_IOTENTERPRISE'] ?></td>
+                        <td><?= $s['edition_PROFESSIONAL'] ?></td>
                     </tr>
                     <tr>
-                        <td>Windows Pro for Workstations N</td>
-                        <td>Windows Pro N</td>
+                        <td><?= $s['edition_PROFESSIONALWORKSTATIONN'] ?></td>
+                        <td><?= $s['edition_PROFESSIONALN'] ?></td>
                     </tr>
                     <tr>
-                        <td>Windows Pro Education N</td>
-                        <td>Windows Pro N</td>
+                        <td><?= $s['edition_PROFESSIONALEDUCATIONN'] ?></td>
+                        <td><?= $s['edition_PROFESSIONALN'] ?></td>
                     </tr>
                     <tr>
-                        <td>Windows Education N</td>
-                        <td>Windows Pro N</td>
+                        <td><?= $s['edition_EDUCATIONN'] ?></td>
+                        <td><?= $s['edition_PROFESSIONALN'] ?></td>
                     </tr>
                     <tr>
-                        <td>Windows Enterprise N</td>
-                        <td>Windows Pro N</td>
+                        <td><?= $s['edition_ENTERPRISEN'] ?></td>
+                        <td><?= $s['edition_PROFESSIONALN'] ?></td>
                     </tr>
                 </tbody>
             </table>
@@ -166,8 +166,6 @@ if(!isset($templateOk)) die();
 </div>
 
 <script>
-$('.ui.checkbox').checkbox();
-
 function checkEditions() {
     if($('.edition-selection:checked').length == 0) {
         $('#edition-selection-confirm').prop('disabled', 1);

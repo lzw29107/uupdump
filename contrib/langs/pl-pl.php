@@ -6,7 +6,7 @@ Translation information:
 English language name: Polish
 Localized language name: polski
 Language code: pl-PL
-Author: whatever127, awuctl, eraseyourknees
+Authors: UUP dump authors and contributors
 */
 
 //Language information
@@ -55,6 +55,12 @@ $s['copyrightNew'] = '© %d Autorzy oraz współtwórcy UUP dump.';
 $s['selectLanguage'] = 'Proszę wybrać swój język';
 $s['uupDumpDesc'] = 'UUP dump umożliwia Ci pobieranie plików Unified Update Platform, takich jak aktualizacje programu Windows Insider, bezpośrednio z usługi Windows Update.';
 $s['uupDumpDescSub'] = '%s na UUP dump. UUP dump umożliwia Ci pobieranie plików Unified Update Platform, takich jak aktualizacje programu Windows Insider, bezpośrednio z usługi Windows Update.'; //Select language for Windows 11 Insider Preview 25188.1000 (rs_prerelease) amd64 on UUP dump. UUP dump lets you download Unified Update Platform files, like Windows Insider updates, directly from Windows Update.
+$s['themeButton'] = 'Motyw';
+$s['selectTheme'] = 'Wybierz motyw';
+$s['themeAuto'] = 'Automatyczny';
+$s['themeLight'] = 'Jasny';
+$s['themeDark'] = 'Ciemny';
+$s['themeLegacy'] = 'Starszy';
 
 //index.php
 $s['slogan'] = 'Pobieraj pliki UUP z serwerów Windows Update z łatwością.';
@@ -65,7 +71,7 @@ $s['tHeadArchitectures'] = 'Architektury';
 $s['latestPublicRelease'] = 'Najnowsza publicznie wydana kompilacja';
 $s['latestPublicReleaseSub'] = 'Najnowsza kompilacja dla zwykłych użytkowników.';
 $s['latestDevRelease'] = 'Najnowsza kompilacja kanału deweloperów';
-$s['latestDevReleaseSub'] = 'Poniekąd niepewne kompilacje z najnowszymi funkcjami.<br>Idealne dla użytkowników z kompetencjami technicznymi.';
+$s['latestDevReleaseSub'] = 'Poniekąd niepewne kompilacje zawierające z dużym wyprzedzeniem nowe funkcje oraz nowe pomysły.<br>Idealne dla entuzjastów.';
 $s['latestBetaRelease'] = 'Najnowsza kompilacja kanału beta';
 $s['latestBetaReleaseSub'] = 'Pewne kompilacje z większością nowych funkcji.<br>Idealne dla wczesnych adaptacji.';
 $s['latestRPRelease'] = 'Najnowsza kompilacja zapoznawcza';
@@ -77,6 +83,9 @@ $s['fetchLatest'] = 'Znajdź najnowszą kompilację';
 $s['fetchLatestSub'] = 'Uzyskaj informacje o najnowszej kompilacji z serwerów Windows Update.';
 $s['newlyAdded'] = 'Nowo dodane kompilacje';
 $s['dateAdded'] = 'Data dodania';
+$s['latestCanaryRelease'] = 'Najnowsza kompilacja kanału Canary';
+$s['latestCanaryReleaseSub'] = 'Poniekąd niestabilne kompilacje z najnowszymi zmianami platformy i wczesnymi funkcjami.<br>Idealne dla użytkowników o wysokich kompetencjach technicznych.';
+$s['checkOutAddANewBuild'] = 'Brak interesującej Cię opcji? Sprawdź stronę <i><a href="newbuild.php">Dodaj nową kompilację</a></i>.';
 
 //newbuild.php
 $s['newBuild'] = 'Nowa kompilacja';
@@ -85,7 +94,7 @@ $s['selectOptions'] = 'Wybierz opcje';
 $s['newBuildNextText'] = 'Kliknij przycisk <i>Dalej</i>, aby rozpocząć wyszukiwanie przy użyciu wybranych opcji.';
 $s['newBuildUsing'] = 'Użytkowanie tej strony';
 $s['newBuildUsingText'] = 'Strona ta jest przeznaczona do użytku przez zaawansowanych użytkowników, którzy chcą dodać kompilację, która nie jest dostępna na stronie. W przypadku gdy chcesz użyć jednej z najczęściej użytkowanych opcji, skorzystaj z jednej z <i>Szybkich opcji</i> dostępnych na stronie głównej.';
-$s['optionsNotice'] = 'Uwaga dotyczącza opcji';
+$s['optionsNotice'] = 'Uwaga dotycząca opcji';
 $s['optionsNoticeText'] = 'Opcje dostępne tutaj konfigurują sposób w jaki klient usługi Windows Update raportuje się serwerom firmy Microsoft. Ważne jest, aby ustawić je prawidłowo, w przeciwnym wypadku otrzymany zostanie błąd.';
 
 //known.php
@@ -146,6 +155,7 @@ $s['aria2Opt2'] = 'Pobierz i przekonwertuj na obraz ISO';
 $s['aria2Opt2Desc'] = 'Łatwo pobierz wybrany zestaw UUP przy użyciu programu aria2 i przekonwertuj na obraz ISO.';
 $s['aria2Opt3'] = 'Pobierz, dodaj dodatkowe edycje i przekonwertuj na obraz ISO';
 $s['aria2Opt3Desc'] = 'Łatwo pobierz wybrany zestaw UUP przy użyciu programu aria2, stwórz dodatkowe edycje a następnie przekonwertuj na obraz ISO.';
+$s['aria2Opt4'] = 'Utwórz paczkę pobierającą dla tych aktualizacji';
 $s['jsRequiredToConf'] = 'Obsługa JavaScript jest wymagana, aby móc skonfigurować i użyć tej opcji.';
 $s['selAdditionalEditions'] = 'Wybierz dodatkowe edycje';
 $s['noAdditionalEditions'] = 'Brak dodatkowych edycji dostępnych dla tego wyboru.';
@@ -159,7 +169,7 @@ $s['additionalUpdates'] = 'Dodatkowe aktualizacje';
 $s['additionalUpdatesDesc'] = 'Ten zestaw UUP zawiera dodatkowe aktualizacje, które zostaną automatycznie dodane podczas procesu konwersji znacząco wydłużając czas tworzenia.';
 $s['browseUpdatesList'] = 'Przeglądaj listę aktualizacji';
 $s['selectDownloadOptions'] = 'Wybierz opcje pobierania';
-$s['selectDownloadOptionsSub'] = 'Skonfiguruj w jaki sposob chcesz pobrać swój wybór';
+$s['selectDownloadOptionsSub'] = 'Skonfiguruj w jaki sposób chcesz pobrać swój wybór';
 $s['downloadMethod'] = 'Metoda pobierania';
 $s['conversionOptions'] = 'Opcje konwersji';
 $s['convOpt1'] = 'Użyj kompresji z użyciem bloku ciągłego (ESD)';
@@ -171,8 +181,8 @@ $s['legalCopeHarder'] = 'Poprzez kliknięcie przycisku <i>Utwórz paczkę pobier
 $s['legalCope1'] = 'Obrazy instalacyjne stworzone przez skrypty udostępniane przez UUP dump przeznaczone są wyłącznie do <b>celów ewaluacyjnych</b>';
 $s['legalCope2'] = 'Obrazy te oraz ich wdrożenia <b>nie są wspierane</b> w żaden sposób przez Microsoft Corporation';
 $s['legalCope3v2'] = '<b>Autorzy nie ponoszą odpowiedzialności za jakiekolwiek szkody</b> wynikłe z nieprawidłowego użytkowania strony.';
-$s['win1122h2OrLater'] = 'System Windows 11, wersja 22H2 bądź nowszy';
-$s['requiresWindows102004'] = 'Ta kompilacja wymaga użycia systemu Windows 10, wersja 2004 bądź nowszego w celu poprawnego stworzenia obrazu ISO. Skrypty dla pozostałych platform utworzą uszkodzone obrazy.';
+$s['win1122h2OrLaterv2'] = 'System Windows jest wymagany w celu utworzenia obrazu ISO';
+$s['requiresWindows102004v2'] = 'W celu utworzenia obrazu ISO tej kompilacji potrzebna będzie nowoczesna wersja systemu Windows, taka jak Windows 10, wersja 2004 lub Windows 11. Na pozostałych platformach proces ten nie powiedzie się.';
 
 //get.php
 $s['listOfFilesFor'] = 'Lista plików dla %s'; //List of files for Windows 10 Insider Preview 18890.1000 (rs_prerelease) amd64
@@ -180,7 +190,7 @@ $s['totalSizeOfFiles'] = 'Całkowity rozmiar plików: %s'; //Total size of files
 $s['fileRenamingScript'] = 'Skrypt zmiany nazwy plików';
 $s['fileRenamingScriptDesc1'] = 'Skrypt, który można znaleźć poniżej może zostać użyty do szybkiej zmiany nazw pobranych plików.';
 $s['fileRenamingScriptDesc2'] = 'Aby użyć, skopiuj zawartość poniższego pola, zapisz do pliku z rozszerzeniem <code>cmd</code>, umieść w folderze z pobranymi plikami i uruchom.';
-$s['sha1File'] = 'Plik sum kontronych SHA-1';
+$s['sha1File'] = 'Plik sum kontrolnych SHA-1';
 $s['sha1FileDesc'] = 'Możesz użyć tego pliku w celu szybkiej weryfikacji czy pliki zostały pobrane poprawnie.';
 $s['aria2NoticeTitle'] = 'Informacja dotycząca opcji <i>Pobierz przy użyciu programu aria2</i>';
 $s['aria2NoticeText1'] = 'Opcje <i>Pobierz przy użyciu programu aria2</i> tworzą archiwum, które należy pobrać. Pobrane archiwum zawiera wszystkie niezbędne pliki do wykonania wybranego zadania.';
@@ -202,8 +212,7 @@ $s['sizeOfShownFiles'] = 'Rozmiar widocznych plików: %s'; //Size of shown files
 $s['error'] = 'Błąd';
 $s['requestNotSuccessful'] = 'Żądanie nie powiodło się';
 $s['anErrorHasOccurred'] = 'Wystąpił błąd podczas próby przetworzenia Twojego żądania.';
-$s['arm64Warning2022h'] = 'To jest kompilacja ARM64';
-$s['arm64Warning2022b'] = '<p>Ta kompilacja jest wyłącznie kompatybilna z:</p><ul><li>Surface Pro X</li><li>Raspberry Pi</li><li>Apple Mac M1</li><li>innymi przerośniętymi telefonami komórkowymi</li></ul><p>Autorzy UUP dump <i>nie posiadają żadnego z powyższych</i>, w związku z czym <b>nie będą prowadzić jakiejkolwiek formy wsparcia</b>.</p>';
+$s['arm64Warning2023'] = '<b>To jest kompilacja <a href="https://support.microsoft.com/pl-pl/windows/477f51df-2e3b-f68f-31b0-06f5e4f8ebb5">ARM64</a>.</b> Autorzy UUP dump nie posiadają żadnego urządzenia kompatybilnego z nią, w związku z czym <b>nie będą prowadzić jakiejkolwiek formy wsparcia</b>.';
 
 //Error messages
 $s['error_ERROR'] = 'Błąd ogólny.';
@@ -237,9 +246,11 @@ $s['error_RATE_LIMITED'] = 'Szybkość Twoich żądań została ograniczona. Pro
 $s['error_UNSPECIFIED_VE'] = 'Nie wybrano żadnych edycji dodatkowych. Jeżeli nie chcesz tworzyć edycji dodatkowych, wybierz opcję <i>Pobierz przy użyciu programu aria2 i przekonwertuj</i>.';
 $s['error_VE_UNAVAILABLE'] = 'Dodatkowe edycje nie są obsługiwane dla tego wyboru.';
 $s['error_INVALID_PAGE'] = 'Podana strona jest nieprawidłowa';
+$s['error_WU_REQUEST_FAILED'] = 'Żądanie do usługi Windows Update nie powiodło się.';
 $s['errorNoMessage'] = 'Wiadomość o błędzie nie jest dostępna.';
 
 //Languages
+$s['lang_neutral'] = 'Język dowolny';
 $s['lang_ar-sa'] = 'arabski (Arabia Saudyjska)';
 $s['lang_bg-bg'] = 'bułgarski';
 $s['lang_cs-cz'] = 'czeski';
@@ -282,8 +293,56 @@ $s['lang_zh-hk'] = 'chiński (Hong Kong)';
 $s['lang_zh-tw'] = 'chiński (tradycyjny)';
 
 //Channels
+$s['channel_canary'] = 'Kanał Canary';
 $s['channel_skipAhead'] = 'Skip Ahead';
 $s['channel_dev'] = 'Kanał deweloperów';
 $s['channel_beta'] = 'Kanał beta';
 $s['channel_releasepreview'] = 'Wersja zapoznawcza';
 $s['channel_retail'] = 'Wydanie publiczne';
+
+//Editions
+$s['edition_APP'] = 'Wstępnie zainstalowane aplikacje sklepu Microsoft Store';
+$s['edition_APP_MOMENT'] = 'Aplikacje sklepu Microsoft Store aktualizacji Moment';
+$s['edition_FOD'] = 'Funkcje na żądanie (możliwości)';
+$s['edition_CLOUD'] = 'Windows S';
+$s['edition_CLOUDN'] = 'Windows S N';
+$s['edition_CLOUDE'] = 'Windows Lean';
+$s['edition_CLOUDEDITION'] = 'Windows SE';
+$s['edition_CLOUDEDITIONN'] = 'Windows SE N';
+$s['edition_CORE'] = 'Windows Home';
+$s['edition_CORECOUNTRYSPECIFIC'] = 'Windows Home China';
+$s['edition_COREN'] = 'Windows Home N';
+$s['edition_CORESINGLELANGUAGE'] = 'Windows Home Single Language';
+$s['edition_EDUCATION'] = 'Windows Education';
+$s['edition_EDUCATIONN'] = 'Windows Education N';
+$s['edition_ENTERPRISE'] = 'Windows Enterprise';
+$s['edition_ENTERPRISEEVAL'] = 'Windows Enterprise Evaluation';
+$s['edition_ENTERPRISEN'] = 'Windows Enterprise N';
+$s['edition_ENTERPRISES'] = 'Windows Enterprise LTSC';
+$s['edition_ENTERPRISESEVAL'] = 'Windows Enterprise LTSC Evaluation';
+$s['edition_ENTERPRISESN'] = 'Windows Enterprise N LTSC';
+$s['edition_ENTERPRISESNEVAL'] = 'Windows Enterprise N LTSC Evaluation';
+$s['edition_HOLOGRAPHIC'] = 'Windows Holographic';
+$s['edition_IOTENTERPRISE'] = 'Windows IoT Enterprise';
+$s['edition_IOTENTERPRISEK'] = 'Windows IoT Enterprise Subscription';
+$s['edition_IOTENTERPRISES'] = 'Windows IoT Enterprise LTSC';
+$s['edition_IOTENTERPRISESK'] = 'Windows IoT Enterprise LTSC Subscription';
+$s['edition_LITE'] = 'Windows 10X';
+$s['edition_PPIPRO'] = 'Windows Team';
+$s['edition_PROFESSIONAL'] = 'Windows Pro';
+$s['edition_PROFESSIONALN'] = 'Windows Pro N';
+$s['edition_PROFESSIONALWORKSTATION'] = 'Windows Pro for Workstations';
+$s['edition_PROFESSIONALWORKSTATIONN'] = 'Windows Pro N for Workstations';
+$s['edition_PROFESSIONALEDUCATION'] = 'Windows Pro Education';
+$s['edition_PROFESSIONALEDUCATIONN'] = 'Windows Pro Education N';
+$s['edition_SERVERRDSH'] = 'Windows Enterprise multi-session / Virtual Desktops';
+$s['edition_SERVERARM64'] = 'Windows Server ARM64';
+$s['edition_SERVERAZURESTACKHCICOR'] = 'Azure Stack HCI';
+$s['edition_SERVERDATACENTER'] = 'Windows Server Datacenter';
+$s['edition_SERVERDATACENTERCORE'] = 'Windows Server Datacenter (Core)';
+$s['edition_SERVERSTANDARD'] = 'Windows Server Standard';
+$s['edition_SERVERSTANDARDCORE'] = 'Windows Server Standard (Core)';
+$s['edition_SERVERTURBINE'] = 'Windows Server Datacenter: Azure Edition';
+$s['edition_SERVERTURBINECOR'] = 'Windows Server Datacenter: Azure Edition (Core)';
+$s['edition_SERVERSTANDARDACOR'] = 'Windows Server Standard (Semi-Annual Channel)';
+$s['edition_SERVERDATACENTERACOR'] = 'Windows Server Datacenter (Semi-Annual Channel)';

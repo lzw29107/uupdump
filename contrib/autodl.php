@@ -17,7 +17,7 @@ limitations under the License.
 
 require_once 'api/get.php';
 require_once 'shared/utils.php';
-require_once 'public/get.php';
+require_once 'contrib/get.php';
 
 class AutoDlConfig {
     private $files;
@@ -68,7 +68,7 @@ class AutoDlConfig {
     private function setUpdateInfo() {
         $info = uupUpdateInfo($this->updateId, ignoreFiles: true);
         $info = @$info['info'];
-
+    
         $this->sku = isset($info['sku']) ? $info['sku'] : 48;
         $this->build = isset($info['build']) ? $info['build'] : 'UNKNOWN';
         $this->arch = isset($info['arch']) ? $info['arch'] : 'UNKNOWN';
@@ -85,11 +85,17 @@ class AutoDlConfig {
         $arch = $this->arch;
 
         $lang = $usePack ? $usePack : 'all';
-
+    
         if(is_array($desiredEditionMixed)) {
             $edition = count($desiredEditionMixed) == 1 ? strtolower($desiredEditionMixed[0]) : 'multi';
         } else {
             $edition = $desiredEditionMixed ? strtolower($desiredEditionMixed) : 'all';
+        }
+
+        if($edition == 'multi') {
+            foreach($desiredEditionMixed as $val) {
+                if(strtolower($val) == 'app' || strtolower($val) == 'app_moment') $edition = 'app';
+            }
         }
 
         $id = substr($this->updateId, 0, 8);
@@ -99,13 +105,30 @@ class AutoDlConfig {
         $this->edition = $edition;
     }
 
+    private function skipApps() {
+        $desiredEditionMixed = $this->desiredEditionMixed;
+        $appSkip = false;
+
+        if(is_array($desiredEditionMixed)) {
+            foreach($desiredEditionMixed as $val) {
+                $edition = strtolower($val);
+                if($edition == 'updateonly' || $edition == 'app' || $edition == 'app_moment') $appSkip = true;
+            }
+        } else {
+            $edition = $desiredEditionMixed ? strtolower($desiredEditionMixed) : 'all';
+            if($edition == 'updateonly' || $edition == 'app' || $edition == 'app_moment') $appSkip = true;
+        }
+
+        return $appSkip;
+    }
+
     private function supportsApps() {
         $isBlocked = isUpdateBlocked($this->buildNum, $this->title);
 
-        if($this->buildNum <= 22557 || $isBlocked || $this->edition == 'updateonly')
+        if($this->buildNum <= 22557 || $isBlocked || $this->skipApps())
             return false;
 
-        $genPack = uupGetGenPacks($this->buildNum, $this->arch, $this->updateId);
+        $genPack = uupApiGetPacks($this->updateId);
 
         if(empty($genPack) || !isset($genPack['neutral']))
             return false;
@@ -163,7 +186,7 @@ class AutoDlConfig {
 
     private function isVeAvailable() {
         $supportsVE = areVirtualEditonsSupported($this->buildNum, $this->sku);
-        $isApps = $this->edition == 'app';
+        $isApps = ($this->edition == 'app' || $this->edition == 'app_moment');
 
         return $supportsVE && !$isApps;
     }

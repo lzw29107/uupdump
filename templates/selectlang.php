@@ -51,7 +51,7 @@ if(!isset($templateOk)) die();
                                 <input type="hidden" name="packs" value="1" />
                                 <button class="ui fluid right labeled icon button">
                                     <i class="pencil alternate icon"></i>
-                                    Generate metadata
+                                    <?= $s['Generatemetadata'] ?>
                                 </button>
                             </form>
                         <?php endif; ?>
@@ -187,8 +187,3 @@ if(!isset($templateOk)) die();
         </h4>
     </div>
 </div>
-
-<script>
-    $('select.dropdown').dropdown();
-    $('.ui.radio.checkbox').checkbox();
-</script>

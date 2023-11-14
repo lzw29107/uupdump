@@ -63,6 +63,7 @@ function uupGetInfoTexts() {
 
     $fancyEditionNames = array(
         'APP' => 'Microsoft Store Inbox Apps',
+        'APP_MOMENT' => 'Microsoft Store Moment Apps',
         'FOD' => 'Features on Demand (Capabilities)',
         'CLOUD' => 'Windows S',
         'CLOUDN' => 'Windows S N',
@@ -192,6 +193,7 @@ function uupGetInfoTexts() {
         'SERVERWEBCORE',
         'STARTER',
         'STARTERN',
+        'WNC',
     );
 
     return array(
@@ -201,7 +203,7 @@ function uupGetInfoTexts() {
     );
 }
 
-function uupGetGenPacks($build = 15063, $arch = null, $updateId = null) {
+function uupApiGetPacks($updateId) {
     if(empty($updateId)) return [];
     if(!file_exists('packs/'.$updateId.'.json.gz')) return [];
 
@@ -210,4 +212,8 @@ function uupGetGenPacks($build = 15063, $arch = null, $updateId = null) {
 
     $genPack = json_decode($genPack, 1);
     return $genPack;
+}
+
+function uupGetGenPacks($build = 15063, $arch = null, $updateId = null) {
+    return uupApiGetPacks($updateId);
 }

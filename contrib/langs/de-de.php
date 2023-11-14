@@ -6,7 +6,7 @@ Translation information:
 English language name: German
 Localized language name: Deutsch
 Language code: de-DE
-Author: UndertakerBen (https://forums.mydigitallife.net/members/undertakerben.694957/)
+Author: UUP dump authors and contributors
 */
 
 //Language information
@@ -54,6 +54,12 @@ $s['copyrightNew'] = '© %d UUP Dump Autoren und Mitwirkende.';
 $s['selectLanguage'] = 'Bitte wählen Sie Ihre Sprache aus';
 $s['uupDumpDesc'] = 'Mit dem UUP Dump können Sie Unified Update Plattform-Dateien, wie Windows Insider Updates, direkt von Windows Update herunterladen.';
 $s['uupDumpDescSub'] = '%s über UUP-Dump. Mit dem UUP Dump können Sie Unified Update Plattform-Dateien, wie Windows Insider Updates, direkt von Windows Update herunterladen.'; //Select language for Windows 11 Insider Preview 25188.1000 (rs_prerelease) amd64 on UUP dump. UUP dump lets you download Unified Update Platform files, like Windows Insider updates, directly from Windows Update.
+$s['themeButton'] = 'Erscheinungsbild';
+$s['selectTheme'] = 'Erscheinungsbild auswählen';
+$s['themeAuto'] = 'Automatisch';
+$s['themeLight'] = 'Hell';
+$s['themeDark'] = 'Dunkel';
+$s['themeLegacy'] = 'Legacy';
 
 //index.php
 $s['slogan'] = 'Laden Sie UUP-Dateien von Windows Update-Servern mit Leichtigkeit herunter.';
@@ -67,7 +73,7 @@ $s['latestDevRelease'] = 'Neueste Dev Channel-Version';
 $s['latestDevReleaseSub'] = 'Etwas unzuverlässigere Builds mit den neuesten Funktionen.<br>Ideal für hochtechnische Benutzer.';
 $s['latestBetaRelease'] = 'Neueste Beta Channel-Version';
 $s['latestBetaReleaseSub'] = 'Zuverlässigere Builds mit den meisten verfügbaren Funktionen.<br>Ideal für Personen, die gerne früh neue Funktionen wollen.';
-$s['latestRPRelease'] = 'Neueste Release Vorschau-Build';
+$s['latestRPRelease'] = 'Neueste Release Vorschau-Version';
 $s['latestRPReleaseSub'] = 'Zuverlässiges Build für die Vorschau auf die nächste Version.<br>Ideal zum Ausprobieren kommender öffentlichen Versionen.';
 $s['advOptions'] = 'Erweiterte Optionen';
 $s['browseBuilds'] = 'Bekannte Builds durchsuchen.';
@@ -76,24 +82,29 @@ $s['fetchLatest'] = 'Hole den aktuellen Build';
 $s['fetchLatestSub'] = 'Abrufen der neuesten Buildinformationen von Windows Update-Servern.';
 $s['newlyAdded'] = 'Kürzlich hinzugefügte Builds';
 $s['dateAdded'] = 'Datum des Hinzufügens';
+$s['latestCanaryRelease'] = 'Letzte Canary Channel-Version';
+// $s['latestCanaryReleaseSub'] = 'Somewhat unstable builds with latest platform changes and early features.<br>Ideal for highly technical users.';
+$s['checkOutAddANewBuild'] = 'Nicht die gewünschte Option gefunden? Schau doch mal auf der <i><a href="newbuild.php">Neuen Build hinzufügen</a></i> Seite nach.';
+
+//newbuild.php
+$s['newBuild'] = 'Neuer Build';
+$s['addNewBuild'] = 'Neuen Build hinzufügen';
+$s['selectOptions'] = 'Optionen auswählen';
+$s['newBuildNextText'] = 'Klicken Sie auf die Schaltfläche <i>Weiter</i>, um mit den angegebenen Optionen zu suchen.';
+$s['newBuildUsing'] = 'Verwendung dieser Seite';
+$s['newBuildUsingText'] = 'This page is meant to be used by advanced users, who would like to add a build not found on the website. In case you want to use one of the most commonly used parameters, please use one of the <i>Quick options</i> found on the home page.';
+$s['newBuildUsingText'] = 'Diese Seite ist für fortgeschrittene Benutzer gedacht, die einen Build hinzufügen möchten, der auf der Website nicht gefunden wurde. Wenn Sie einen der am häufigsten verwendeten Parameter verwenden möchten, verwenden Sie bitte eine der <i>Schnellen Optionen</i> auf der Startseite.';
+$s['optionsNotice'] = 'Hinweis zu den Optionen';
+$s['optionsNoticeText'] = 'Die hier gefundenen Optionen konfigurieren, wie der zugrunde liegende Windows Update-Client sich den Microsoft-Servern meldet. Es ist wichtig, diese richtig einzustellen, sonst erhalten Sie einen Fehler.';
 
 //known.php
 $s['browseKnown'] = 'Durchsuchen der bekannten Builds';
 $s['chooseBuild'] = 'Build auswählen';
 $s['weFoundBuilds'] = 'Wir haben <b>%d</b> Builds wurden für Ihre Anfrage gefunden.'; //We have found <b>692</b> builds for your query.
-
-//latest.php
-$s['latestFetchLatest'] = 'Hole den aktuellen Build';
-$s['latestTestingOnly'] = 'Nur zu Testzwecken';
-$s['latestTestingOnlyWarn'] = '<b>Diese Seite wird nur zu Testzwecken zur Verfügung gestellt.</b> Builds, die von dieser Seite abgerufen werden und nicht vom Backend-Server verarbeitet wurden, werden mit Hilfe von Fallback-Packs bereitgestellt, die unvollständige Ergebnisse liefern können. Wenn du einen bereits bekannten Build herunterladen möchtest, benutze für ein optimales Ergebnis bitte stattdessen die Seite für bekannte Builds.';
-$s['latestDoYouWantKnown'] = 'Möchten Sie fortfahren, indem Sie die Liste der bekannten Builds durchsuchen?';
-$s['chooseOptions'] = 'Optionen auswählen';
-$s['buildOfPretendedClient'] = 'Build Nummer des vorgegebenen Windows Update Clients';
-$s['editionOfPretendedClient'] = 'Ausgabe des vorgegebenen Systems';
-$s['skipAheadLabel'] = 'Skip ahead Flight';
-$s['skipAheadOption'] = 'Verwenden Sie den Skip ahead Flight (nur Insider Fast)';
-$s['fetchUpdates'] = 'Updates holen';
-$s['fetchUpdatesInfo'] = 'Klicken Sie auf die Schaltfläche <i>Updates holen</i>, um Ihre Anfrage an die Windows Update-Server zu senden.';
+$s['sortByDate'] = 'Ergebnisse nach Datum sortieren';
+$s['nextPage'] = 'Weiter';
+$s['previousPage'] = 'Zurück';
+$s['pageOf'] = 'Seite %d von %d'; //Page 1 of 48
 
 //fetchupd.php
 $s['responseFromServer'] = 'Antwort des Servers';
@@ -118,7 +129,9 @@ $s['noLangsAvailable'] = 'Es sind keine Sprachen für diesen Build verfügbar.<b
 $s['browseFiles'] = 'Dateien durchsuchen';
 $s['browseFilesDesc'] = 'Schnelles Durchsuchen von Dateien im ausgewählten Build';
 $s['searchFiles'] = 'Dateien suchen';
-$s['toSearchForCUUseQuery'] = 'Um nach kumulativen Updates zu suchen, verwenden Sie die Suchanfrage <i>%s</i>.'; //To search for Cumulative Updates use the <i>Windows10 KB</i> search query.
+$s['toSearchForCUUseQuery'] = 'Um nach kumulativen Updates zu suchen, verwenden Sie die Suchanfrage <i>%s</i>.'; //To search for Cumulative Updates use the <i>Windows KB</i> search query.
+$s['updateNotProcessed'] = 'UUP dump hat die Metadaten dieses Updates noch nicht verarbeitet - dies geschieht automatisch einmal alle %d Minuten. Bis dahin können Sie nur die Dateiliste dieses Updates durchsuchen.';
+$s['updateIsBlocked'] = 'Dieses Update hat bekannte Probleme, die die Erstellung einer funktionierenden ISO-Datei verhindern. Aus diesem Grund können Sie die Dateien nur manuell durchsuchen.';
 
 //selectedition.php
 $s['selectEditionFor'] = 'Edition auswählen für %s'; //Select edition for Windows 10 Insider Preview 18890.1000 (rs_prerelease) amd64, English (United States)
@@ -142,6 +155,7 @@ $s['aria2Opt2'] = 'Herunterladen und Konvertieren in eine ISO';
 $s['aria2Opt2Desc'] = 'Laden Sie das ausgewählte UUP-Set mit aria2 einfach herunter und konvertieren Sie es in eine ISO.';
 $s['aria2Opt3'] = 'Herunterladen, zusätzliche Editionen hinzufügen und in eine ISO konvertieren';
 $s['aria2Opt3Desc'] = 'Laden Sie das ausgewählte UUP-Set mit aria2 einfach herunter, konvertieren es, erstellen Sie zusätzliche Editionen und erstellen Sie schließlich ein ISO-Image.';
+$s['aria2Opt4'] = 'Download-Paket für diese Updates erstellen';
 $s['jsRequiredToConf'] = 'Für die Konfiguration und Verwendung dieser Option ist JavaScript erforderlich.';
 $s['selAdditionalEditions'] = 'Zusätzliche Editionen auswählen';
 $s['noAdditionalEditions'] = 'Für die von Ihnen ausgewählten Editionen sind keine zusätzlichen Editionen verfügbar.';
@@ -166,7 +180,9 @@ $s['startDownload'] = 'Downloadpaket erstellen';
 $s['legalCopeHarder'] = 'Indem Sie auf die Schaltfläche <i>Downloadpaket erstellen</i> klicken, erklären Sie sich mit Folgendem einverstanden:';
 $s['legalCope1'] = 'Installations-Images, die mit den von UUP dump zur Verfügung gestellten Skripten erstellt wurden, sind nur für <b>Evaluierungszwecke</b> gedacht.';
 $s['legalCope2'] = 'Die Images und ihre Bereitstellung werden <b>nicht in irgendeiner Weise von der Microsoft Corporation unterstützt</b>';
-$s['legalCope3'] = '<b>Die Autoren haften nicht für Schäden</b> gemäß den Bedingungen der Projektlizenz';
+$s['legalCope3v2'] = '<b>Die Autoren haften nicht für Schäden</b>, die durch falschen Gebrauch dieser Webseite entstehen können.';
+$s['win1122h2OrLaterv2'] = 'Windows wird benötigt, um eine ISO-Datei zu erstellen';
+$s['requiresWindows102004v2'] = 'Sie müssen eine moderne Version von Windows 10, version 2004 oder Windows 11 verwenden, um eine ISO-Datei für diesen Build zu erstellen. Andere Plattformen werden nicht funktionieren.';
 
 //get.php
 $s['listOfFilesFor'] = 'Liste der Dateien für %s'; //List of files for Windows 10 Insider Preview 18890.1000 (rs_prerelease) amd64
@@ -190,14 +206,13 @@ $s['fileRenamingScriptGenW'] = 'Umbenennungsskript generieren (Windows)';
 $s['fileRenamingScriptGenL'] = 'Umbenennungsskript generieren (Linux, macOS)';
 $s['searchForFiles'] = 'Nach Dateien suchen...';
 $s['weFoundFiles'] = 'Wir haben <b>%d</b> Dateien für Ihre Anfrage gefunden.'; //We have found <b>692</b> files for your query.
+$s['sizeOfShownFiles'] = 'Größe der gezeigten Dateien: %s'; //Size of shown files: 2.86 GiB
 
 //Error pages
 $s['error'] = 'Fehler';
 $s['requestNotSuccessful'] = 'Anfrage nicht erfolgreich';
 $s['anErrorHasOccurred'] = 'Beim Versuch, Ihre Anfrage zu bearbeiten, ist ein Fehler aufgetreten.';
-$s['generatedPackNotAvailable'] = 'Generiertes Paket nicht verfügbar';
-$s['generatedPackNotAvailableDesc'] = 'Dieses Update verfügt nicht über ein generiertes Paket, das vollständige Informationen über verfügbare Sprachen, Editionen und Dateien liefert. Es wird das Fallback-Paket verwendet, das möglicherweise nicht die korrekten Informationen liefert. Wenn der Download aus diesem Grund fehlschlägt, warten Sie bitte eine Weile, bis das Paket verfügbar ist.';
-$s['arm64Warning'] = 'Dies ist ein <b>ARM64</b> Build, der <b>nicht kompatibel mit gewöhnlichen Intel/AMD-Prozessoren ist</b>.<br>Wenn Sie sicher sind, dass Ihr Zielgerät einen <b>ARM64</b> Prozessor hat und Sie ihn nicht mit <b>AMD64</b> verwechselt haben, können Sie sicher fortfahren.';
+$s['arm64Warning2023'] = 'Dies ist ein <a href="https://support.microsoft.com/de-de/windows/477f51df-2e3b-f68f-31b0-06f5e4f8ebb5">ARM64</a> Build. UUP dump-Autoren haben kein einziges Gerät, das damit kompatibel ist, und kann daher keinerlei Unterstützung anbieten.';
 
 //Error messages
 $s['error_ERROR'] = 'Allgemeiner Fehler.';
@@ -229,6 +244,9 @@ $s['error_UNSPECIFIED_UPDATE'] = 'Die Update-ID wurde nicht angegeben.';
 $s['error_INCORRECT_ID'] = 'Die angegebene Update-ID ist nicht korrekt. Bitte stellen Sie sicher, dass die angegebene Update-ID korrekt ist.';
 $s['error_RATE_LIMITED'] = 'Die Geschwindigkeit Ihrer Anfragen ist begrenzt. Bitte versuchen Sie es in wenigen Sekunden erneut.';
 $s['error_UNSPECIFIED_VE'] = 'Sie haben keine zusätzliche Edition ausgewählt. Wenn Sie keine zusätzlichen Ausgaben erstellen möchten, verwenden Sie bitte die Option <i>Download mit aria2 und konvertieren</i>.';
+$s['error_VE_UNAVAILABLE'] = 'Zusätzliche Editionen sind für diese Auswahl nicht verfügbar.';
+$s['error_INVALID_PAGE'] = 'Angegebene Seite ist ungültig.';
+$s['error_WU_REQUEST_FAILED'] = 'Eine Anfrage an den Windows Update-Dienst ist fehlgeschlagen.';
 $s['errorNoMessage'] = 'Fehlermeldung ist nicht verfügbar.';
 
 //Languages
@@ -272,3 +290,58 @@ $s['lang_uk-ua'] = 'Ukrainisch';
 $s['lang_zh-cn'] = 'Chinesisch (Vereinfacht)';
 $s['lang_zh-hk'] = 'Chinesisch (Hong Kong)';
 $s['lang_zh-tw'] = 'Chinesisch (Traditionell)';
+
+//Channels
+$s['channel_canary'] = 'Canary Channel';
+$s['channel_skipAhead'] = 'Skip Ahead';
+$s['channel_dev'] = 'Dev Channel';
+$s['channel_beta'] = 'Beta Channel';
+$s['channel_releasepreview'] = 'Release Preview Channel';
+$s['channel_retail'] = 'Retail';
+
+//Editions
+$s['edition_APP'] = 'Microsoft Store Inbox Apps';
+$s['edition_APP_MOMENT'] = 'Microsoft Store Moment Apps';
+$s['edition_FOD'] = 'Features on Demand (Capabilities)';
+$s['edition_CLOUD'] = 'Windows S';
+$s['edition_CLOUDN'] = 'Windows S N';
+$s['edition_CLOUDE'] = 'Windows Lean';
+$s['edition_CLOUDEDITION'] = 'Windows SE';
+$s['edition_CLOUDEDITIONN'] = 'Windows SE N';
+$s['edition_CORE'] = 'Windows Home';
+$s['edition_CORECOUNTRYSPECIFIC'] = 'Windows Home China';
+$s['edition_COREN'] = 'Windows Home N';
+$s['edition_CORESINGLELANGUAGE'] = 'Windows Home Single Language';
+$s['edition_EDUCATION'] = 'Windows Education';
+$s['edition_EDUCATIONN'] = 'Windows Education N';
+$s['edition_ENTERPRISE'] = 'Windows Enterprise';
+$s['edition_ENTERPRISEEVAL'] = 'Windows Enterprise Evaluation';
+$s['edition_ENTERPRISEN'] = 'Windows Enterprise N';
+$s['edition_ENTERPRISES'] = 'Windows Enterprise LTSC';
+$s['edition_ENTERPRISESEVAL'] = 'Windows Enterprise LTSC Evaluation';
+$s['edition_ENTERPRISESN'] = 'Windows Enterprise N LTSC';
+$s['edition_ENTERPRISESNEVAL'] = 'Windows Enterprise N LTSC Evaluation';
+$s['edition_HOLOGRAPHIC'] = 'Windows Holographic';
+$s['edition_IOTENTERPRISE'] = 'Windows IoT Enterprise';
+$s['edition_IOTENTERPRISEK'] = 'Windows IoT Enterprise Subscription';
+$s['edition_IOTENTERPRISES'] = 'Windows IoT Enterprise LTSC';
+$s['edition_IOTENTERPRISESK'] = 'Windows IoT Enterprise LTSC Subscription';
+$s['edition_LITE'] = 'Windows 10X';
+$s['edition_PPIPRO'] = 'Windows Team';
+$s['edition_PROFESSIONAL'] = 'Windows Pro';
+$s['edition_PROFESSIONALN'] = 'Windows Pro N';
+$s['edition_PROFESSIONALWORKSTATION'] = 'Windows Pro for Workstations';
+$s['edition_PROFESSIONALWORKSTATIONN'] = 'Windows Pro N for Workstations';
+$s['edition_PROFESSIONALEDUCATION'] = 'Windows Pro Education';
+$s['edition_PROFESSIONALEDUCATIONN'] = 'Windows Pro Education N';
+$s['edition_SERVERRDSH'] = 'Windows Enterprise multi-session / Virtual Desktops';
+$s['edition_SERVERARM64'] = 'Windows Server ARM64';
+$s['edition_SERVERAZURESTACKHCICOR'] = 'Azure Stack HCI';
+$s['edition_SERVERDATACENTER'] = 'Windows Server Datacenter';
+$s['edition_SERVERDATACENTERCORE'] = 'Windows Server Datacenter (Core)';
+$s['edition_SERVERSTANDARD'] = 'Windows Server Standard';
+$s['edition_SERVERSTANDARDCORE'] = 'Windows Server Standard (Core)';
+$s['edition_SERVERTURBINE'] = 'Windows Server Datacenter: Azure Edition';
+$s['edition_SERVERTURBINECOR'] = 'Windows Server Datacenter: Azure Edition (Core)';
+$s['edition_SERVERSTANDARDACOR'] = 'Windows Server Standard (Semi-Annual Channel)';
+$s['edition_SERVERDATACENTERACOR'] = 'Windows Server Datacenter (Semi-Annual Channel)';
