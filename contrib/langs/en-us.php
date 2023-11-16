@@ -26,7 +26,6 @@ $s['edition'] = 'Edition';
 $s['seachForBuilds'] = 'Search for builds...';
 $s['no'] = 'No';
 $s['yes'] = 'Yes';
-$s['yesRecommended'] = 'Yes (recommended)';
 $s['next'] = 'Next';
 $s['ok'] = 'OK';
 $s['cancel'] = 'Cancel';
@@ -43,14 +42,10 @@ $s['unknown'] = 'Unknown';
 //global
 $s['home'] = 'Home';
 $s['downloads'] = 'Downloads';
-$s['lightMode'] = 'Light mode';
 $s['faq'] = 'FAQ';
-$s['darkMode'] = 'Dark mode';
 $s['sourceCode'] = 'Source code';
 $s['menu'] = 'Menu';
-$s['websiteDesc'] = 'Download UUP files from Windows Update servers with ease. This project is not affiliated with Microsoft Corporation.';
 $s['notAffiliated'] = 'This project is not affiliated with Microsoft Corporation. Windows is a registered trademark of Microsoft Corporation.';
-$s['copyright'] = '© %d %s and contributors.'; //© 2019 whatever127 and contributors.
 $s['copyrightNew'] = '© %d UUP dump authors and contributors.';
 $s['selectLanguage'] = 'Please select your language';
 $s['uupDumpDesc'] = 'UUP dump lets you download Unified Update Platform files, like Windows Insider updates, directly from Windows Update.';
@@ -76,11 +71,6 @@ $s['latestBetaRelease'] = 'Latest Beta Channel build';
 $s['latestBetaReleaseSub'] = 'Reliable builds with most upcoming features available.<br>Ideal for early adopters.';
 $s['latestRPRelease'] = 'Latest Release Preview build';
 $s['latestRPReleaseSub'] = 'Reliable builds for previewing the next release.<br>Ideal for trying out upcoming releases.';
-$s['advOptions'] = 'Advanced options';
-$s['browseBuilds'] = 'Browse known builds';
-$s['browseBuildsSub'] = 'Choose an already discovered build and download it.';
-$s['fetchLatest'] = 'Fetch the latest build';
-$s['fetchLatestSub'] = 'Retrieve the latest build information from Windows Update servers.';
 $s['newlyAdded'] = 'Recently added builds';
 $s['dateAdded'] = 'Date added';
 $s['latestCanaryRelease'] = 'Latest Canary Channel build';
@@ -88,12 +78,8 @@ $s['latestCanaryReleaseSub'] = 'Somewhat unstable builds with latest platform ch
 $s['checkOutAddANewBuild'] = 'Haven\'t found a desired option? Check out the <i><a href="newbuild.php">Add a new build</a></i> page.';
 
 //newbuild.php
-$s['newBuild'] = 'New build';
 $s['addNewBuild'] = 'Add a new build';
-$s['selectOptions'] = 'Select options';
 $s['newBuildNextText'] = 'Click the <i>Next</i> button to start searching with the specified options.';
-$s['newBuildUsing'] = 'Using this page';
-$s['newBuildUsingText'] = 'This page is meant to be used by advanced users, who would like to add a build not found on the website. In case you want to use one of the most commonly used parameters, please use one of the <i>Quick options</i> found on the home page.';
 $s['optionsNotice'] = 'Options notice';
 $s['optionsNoticeText'] = 'Options found here configure how the underlying Windows Update client reports itself to the Microsoft servers. It is crucial to set these properly, otherwise you will receive an error.';
 $s['otherOptions'] = 'Other options';
@@ -106,12 +92,8 @@ $s['browseKnown'] = 'Browse known builds';
 $s['chooseBuild'] = 'Choose build';
 $s['weFoundBuilds'] = '<b>%d</b> builds were found for your query.'; //<b>692</b> builds were found for your query.
 $s['sortByDate'] = 'Sort results by addition date';
-$s['nextPage'] = 'Next';
-$s['prevPage'] = 'Previous';
-$s['pageOf'] = 'Page %d of %d'; //Page 1 of 48
 
 //fetchupd.php
-$s['responseFromServer'] = 'Server response';
 $s['foundUpdates'] = 'Found %d update(s)'; //Found 1 update(s)
 $s['foundTheseUpdates'] = 'The following updates were found. Click the name of your desired update to continue.';
 $s['buildNumber'] = 'Build number: %s'; //Build number: 18890.1000
@@ -123,19 +105,14 @@ $s['chooseLangDesc'] = 'Choose your desired language';
 $s['allLangs'] = 'All languages';
 $s['selLangFiles'] = 'Files';
 $s['allFiles'] = 'All files';
-$s['wubOnly'] = 'WindowsUpdateBox only';
-$s['updateOnly'] = 'Update only';
 $s['selectLangInfoText1'] = 'Click the <i>Next</i> button to select the desired edition.';
-$s['selectLangInfoText2'] = 'WindowsUpdateBox.exe and Cumulative updates can be found in the <i>All languages</i> language.';
-$s['allLangsWarn'] = 'The <i>All languages</i> option does not support edition selection.';
-$s['clickNextToOpenFindFiles'] = 'Click the <i>Next</i> button to open the page, which allows finding files.';
 $s['noLangsAvailable'] = 'There are no languages available for this build.<br>This build cannot be converted to an ISO image.<br>See the FAQ for details.';
 $s['Metadatanotgenerated'] = 'Metadata for this update is not generated.';
 $s['Generatemetadata'] = 'Generate metadata';
 $s['browseFiles'] = 'Browse files';
 $s['browseFilesDesc'] = 'Quickly browse files in selected build';
 $s['searchFiles'] = 'Search files';
-$s['toSearchForCUUseQuery'] = 'To search for Cumulative Updates use the <i>%s</i> search query.'; //To search for Cumulative Updates use the <i>Windows KB</i> search query.
+$s['toSearchForCUUseQuery'] = 'To search for Cumulative Updates use the <i>%s</i> search query.'; //To search for Cumulative Updates use the <i>Windows10 KB</i> search query.
 $s['updateNotProcessed'] = 'UUP dump hasn\'t processed this update\'s metadata yet - this happens automatically once every %d minutes. You can only browse the update\'s file list until then.'; //UUP dump hasn't processed this update's metadata yet - this happens automatically once every 30 minutes. You can only browse the update's file list until then.
 $s['updateIsBlocked'] = 'This update has known issues preventing the creation of a working ISO. Because of this, you can only manually browse its files.';
 
@@ -221,15 +198,13 @@ $s['render'] = 'Page rendered in %s ms.'; //Page rendered in 1 ms.
 
 //Error pages
 $s['error'] = 'Error';
-$s['requestNotSuccessful'] = 'Request not successful';
-$s['anErrorHasOccurred'] = 'An error has occurred while attempting to process your request.';
 $s['arm64Warning2023'] = '<b>This is an <a href="https://support.microsoft.com/en-us/windows/477f51df-2e3b-f68f-31b0-06f5e4f8ebb5">ARM64</a> build.</b> UUP dump authors don\'t have a single device compatible with it and therefore <b>will provide absolutely no support</b>.';
 
 //Error messages
 $s['error_ERROR'] = 'Generic error.';
 $s['error_UNSUPPORTED_API'] = 'Installed API version is not compatible with this version of UUP dump.';
-$s['error_NO_FILEINFO_DIR'] = 'The (fileinfo) directory does not exist.';
-$s['error_NO_BUILDS_IN_FILEINFO'] = 'The (fileinfo) database does not contain any build.';
+$s['error_NO_FILEINFO_DIR'] = 'The fileinfo directory does not exist.';
+$s['error_NO_BUILDS_IN_FILEINFO'] = 'The fileinfo database does not contain any build.';
 $s['error_SEARCH_NO_RESULTS'] = 'No items found for the performed query.';
 $s['error_UNKNOWN_ARCH'] = 'Unknown processor architecture.';
 $s['error_UNKNOWN_RING'] = 'Unknown channel.';

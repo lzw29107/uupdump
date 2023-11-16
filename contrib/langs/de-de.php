@@ -125,11 +125,11 @@ $s['selectLangInfoText1'] = 'Klicken Sie auf die Schaltfläche <i>Weiter</i>, um
 $s['selectLangInfoText2'] = 'WindowsUpdateBox.exe und Kumulatives Update finden Sie unter Sprache <i>Alle Sprachen</i>.';
 $s['allLangsWarn'] = 'Die Option <i>Alle Sprachen</i> unterstützt keine Editionsauswahl.';
 $s['clickNextToOpenFindFiles'] = 'Klicken Sie auf die Schaltfläche <i>Weiter</i>, um die Seite zu öffnen, die das Finden der Dateien ermöglicht.';
-$s['noLangsAvailable'] = 'Es sind keine Sprachen für diesen Build verfügbar.<br>Dieser Build kann nicht in ein ISO-Image konvertiert werden.<br>Siehe die <a target=_blank href="https://github.com/uup-dump-dev/website-public/blob/master/FAQ.md">FAQ</a> für Details.';
+$s['noLangsAvailable'] = 'Es sind keine Sprachen für diesen Build verfügbar.<br>Dieser Build kann nicht in ein ISO-Image konvertiert werden.<br>Siehe die FAQ für Details.';
 $s['browseFiles'] = 'Dateien durchsuchen';
 $s['browseFilesDesc'] = 'Schnelles Durchsuchen von Dateien im ausgewählten Build';
 $s['searchFiles'] = 'Dateien suchen';
-$s['toSearchForCUUseQuery'] = 'Um nach kumulativen Updates zu suchen, verwenden Sie die Suchanfrage <i>%s</i>.'; //To search for Cumulative Updates use the <i>Windows KB</i> search query.
+$s['toSearchForCUUseQuery'] = 'Um nach kumulativen Updates zu suchen, verwenden Sie die Suchanfrage <i>%s</i>.'; //To search for Cumulative Updates use the <i>Windows10 KB</i> search query.
 $s['updateNotProcessed'] = 'UUP dump hat die Metadaten dieses Updates noch nicht verarbeitet - dies geschieht automatisch einmal alle %d Minuten. Bis dahin können Sie nur die Dateiliste dieses Updates durchsuchen.';
 $s['updateIsBlocked'] = 'Dieses Update hat bekannte Probleme, die die Erstellung einer funktionierenden ISO-Datei verhindern. Aus diesem Grund können Sie die Dateien nur manuell durchsuchen.';
 
@@ -217,8 +217,8 @@ $s['arm64Warning2023'] = 'Dies ist ein <a href="https://support.microsoft.com/de
 //Error messages
 $s['error_ERROR'] = 'Allgemeiner Fehler.';
 $s['error_UNSUPPORTED_API'] = 'Die installierte API-Version ist nicht kompatibel mit dieser Version von UUP dump.';
-$s['error_NO_FILEINFO_DIR'] = 'Das </i>Dateiinformations<i> Verzeichnis existiert nicht.';
-$s['error_NO_BUILDS_IN_FILEINFO'] = 'Die <i>Dateiinformations</i> Datenbank enthält kein Build.';
+$s['error_NO_FILEINFO_DIR'] = 'Das Dateiinformations Verzeichnis existiert nicht.';
+$s['error_NO_BUILDS_IN_FILEINFO'] = 'Die Dateiinformations Datenbank enthält kein Build.';
 $s['error_SEARCH_NO_RESULTS'] = 'Es konnten keine Elemente für die angegebene Abfrage gefunden werden.';
 $s['error_UNKNOWN_ARCH'] = 'Unbekannte Prozessorarchitektur.';
 $s['error_UNKNOWN_RING'] = 'Unbekannter Kanal.';

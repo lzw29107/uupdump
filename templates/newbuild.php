@@ -1,17 +1,22 @@
 <?php if(!isset($templateOk)) die(); ?>
 <h3 class="ui centered header">
     <div class="content">
-        <i class="fitted plus circle icon"></i>&nbsp;
+        <i class="fitted plus icon"></i>&nbsp;
         <?= $s['addNewBuild'] ?>
     </div>
 </h3>
 
+<script src="js/newbuild.js" defer></script>
+
 <div class="ui two columns mobile stackable centered grid">
     <div class="column">
-        <h3 class="ui header">
-            <i class="list icon"></i>
-            <?= $s['selectOptions'] ?>
-        </h3>
+        <div class="ui red header">
+            <i class="exclamation triangle icon"></i>
+            <div class="ui justified container content">
+                <?= $s['optionsNotice'] ?>                <div class="sub header"><?= $s['optionsNoticeText'] ?></div>
+            </div>
+        </div>
+
         <form class="ui form" action="fetchupd.php" method="get">
             <div class="field">
                 <label><?= $s['arch'] ?></label>
@@ -38,7 +43,7 @@
 
             <div class="field">
                 <label><?= $s['build'] ?></label>
-                <input type="text" value="22621.1" id="build">
+                <input type="text" value="22631.1" name="build">
             </div>
 
             <div class="field">
@@ -96,7 +101,7 @@
                 </div>
             </div>
 
-            <input type="hidden" value="22621.1" name="build">
+            <input type="hidden" value="" name="flags">
 
             <button class="ui fluid right labeled icon primary button" id="submitForm" type="submit">
                 <i class="right arrow icon"></i>
@@ -111,53 +116,71 @@
     </div>
 
     <div class="column">
-        <h3 class="ui header">
-            <i class="info circle icon"></i>
-            <?= $s['newBuildUsing'] ?>
-        </h3>
-        <p><?= $s['newBuildUsingText'] ?></p>
-        <div class="ui negative icon message">
-            <i class="exclamation triangle icon"></i>
+        <div class="ui centered header">
             <div class="content">
-                <div class="header">
-                    <?= $s['optionsNotice'] ?>
-                </div>
-                <p><?= $s['optionsNoticeText'] ?></p>
+                <i class="fitted rocket icon"></i>&nbsp;
+                <?= $s['quickOptions'] ?>
             </div>
         </div>
-    </div>
+
+        <table class="ui large tablet stackable table">
+            <thead>
+                <tr>
+                    <th><?= $s['tHeadReleaseType'] ?></th>
+                    <th><?= $s['tHeadArchitectures'] ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <i class="large box icon"></i>
+                        <b><?= $s['latestPublicRelease'] ?></b>
+                    </td>
+                    <td class="collapsing center aligned">
+                        <a class="ui button" href="fetchupd.php?arch=amd64&ring=retail&build=<?= $retailLatestBuild ?>">x64</a>
+                        <a class="ui button" href="fetchupd.php?arch=arm64&ring=retail&build=<?= $retailLatestBuild ?>">arm64</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <i class="large fire extinguisher icon"></i>
+                        <b><?= $s['latestRPRelease'] ?></b>
+                    </td>
+                    <td class="collapsing center aligned">
+                        <a class="ui button" href="fetchupd.php?arch=amd64&ring=rp&build=<?= $rpLatestBuild ?>">x64</a>
+                        <a class="ui button" href="fetchupd.php?arch=arm64&ring=rp&build=<?= $rpLatestBuild ?>">arm64</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <i class="large fire icon"></i>
+                        <b><?= $s['latestBetaRelease'] ?></b>
+                    </td>
+                    <td class="collapsing center aligned">
+                        <a class="ui button" href="fetchupd.php?arch=amd64&ring=wis&build=<?= $betaLatestBuild ?>">x64</a>
+                        <a class="ui button" href="fetchupd.php?arch=arm64&ring=wis&build=<?= $betaLatestBuild ?>">arm64</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <i class="large bomb icon"></i>
+                        <b><?= $s['latestDevRelease'] ?></b>
+                    </td>
+                    <td class="collapsing center aligned">
+                        <a class="ui button" href="fetchupd.php?arch=amd64&ring=wif&build=<?= $devLatestBuild ?>">x64</a>
+                        <a class="ui button" href="fetchupd.php?arch=arm64&ring=wif&build=<?= $devLatestBuild ?>">arm64</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <i class="large flask icon"></i>
+                        <b><?= $s['latestCanaryRelease'] ?></b>
+                    </td>
+                    <td class="collapsing center aligned">
+                        <a class="ui button" href="fetchupd.php?arch=amd64&ring=canary&build=latest">x64</a>
+                        <a class="ui button" href="fetchupd.php?arch=arm64&ring=canary&build=latest">arm64</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 </div>
-
-<script>
-function checkfetchOpt() {
-    sku = $('select[name="sku"]').val();
-    build = $('#build').val();
-    thisonly = $('#thisonly:checked').val();
-    corpnet = $('#corpnet:checked').val();
-  
-    if(thisonly !== undefined && corpnet !== undefined) {
-        $('input[name="build"]').val(build + '+' + thisonly + ',' + corpnet);
-    } else if(thisonly !== undefined) {
-        $('input[name="build"]').val(build + '+' + thisonly);
-    } else if(corpnet !== undefined) {
-        $('input[name="build"]').val(build + '+' + corpnet);
-    } else {
-        $('input[name="build"]').val(build);
-    }
-  
-	  if(sku == 123 || sku == 131 || sku == 135 || sku == 180 || sku == 184 || sku == 189) {
-        $('#type').slideDown(300);
-        iswcos = true;
-	  } else {
-        $('#type').slideUp(300);
-        iswcos = false;
-        $('.ui.dropdown.selection:eq(3)').dropdown('restore defaults')
-	  }
-}
-
-$('select[name="sku"], #build, #thisonly, #corpnet').on('click change', function() {
-    checkfetchOpt();
-});
-
-checkfetchOpt();
-</script>

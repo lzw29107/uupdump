@@ -83,6 +83,7 @@ Parameters:
  - `returnInfo` - Should the full update inforation be returned with a list of languages
    - **Supported values:** `true` or `false`
 
+
 #### updateinfo.php: `uupUpdateInfo($updateId, $onlyInfo, $ignoreFiles);`
 Outputs specified information of specified `updateId`.
 

@@ -6,28 +6,27 @@ Translation information:
 English language name: Chinese (Simplified)
 Localized language name: 中文（简体）
 Language code: zh-CN
-Authors: wordlesswind, JRJSheep
+Authors: wordlesswind, JRJSheep; Remastered by JRJSheep, Nov 2023
 */
 
 //Language information
 $s['code'] = 'zh-CN';
-$s['timeZone'] = 'Asia/Shanghai'; //Supported timezones: https://www.php.net/manual/en/timezones.php
+$s['timeZone'] = 'Asia/Shanghai'; //Supported timezones: https://www.php.net/manual/zh/timezones.php
 
 //shared strings
 $s['uupdump'] = 'UUP dump';
 $s['uupdumpSub'] = '%s - UUP dump'; //Browse known builds - UUP dump
 $s['build'] = '内部版本';
 $s['arch'] = '体系结构';
-$s['ring'] = '推送通道';
+$s['ring'] = '推送渠道';
 $s['updateid'] = '更新 ID';
 $s['update'] = '更新名称';
 $s['lang'] = '语言';
-$s['edition'] = '版本';
+$s['edition'] = 'SKU 版本';
 $s['type'] = '更新类型（仅Windows Core OS）';
 $s['seachForBuilds'] = '搜索内部版本……';
 $s['no'] = '否';
 $s['yes'] = '是';
-$s['yesRecommended'] = '是（推荐）';
 $s['next'] = '下一步';
 $s['ok'] = '确定';
 $s['cancel'] = '取消';
@@ -38,20 +37,16 @@ $s['expires'] = '过期时间';
 $s['sha1'] = 'SHA-1';
 $s['size'] = '大小';
 $s['additionalEdition'] = '虚拟升级版本';
-$s['requiredEdition'] = '所需版本';
+$s['requiredEdition'] = '所需 SKU 版本';
 $s['unknown'] = '未知';
 
 //global
 $s['home'] = '首页';
 $s['downloads'] = '下载';
-$s['lightMode'] = '浅色模式';
 $s['faq'] = '常见问题';
-$s['darkMode'] = '深色模式';
 $s['sourceCode'] = '源代码';
 $s['menu'] = '菜单';
-$s['websiteDesc'] = '你可以轻松地从 Windows 更新服务器下载 UUP 文件。此项目不隶属于 Microsoft Corporation。';
-$s['notAffiliated'] = '此项目与 Microsoft Corporation 无关。Windows 是 Microsoft Corporation 的注册商标。';
-$s['copyright'] = '© %d %s 和贡献者们。'; //© 2019 whatever127 and contributors.
+$s['notAffiliated'] = '此项目不隶属于 Microsoft Corporation。Windows 是 Microsoft Corporation 的注册商标。';
 $s['copyrightNew'] = '© %d UUP dump 作者和贡献者们。';
 $s['selectLanguage'] = '请选择你的语言';
 $s['uupDumpDesc'] = 'UUP dump 允许你直接从 Windows 更新下载统一更新平台（Unified Update Platform）的文件，例如 Windows 预览体验计划更新。';
@@ -59,8 +54,8 @@ $s['uupDumpDescSub'] = '在 UUP dump 上%s。UUP dump 允许你直接从 Windows
 $s['themeButton'] = '主题';
 $s['selectTheme'] = '选择主题';
 $s['themeAuto'] = '自动选择';
-$s['themeLight'] = '浅色主题';
-$s['themeDark'] = '深色主题';
+$s['themeLight'] = '浅色模式主题';
+$s['themeDark'] = '深色模式主题';
 $s['themeLegacy'] = '旧版主题';
 
 //index.php
@@ -70,33 +65,24 @@ $s['tHeadReleaseType'] = '发布类型';
 $s['tHeadDescription'] = '描述';
 $s['tHeadArchitectures'] = '体系结构';
 $s['latestPublicRelease'] = '公开发布的最新内部版本';
-$s['latestPublicReleaseSub'] = '最新用于普通用户的更新版本。';
-$s['latestDevRelease'] = '最新 Dev 通道版本';
-$s['latestDevReleaseSub'] = '具有新想法和长引导功能的内部版本，运行有些不可靠。<br>适合高度技术性用户。';
-$s['latestBetaRelease'] = '最新 Beta 通道版本';
-$s['latestBetaReleaseSub'] = '具有最新可用功能的内部版本，运行较为可靠。<br>适合早期采用者。';
-$s['latestRPRelease'] = '最新发布预览通道版本';
-$s['latestRPReleaseSub'] = '预览下一个发行版本，可靠性更好。<br>是试用即将发布版本的理想选择。';
-$s['advOptions'] = '高级选项';
-$s['browseBuilds'] = '浏览已知内部版本列表';
-$s['browseBuildsSub'] = '从本地数据库中选择已知的内部版本并下载。';
-$s['fetchLatest'] = '获取最新内部版本';
-$s['fetchLatestSub'] = '从 Windows 更新服务器检索最新的内部版本信息。';
-$s['newlyAdded'] = '新增内部版本';
+$s['latestPublicReleaseSub'] = '面向普通用户的最新更新版本。';
+$s['latestDevRelease'] = '最新 Dev 渠道版本';
+$s['latestDevReleaseSub'] = '具有新想法和长期领先功能的内部版本，运行有些不可靠。<br>它是面向爱好者的理想之选。';
+$s['latestBetaRelease'] = '最新 Beta 渠道版本';
+$s['latestBetaReleaseSub'] = '具有大多数即将推出的功能的可靠版本。<br>它是早期采用者的理想选择。';
+$s['latestRPRelease'] = '最新 Release Preview 渠道版本';
+$s['latestRPReleaseSub'] = '预览下一个发行版本，拥有更好的可靠性。<br>它是试用即将发布版本的理想选择。';
+$s['newlyAdded'] = '最近添加的内部版本';
 $s['dateAdded'] = '添加日期';
 $s['latestCanaryRelease'] = '最新 Canary 渠道版本';
-$s['latestCanaryReleaseSub'] = '具有最新平台更改和早期功能的内部版本，运行有些不稳定。<br>非常适合技术水平高的用户。';
+$s['latestCanaryReleaseSub'] = '具有最新平台更改和早期功能的内部版本，运行有些不稳定。<br>非常适合高度技术性用户。';
 $s['checkOutAddANewBuild'] = '没有找到所需的选项？请查看<i><a href="newbuild.php">添加新内部版本</a></i>页面。';
 
 //newbuild.php
-$s['newBuild'] = '新增内部版本';
 $s['addNewBuild'] = '添加新内部版本';
-$s['selectOptions'] = '选择选项';
 $s['newBuildNextText'] = '单击<i>下一步</i>按钮开始搜索指定的选项。';
-$s['newBuildUsing'] = '使用此页面';
-$s['newBuildUsingText'] = '此页面旨在供希望添加在网站上找不到的版本的高级用户使用。如果你想使用最常用的参数之一，请使用主页上的<i>快速选项</i>之一。';
 $s['optionsNotice'] = '选项注意';
-$s['optionsNoticeText'] = '此处找到的选项是配置基础 Windows 更新客户端向 Microsoft 服务器报告自身的方式。正确设置这些内容至关重要，否则你将会遇到错误。';
+$s['optionsNoticeText'] = '在此处找到的选项是配置基础 Windows 更新客户端向 Microsoft 服务器报告自身的方式。正确设置这些内容至关重要，否则你将会遇到错误，从而无法完成添加。';
 $s['otherOptions'] = '其他选项';
 $s['otherOpt1'] = '只检查指定的内部版本';
 $s['otherOpt2'] = '检查标记为 [Internal Corpnet Required] 的内部更新';
@@ -105,84 +91,75 @@ $s['otherOptNotice'] = '（仅对桌面版本生效）';
 //known.php
 $s['browseKnown'] = '浏览已知内部版本';
 $s['chooseBuild'] = '选择内部版本';
-$s['weFoundBuilds'] = '根据你的查询，我们找到了 <b>%d</b> 个内部版本。'; //<b>692</b> builds were found for your query.
+$s['weFoundBuilds'] = '根据你的查询，共找到 <b>%d</b> 个内部版本。'; //<b>692</b> builds were found for your query.
 $s['sortByDate'] = '按添加日期排序结果';
-$s['nextPage'] = '下一页';
-$s['prevPage'] = '上一页';
-$s['pageOf'] = '第 %d 页，共 %d 页'; //Page 1 of 48
 
 //fetchupd.php
-$s['responseFromServer'] = '来自服务器的响应';
 $s['foundUpdates'] = '已找到 %d 个更新'; //Found 1 update(s)
-$s['foundTheseUpdates'] = '找到了以下更新，单击所需更新的名称以继续。';
+$s['foundTheseUpdates'] = '已找到下列更新，单击所需更新的名称继续。';
 $s['buildNumber'] = '内部版本号：%s'; //Build number: 18890.1000
 
 //selectlang.php
 $s['selectLangFor'] = '选择 %s 的语言'; //Select language for Windows 10 Insider Preview 18890.1000 (rs_prerelease) amd64
 $s['chooseLang'] = '选择语言';
-$s['chooseLangDesc'] = '选择你想要的语言';
-$s['allLangs'] = '全部语言';
+$s['chooseLangDesc'] = '选择你所需要的语言';
+$s['allLangs'] = '所有语言';
 $s['selLangFiles'] = '文件';
-$s['allFiles'] = '全部文件';
-$s['wubOnly'] = '仅限 WindowsUpdateBox';
-$s['updateOnly'] = '仅更新';
+$s['allFiles'] = '所有文件';
 $s['selectLangInfoText1'] = '单击<i>下一步</i>按钮选择你要下载的版本。';
-$s['selectLangInfoText2'] = 'WindowsUpdateBox.exe 和累积更新可以在<i>全语言</i>中找到。';
-$s['allLangsWarn'] = '<i>全语言</i>选项不支持版本选择。';
-$s['clickNextToOpenFindFiles'] = '单击<i>下一步</i>按钮打开页面，该页面将允许你查找文件。';
-$s['noLangsAvailable'] = '在此内部版本中没有可用的语言。';
+$s['noLangsAvailable'] = '在此内部版本中没有可用的语言。<br>此内部版本将无法转换为 ISO 镜像。<br>有关详细信息，请参阅常见问题。';
 $s['Metadatanotgenerated'] = '此更新的元数据未生成。';
 $s['Generatemetadata'] = '生成元数据';
 $s['browseFiles'] = '浏览文件';
 $s['browseFilesDesc'] = '快速浏览所选内部版本中的文件';
 $s['searchFiles'] = '搜索文件';
 $s['toSearchForCUUseQuery'] = '若要搜索累积更新，请使用 <i>%s</i> 搜索查询。'; //To search for Cumulative Updates use the <i>Windows10 KB</i> search query.
-$s['updateNotProcessed'] = 'UUP dump 尚未处理此更新的元数据 —— 这会每 %d 分钟自动发生一次。在此之前，你只能浏览更新的文件列表。'; //UUP dump hasn't processed this update's metadata yet - this happens automatically once every 30 minutes. You can only browse the update's file list until then.
-$s['updateIsBlocked'] = '此更新存在阻止创建工作 ISO 文件的已知问题。因此，你只能手动浏览其文件。';
+$s['updateNotProcessed'] = 'UUP dump 尚未处理此更新的元数据 —— 这将每 %d 分钟自动发起一次。在此之前，你只能浏览更新的文件列表。'; //UUP dump hasn't processed this update's metadata yet - this happens automatically once every 30 minutes. You can only browse the update's file list until then.
+$s['updateIsBlocked'] = '此更新存在阻止创建有效 ISO 文件的已知问题。因此，你只能手动浏览其文件。';
 
 //selectedition.php
-$s['selectEditionFor'] = '选择 %s 的版本'; //Select edition for Windows 10 Insider Preview 18890.1000 (rs_prerelease) amd64, English (United States)
-$s['chooseEdition'] = '选择版本';
-$s['chooseEditionDesc'] = '选择你想要的版本';
-$s['allEditions'] = '全版本';
+$s['selectEditionFor'] = '选择 %s 的 SKU 版本'; //Select edition for Windows 10 Insider Preview 18890.1000 (rs_prerelease) amd64, English (United States)
+$s['chooseEdition'] = '选择 SKU 版本';
+$s['chooseEditionDesc'] = '选择你需要的 SKU 版本';
+$s['allEditions'] = '所有 SKU 版本';
 $s['selectEditionInfoText'] = '单击<i>下一步</i>按钮以打开所选内容的版本摘要页面。';
-$s['additionalEditionsInfo'] = '如果你需要右侧表格中的<b>虚拟升级版本</b>，请在上方选择<b>所需版本</b>，然后单击<i>下一步</i>继续。<br>在摘要页上，选择“<b>创建虚拟升级版本</b>”选项。';
-$s['showHiddenEditions'] = '显示隐藏的版本（不推荐）';
+$s['additionalEditionsInfo'] = '如果你需要右侧表格中的<b>虚拟升级版本</b>，请在上方选择<b>所需 SKU 版本</b>，然后单击<i>下一步</i>继续。<br>在摘要页上，选择“<b>创建虚拟升级版本</b>”选项。';
+$s['showHiddenEditions'] = '显示隐藏的 SKU 版本（不推荐）';
 
 //download.php
 $s['summary'] = '摘要';
-$s['summaryDesc'] = '检查你的选择，并选择下载方式';
+$s['summaryDesc'] = '查看你的选择，并选择下载方式';
 $s['summaryFor'] = '%s 的摘要'; //Summary for Windows 10 Insider Preview 18890.1000 (rs_prerelease) amd64, English (United States), Windows 10 Pro
 $s['summaryOfSelection'] = '来自你所选择版本的摘要';
 $s['browseList'] = '浏览文件列表';
-$s['browseListDesc'] = '打开包含 UUP 集文件的列表页面，以供手动下载。';
-$s['aria2Opt1'] = '下载 UUP 集';
-$s['aria2Opt1Desc'] = '使用 aria2 轻松下载所选的 UUP 集。';
-$s['aria2Opt2'] = '下载并转换为 ISO 文件';
-$s['aria2Opt2Desc'] = '使用 aria2 轻松下载所选的 UUP 集，并转换它为 ISO 文件。';
-$s['aria2Opt3'] = '下载、添加虚拟升级版本并转换为 ISO 文件';
-$s['aria2Opt3Desc'] = '使用 aria2 轻松下载所选的 UUP 集，转换、创建虚拟升级版本并最终创建一个 ISO 镜像。';
+$s['browseListDesc'] = '打开包含 UUP 文件集中用于手动下载的文件列表页面。';
+$s['aria2Opt1'] = '下载 UUP 文件集';
+$s['aria2Opt1Desc'] = '使用 aria2 轻松下载所选 UUP 文件集。';
+$s['aria2Opt2'] = '下载并转换为 ISO 镜像文件';
+$s['aria2Opt2Desc'] = '使用 aria2 轻松下载所选 UUP 文件集，并将其转换为 ISO 镜像文件。';
+$s['aria2Opt3'] = '下载、添加虚拟升级版本并转换为 ISO 镜像文件';
+$s['aria2Opt3Desc'] = '使用 aria2 轻松下载所选 UUP 文件集，转换、创建虚拟升级版本，最后创建 ISO 镜像文件。';
 $s['aria2Opt4'] = '针对这些更新创建下载包';
 $s['jsRequiredToConf'] = '配置并使用此选项需要 JavaScript。';
-$s['selAdditionalEditions'] = '选择虚拟升级版本';
-$s['noAdditionalEditions'] = '你选择的版本没有虚拟升级版本可用。';
+$s['selAdditionalEditions'] = '请选择虚拟升级版本';
+$s['noAdditionalEditions'] = '你选择的 SKU 版本没有虚拟升级版本可用。';
 $s['learnMore'] = '了解更多信息';
-$s['learnMoreAdditionalEditions1'] = '此选项可以自动创建所选的其他版本。';
-$s['learnMoreAdditionalEditions2'] = '其他版本的列表由所选的基本版本确定，你可以在下面查看创建其他版本所需的基本版本的列表：';
+$s['learnMoreAdditionalEditions1'] = '此选项可以自动创建所选的其他 SKU 版本。';
+$s['learnMoreAdditionalEditions2'] = '其他 SKU 版本的列表由所选的基础 SKU 版本确定，你可以在下方查看创建其他 SKU 版本所需的基本 SKU 版本的列表：';
 $s['learnMoreUpdates1'] = '只有在以下系统上运行转换脚本时，才会将更新集成到转换后的映像中：';
 $s['learnMoreUpdates2'] = '如果在其他任何系统上运行转换脚本，更新将不会集成到所创建的映像中。';
 $s['systemWithAdk'] = '%s（已安装 Windows 10 评估和部署工具包）'; //Windows 7 with Windows 10 ADK installed
 $s['additionalUpdates'] = '其他更新';
-$s['additionalUpdatesDesc'] = '此 UUP 集在转换过程中将会集成其他更新，这将会显著地增加创建时间。';
+$s['additionalUpdatesDesc'] = '此 UUP 文件集包含在转换过程中将会集成的其他更新，这将会明显增加创建时间。';
 $s['browseUpdatesList'] = '浏览更新列表';
 $s['selectDownloadOptions'] = '请选择你的下载选项';
-$s['selectDownloadOptionsSub'] = '使用何种配置方式下载你所选择的内容';
+$s['selectDownloadOptionsSub'] = '配置使用何种方式下载你所选择的内容';
 $s['downloadMethod'] = '下载方式';
 $s['conversionOptions'] = '转换选项';
 $s['convOpt1'] = '使用固实压缩（ESD）';
-$s['convOpt2'] = '当可用时集成更新（仅限 Windows 转换程序）';
-$s['convOpt3'] = '在集成更新后运行清理（仅限 Windows 转换程序）';
-$s['convOpt4'] = '集成 .NET Framework 3.5（仅限 Windows 转换程序）';
+$s['convOpt2'] = '包括更新（仅 Windows 转换程序）';
+$s['convOpt3'] = '运行组件清理（仅 Windows 转换程序）';
+$s['convOpt4'] = '集成 .NET Framework 3.5（仅 Windows 转换程序）';
 $s['convOpt5'] = '运行清理时删除组件存储中所有已被取代的组件（需先选中“在集成更新后运行清理”）';
 $s['conversionAdvOptions'] = '高级选项';
 $s['startDownload'] = '创建下载包';
@@ -197,11 +174,11 @@ $s['requiresWindows102004v2'] = '你需要使用现代版本的 Windows（如 Wi
 $s['listOfFilesFor'] = '%s 的文件列表'; //List of files for Windows 10 Insider Preview 18890.1000 (rs_prerelease) amd64
 $s['totalSizeOfFiles'] = '文件总大小：%s'; //Total size of files: 2.86 GiB
 $s['fileRenamingScript'] = '文件重命名脚本';
-$s['fileRenamingScriptDesc1'] = '下方的脚本可用于快速重命名已下载的文件。';
+$s['fileRenamingScriptDesc1'] = '下方提供的脚本可用于快速重命名已下载的文件。';
 $s['fileRenamingScriptDesc2'] = '只需将下方表格中的内容复制到带有 <code>cmd</code> 扩展名的新文件，并将其放在带有下载文件的文件夹中运行即可。';
 $s['sha1File'] = 'SHA-1 文件校验';
 $s['sha1FileDesc'] = '你可以使用此信息快速验证文件是否已正确下载。';
-$s['aria2NoticeTitle'] = '使用 aria2 选项创建下载';
+$s['aria2NoticeTitle'] = '使用 aria2 选项下载通知';
 $s['aria2NoticeText1'] = '使用 aria2 选项下载将创建一个需要你下载的压缩包，在下载的压缩包中包含实现所选任务所需的所有文件。';
 $s['aria2NoticeText2'] = '若要开始下载过程，请使用适用于你的平台的脚本：';
 $s['aria2NoticeText3'] = 'Aria2 是一个开源项目，你可以在这里找到它：%s。'; //Aria2 is an open source project. You can find it here: https://aria2.github.io/.
@@ -213,52 +190,50 @@ $s['findFilesIn'] = '在 %s 中查找文件'; //Find files in Windows 10 Insider
 $s['fileRenamingScriptDescFindFiles'] = '如果你要对从此页面下载的文件进行快速重命名，可以生成重命名脚本，此脚本将自动为你执行此操作。';
 $s['fileRenamingScriptGenW'] = '生成重命名脚本（Windows）';
 $s['fileRenamingScriptGenL'] = '生成重命名脚本（Linux、macOS）';
-$s['searchForFiles'] = '查找文件……';
-$s['weFoundFiles'] = '在你的查询中我们找到了 <b>%d</b> 个文件。'; //We have found <b>692</b> files for your query.
+$s['searchForFiles'] = '搜索文件……';
+$s['weFoundFiles'] = '根据在你的查询，已找到 <b>%d</b> 个文件。'; //<b>692</b> files were found for your query.
 $s['sizeOfShownFiles'] = '显示文件大小：%s'; //Size of shown files: 2.86 GiB
 
 //style.php
 $s['render'] = '页面呈现用了 %s 毫秒。'; //Page rendered in 1 ms.
 
 //Error pages
-$s['error'] = '错误';
-$s['requestNotSuccessful'] = '请求未成功';
-$s['anErrorHasOccurred'] = '在尝试处理你的请求时发生错误。';
+$s['error'] = '出现错误';
 $s['arm64Warning2023'] = '<b>这是一个 <a href="https://support.microsoft.com/zh-cn/windows/477f51df-2e3b-f68f-31b0-06f5e4f8ebb5">ARM64</a> 内部版本。</b>UUP dump 的作者们没有与之兼容的单一设备，因此<b>绝对不会提供任何的支持</b>。';
 
 //Error messages
 $s['error_ERROR'] = '一般错误。';
 $s['error_UNSUPPORTED_API'] = '已安装的 API 版本与此版本的 UUP dump 不兼容。';
-$s['error_NO_FILEINFO_DIR'] = '<i>fileinfo</i> 目录不存在。';
-$s['error_NO_BUILDS_IN_FILEINFO'] = '在 <i>fileinfo</i> 数据库中不包含任何内部版本。';
+$s['error_NO_FILEINFO_DIR'] = 'fileinfo 目录不存在。';
+$s['error_NO_BUILDS_IN_FILEINFO'] = '在 fileinfo 数据库中不包含任何内部版本。';
 $s['error_SEARCH_NO_RESULTS'] = '找不到要执行查询的项目。';
 $s['error_UNKNOWN_ARCH'] = '未知处理器体系结构。';
-$s['error_UNKNOWN_RING'] = '未知通道。';
-$s['error_UNKNOWN_FLIGHT'] = '未知推送版本。';
-$s['error_UNKNOWN_COMBINATION'] = '通道和环的组合不正确。只有快速环才支持向前跳过。';
+$s['error_UNKNOWN_RING'] = '未知频道。';
+$s['error_UNKNOWN_FLIGHT'] = '未知外部测试版本。';
+$s['error_UNKNOWN_COMBINATION'] = '外部测试版本和圈的组合不正确。只有快圈才支持 Skip ahead。';
 $s['error_ILLEGAL_BUILD'] = '指定的内部版本号小于 %d 或大于 %d。'; //Specified build number is less than 9841 or larger than 2147483646.
-$s['error_ILLEGAL_MINOR'] = '指定的次要/服务版本不正确。';
+$s['error_ILLEGAL_MINOR'] = '指定的次要版本不正确。';
 $s['error_NO_UPDATE_FOUND'] = '服务器没有返回任何更新。';
-$s['error_XML_PARSE_ERROR'] = '响应 XML 解析失败。Microsoft 服务器可能存在问题，请稍后再试。';
-$s['error_EMPTY_FILELIST'] = '服务器返回了一个空的文件列表。';
+$s['error_XML_PARSE_ERROR'] = '响应 XML 解析失败。Microsoft 服务器可能存在问题。请稍后再试。';
+$s['error_EMPTY_FILELIST'] = '服务器返回了空文件列表。';
 $s['error_NO_FILES'] = '没有可供你选择的文件。';
 $s['error_NOT_FOUND'] = '找不到指定的选择。';
-$s['error_MISSING_FILES'] = '选定的 UUP 集缺少文件。';
-$s['error_NO_METADATA_ESD'] = '没有可供你选择的 ESD 元数据文件。';
-$s['error_UNSUPPORTED_LANG'] = '不支持指定的语言。';
-$s['error_UNSPECIFIED_LANG'] = '没有指定语言。';
-$s['error_UNSUPPORTED_EDITION'] = '不支持指定版本。';
-$s['error_UNSUPPORTED_COMBINATION'] = '语言和版本组合不正确。';
+$s['error_MISSING_FILES'] = '所选的 UUP 文件集缺少文件。';
+$s['error_NO_METADATA_ESD'] = '没有元数据 ESD 文件可供你选择。';
+$s['error_UNSUPPORTED_LANG'] = '指定的语言不受支持。';
+$s['error_UNSPECIFIED_LANG'] = '未指定语言。';
+$s['error_UNSUPPORTED_EDITION'] = '指定 SKU 版本不受支持。';
+$s['error_UNSUPPORTED_COMBINATION'] = '语言和 SKU 版本的组合不正确。';
 $s['error_NOT_CUMULATIVE_UPDATE'] = '所选更新不包含累积更新。';
 $s['error_UPDATE_INFORMATION_NOT_EXISTS'] = '数据库中不存在有关指定更新的信息。';
-$s['error_KEY_NOT_EXISTS'] = '更新信息中不存在指定的密钥。';
+$s['error_KEY_NOT_EXISTS'] = '更新信息中不存在指定的关键词。';
 $s['error_UNSPECIFIED_UPDATE'] = '未指定更新 ID。';
-$s['error_INCORRECT_ID'] = '指定的更新 ID 不正确。 请确保指定的更新 ID 正确无误。';
-$s['error_RATE_LIMITED'] = '你受到了限制，请在几秒钟后重试。';
-$s['error_UNSPECIFIED_VE'] = '你尚未选择任何其他版本。如果不想创建其他版本，请选择<i>使用 aria2 下载并转换</i>选项。';
-$s['error_VE_UNAVAILABLE'] = '此选择不支持其他版本。';
+$s['error_INCORRECT_ID'] = '指定的更新 ID 不正确。请确保指定了正确的更新 ID。';
+$s['error_RATE_LIMITED'] = '你受到了限制。请在几秒钟后重试。';
+$s['error_UNSPECIFIED_VE'] = '你尚未选择任何其他 SKU 版本。如果不想创建其他 SKU 版本，请选择（使用 aria2 下载并转换）选项。';
+$s['error_VE_UNAVAILABLE'] = '此选择不支持其他 SKU 版本。';
 $s['error_INVALID_PAGE'] = '指定的页面无效';
-$s['error_WU_REQUEST_FAILED'] = 'Windows 更新服务请求失败。';
+$s['error_WU_REQUEST_FAILED'] = '向 Windows 更新服务请求失败。';
 $s['errorNoMessage'] = '错误消息不可用。';
 
 //Languages
@@ -310,7 +285,7 @@ $s['channel_canary'] = 'Canary 渠道';
 $s['channel_skipAhead'] = 'Skip Ahead';
 $s['channel_dev'] = 'Dev 渠道';
 $s['channel_beta'] = 'Beta 渠道';
-$s['channel_releasepreview'] = '发布预览渠道';
+$s['channel_releasepreview'] = 'Release Preview 渠道';
 $s['channel_retail'] = '零售';
 
 //Editions

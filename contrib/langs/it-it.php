@@ -116,7 +116,7 @@ $s['noLangsAvailable'] = 'Non ci sono lingue disponibili per questa build.';
 $s['browseFiles'] = 'Sfoglia files';
 $s['browseFilesDesc'] = 'Sfoglia velocemente i files nella build selezionata';
 $s['searchFiles'] = 'Ricerca files';
-$s['toSearchForCUUseQuery'] = 'Per cercare gli Aggiornamenti Cumulativi utilizza la <i>%s</i> domanda di ricerca.'; //Per cercare gli Aggiornamenti Cumulativi utilizza la domanda di ricerca <i>Windows KB</i>.
+$s['toSearchForCUUseQuery'] = 'Per cercare gli Aggiornamenti Cumulativi utilizza la <i>%s</i> domanda di ricerca.'; //Per cercare gli Aggiornamenti Cumulativi utilizza la domanda di ricerca <i>Windows10 KB</i>.
 
 //selectedition.php
 $s['selectEditionFor'] = 'Seleziona l\'edizione per %s'; //Seleziona l’edizione per Windows 10 Insider Preview 18890.1000 (rs_prerelease) amd64, Italiano (Italia)
@@ -195,8 +195,8 @@ $s['arm64Warning'] = 'Hai selezionato un build ARM64 che è <b>compatibile SOLO 
 //Error messages
 $s['error_ERROR'] = 'Errore generico.';
 $s['error_UNSUPPORTED_API'] = 'La versione API installata non è compatibile con questa versione di dump UUP.';
-$s['error_NO_FILEINFO_DIR'] = 'La cartella <i>fileinfo</i> non esiste.';
-$s['error_NO_BUILDS_IN_FILEINFO'] = 'Il database <i>fileinfo</i> non contiene nessuna build.';
+$s['error_NO_FILEINFO_DIR'] = 'La cartella fileinfo non esiste.';
+$s['error_NO_BUILDS_IN_FILEINFO'] = 'Il database fileinfo non contiene nessuna build.';
 $s['error_SEARCH_NO_RESULTS'] = 'Nessun elemento trovato per la query eseguita.';
 $s['error_UNKNOWN_ARCH'] = 'Architettura del processore sconosciuta.';
 $s['error_UNKNOWN_RING'] = 'Anello sconosciuto.';

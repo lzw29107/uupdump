@@ -399,7 +399,7 @@ function uupGetOnlineFiles($updateId, $rev, $info, $cacheRequests, $type) {
         $composerArgs = [$updateId, $info, $rev, $type];
         $out = sendWuPostRequestHelper('clientSecured', 'composeFileGetRequest', $composerArgs);
 
-        if($out['error'] != 200) {
+        if($out === false || $out['error'] != 200) {
             consoleLogger('The request has failed');
             return array('error' => 'WU_REQUEST_FAILED');
         }

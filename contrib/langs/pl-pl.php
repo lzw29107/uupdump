@@ -26,7 +26,6 @@ $s['edition'] = 'Edycja';
 $s['seachForBuilds'] = 'Szukaj kompilacji...';
 $s['no'] = 'Nie';
 $s['yes'] = 'Tak';
-$s['yesRecommended'] = 'Tak (zalecane)';
 $s['next'] = 'Dalej';
 $s['ok'] = 'OK';
 $s['cancel'] = 'Anuluj';
@@ -44,13 +43,9 @@ $s['unknown'] = 'Brak danych';
 $s['home'] = 'Strona główna';
 $s['downloads'] = 'Pobrania';
 $s['faq'] = 'Często zadawane pytania';
-$s['lightMode'] = 'Tryb jasny';
-$s['darkMode'] = 'Tryb ciemny';
 $s['sourceCode'] = 'Kod źródłowy';
 $s['menu'] = 'Menu';
-$s['websiteDesc'] = 'Pobieraj pliki UUP z serwerów Windows Update z łatwością. Ten projekt nie jest powiązany z Microsoft Corporation.';
 $s['notAffiliated'] = 'Ten projekt nie jest powiązany z Microsoft Corporation. Windows jest zarejestrowanym znakiem towarowym firmy Microsoft Corporation.';
-$s['copyright'] = '© %d %s i współtwórcy.'; //© 2019 whatever127 and contributors.
 $s['copyrightNew'] = '© %d Autorzy oraz współtwórcy UUP dump.';
 $s['selectLanguage'] = 'Proszę wybrać swój język';
 $s['uupDumpDesc'] = 'UUP dump umożliwia Ci pobieranie plików Unified Update Platform, takich jak aktualizacje programu Windows Insider, bezpośrednio z usługi Windows Update.';
@@ -76,24 +71,15 @@ $s['latestBetaRelease'] = 'Najnowsza kompilacja kanału beta';
 $s['latestBetaReleaseSub'] = 'Pewne kompilacje z większością nowych funkcji.<br>Idealne dla wczesnych adaptacji.';
 $s['latestRPRelease'] = 'Najnowsza kompilacja zapoznawcza';
 $s['latestRPReleaseSub'] = 'Pewne kompilacje z podglądami następnego wydania.<br>Idealne do spróbowania nadchodzących wydań.';
-$s['advOptions'] = 'Opcje zaawansowane';
-$s['browseBuilds'] = 'Przeglądaj listę znanych kompilacji';
-$s['browseBuildsSub'] = 'Wybierz kompilację znajdującą się w lokalnej bazie danych i pobierz ją.';
-$s['fetchLatest'] = 'Znajdź najnowszą kompilację';
-$s['fetchLatestSub'] = 'Uzyskaj informacje o najnowszej kompilacji z serwerów Windows Update.';
 $s['newlyAdded'] = 'Nowo dodane kompilacje';
 $s['dateAdded'] = 'Data dodania';
 $s['latestCanaryRelease'] = 'Najnowsza kompilacja kanału Canary';
-$s['latestCanaryReleaseSub'] = 'Poniekąd niestabilne kompilacje z najnowszymi zmianami platformy i wczesnymi funkcjami.<br>Idealne dla użytkowników o wysokich kompetencjach technicznych.';
-$s['checkOutAddANewBuild'] = 'Brak interesującej Cię opcji? Sprawdź stronę <i><a href="newbuild.php">Dodaj nową kompilację</a></i>.';
+$s['latestCanaryReleaseSub'] = 'Poniekąd niestabilne kompilacje z najnowszymi zmianami platformy i wczesnymi funkcjami.<br>Idealne dla wysoce kompetentnych technicznie użytkowników.';
+$s['checkOutAddANewBuild'] = 'Brakuje interesującej Cię opcji? Sprawdź stronę <i><a href="newbuild.php">Dodaj nową kompilację</a></i>.';
 
 //newbuild.php
-$s['newBuild'] = 'Nowa kompilacja';
 $s['addNewBuild'] = 'Dodaj nową kompilację';
-$s['selectOptions'] = 'Wybierz opcje';
 $s['newBuildNextText'] = 'Kliknij przycisk <i>Dalej</i>, aby rozpocząć wyszukiwanie przy użyciu wybranych opcji.';
-$s['newBuildUsing'] = 'Użytkowanie tej strony';
-$s['newBuildUsingText'] = 'Strona ta jest przeznaczona do użytku przez zaawansowanych użytkowników, którzy chcą dodać kompilację, która nie jest dostępna na stronie. W przypadku gdy chcesz użyć jednej z najczęściej użytkowanych opcji, skorzystaj z jednej z <i>Szybkich opcji</i> dostępnych na stronie głównej.';
 $s['optionsNotice'] = 'Uwaga dotycząca opcji';
 $s['optionsNoticeText'] = 'Opcje dostępne tutaj konfigurują sposób w jaki klient usługi Windows Update raportuje się serwerom firmy Microsoft. Ważne jest, aby ustawić je prawidłowo, w przeciwnym wypadku otrzymany zostanie błąd.';
 
@@ -101,13 +87,9 @@ $s['optionsNoticeText'] = 'Opcje dostępne tutaj konfigurują sposób w jaki kli
 $s['browseKnown'] = 'Przeglądaj znane kompilacje';
 $s['chooseBuild'] = 'Wybierz kompilację';
 $s['weFoundBuilds'] = 'Znaleziono <b>%d</b> kompilacji dla Twojego zapytania.'; //<b>692</b> builds were found for your query.
-$s['sortByDate'] = 'Sortuj rezultaty po dacie dodania';
-$s['nextPage'] = 'Następna';
-$s['prevPage'] = 'Poprzednia';
-$s['pageOf'] = 'Strona %d z %d'; //Page 1 of 48
+$s['sortByDate'] = 'Sortuj wyniki po dacie dodania';
 
 //fetchupd.php
-$s['responseFromServer'] = 'Odpowiedź serwera';
 $s['foundUpdates'] = 'Odnaleziono aktualizacji: %d'; //Found 1 update(s)
 $s['foundTheseUpdates'] = 'Odnaleziono następujące aktualizacje. Kliknij nazwę aktualizacji aby kontynuować.';
 $s['buildNumber'] = 'Numer kompilacji: %s'; //Build number: 18890.1000
@@ -119,13 +101,8 @@ $s['chooseLangDesc'] = 'Wybierz żądany język';
 $s['allLangs'] = 'Wszystkie języki';
 $s['selLangFiles'] = 'Pliki';
 $s['allFiles'] = 'Wszystkie pliki';
-$s['wubOnly'] = 'Tylko WindowsUpdateBox';
-$s['updateOnly'] = 'Tylko aktualizacje';
 $s['selectLangInfoText1'] = 'Kliknij przycisk <i>Dalej</i> w celu przejścia do strony wyboru edycji.';
-$s['selectLangInfoText2'] = 'WindowsUpdateBox.exe i aktualizacje kumulacyjne mogą zostać znalezione w opcji języka <i>Wszystkie języki</i>.';
-$s['allLangsWarn'] = 'Opcja <i>Wszystkie języki</i> nie obsługuje wyboru edycji.';
-$s['clickNextToOpenFindFiles'] = 'Kliknij przycisk <i>Dalej</i> aby otworzyć stronę umożliwiającą wyszukiwanie plików.';
-$s['noLangsAvailable'] = 'Dla tej kompilacji nie ma dostępnych żadnych języków.<br>Ta kompilacja nie może zostać przekonwertowana na obraz ISO.<br>Odwiedź <a target=_blank href="https://github.com/uup-dump-dev/website-public/blob/master/FAQ.md">często zadawane pytania</a> w celu uzyskania szczegółów.';
+$s['noLangsAvailable'] = 'Dla tej kompilacji nie ma dostępnych żadnych języków.<br>Ta kompilacja nie może zostać przekonwertowana na obraz ISO.<br>Odwiedź często zadawane pytania w celu uzyskania szczegółów.';
 $s['browseFiles'] = 'Przeglądaj pliki';
 $s['browseFilesDesc'] = 'Szybko przejrzyj pliki w wybranej kompilacji';
 $s['searchFiles'] = 'Przeszukaj pliki';
@@ -155,7 +132,7 @@ $s['aria2Opt2'] = 'Pobierz i przekonwertuj na obraz ISO';
 $s['aria2Opt2Desc'] = 'Łatwo pobierz wybrany zestaw UUP przy użyciu programu aria2 i przekonwertuj na obraz ISO.';
 $s['aria2Opt3'] = 'Pobierz, dodaj dodatkowe edycje i przekonwertuj na obraz ISO';
 $s['aria2Opt3Desc'] = 'Łatwo pobierz wybrany zestaw UUP przy użyciu programu aria2, stwórz dodatkowe edycje a następnie przekonwertuj na obraz ISO.';
-$s['aria2Opt4'] = 'Utwórz paczkę pobierającą dla tych aktualizacji';
+$s['aria2Opt4'] = 'Utwórz pakiet pobierający dla tych aktualizacji';
 $s['jsRequiredToConf'] = 'Obsługa JavaScript jest wymagana, aby móc skonfigurować i użyć tej opcji.';
 $s['selAdditionalEditions'] = 'Wybierz dodatkowe edycje';
 $s['noAdditionalEditions'] = 'Brak dodatkowych edycji dostępnych dla tego wyboru.';
@@ -173,11 +150,11 @@ $s['selectDownloadOptionsSub'] = 'Skonfiguruj w jaki sposób chcesz pobrać swó
 $s['downloadMethod'] = 'Metoda pobierania';
 $s['conversionOptions'] = 'Opcje konwersji';
 $s['convOpt1'] = 'Użyj kompresji z użyciem bloku ciągłego (ESD)';
-$s['convOpt2'] = 'Zintegruj aktualizacje jeśli dostępne (tylko konwerter Windows)';
+$s['convOpt2'] = 'Dołącz aktualizacje (tylko konwerter Windows)';
 $s['convOpt3'] = 'Uruchom oczyszczanie komponentów (tylko konwerter Windows)';
 $s['convOpt4'] = 'Zintegruj .NET Framework 3.5 (tylko konwerter Windows)';
-$s['startDownload'] = 'Utwórz paczkę pobierającą';
-$s['legalCopeHarder'] = 'Poprzez kliknięcie przycisku <i>Utwórz paczkę pobierającą</i> zgadzasz się z następującym:';
+$s['startDownload'] = 'Utwórz pakiet pobierający';
+$s['legalCopeHarder'] = 'Poprzez kliknięcie przycisku <i>Utwórz pakiet pobierający</i> zgadzasz się z następującym:';
 $s['legalCope1'] = 'Obrazy instalacyjne stworzone przez skrypty udostępniane przez UUP dump przeznaczone są wyłącznie do <b>celów ewaluacyjnych</b>';
 $s['legalCope2'] = 'Obrazy te oraz ich wdrożenia <b>nie są wspierane</b> w żaden sposób przez Microsoft Corporation';
 $s['legalCope3v2'] = '<b>Autorzy nie ponoszą odpowiedzialności za jakiekolwiek szkody</b> wynikłe z nieprawidłowego użytkowania strony.';
@@ -192,8 +169,8 @@ $s['fileRenamingScriptDesc1'] = 'Skrypt, który można znaleźć poniżej może 
 $s['fileRenamingScriptDesc2'] = 'Aby użyć, skopiuj zawartość poniższego pola, zapisz do pliku z rozszerzeniem <code>cmd</code>, umieść w folderze z pobranymi plikami i uruchom.';
 $s['sha1File'] = 'Plik sum kontrolnych SHA-1';
 $s['sha1FileDesc'] = 'Możesz użyć tego pliku w celu szybkiej weryfikacji czy pliki zostały pobrane poprawnie.';
-$s['aria2NoticeTitle'] = 'Informacja dotycząca opcji <i>Pobierz przy użyciu programu aria2</i>';
-$s['aria2NoticeText1'] = 'Opcje <i>Pobierz przy użyciu programu aria2</i> tworzą archiwum, które należy pobrać. Pobrane archiwum zawiera wszystkie niezbędne pliki do wykonania wybranego zadania.';
+$s['aria2NoticeTitle'] = 'Informacja dotycząca opcji pobierania przy użyciu programu aria2';
+$s['aria2NoticeText1'] = 'Opcje pobierania przy użyciu programu aria2 tworzą archiwum, które należy pobrać. Pobrane archiwum zawiera wszystkie niezbędne pliki do wykonania wybranego zadania.';
 $s['aria2NoticeText2'] = 'Aby rozpocząć proces użyj skryptu przeznaczonego dla Twojej platformy:';
 $s['aria2NoticeText3'] = 'Aria2 jest projektem otwartoźródłowym. Możesz znaleźć go tutaj: %s.'; //Aria2 is an open source project. You can find it here: https://aria2.github.io/.
 $s['aria2NoticeText4'] = 'Skrypt konwersji UUP (wersja dla Windows) został stworzony przez %s.'; //UUP Conversion script (Windows version) has been created by abbodi1406.
@@ -210,15 +187,13 @@ $s['sizeOfShownFiles'] = 'Rozmiar widocznych plików: %s'; //Size of shown files
 
 //Error pages
 $s['error'] = 'Błąd';
-$s['requestNotSuccessful'] = 'Żądanie nie powiodło się';
-$s['anErrorHasOccurred'] = 'Wystąpił błąd podczas próby przetworzenia Twojego żądania.';
 $s['arm64Warning2023'] = '<b>To jest kompilacja <a href="https://support.microsoft.com/pl-pl/windows/477f51df-2e3b-f68f-31b0-06f5e4f8ebb5">ARM64</a>.</b> Autorzy UUP dump nie posiadają żadnego urządzenia kompatybilnego z nią, w związku z czym <b>nie będą prowadzić jakiejkolwiek formy wsparcia</b>.';
 
 //Error messages
 $s['error_ERROR'] = 'Błąd ogólny.';
 $s['error_UNSUPPORTED_API'] = 'Zainstalowana wersja API nie jest kompatybilna z tą wersją UUP dump.';
-$s['error_NO_FILEINFO_DIR'] = 'Folder <i>fileinfo</i> nie istnieje.';
-$s['error_NO_BUILDS_IN_FILEINFO'] = 'Baza <i>fileinfo</i> nie posiada żadnej kompilacji.';
+$s['error_NO_FILEINFO_DIR'] = 'Folder fileinfo nie istnieje.';
+$s['error_NO_BUILDS_IN_FILEINFO'] = 'Baza fileinfo nie posiada żadnej kompilacji.';
 $s['error_SEARCH_NO_RESULTS'] = 'Brak elementów dla podanego zapytania.';
 $s['error_UNKNOWN_ARCH'] = 'Nieznana architektura procesora.';
 $s['error_UNKNOWN_RING'] = 'Nieznany pierścień.';

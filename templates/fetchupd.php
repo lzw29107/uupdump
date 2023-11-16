@@ -36,19 +36,23 @@ if(!isset($templateOk)) die();
         </tr>
     </thead>
     <?php foreach($updateArray as $update): ?>
+  
+        <?php $arch = $update['arch']; ?>
+        <?php if($arch == 'amd64') $arch = 'x64'; ?>
+  
         <tr><td>
             <h4 class="ui header">
                 <i class="windows icon"></i>
                 <div class="content">
-                    <a href="./selectlang.php?id=a86b89c3-c593-4b6f-9be5-da1a081f2307">
-                        <?= $update['updateTitle'] ?>                        <?= $update['arch'] ?>                    </a>
+                    <a href="selectlang.php?id=<?= htmlentities($update['updateId']) ?>">
+                        <?= htmlentities($update['updateTitle']) ?> <?= htmlentities($update['arch']) ?></a>
                     <div class="sub header">
-                        <?php printf($s['buildNumber'], $update['foundBuild']); ?>                    </div>
+                        <?php printf($s['buildNumber'], $update['foundBuild']); ?></div>
                 </div>
             </h4>
         </td><td>
-            <?= $update['arch'] ?>        </td><td>
-            <code><?= $update['updateId'] ?></code>
+            <?= htmlentities($arch) ?>        </td><td>
+            <code><?= htmlentities($update['updateId']) ?></code>
         </td></tr>
     <?php endforeach; ?>
 </table>

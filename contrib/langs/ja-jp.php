@@ -26,7 +26,6 @@ $s['edition'] = 'エディション';
 $s['seachForBuilds'] = 'ビルドを検索...';
 $s['no'] = 'いいえ';
 $s['yes'] = 'はい';
-$s['yesRecommended'] = 'はい (推奨)';
 $s['next'] = '次へ';
 $s['ok'] = 'OK';
 $s['cancel'] = 'キャンセル';
@@ -43,14 +42,10 @@ $s['unknown'] = '不明';
 //global
 $s['home'] = 'ホーム';
 $s['downloads'] = 'ダウンロード';
-$s['lightMode'] = 'ライトモード';
 $s['faq'] = 'よくある質問 (FAQ)';
-$s['darkMode'] = 'ダークモード';
 $s['sourceCode'] = 'ソースコード';
 $s['menu'] = 'メニュー';
-$s['websiteDesc'] = 'Windows Update サーバからUUPファイルを簡単にダウンロードできます。このプロジェクトは米国Microsoft Corporationとは一切関係ありません。';
 $s['notAffiliated'] = 'このプロジェクトは米国Microsoft Corporationとは一切関係ありません。Microsoft、Windowsは、米国Microsoft Corporationの米国およびその他の国における登録商標または商標です。';
-$s['copyright'] = '© %d %s と貢献者たち。'; //© 2019 whatever127 and contributors.
 $s['copyrightNew'] = '© %d UUP dumpの開発者たちと貢献者たち。';
 $s['selectLanguage'] = '言語を選択';
 $s['uupDumpDesc'] = 'UUP dumpを使用すると、Windows InsiderアップデートなどのUnified Update PlatformファイルをWindows Updateから直接ダウンロードできます。';
@@ -76,11 +71,6 @@ $s['latestBetaRelease'] = '最新のベータチャネル';
 $s['latestBetaReleaseSub'] = '今後提供されるほとんどの機能を備えたDev チャネルより信頼性の高いビルド。<br>早期導入者に最適です。';
 $s['latestRPRelease'] = '最新のリリースプレビューチャネル';
 $s['latestRPReleaseSub'] = '次のリリースをプレビューするための信頼性の高いビルド。<br>今後のリリースを試すのに最適です。';
-$s['advOptions'] = '詳細オプション';
-$s['browseBuilds'] = '既知のビルドを参照';
-$s['browseBuildsSub'] = 'すでに検出されたビルドを選択してダウンロードします。';
-$s['fetchLatest'] = '最新ビルドを取得';
-$s['fetchLatestSub'] = 'Windows Updateサーバから最新のビルド情報を取得します。 ';
 $s['newlyAdded'] = '最近追加されたビルド';
 $s['dateAdded'] = '追加された日付';
 $s['latestCanaryRelease'] = '最新のCanary チャネル';
@@ -88,12 +78,8 @@ $s['latestCanaryReleaseSub'] = '最新のプラットフォームの変更と初
 $s['checkOutAddANewBuild'] = '目的のオプションがない場合は、<i><a href="newbuild.php">新しいビルドを追加</a></i>ページをご覧ください。';
 
 //newbuild.php
-$s['newBuild'] = '新しいビルド';
 $s['addNewBuild'] = '新しいビルドを追加';
-$s['selectOptions'] = 'オプションセレクト';
 $s['newBuildNextText'] = '<i>次へ</i>ボタンをクリックして、目的のオプションで検索します。';
-$s['newBuildUsing'] = 'このページの使い方';
-$s['newBuildUsingText'] = 'このページは、ウェブサイトにないビルドを追加したい上級ユーザー向けのものです。 最もよく使われるパラメータを使いたい場合は、ホームページにある<i>クイックオプション</i>を使用してください。';
 $s['optionsNotice'] = 'オプションのお知らせ';
 $s['optionsNoticeText'] = 'ここにあるオプションは、基礎となるWindows UpdateクライアントがMicrosoftサーバーにどのように報告するかを設定します。 正しく設定しないとエラーになります。';
 
@@ -102,12 +88,8 @@ $s['browseKnown'] = '既知のビルドを参照';
 $s['chooseBuild'] = 'ビルドを選択';
 $s['weFoundBuilds'] = '<b>%d</b>件 見つかりました。'; //<b>692</b> builds were found for your query.
 $s['sortByDate'] = '結果を追加日でソート';
-$s['nextPage'] = '次へ';
-$s['prevPage'] = '前へ';
-$s['pageOf'] = '%d/%d ページ'; //Page 1 of 48
 
 //fetchupd.php
-$s['responseFromServer'] = 'サーバレスポンス結果';
 $s['foundUpdates'] = '%d件 更新が見つかりました'; //Found 1 update(s)
 $s['foundTheseUpdates'] = '次の更新が見つかりました。目的の更新の名前をクリックして続行します。';
 $s['buildNumber'] = 'ビルド番号: %s'; //Build number: 18890.1000
@@ -119,17 +101,12 @@ $s['chooseLangDesc'] = '利用したい言語を選択してください';
 $s['allLangs'] = 'すべての言語';
 $s['selLangFiles'] = 'ファイル';
 $s['allFiles'] = 'すべてのファイル';
-$s['wubOnly'] = 'WindowsUpdateBox のみ';
-$s['updateOnly'] = '更新のみ';
 $s['selectLangInfoText1'] = '<i>次へ</i>ボタンをクリックして、目的のエディションを選択します。';
-$s['selectLangInfoText2'] = 'WindowsUpdateBox.exeおよび累積的な更新プログラムは、<i>すべての言語</i>で提供されています。';
-$s['allLangsWarn'] = '<i>すべての言語</i>オプションでは、エディションの選択はサポートされていません。';
-$s['clickNextToOpenFindFiles'] = '<i>次へ</i>ボタンをクリックして、ファイルを検索できるページを開きます。';
-$s['noLangsAvailable'] = 'このビルドで使用できる言語はありません。<br>このビルドはISOイメージに変換できません。<br>詳細は <a target=_blank href="https://github.com/uup-dump-dev/website-public/blob/master/FAQ.md">FAQ</a> を参照してください。';
+$s['noLangsAvailable'] = 'このビルドで使用できる言語はありません。<br>このビルドはISOイメージに変換できません。<br>詳細は FAQ を参照してください。';
 $s['browseFiles'] = 'ファイルを参照';
 $s['browseFilesDesc'] = '選択したビルドのファイルをすばやく参照する';
 $s['searchFiles'] = 'ファイルを検索';
-$s['toSearchForCUUseQuery'] = '累積的な更新プログラムを検索するには、<i>%s</i> 検索クエリを使用します。'; //To search for Cumulative Updates use the <i>Windows KB</i> search query.
+$s['toSearchForCUUseQuery'] = '累積的な更新プログラムを検索するには、<i>%s</i> 検索クエリを使用します。'; //To search for Cumulative Updates use the <i>Windows10 KB</i> search query.
 $s['updateNotProcessed'] = 'UUP dumpはまだこの更新のメタデータを処理していません、これは%d分に1回自動的に発生します。 それまでは、更新のファイルを参照することしかできません。'; //UUP dump hasn't processed this update's metadata yet - this happens automatically once every 30 minutes. You can only browse the update's file list until then.
 $s['updateIsBlocked'] = 'この更新には、ISOの作成を妨げる既知の問題があります。 それまでは、手動で更新のファイルを参照することしかできません。';
 
@@ -210,15 +187,13 @@ $s['sizeOfShownFiles'] = '表示したファイルの合計サイズ: %s'; //Siz
 
 //Error pages
 $s['error'] = 'Error';
-$s['requestNotSuccessful'] = 'リクエストは成功しませんでした';
-$s['anErrorHasOccurred'] = 'リクエストの処理中にエラーが発生しました。';
 $s['arm64Warning2023'] = '<b>これは<a href="https://support.microsoft.com/ja-jp/windows/477f51df-2e3b-f68f-31b0-06f5e4f8ebb5">ARM64</a>ビルド。</b> UUP dumpの開発者たちは、互換性のあるデバイスをひとつも持っておらず、<b>まったくサポートを提供できません</b>。';
 
 //Error messages
 $s['error_ERROR'] = '一般エラー.';
 $s['error_UNSUPPORTED_API'] = 'インストールされているAPIのバージョンは、このバージョンのUUP dumpと互換性がありません。';
-$s['error_NO_FILEINFO_DIR'] = '<i>fileinfo</i>ディレクトリが存在しません。';
-$s['error_NO_BUILDS_IN_FILEINFO'] = '<i>fileinfo</i>データベースにビルドが含まれていません。';
+$s['error_NO_FILEINFO_DIR'] = 'fileinfoディレクトリが存在しません。';
+$s['error_NO_BUILDS_IN_FILEINFO'] = 'fileinfoデータベースにビルドが含まれていません。';
 $s['error_SEARCH_NO_RESULTS'] = '実行されたクエリのアイテムが見つかりませんでした。';
 $s['error_UNKNOWN_ARCH'] = '不明なプロセッサアーキテクチャです。';
 $s['error_UNKNOWN_RING'] = '不明なチャネルです。';

@@ -23,12 +23,14 @@ require_once dirname(__FILE__).'/listid.php';
 
 function uupApiPrivateParseFlags($str) {
     $split = explode('+', $str);
-    $flags = [];
+    $flagsSafe = [];
 
-    if(isset($split[1]))
-        $flags = explode(',', strtolower($split[1]));
+    if(isset($split[1])) {
+        $flags = array_unique(explode(',', strtolower($split[1])));
+        $flagsSafe = array_intersect(getAllowedFlags(), $flags);
+    }
 
-    return [$split[0], $flags];
+    return [$split[0], $flagsSafe];
 }
 
 function uupApiPrivateGetLatestBuild() {
@@ -56,7 +58,7 @@ function uupFetchUpd(
     $minor = '0',
     $sku = '48',
     $type = 'Production',
-    $cacheRequests = 0,
+    $cacheRequests = 0
 ) {
     uupApiPrintBrand();
 
@@ -65,11 +67,11 @@ function uupFetchUpd(
     $flight = ucwords(strtolower($flight));
     $flight = 'Active';
 
-    $buildWithFlags = $build;
     [$build, $flags] = uupApiPrivateParseFlags($build);
+    $flagsStr = implode(',', $flags);
 
-    if($build == 'latest' || (!$build)) {
-    $build = uupApiPrivateGetLatestBuild();
+    if(strtolower($build) == 'latest' || (!$build)) {
+        $build = uupApiPrivateGetLatestBuild();
     }
 
     $build = explode('.', $build);
@@ -113,8 +115,8 @@ function uupFetchUpd(
     if(!($type == 'Production' || $type == 'Test')) {
         $type = 'Production';
     }
-  
-    $res = "api-fetch-$arch-$ring-$flight-$buildWithFlags-$minor-$sku-$type";
+
+    $res = "api-fetch-$arch-$ring-$flight-$build-$flagsStr-$minor-$sku-$type";
     $cache = new UupDumpCache($res);
     $fromCache = $cache->get();
     if($fromCache !== false) return $fromCache;
@@ -122,7 +124,7 @@ function uupFetchUpd(
     consoleLogger('Fetching information from the server...');
     $composerArgs = [$arch, $flight, $ring, $build, $sku, $type, $flags];
     $out = sendWuPostRequestHelper('client', 'composeFetchUpdRequest', $composerArgs);
-    if($out['error'] != 200) {
+    if($out === false || $out['error'] != 200) {
         consoleLogger('The request has failed');
         return array('error' => 'WU_REQUEST_FAILED');
     }
@@ -372,7 +374,7 @@ function parseFetchUpdate($updateInfo, $out, $arch, $ring, $flight, $build, $sku
         if(!empty($flags)) {
             $temp['flags'] = $flags;
         }
-      
+
         $temp['created'] = time();
         $temp['sha256ready'] = true;
         $temp['files'] = $shaArray;
