@@ -26,7 +26,7 @@ if(!isset($templateOk)) die();
 <?php if($updateArch == 'arm64') styleCluelessUserArm64Warn(); ?>
 
 <div class="ui two columns mobile stackable centered grid">
-    <div class="column">
+    <div class="column" style="display: flex; flex-direction: column;">
         <h3 class="ui header">
             <i class="globe icon"></i>
             <div class="content">
@@ -78,9 +78,9 @@ if(!isset($templateOk)) die();
                 </button>
             </form>
 
-            <div class="ui info message">
-                <i class="info icon"></i>
-                <?= $s['selectLangInfoText1'] ?>
+            <div class="ui info message" style="flex: 1; display: flex; align-items: center">
+                <i class="info icon" style="margin-bottom:0.75em;"></i>
+                <p style="margin-top:0;"><?= $s['selectLangInfoText1'] ?></p>
             </div>
         <?php endif; ?>
     </div>
@@ -110,12 +110,23 @@ if(!isset($templateOk)) die();
             <?= $s['allFiles']; ?>
         </a>
 
-        <div class="ui positive message">
-            <i class="paper plane icon"></i>
-                <?php printf(
-                    $s['toSearchForCUUseQuery'],
-                    "<a href=\"$findFilesUrl&q=Windows KB\">Windows KB</a>"
-                ); ?>
+        <div class="ui positive message" style="display: flex; justify-content: space-between; align-items: center
+;flex-wrap: wrap;">
+            <div>
+                <i class="paper plane icon"></i>
+                    <?php printf(
+                        $s['toSearchForCUUseQuery'],
+                        "<a href=\"$findFilesUrl&q=!updates\">!updates</a>"
+                    ); ?>
+            </div>
+            <?php if($UpdateButton): ?>
+                <form class="ui form" action="<?= $urlUpd; ?>" method="post" id="download-updates">
+                    <button class="ui tiny right labeled icon primary button" type="submit" name="autodl" value="1">
+                        <i class="download icon"></i>
+                        <?= $s['aria2Opt4'] ?>
+                    </button>
+                </form>
+            <?php endif; ?>
         </div>
     </div>
 </div>
@@ -150,7 +161,9 @@ if(!isset($templateOk)) die();
     <?= $s['information']; ?>
 </h4>
 
-<div class="ui three columns mobile stackable centered grid" style="margin-top: 1em;">
+<?php if($updateArch == 'amd64') $updateArch = 'x64'; ?>
+
+<div class="ui four columns mobile stackable centered grid" style="margin-top: 1em;">
     <div class="column">
         <h4 class="ui center aligned tiny icon header">
             <i class="archive icon"></i>
@@ -160,7 +173,17 @@ if(!isset($templateOk)) die();
             </div>
         </h4>
     </div>
-
+  
+    <div class="column">
+        <h4 class="ui center aligned tiny icon header">
+            <i class="microchip icon"></i>
+            <div class="content">
+                <?= $s['arch']; ?>
+                <div class="sub header"><?= $updateArch ?></div>
+            </div>
+        </h4>
+    </div>
+  
     <div class="column">
         <h4 class="ui center aligned tiny icon header">
             <i class="cogs icon"></i>

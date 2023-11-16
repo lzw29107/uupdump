@@ -96,8 +96,6 @@ foreach($files as $file) {
     $totalSize += $file['size'];
 }
 
-$totalSize = readableSize($totalSize, 2);
-
 if($usePack) {
     if(isset($s['lang_'.strtolower($usePack)])) {
         $selectedLangName = $s['lang_'.strtolower($usePack)];
@@ -113,46 +111,67 @@ if($usePack) {
 
 if($usePack && $desiredEdition) {
     $editions = uupListEditions($usePack, $updateId);
-    $editions = $editions['editionFancyNames'];
+    $desiredEdition = (strtoupper($desiredEdition));
 
-    if(isset($editions[strtoupper($desiredEdition)])) {
-        $selectedEditionName = $editions[strtoupper($desiredEdition)];
+    if(isset($s["edition_$desiredEdition"])) {
+        $selectedEditionName = $s["edition_$desiredEdition"];
     } else {
         $fancyNames = [];
         foreach($desiredEditionMixed as $edition) {
-            $fancyNames[] = $editions[strtoupper($edition)];
+            $edition = strtoupper($edition);
+            $fancyNames[] = $s["edition_$edition"];
         }
-
         $selectedEditionName = implode(', ', $fancyNames);
     }
 } else {
     $selectedEditionName = $s['allEditions'];
 }
+$neutraleditions = uupListEditions('neutral', $updateId)['editionFancyNames'];
+if(!$EditionIsApp) {
+  if(isset($neutraleditions['APP'])) {
+    $filesApp = uupGetFiles($updateId, 'neutral', 'APP', 2);
+    $filesApp = $filesApp['files'];
+    
+foreach($filesApp as $file) {
+        $totalSize += $file['size'];
+    }
+  }
+  if(isset($neutraleditions['APP_MOMENT'])) {
+    $filesAppMoment = uupGetFiles($updateId, 'neutral', 'APP_MOMENT', 2);
+    $filesAppMoment = $filesAppMoment['files'];
+
+    foreach($filesAppMoment as $file) {
+        $totalSize += $file['size'];
+    }
+  }
+}
+
+$totalSize = readableSize($totalSize, 2);
 
 $filesKeys = array_keys($files);
 $virtualEditions = array();
 
 if(preg_grep('/^.*Core_.*\.esd/i', $filesKeys)) {
-    $virtualEditions['CoreSingleLanguage'] = 'Home Single Language';
+    $virtualEditions['CoreSingleLanguage'] = $s['edition_CORESINGLELANGUAGE'];
 }
 
 if(preg_grep('/^.*Professional_.*\.esd/i', $filesKeys)) {
-    $virtualEditions['ProfessionalWorkstation'] = 'Pro for Workstations';
-    $virtualEditions['ProfessionalEducation'] = 'Pro Education';
-    $virtualEditions['Education'] = 'Education';
-    $virtualEditions['Enterprise'] = 'Enterprise';
-    $virtualEditions['ServerRdsh'] = 'Enterprise multi-session / Virtual Desktops';
+    $virtualEditions['ProfessionalWorkstation'] = $s['edition_PROFESSIONALWORKSTATION'];
+    $virtualEditions['ProfessionalEducation'] = $s['edition_PROFESSIONALEDUCATION'];
+    $virtualEditions['Education'] = $s['edition_EDUCATION'];
+    $virtualEditions['Enterprise'] = $s['edition_ENTERPRISE'];
+    $virtualEditions['ServerRdsh'] = $s['edition_SERVERRDSH'];
 
     if($build >= 18277) {
-        $virtualEditions['IoTEnterprise'] = 'IoT Enterprise';
+        $virtualEditions['IoTEnterprise'] = $s['edition_IOTENTERPRISE'];
     }
 }
 
 if(preg_grep('/^.*ProfessionalN_.*\.esd/i', $filesKeys)) {
-    $virtualEditions['ProfessionalWorkstationN'] = 'Pro N for Workstations';
-    $virtualEditions['ProfessionalEducationN'] = 'Pro Education N';
-    $virtualEditions['EducationN'] = 'Education N';
-    $virtualEditions['EnterpriseN'] = 'Enterprise N';
+    $virtualEditions['ProfessionalWorkstationN'] = $s['edition_PROFESSIONALWORKSTAIONN'];
+    $virtualEditions['ProfessionalEducationN'] = $s['edition_PROFESSIONALEDUCATIONN'];
+    $virtualEditions['EducationN'] = $s['edition_EDUCATIONN'];
+    $virtualEditions['EnterpriseN'] = $s['edition_ENTERPRISEN'];
 }
 
 $dlOnly = ($EditionIsApp || $uSku == 189 || $uSku == 135);

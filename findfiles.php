@@ -49,7 +49,7 @@ $filesKeys = array_keys($files);
 
 if($search != null) {
     $searchSafe = preg_quote($search, '/');
-    if($searchSafe == "Windows KB") {
+    if($searchSafe == "!updates") {
         $searchSafe = "Windows KB|SSU-";
         if($updateBuild > 21380) $searchSafe = "Windows KB|SSU-|DesktopDeployment|AggregatedMetadata";
     }

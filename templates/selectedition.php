@@ -23,6 +23,8 @@ if(!isset($templateOk)) die();
     </div>
 </h3>
 
+<script src="js/selectedition.js" defer></script>
+
 <?php if($updateArch == 'arm64') styleCluelessUserArm64Warn(); ?>
 
 <div class="ui equal width mobile stackable grid">
@@ -164,35 +166,3 @@ if(!isset($templateOk)) die();
             </div>
       </div>
 </div>
-
-<script>
-function checkEditions() {
-    if($('.edition-selection:checked').length == 0) {
-        $('#edition-selection-confirm').prop('disabled', 1);
-    } else {
-        $('#edition-selection-confirm').prop('disabled', 0);
-    }
-}
-
-function showHiddenEditions() {
-    $('.hidden-edition').show();
-    $('.hidden-edition .edition-selection').prop('disabled', 0);
-    $('#show-hidden-editions').hide();
-}
-
-$('.edition-selection').on('click change', function() {
-    checkEditions();
-});
-
-$('#show-hidden-editions').on('click', function() {
-    showHiddenEditions();
-});
-
-if($('.hidden-edition').length > 0) {
-    $('#show-hidden-editions').show();
-    $('.hidden-edition .edition-selection').prop('disabled', 1);
-    $('.hidden-edition').hide();    
-}
-
-checkEditions();
-</script>

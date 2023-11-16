@@ -64,11 +64,9 @@ $s['tHeadReleaseType'] = 'Tipo de Release';
 $s['tHeadDescription'] = 'Descrição';
 $s['tHeadArchitectures'] = 'Arquitetura';
 $s['latestPublicRelease'] = 'Recente Compilação de Lançamento Público';
-$s['latestPublicReleaseSub'] = 'Recente Compilação Atualizada para usuários regulares.';
-$s['latestCanaryRelease'] = 'Recente compilação Lançada no Canal Canary';
-$s['latestCanaryReleaseSub'] = 'Estas são Compilações um tanto instáveis com as últimas alterações de plataforma e novos recursos que estão em estágios iniciais para aprovação.<br>Ideal para usuários altamente técnicos.';
+$s['latestPublicReleaseSub'] = 'Última Compilação Atualizada para usuários regulares.';
 $s['latestDevRelease'] = 'Recente Compilação do Canal de Desenvolvimento';
-$s['latestDevReleaseSub'] = 'Estas são Compilações pouco confiáveis com novas ideias e novos recursos são aprovados para desenvolvimento de longo prazo.<br>Ideal para entusiastas.';
+$s['latestDevReleaseSub'] = 'Compilações pouco confiáveis com os recursos mais recentes.<br>Ideal para usuários altamente técnicos.';
 $s['latestBetaRelease'] = 'Recente Compilação do Canal Beta';
 $s['latestBetaReleaseSub'] = 'Compilações confiáveis com a maioria dos recursos futuros disponíveis.<br>Ideal para os usuários iniciantes.';
 $s['latestRPRelease'] = 'Recente Compilação de Prévias de Lançamento';
@@ -115,10 +113,10 @@ $s['selLangFiles'] = 'Arquivos';
 $s['allFiles'] = 'Todos Arquivos';
 $s['wubOnly'] = 'Apenas WindowsUpdateBox';
 $s['updateOnly'] = 'Somente atualização';
-$s['selectLangInfoText1'] = 'Clique no botão <i>Avançar</i> para selecionar a edição que deseja baixar.';
+$s['selectLangInfoText1'] = 'Clique no botão <i>Próximo</i> para selecionar a edição que deseja baixar.';
 $s['selectLangInfoText2'] = 'WindowsUpdateBox.exe e Atualizações Cumulativas podem ser encontradas no idioma<i>Todos os Idiomas</i>.';
 $s['allLangsWarn'] = 'A opção <i>Todos os Idiomas</i> não suporta a seleção de edições.';
-$s['clickNextToOpenFindFiles'] = 'Clique no botão <i>Avançar</i> para abrir a página que permite encontrar os arquivos.';
+$s['clickNextToOpenFindFiles'] = 'Clique no botão <i>Próximo</i> para abrir a página que permite encontrar os arquivos.';
 //$s['noLangsAvailable'] = 'Não há idiomas disponíveis para esta compilação.<br>Esta compilação não pode ser convertida em uma imagem ISO.<br>Consulte <a target=_blank href="https://github. com/uup-dump-dev/website-public/blob/master/FAQ.md">FAQ</a> para detalhes.';
 $s['noLangsAvailable'] = 'Não há idiomas disponíveis para esta compilação.<br>Esta compilação não pode ser convertida em uma imagem ISO.<br>Consulte o Perguntas Frequntes "FAQ" para obter detalhes.';
 $s['browseFiles'] = 'Procurar arquivos';
@@ -133,8 +131,8 @@ $s['selectEditionFor'] = 'Selecione a edição para %s'; //Selecione a edição 
 $s['chooseEdition'] = 'Escolha a edição';
 $s['chooseEditionDesc'] = 'Escolha a sua edição desejada';
 $s['allEditions'] = 'Todas as edições';
-$s['selectEditionInfoText'] = 'Clique no botão <i>Avançar</i> para abrir a página com o resumo da sua seleção.';
-$s['additionalEditionsInfo'] = 'Se você precisar de uma edição adicional que pode ser encontrado na tabela à direita, selecione a edição requerida indicada e clique em <i>Avançar</i>. Na página de resumo, você poderá selecionar as edições adicionais desejadas na opção de download apropriado. ';
+$s['selectEditionInfoText'] = 'Clique no botão <i>Próximo</i> para abrir a página com o resumo da sua seleção.';
+$s['additionalEditionsInfo'] = 'Se você precisar de uma edição adicional que pode ser encontrado na tabela à direita, selecione a edição requerida indicada e clique em <i>Próximo</i>. Na página de resumo, você poderá selecionar as edições adicionais desejadas na opção de download apropriado. ';
 $s['showHiddenEditions'] = 'Mostrar edições ocultas (não recomendado)';
 
 //download.php
@@ -177,7 +175,6 @@ $s['legalCope2'] = 'As imagens e suas implantações <b>não são suportadas</b>
 $s['legalCope3v2'] = '<b>Os autores não são responsáveis por quaisquer danos</b> causados pelo uso indevido do site';
 $s['win1122h2OrLater'] = 'Windows 11, versão 22H2 ou posterior';
 $s['requiresWindows102004'] = 'Esta compilação requer o uso do Windows 10, versão 2004 ou posterior para que o ISO seja criado corretamente. Scripts para outras plataformas produzirão um ISO corrompido.';
-$s['aria2Opt4'] = 'Criar um pacote de download para os arquivos de atualizações';
 
 //get.php
 $s['listOfFilesFor'] = 'Lista de arquivos para %s'; //Lista de arquivos para o Windows 10 Insider Preview 18890.1000 (rs_prerelease) amd64
@@ -215,8 +212,8 @@ $s['arm64Warning2022b'] = '<p>Esta versão é compatível apenas com:</p><ul><li
 //Error messages
 $s['error_ERROR'] = 'Erro genérico.';
 $s['error_UNSUPPORTED_API'] = 'A versão da API instalada não é compatível com esta versão do UUP dump.';
-$s['error_NO_FILEINFO_DIR'] = 'O diretório (fileinfo) não existe.';
-$s['error_NO_BUILDS_IN_FILEINFO'] = 'A base de dados (fileinfo) não contém nenhuma compilação.';
+$s['error_NO_FILEINFO_DIR'] = 'O diretório fileinfo não existe.';
+$s['error_NO_BUILDS_IN_FILEINFO'] = 'A base de dados fileinfo não contém nenhuma compilação.';
 $s['error_SEARCH_NO_RESULTS'] = 'Nenhum item encontrado para a consulta realizada.';
 $s['error_UNKNOWN_ARCH'] = 'Arquitetura do processador desconhecido.';
 $s['error_UNKNOWN_RING'] = 'Canal desconhecido.';
@@ -289,11 +286,22 @@ $s['lang_zh-hk'] = 'Chinês (Hong Kong)';
 $s['lang_zh-tw'] = 'Chinês (Tradicional)';
 
 //Channels
-$s['channel_msit'] = 'MSIT';
-$s['channel_canary'] = 'Canal Canary';
 $s['channel_skipAhead'] = 'Seguindo em frente - "Skip Ahead"';
 $s['channel_dev'] = 'Canal Dev';
 $s['channel_beta'] = 'Canal Beta';
 $s['channel_releasepreview'] = 'Canal Prévia de Lançamentos "Release Preview"';
 $s['channel_retail'] = 'Retail';
+
+//latest.php
+$s['latestFetchLatest'] = 'Buscar a compilação mais recente';
+$s['latestTestingOnly'] = 'Apenas para fins de teste';
+$s['latestTestingOnlyWarn'] = '<b>Esta página é fornecida apenas para fins de teste.</b> Compilações recuperadas por esta página que não foram processadas pelo servidor back-end serão fornecidas usando pacotes de fallback, que podem fornecer resultados incompletos. Se deseja baixar uma compilação disponível, por favor use a página de Compilações Disponíveis.';
+$s['latestDoYouWantKnown'] = 'Gostaria de continuar navegando na lista de compilações disponíveis?';
+$s['chooseOptions'] = 'Escolha as opções';
+$s['buildOfPretendedClient'] = 'Número de compilação do cliente simulado do Windows Update';
+$s['editionOfPretendedClient'] = 'Edição do sistema simulado';
+$s['skipAheadLabel'] = 'Skip ahead flight';
+$s['skipAheadOption'] = 'Usar skip ahead flighting (apenas Insider Fast)';
+$s['fetchUpdates'] = 'Buscar atualizações';
+$s['fetchUpdatesInfo'] = 'Clique no botão <i>Buscar atualizações</i> para enviar sua solicitação para os servidores do Windows Update.';
 

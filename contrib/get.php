@@ -15,16 +15,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-function sortBySize($a, $b) {
-    global $files;
-
-    if ($files[$a]['size'] == $files[$b]['size']) {
-        return 0;
-    }
-
-    return ($files[$a]['size'] < $files[$b]['size']) ? -1 : 1;
-}
-
 //Create aria2 download package with conversion script
 function createUupConvertPackage(
     $url,
@@ -334,12 +324,12 @@ CONFIG;
     $zip->addFromString('ConvertConfig.ini', $convertConfig);
     $zip->addFromString('files/convert_config_linux', $convertConfigLinux);
     $zip->addFromString('files/convert_config_macos', $convertConfigLinux);
-    $zip->addFile($currDir.'/public/autodl_files/readme.unix.md', 'readme.unix.md');
-    $zip->addFile($currDir.'/public/autodl_files/convert.sh', 'files/convert.sh');
-    $zip->addFile($currDir.'/public/autodl_files/convert_ve_plugin', 'files/convert_ve_plugin');
-    $zip->addFile($currDir.'/public/autodl_files/7zr.exe', 'files/7zr.exe');
-    $zip->addFile($currDir.'/public/autodl_files/aria2c.exe', 'files/aria2c.exe');
-    $zip->addFile($currDir.'/public/autodl_files/uup-converter-wimlib.7z', 'files/uup-converter-wimlib.7z');
+    $zip->addFile($currDir.'/contrib/autodl_files/readme.unix.md', 'readme.unix.md');
+    $zip->addFile($currDir.'/contrib/autodl_files/convert.sh', 'files/convert.sh');
+    $zip->addFile($currDir.'/contrib/autodl_files/convert_ve_plugin', 'files/convert_ve_plugin');
+    $zip->addFile($currDir.'/contrib/autodl_files/7zr.exe', 'files/7zr.exe');
+    $zip->addFile($currDir.'/contrib/autodl_files/aria2c.exe', 'files/aria2c.exe');
+    $zip->addFile($currDir.'/contrib/autodl_files/uup-converter-wimlib.7z', 'files/uup-converter-wimlib.7z');
     $zip->close();
 
     if($virtualEditions) {
@@ -528,8 +518,8 @@ SCRIPT;
         $zip->addFromString('uup_download_windows.cmd', $cmdScript);
         $zip->addFromString('uup_download_linux.sh', $shellScript);
         $zip->addFromString('uup_download_macos.sh', $shellScript);
-        $zip->addFile($currDir.'/public/autodl_files/readme.unix.md', 'readme.unix.md');
-        $zip->addFile($currDir.'/public/autodl_files/aria2c.exe', 'files/aria2c.exe');
+        $zip->addFile($currDir.'/contrib/autodl_files/readme.unix.md', 'readme.unix.md');
+        $zip->addFile($currDir.'/contrib/autodl_files/aria2c.exe', 'files/aria2c.exe');
         $zip->close();
     } else {
         echo 'Failed to create archive.';

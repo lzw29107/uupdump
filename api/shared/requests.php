@@ -39,6 +39,11 @@ function composeDeviceAttributes($flight, $ring, $build, $arch, $sku, $type, $fl
         $insType = 'Server';
         $blockUpgrades = 1;
     }
+      // WNC
+    if($sku == 210) {
+        $dvcFamily = 'Windows.CorePC';
+        $insType = 'CorePC';
+    }
 if(uupApiConfigIsTrue('enable_unsupported_features')) {
     // Hololens
     if($sku == 135) {
@@ -177,7 +182,7 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
         'GStatus_RS5=2',
         'GenTelRunTimestamp_19H1='.(time()-3600),
         'HidparseDriversVer='.$build,
-        //'HotPatchEKBInstalled=1',
+        'HotPatchEKBInstalled=1',
         'InstallDate=1438196400',
         'InstallLanguage=en-US',
         'InstallationType='.$insType,
@@ -393,8 +398,11 @@ XML;
 
 // Composes POST data for fetching the latest update information from Windows Update
 function composeFetchUpdRequest($arch, $flight, $ring, $build, $sku = 48, $type = 'Production', $flags = []) {
-    $device = uupDevice();
     $encData = uupEncryptedData();
+    if($encData === false)
+        return false;
+
+    $device = uupDevice();
     $uuid = genUUID();
 
     $createdTime = time();
@@ -410,6 +418,10 @@ function composeFetchUpdRequest($arch, $flight, $ring, $build, $sku = 48, $type 
     $mainProduct = 'Client.OS.rs2';
     if(uupApiIsServer($sku)) {
         $mainProduct = 'Server.OS';
+    }
+    // WNC
+    if($sku == 210) {
+        $mainProduct = 'NextCorePC.OS';
     }
 if(uupApiConfigIsTrue('enable_unsupported_features')) {
     // Hololens
@@ -469,7 +481,7 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
         $products[] = "PN=MSRT.$currArch&Source=UpdateOrchestrator&V=0.0.0.0";
         $products[] = "PN=SedimentPack.$currArch&Source=UpdateOrchestrator&V=0.0.0.0";
         $products[] = "PN=UUS.$currArch&Source=UpdateOrchestrator&V=0.0.0.0";
-        //$products[] = "PN=Hotpatch.$currArch&Name=Hotpatch Enrollment Package&V=10.0.20348.465";
+        $products[] = "PN=Hotpatch.$currArch&Name=Hotpatch Enrollment Package&V=10.0.20348.465";
     }
 
     $callerAttrib = array(
@@ -611,7 +623,7 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
                         <XmlUpdateFragmentType>LocalizedProperties</XmlUpdateFragmentType>
                     </XmlUpdateFragmentTypes>
                     <Locales>
-                        <string>en-US</string>
+                        <string>zh-CN</string>
                     </Locales>
                 </ExtendedUpdateInfoParameters>
                 <ClientPreferredLanguages/>

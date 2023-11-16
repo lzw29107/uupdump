@@ -122,7 +122,7 @@ $s['noLangsAvailable'] = 'Ehhez a buildhez nem állnak rendelkezésre nyelvek.<b
 $s['browseFiles'] = 'Böngészés a fájlok között';
 $s['browseFilesDesc'] = 'Gyorsan keresheti a fájlokat a kiválasztott építményben';
 $s['searchFiles'] = 'Fájlok keresése';
-$s['toSearchForCUUseQuery'] = 'Összesítő frissítések kereséséhez használja a <i>%s</i> keresési lekérdezést.'; //Összesítő frissítések kereséséhez használja a <i>Windows KB</i> keresési lekérdezést.
+$s['toSearchForCUUseQuery'] = 'Összesítő frissítések kereséséhez használja a <i>%s</i> keresési lekérdezést.'; //Összesítő frissítések kereséséhez használja a <i>Windows10 KB</i> keresési lekérdezést.
 $s['updateNotProcessed'] = 'Az UUP dump még nem dolgozta fel az update\ metaadatait - ez automatikusan megtörténik %d percenként egyszer. Addig csak az update\ fájllistáját böngészheti.'; //UUP dump még nem dolgozta fel a frissítés metaadatait - ez automatikusan 30 percenként egyszer történik. Addig csak a frissítés fájllistáját böngészheti.
 $s['updateIsBlocked'] = 'Ez a frissítés ismert problémákat okoz, amelyek megakadályozzák a működő ISO létrehozását. Emiatt csak manuálisan böngészheti a fájlokat.';
 
@@ -210,8 +210,8 @@ $s['arm64Warning2022b'] = '<p>Ez a build csak a következőkkel kompatibilis:</p
 //Error messages
 $s['error_ERROR'] = 'Általános hiba.';
 $s['error_UNSUPPORTED_API'] = 'A telepített API verziója nem kompatibilis az UUP dump ezen verziójával.';
-$s['error_NO_FILEINFO_DIR'] = 'A <i>fileinfo</i> könyvtár nem létezik.';
-$s['error_NO_BUILDS_IN_FILEINFO'] = 'A <i>fileinfo</i> adatbázis nem tartalmaz építményt.';
+$s['error_NO_FILEINFO_DIR'] = 'A fileinfo könyvtár nem létezik.';
+$s['error_NO_BUILDS_IN_FILEINFO'] = 'A fileinfo adatbázis nem tartalmaz építményt.';
 $s['error_SEARCH_NO_RESULTS'] = 'Nem található elem a végrehajtott lekérdezéshez.';
 $s['error_UNKNOWN_ARCH'] = 'Ismeretlen processzor-architektúra.';
 $s['error_UNKNOWN_RING'] = 'Ismeretlen gyűrű.';

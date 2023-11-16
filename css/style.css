@@ -1,17 +1,8 @@
 /*
-Copyright 2023 UUP dump authors
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+* UUP dump Light Theme Style Sheet
+* https://uupdump.net/
+* 
+* Copyright (C) 2023 UUP dump authors. All rights reserved.
 */
 
 .page-header {
@@ -78,12 +69,8 @@ limitations under the License.
     border: 0;
 }
 
-.pagination-text {
-    margin-top: 1.4em;
-    margin-bottom: 1.3em;
-    font-weight: bold;
-    font-size: 1.1rem;
-    text-align: center;
+.page-header .ui.attached.menu .ui.container {
+    flex-wrap: wrap;
 }
 
 .footer {
@@ -121,12 +108,21 @@ limitations under the License.
     line-height: 250%;
 }
 
+.error-page-message {
+    padding: 6rem 0 6rem !important;
+    max-width: 700px;
+}
+
 body.pushable {
     background-color: revert !important;
 }
 
 .pushable .pusher {
     background-color: revert !important;
+}
+
+.content.field.transition.hidden:not(.active) {
+    display: none !important;
 }
 
 @media only screen and (min-width: 1392px) {

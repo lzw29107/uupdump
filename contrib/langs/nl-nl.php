@@ -114,7 +114,7 @@ $s['noLangsAvailable'] = 'Er zijn geen talen beschikbaar voor deze build.';
 $s['browseFiles'] = 'Bestanden doorbladeren';
 $s['browseFilesDesc'] = 'Blader snel door bestanden in de geselecteerde build';
 $s['searchFiles'] = 'Zoek bestanden';
-$s['toSearchForCUUseQuery'] = 'Gebruik de zoekoptie <i>%s</i> om cumulatieve updates te zoeken. '; // Gebruik de <i> Windows KB </i> zoekopdracht om te zoeken naar cumulatieve updates.
+$s['toSearchForCUUseQuery'] = 'Gebruik de zoekoptie <i>%s</i> om cumulatieve updates te zoeken. '; // Gebruik de <i> Windows10 KB </i> zoekopdracht om te zoeken naar cumulatieve updates.
 
 //selectedition.php
 $s['selectEditionFor'] = 'Selecteer de editie voor %s'; //Selecteer de editie voor Windows 10 Insider Preview 18890.1000 (rs_prerelease) amd64, English (United States)
@@ -193,8 +193,8 @@ $s['arm64Warning'] = 'U hebt een ARM64-build geselecteerd die <b>alleen compatib
 //Error messages
 $s['error_ERROR'] = 'Generieke fout.';
 $s['error_UNSUPPORTED_API'] = 'Installed API version is not compatible with this version of UUP dump.';
-$s['error_NO_FILEINFO_DIR'] = 'De map <i>Bestands info</i> bestaat niet.';
-$s['error_NO_BUILDS_IN_FILEINFO'] = 'De <i>Bestands info</i> database bevat geen enkele build.';
+$s['error_NO_FILEINFO_DIR'] = 'De map Bestands info bestaat niet.';
+$s['error_NO_BUILDS_IN_FILEINFO'] = 'De Bestands info database bevat geen enkele build.';
 $s['error_SEARCH_NO_RESULTS'] = 'Geen items gevonden voor de uitgevoerde zoekopdracht.';
 $s['error_UNKNOWN_ARCH'] = 'Onbekende processor architectuur.';
 $s['error_UNKNOWN_RING'] = 'Onbekende ring.';

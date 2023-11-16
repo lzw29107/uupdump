@@ -14,9 +14,10 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
 require_once dirname(__FILE__).'/../contrib/langconf.php';
 require_once dirname(__FILE__).'/../contrib/langs/en-us.php';
-$lang = 'en-us';
+require_once 'shared/utils.php';
 
 if($_SERVER['SERVER_NAME'] == '0.0.0.0') {
     //$domain = $_SERVER['REMOTE_ADDR'];
@@ -85,6 +86,8 @@ if(isset($_GET['lang'])) {
             $lang = $LangArray[$langnum];
         }
     }
+} else {
+  $lang = 'en-us';
 }
 
 if(!in_array("$lang", $supportedLangs)) {
@@ -120,9 +123,9 @@ $languageCoreSelectorModal = <<<EOD
         <p><a href="{$url}lang=ar-sa"><i class="sa flag"></i>العربية</a></p>
         <p><a href="{$url}lang=ko-kr"><i class="kr flag"></i>한국어</a></p>
         <p><a href="{$url}lang=zh-cn"><i class="cn flag"></i>中文（简体）</a></p>
-        <p><a href="{$url}lang=ja-jp"><i class="jp flag"></i>日本語</a></p>
         <p><a href="{$url}lang=zh-tw"><i class="tw flag"></i>中文（繁體）</a></p>
-    </div>
+        <p><a href="{$url}lang=ja-jp"><i class="jp flag"></i>日本語</a></p>
+</div>
     <div class="actions">
         <div class="ui ok button">
             <i class="close icon"></i>

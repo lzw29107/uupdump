@@ -17,7 +17,7 @@ limitations under the License.
 if(!isset($templateOk)) die();
 ?>
 <div class="welcome-text">
-    <img src="img/logo.svg" class="logo" alt="">
+    <img src="img/logo.svg" class="logo" alt="{$s['uupdump']}">
     <p class="header"><?= $s['uupdump'] ?></p>
     <p class="sub"><i><?= $s['slogan'] ?></i></p>
 </div>
@@ -33,14 +33,14 @@ if(!isset($templateOk)) die();
 
 <div class="quick-search-buttons">
     <div class="ui tiny compact menu">
-        <a class="item" href="known.php?q=regex:(2((2(?!000|6[2-4][1-9])\d{3})|(5(?!398)\d{3})|[6-9]\d{3}))\.[1-9]|([3-9]\d{4})\.[1-9]">
+        <a class="item" href="known.php?q=category:canary">
             <i class="search icon"></i>
             <?= $s['channel_canary'] ?>
         </a>
     </div>
 
     <div class="ui tiny compact menu">
-        <a class="item" href="known.php?q=regex:(2[3-4]\d{3})\.[1-9]">
+        <a class="item" href="known.php?q=category:dev">
             <i class="search icon"></i>
             <?= $s['channel_dev'] ?>
         </a>
@@ -53,34 +53,34 @@ if(!isset($templateOk)) die();
             <i class="dropdown icon"></i>
 
             <div class="menu">
-                <a class="item" href="known.php?q=regex:11.*Insider.*22635.*">
+                <a class="item" href="known.php?q=category:w11-23h2-pm-beta">
                     23H2 Post Moment Beta
                 </a>
-                <a class="item" href="known.php?q=regex:\(22631">
+                <a class="item" href="known.php?q=category:w11-23h2">
                     23H2
                 </a>
 			
-                <a class="item" href="known.php?q=regex:11.*Insider.*22631.*">
+                <a class="item" href="known.php?q=category:w11-22h2m4-23h2-beta">
                     22H2 Moment 4/23H2 Beta
                 </a>
 			
-                <a class="item" href="known.php?q=regex:11.*Insider.*2262[1-4]\.1[3-7]\d{2}.*">
+                <a class="item" href="known.php?q=category:w11-22h2m3">
                     22H2 Moment 3 Beta
                 </a>
 			
-                <a class="item" href="known.php?q=regex:11.*Insider.*2262[1-3]\.(1)?(?(1)[0-3]|[7-9])\d{2}\s.*">
+                <a class="item" href="known.php?q=category:w11-22h2m2">
                     22H2 Moment 2 Beta
                 </a>
 			
-                <a class="item" href="known.php?q=regex:11.*Insider.*2262[1-2]\.[1-6]\d{2}\s.*">
+                <a class="item" href="known.php?q=category:w11-22h2m1">
                     22H2 Moment 1 Beta
                 </a>
 			
-                <a class="item" href="known.php?q=regex:\(2262\d">
+                <a class="item" href="known.php?q=category:w11-22h2">
                     22H2
                 </a>
 
-                <a class="item" href="known.php?q=22000">
+                <a class="item" href="known.php?q=category:w11-21h2">
                     21H2
                 </a>
             </div>
@@ -94,40 +94,40 @@ if(!isset($templateOk)) die();
             <i class="dropdown icon"></i>
 
             <div class="menu">
-                <a class="item" href="known.php?q=25398">
+                <a class="item" href="known.php?q=category:server-23h2">
                     23H2
                 </a>
-                <a class="item" href="known.php?q=20349">
+                <a class="item" href="known.php?q=category:server-22h2">
                     22H2 (HCI only)
                 </a>
-                <a class="item" href="known.php?q=20348">
-                    2022/21H2
+                <a class="item" href="known.php?q=category:server-21h2">
+                    LTSC 2022 (21H2)
                 </a>
-                <a class="item" href="known.php?q=regex:Server.*19043.*">
+                <a class="item" href="known.php?q=category:server-21h1">
                     21H1
                 </a>
-                <a class="item" href="known.php?q=regex:Server.*19042.*">
+                <a class="item" href="known.php?q=category:server-20h2">
                     20H2(2009)
                 </a>
-                <a class="item" href="known.php?q=regex:Server.*19041.*">
+                <a class="item" href="known.php?q=category:server-2004">
                     20H1(2004)
                 </a>
-                <a class="item" href="known.php?q=regex:Server.*18363.*">
+                <a class="item" href="known.php?q=category:server-1909">
                     19H2(1909)
                 </a>
-                <a class="item" href="known.php?q=regex:Server.*18362.*">
+                <a class="item" href="known.php?q=category:server-1903">
                     19H1(1903)
                 </a>
-                <a class="item" href="known.php?q=17784">
-                    20H2(HCI only)
+                <a class="item" href="known.php?q=category:server-20h2-hci">
+                    20H2 (HCI only)
                 </a>
-                <a class="item" href="known.php?q=regex:Server.*17763.*">
-                    2019/1809
+                <a class="item" href="known.php?q=category:server-1809">
+                    LTSC 2019 (1809)
                 </a>
-                <a class="item" href="known.php?q=regex:Server.*17134.*">
+                <a class="item" href="known.php?q=category:server-1803">
                     1803
                 </a>
-                <a class="item" href="known.php?q=regex:Server.*16299\.\d{2}.*">
+                <a class="item" href="known.php?q=category:server-1709">
                     1709
                 </a>
             </div>
@@ -141,47 +141,47 @@ if(!isset($templateOk)) die();
             <i class="dropdown icon"></i>
 
             <div class="menu">
-                <a class="item" href="known.php?q=19045">
+                <a class="item" href="known.php?q=category:w10-22h2">
                     22H2
                 </a>
 
-                <a class="item" href="known.php?q=19044">
-                    2022/21H2
+                <a class="item" href="known.php?q=category:w10-21h2">
+                    LTSC 2022 (21H2)
                 </a>
 
-                <a class="item" href="known.php?q=19043">
+                <a class="item" href="known.php?q=category:w10-21h1">
                     21H1
                 </a>
 
-                <a class="item" href="known.php?q=19042">
+                <a class="item" href="known.php?q=category:w10-20h2">
                     20H2(2009)
                 </a>
 
-                <a class="item" href="known.php?q=19041">
+                <a class="item" href="known.php?q=category:w10-2004">
                     20H1(2004)
                 </a>
 
-                <a class="item" href="known.php?q=18363">
+                <a class="item" href="known.php?q=category:w10-1909">
                     19H2(1909)
                 </a>
 
-                <a class="item" href="known.php?q=18362">
+                <a class="item" href="known.php?q=category:w10-1903">
                     19H1(1903)
                 </a>
 
-                <a class="item" href="known.php?q=17763">
-                    2019/1809
+                <a class="item" href="known.php?q=category:w10-1809">
+                    LTSC 2019 (1809)
                 </a>
 
-                <a class="item" href="known.php?q=17134">
+                <a class="item" href="known.php?q=category:w10-1803">
                     1803
                 </a>
 
-                <a class="item" href="known.php?q=regex:16299.\d{2}.*">
+                <a class="item" href="known.php?q=category:w10-1709">
                     1709
                 </a>
 
-                <a class="item" href="known.php?q=15063">
+                <a class="item" href="known.php?q=category:w10-1703">
                     1703
                 </a>
             </div>
@@ -270,6 +270,7 @@ if(!isset($templateOk)) die();
 <div class="ui bottom attached info message">
   <i class="icon lightbulb outline"></i>
   <?= $s['checkOutAddANewBuild'] ?></div>
+
 
 <h3 class="ui centered header">
     <div class="content">

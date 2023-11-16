@@ -60,6 +60,9 @@ function uupEncryptedData() {
 
     if(empty($cookieInfo)) {
         $data = sendWuPostRequestHelper('client', 'composeGetCookieRequest', [], false);
+        if($data === false || $data['error'] != 200) 
+            return false;
+
         $cookieInfo = uupSaveCookieFromResponse($data['out']);
     }
 

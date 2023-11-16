@@ -98,12 +98,13 @@ function getUrlWithoutParam($param = null) {
     $separator = '?';
     foreach($_GET as $key => $val) {
         if($key == $param) continue;
-        $params .= $separator.$key.'='.$val;
+        $params .= $separator.$key.'='.urlencode($val);
         $separator = '&';
     }
     $params .= $separator;
 
     $shelf = explode('?', $_SERVER['REQUEST_URI']);
+
     $url = $baseUrl.$shelf[0].$params;
 
     return $url;

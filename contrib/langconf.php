@@ -18,6 +18,7 @@ limitations under the License.
 //List of languages supported by the website
 $supportedLangs = [
     'en-us',
+    'qps-ploc',
     'pl-pl',
     'de-de',
     'pt-br',

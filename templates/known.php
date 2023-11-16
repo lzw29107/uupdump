@@ -75,16 +75,54 @@ if(!isset($templateOk)) die();
     <?php endforeach; ?>
 </table>
 
-<a class="ui <?= $page == 1 ? 'disabled' : '' ?> left floated labeled icon button" href="<?= $prevPageUrl ?>">
-    <i class="arrow left icon"></i>
-    <?= $s['prevPage'] ?>
-</a>
-
-<a class="ui <?= $page == $pages ? 'disabled' : '' ?> right floated right labeled icon button" href="<?= $nextPageUrl ?>">
-    <i class="arrow right icon"></i>
-    <?= $s['nextPage'] ?>
-</a>
-
-<p class="pagination-text">
-    <?php printf($s['pageOf'], $page, $pages); ?>
-</p>
+<?php if($pages > 1): ?>
+<div class="ui center aligned container">
+    <div class="ui pagination menu">
+    <?php if($pages <= 7): ?>
+        <?php foreach((range(1, $pages)) as $p): ?>
+            <?php if($page == $p): ?>
+        <div class="active item"><b><?= $p ?></b></div>
+            <?php else: ?>
+        <a class="item" href="<?= $PageBaseUrl ?><?= $p ?>"><?= $p ?></a>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    <?php elseif($page <= 3): ?>
+        <?php foreach((range(1, 5)) as $p): ?>
+            <?php if($page == $p): ?>
+        <div class="active item"><b><?= $p ?></b></div>
+            <?php else: ?>
+        <a class="item" href="<?= $PageBaseUrl ?><?= $p ?>"><?= $p ?></a>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        <div class="disabled item">...</div>
+        <a class="item" href="<?= $PageBaseUrl ?><?= $pages ?>"><?= $pages ?></a>
+    <?php elseif($page >= ($pages - 2)): ?>
+        <div class="item" href="<?= $PageBaseUrl ?>1">1</div>
+        <div class="disabled item">...</div>
+        <?php foreach((range($pages-4, $pages)) as $p): ?>
+            <?php if($page == $p): ?>
+        <div class="active item"><b><?= $p ?></b></div>
+            <?php else: ?>
+        <a class="item" href="<?= $PageBaseUrl ?><?= $p ?>"><?= $p ?></a>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <div class="item" href="<?= $PageBaseUrl ?>1">1</div>
+        <?php if($page == 4): ?>
+        <a class="item" href="<?= $PageBaseUrl ?>2">2</a>
+        <?php else: ?>
+        <div class="disabled item">...</div>
+        <?php endif; ?>
+        <a class="item" href="<?= $PageBaseUrl ?><?= ($page-1) ?>"><?= ($page-1) ?></a>
+        <a class="active item"><b><?= $page ?></b></a>
+        <a class="item" href="<?= $PageBaseUrl ?><?= ($page+1) ?>"><?= ($page+1) ?></a>
+        <?php if($page == ($pages - 4)): ?>
+        <div class="disabled item">...</div>
+        <?php else: ?>
+        <a class="item" href="<?= $PageBaseUrl ?><?= ($pages-1) ?>"><?= ($pages-1) ?></a>
+        <?php endif; ?>
+        <a class="item" href="<?= $PageBaseUrl ?><?= $pages ?>"><?= $pages ?></a>
+    <?php endif; ?>
+    </div>
+</div>
+<?php endif; ?>

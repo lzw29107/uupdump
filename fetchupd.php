@@ -22,6 +22,9 @@ $build = isset($_GET['build']) ? $_GET['build'] : 16251;
 $minor = isset($_GET['minor']) ? $_GET['minor'] : 0;
 $sku = isset($_GET['sku']) ? $_GET['sku'] : 48;
 $type = isset($_GET['type']) ? $_GET['type'] : 'Production';
+if(isset($_GET['flags'])) {
+    $build .= $_GET['flags'];
+}
 
 require_once 'api/fetchupd.php';
 require_once 'shared/style.php';

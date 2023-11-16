@@ -16,6 +16,7 @@ limitations under the License.
 */
 
 require_once dirname(__FILE__).'/main.php';
+require_once 'shared/utils.php';
 
 function styleUpper($pageType = 'home', $subtitle = '') {
     global $websiteVersion, $s;
@@ -170,6 +171,7 @@ function styleUpper($pageType = 'home', $subtitle = '') {
         $ThemeMode
         <script src="js/jquery.min.js"></script>
         <script src="js/semantic.min.js"></script>
+        <script src="js/common.js" defer></script>
 
         <title>$title</title>
     </head>
@@ -182,9 +184,7 @@ function styleUpper($pageType = 'home', $subtitle = '') {
         <div class="pusher">
             $pageheader
                 <div class="ui title container">
-                    <h1 title="{$s['uupdump']} v$websiteVersion">
-                        <img src="img/logo.svg" class="logo" alt="">{$s['uupdump']}
-                    </h1>
+                    <h1><img src="img/logo.svg" class="logo" alt="{$s['uupdump']}">{$s['uupdump']}</h1>
                 </div>
 
                 <div class="ui one column grid page-header-menu">
@@ -223,29 +223,30 @@ function styleLower() {
         $s['copyrightNew'],
         date('Y')
     );
-  
+    $url = htmlentities(getUrlWithoutParam('theme'));
+
     $ThemeCoreSelectorModal = <<<EOD
     <div class="ui normal mini modal select-theme">
         <div class="header">
             {$s['selectTheme']}
         </div>
         <div class="content">
-            <p><a class="ui primary fluid labeled icon button" href="./?theme=auto">
+            <p><a class="ui primary fluid labeled icon button" href="{$url}theme=auto">
                 <i class="magic icon"></i>
                 {$s['themeAuto']}
             </a></p>
 
             <div class="ui divider"></div>
 
-            <p><a class="ui fluid labeled icon button" href="./?theme=light">
+            <p><a class="ui fluid labeled icon button" href="{$url}theme=light">
                 <i class="sun icon"></i>
                 {$s['themeLight']}
             </a></p>
-            <p><a class="ui fluid labeled icon button" href="./?theme=dark">
+            <p><a class="ui fluid labeled icon button" href="{$url}theme=dark">
                 <i class="moon icon"></i>
                 {$s['themeDark']}
             </a></p>
-            <p><a class="ui fluid labeled icon button" href="./?theme=legacy">
+            <p><a class="ui fluid labeled icon button" href="{$url}theme=legacy">
                 <i class="undo icon"></i>
                 {$s['themeLegacy']}
             </a></p>
@@ -261,11 +262,11 @@ function styleLower() {
     EOD;
   
     echo <<<HTML
-                <div class="footer">
+                <div class="ui justified container footer">
                     <div class="ui divider"></div>
                     <p><i>$renderText
-                        <b>{$s['uupdump']}</b> v$websiteVersion
-                        (<b>API</b> v$api)
+                        <b>{$s['uupdump']}</b> v$websiteVersion  
+                        <b>API</b> v$api
                         $copyright
                         <span class="info">{$s['notAffiliated']}</span>
                     </i></p>
@@ -274,7 +275,6 @@ function styleLower() {
         </div>
         $ThemeCoreSelectorModal
         $languageCoreSelectorModal
-        <script src="js/common.js"></script>
     </body>
 </html>
 HTML;
@@ -407,10 +407,10 @@ function fancyError($errorCode = 'ERROR', $pageType = 'home', $moreText = 0) {
             break;
     }
 
-    $safeError = $errorFancy;
+    $safeError = htmlentities($errorFancy);
 
     if($moreText) {
-        $safeError = $safeError.'<br>'.$moreText;
+        $safeError = $safeError.'<br>'.htmlentities($moreText);
     }
 
     http_response_code($errorNumber);
@@ -423,21 +423,15 @@ function fancyError($errorCode = 'ERROR', $pageType = 'home', $moreText = 0) {
     styleUpper($pageType, $s['error']);
 
     echo <<<ERROR
-<h3 class="ui centered header">
+<h1 class="ui red center aligned icon header error-page-message">
+    <i class="times circle icon"></i>
     <div class="content">
-        <i class="fitted exclamation triangle icon"></i>&nbsp;
-        {$s['requestNotSuccessful']}
+        {$s['error']}
+        <div class="sub header">
+            <p>$safeError</p>
+        </div>
     </div>
-</h3>
-
-<div class="ui negative icon message">
-    <i class="remove circle icon"></i>
-    <div class="content">
-        <div class="header">{$s['error']}</div>
-        <p>{$s['anErrorHasOccurred']}<br>
-        $safeError</p>
-    </div>
-</div>
+</h1>
 ERROR;
 
     styleLower();

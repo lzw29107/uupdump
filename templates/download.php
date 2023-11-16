@@ -23,64 +23,7 @@ if(!isset($templateOk)) die();
     </div>
 </h3>
 
-<div class="ui normal modal virtual-editions-info">
-    <div class="header">
-        <?= $s['learnMore'] ?>
-    </div>
-    <div class="content">
-        <p><?= $s['learnMoreAdditionalEditions1'] ?></p>
-
-        <p><b><?= $s['learnMoreAdditionalEditions2'] ?></b></p>
-
-        <p><b>$s['edition_CORE']</b></p>
-        <ul>
-            <li>$s['edition_CORESINGLELANGUAGE']</li>
-        </ul>
-        <p><b>$s['edition_PROFESSIONAL']</b></p>
-        <ul>
-            <li>$s['edition_PROFESSIONALWORKSTATION']</li>
-            <li>$s['edition_PROFESSIONALEDUCATION']</li>
-            <li>$s['edition_EDUCATION']</li>
-            <li>$s['edition_ENTERPRISE']</li>
-            <li>$s['edition_SERVERRDSH']</li>
-            <li>$s['edition_IOTENTERPRISE']</li>
-        </ul>
-        <p><b>$s['edition_PROFESSIONALN']</b></p>
-        <ul>
-            <li>$s['edition_PROFESSIONALWORKSTATIONN']</li>
-            <li>$s['edition_PROFESSIONALEDUCATIONN']</li>
-            <li>$s['edition_EDUCATIONN']</li>
-            <li>$s['edition_ENTERPRISEN']</li>
-        </ul>
-    </div>
-    <div class="actions">
-        <div class="ui primary ok button">
-            <i class="checkmark icon"></i>
-            <?= $s['ok'] ?>
-        </div>
-    </div>
-</div>
-
-<div class="ui normal tiny modal updates">
-    <div class="header">
-        <?= $s['learnMore'] ?>
-    </div>
-    <div class="content">
-        <p><?= $s['learnMoreUpdates1'] ?></p>
-        <ul>
-            <li>Windows 11</li>
-            <li>Windows 10</li>
-            <li><?php printf($s['systemWithAdk'], 'Windows 8.1'); ?></li>
-        </ul>
-        <p><?= $s['learnMoreUpdates2']; ?></p>
-    </div>
-    <div class="actions">
-        <div class="ui primary ok button">
-            <i class="checkmark icon"></i>
-            <?= $s['ok'] ?>
-        </div>
-    </div>
-</div>
+<script src="js/download.js" defer></script>
 
 <?php if($updateArch == 'arm64') styleCluelessUserArm64Warn(); ?>
 
@@ -127,7 +70,7 @@ if(!isset($templateOk)) die();
                                 <small>
                                     <?= $s['aria2Opt3Desc'] ?>
                                     <span id="VEConvertLearnMoreLink" style="display: none;">
-                                        <a href="javascript:void(0)" onClick="learnMoreVE();">
+                                        <a href="#" id="learn-more-ve-link">
                                             <?= $s['learnMore'] ?>
                                         </a>
                                     </span>
@@ -149,13 +92,13 @@ if(!isset($templateOk)) die();
                     </div>
                     <div class="field">
                         <div class="ui checkbox">
-                            <input type="checkbox" name="cleanup" value="1" class="conversion-option">
+                            <input type="checkbox" name="cleanup" value="1" checked class="conversion-option">
                             <label><?= $s['convOpt3'] ?></label>
                         </div>
                     </div>
                     <div class="field">
                         <div class="ui checkbox">
-                            <input type="checkbox" name="resetbase" value="1" disabled class="conversion-option">
+                            <input type="checkbox" name="resetbase" value="1" class="conversion-option">
                             <label><?= $s['convOpt5'] ?></label>
                         </div>
                     </div>
@@ -171,7 +114,22 @@ if(!isset($templateOk)) die();
                             <label><?= $s['convOpt1'] ?></label>
                         </div>
                     </div>
-
+                  <div class="field">
+                      <div class="ui accordion field">
+                      <div class="title">
+                        <i class="icon dropdown"></i>
+                        <label><?= $s['conversionAdvOptions'] ?></label>
+                      </div>
+                      <div class="content field transition hidden">
+                        <div class="grouped fields transition hidden">
+                          <div class="ui checkbox">
+                            <input type="checkbox" name="appstub" value="1" class="conversionadv-option">
+                            <label><?= $s['convAdvOpt1'] ?></label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
             </div>
 
@@ -183,7 +141,7 @@ if(!isset($templateOk)) die();
                         <div class="field">
                             <div class="ui checkbox">
                                 <input class="virtual-edition" type="checkbox" name="virtualEditions[]" value="<?= $key ?>" checked>
-                                <label>Windows <?= $val ?></label>
+                                <label><?= $val ?></label>
                             </div>
                         </div>
                         <?php $printedEditions++; ?>
@@ -195,13 +153,15 @@ if(!isset($templateOk)) die();
                 </div>
             </div>
 
-            <div class="ui negative message" id="legal-cope">
-				<p><i class="balance scale icon"></i> <?= $s['legalCopeHarder'] ?></p>
-				<ul>
-					<li><?= $s['legalCope1'] ?></li>
-					<li><?= $s['legalCope2'] ?></li>
-					<li><?= $s['legalCope3v2'] ?></li>
-				</ul>
+            <div class="ui negative justified container message" id="legal-cope">
+                <i class="balance scale icon"></i>
+                <b><?= $s['legalCopeHarder'] ?></b>
+
+                <div class="ui bulleted list">
+                    <div class="item"><?= $s['legalCope1'] ?></div>
+                    <div class="item"><?= $s['legalCope2'] ?></div>
+                    <div class="item"><?= $s['legalCope3v2'] ?></div>
+				</div>
             </div>
 
             <button class="ui fluid right labeled icon primary button" type="submit">
@@ -212,78 +172,69 @@ if(!isset($templateOk)) die();
     </div>
 
     <div class="column">
-        <h4 class="ui header">
+        <div class="ui small header">
             <i class="cubes icon"></i>
             <div class="content">
                 <?= $s['update']; ?>
                 <div class="sub header"><?= htmlentities($updateTitle) ?></div>
             </div>
-        </h4>
+        </div>
 
-        <h4 class="ui header">
+        <div class="ui small header">
             <i class="globe icon"></i>
             <div class="content">
                 <?= $s['lang']; ?>
                 <div class="sub header"><?= $selectedLangName ?></div>
             </div>
-        </h4>
+        </div>
 
-        <h4 class="ui header">
+        <div class="ui small header">
             <i class="archive icon"></i>
             <div class="content">
                 <?= $s['edition']; ?>
                 <div class="sub header"><?= $selectedEditionName ?></div>
             </div>
-        </h4>
+        </div>
 
-        <h4 class="ui header">
+        <div class="ui small header">
             <i class="download icon"></i>
             <div class="content">
                 <?= $s['totalDlSize']; ?>
                 <div class="sub header"><?= $totalSize ?></div>
             </div>
-        </h4>
+        </div>
 
         <?php if($build > 22557): ?>
-        <h4 class="ui red header">
+        <div class="ui small red header">
             <i class="exclamation triangle icon"></i>
             <div class="content">
                 <?= $s['win1122h2OrLaterv2'] ?>
                 <div class="sub header"><?= $s['requiresWindows102004v2'] ?></div>
             </div>
-        </h4>
+        </div>
         <?php endif; ?>
 
         <?php if($hasUpdates): ?>
-            <h4 class="ui header">
+            <div class="ui small header" style="margin-bottom:0;">
                 <i class="info icon"></i>
                 <div class="content">
                     <?= $s['additionalUpdates'] ?>
                     <div class="sub header">
                         <?= $s['additionalUpdatesDesc'] ?>
 
-                        <a href="javascript:void(0)" onClick="learnMoreUpdates();" id="LearnMoreUpdatesLink" style="display: none;">
+                        <a href="#" id="learn-more-updates-link" style="display: none;">
                             <?= $s['learnMore'] ?>
                         </a>
                     </div>
                 </div>
-            </h4>
+            </div>
 
-            <a class="ui tiny labeled icon button" href="<?= $urlUpd; ?>">
-                <i class="folder open icon"></i>
-                <?= $s['browseUpdatesList'] ?>
-            </a>
-
-            <p><form class="ui form" action="<?= $urlUpd; ?>" method="post" id="download-updates">
-                <button class="ui fluid right labeled icon primary button" type="submit" name="autodl" value="1">
-                    <i class="download icon"></i>
-                    <?= $s['aria2Opt4'] ?>
-                </button>
-            </form></p>
-
-            <script>
-                document.getElementById('LearnMoreUpdatesLink').style.display = "inline";
-            </script>
+            <div class="ui center aligned container">
+                <a class="ui tiny labeled icon button" href="<?= $urlUpd; ?>" style="margin-top:1em;">
+                    <i class="folder open icon"></i>
+                    <?= $s['browseUpdatesList'] ?>
+                </a>
+            </div>
         <?php endif; ?>
 
         <div class="ui divider"></div>
@@ -294,7 +245,7 @@ if(!isset($templateOk)) die();
     </div>
 </div>
 
-<div class="ui positive message">
+<div class="ui positive justified container message">
     <div class="header">
         <?= $s['aria2NoticeTitle'] ?>
     </div>
@@ -316,83 +267,86 @@ if(!isset($templateOk)) die();
 </div>
 
 <div class="ui fluid tiny three steps">
-      <div class="completed step">
-            <i class="world icon"></i>
-            <div class="content">
-                <div class="title"><?= $s['chooseLang'] ?></div>
-                <div class="description"><?= $s['chooseLangDesc'] ?></div>
-            </div>
-      </div>
+    <div class="completed step">
+          <i class="world icon"></i>
+          <div class="content">
+              <div class="title"><?= $s['chooseLang'] ?></div>
+              <div class="description"><?= $s['chooseLangDesc'] ?></div>
+          </div>
+    </div>
 
-      <div class="completed step">
-            <i class="archive icon"></i>
-            <div class="content">
-                <div class="title"><?= $s['chooseEdition'] ?></div>
-                <div class="description"><?= $s['chooseEditionDesc'] ?></div>
-            </div>
-      </div>
+    <div class="completed step">
+          <i class="archive icon"></i>
+          <div class="content">
+              <div class="title"><?= $s['chooseEdition'] ?></div>
+              <div class="description"><?= $s['chooseEditionDesc'] ?></div>
+          </div>
+    </div>
 
-      <div class="active step">
-            <i class="briefcase icon"></i>
-            <div class="content">
-                <div class="title"><?= $s['summary'] ?></div>
-                <div class="description"><?= $s['summaryDesc'] ?></div>
-            </div>
-      </div>
+    <div class="active step">
+          <i class="briefcase icon"></i>
+          <div class="content">
+              <div class="title"><?= $s['summary'] ?></div>
+              <div class="description"><?= $s['summaryDesc'] ?></div>
+          </div>
+    </div>
 </div>
 
-<script>
-function learnMoreVE() {
-    $('.ui.modal.virtual-editions-info').modal('show');
-}
+<div class="ui normal modal virtual-editions-info">
+    <div class="header">
+        <?= $s['learnMore'] ?>
+    </div>
+    <div class="content">
+        <p><?= $s['learnMoreAdditionalEditions1'] ?></p>
 
-function learnMoreUpdates() {
-    $('.ui.modal.updates').modal('show');
-}
+        <p><b><?= $s['learnMoreAdditionalEditions2'] ?></b></p>
 
-function checkDlOpt() {
-    autodl = $('input[name="autodl"]:checked').val();
-    cleanup = $('input[name="cleanup"]').prop('checked');
+        <p><b><?= $s['edition_CORE'] ?></b></p>
+        <ul>
+            <li><?= $s['edition_CORESINGLELANGUAGE'] ?></li>
+        </ul>
+        <p><b><?= $s['edition_PROFESSIONAL'] ?></b></p>
+        <ul>
+            <li><?= $s['edition_PROFESSIONALWORKSTATION'] ?></li>
+            <li><?= $s['edition_PROFESSIONALEDUCATION'] ?></li>
+            <li><?= $s['edition_EDUCATION'] ?></li>
+            <li><?= $s['edition_ENTERPRISE'] ?></li>
+            <li><?= $s['edition_SERVERRDSH'] ?></li>
+            <li><?= $s['edition_IOTENTERPRISE'] ?></li>
+        </ul>
+        <p><b><?= $s['edition_PROFESSIONALN'] ?></b></p>
+        <ul>
+            <li><?= $s['edition_PROFESSIONALWORKSTATIONN'] ?></li>
+            <li><?= $s['edition_PROFESSIONALEDUCATIONN'] ?></li>
+            <li><?= $s['edition_EDUCATIONN'] ?></li>
+            <li><?= $s['edition_ENTERPRISEN'] ?></li>
+        </ul>
+    </div>
+    <div class="actions">
+        <div class="ui primary ok button">
+            <i class="checkmark icon"></i>
+            <?= $s['ok'] ?>
+        </div>
+    </div>
+</div>
 
-	if(autodl < 2) {
-		$('#legal-cope').slideUp(300);
-	} else {
-        $('#legal-cope').slideDown(300);
-	}
-
-    if(autodl == 1) {
-        $('#conversion-options').slideUp(300);
-        disabled_co = true;
-    } else {
-        $('#conversion-options').slideDown(300);
-        disabled_co = false;
-    }
-
-    if(autodl == 3) {
-        $('#additional-editions-list').slideDown(300);
-        disabled_ve = false;
-    } else {
-        $('#additional-editions-list').slideUp(300);
-        disabled_ve = true;
-    }
-
-    $('.virtual-edition').prop('disabled', disabled_ve);
-    $('.conversion-option').prop('disabled', disabled_co);
-
-  if(cleanup == true) {
-    $('input[name="resetbase"]').prop('disabled',false);
-  } else {
-    $('input[name="resetbase"]').prop('checked',false);
-    $('input[name="resetbase"]').prop('disabled',true);
-  }
-
-}
-
-$('input[name="autodl"], input[name="cleanup"]').on('click change', function() {
-    checkDlOpt();
-});
-  
-$('#additional-editions-list').hide();
-$('#VEConvertLearnMoreLink').css('display', 'inline');
-checkDlOpt();
-</script>
+<div class="ui normal tiny modal updates">
+    <div class="header">
+        <?= $s['learnMore'] ?>
+    </div>
+    <div class="content">
+        <p><?= $s['learnMoreUpdates1'] ?></p>
+        <ul>
+            <li>Windows 11</li>
+            <li>Windows 10</li>
+            <li><?php printf($s['systemWithAdk'], 'Windows 8.1'); ?></li>
+        </ul>
+        <p><?= $s['learnMoreUpdates2']; ?></p>
+    </div>
+    <div class="actions">
+        <div class="ui primary ok button">
+            <i class="checkmark icon"></i>
+            <?= $s['ok'] ?>
+        </div>
+    </div>
+</div>

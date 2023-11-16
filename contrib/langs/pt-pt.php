@@ -63,11 +63,9 @@ $s['tHeadReleaseType'] = 'Tipo de Release';
 $s['tHeadDescription'] = 'Descrição';
 $s['tHeadArchitectures'] = 'Arquitetura';
 $s['latestPublicRelease'] = 'Recente Compilação de Lançamento Público';
-$s['latestPublicReleaseSub'] = 'Recente Compilação Atualizada para usuários regulares.';
-$s['latestCanaryRelease'] = 'Recente compilação Lançada no Canal Canary';
-$s['latestCanaryReleaseSub'] = 'Estas são Compilações um tanto instáveis com as últimas alterações de plataforma e novos recursos que estão em estágios iniciais para aprovação.<br>Ideal para usuários altamente técnicos.';
+$s['latestPublicReleaseSub'] = 'Última Compilação Atualizada para usuários regulares.';
 $s['latestDevRelease'] = 'Recente Compilação do Canal de Desenvolvimento';
-$s['latestDevReleaseSub'] = 'Estas são Compilações pouco confiáveis com novas ideias e novos recursos são aprovados para desenvolvimento de longo prazo.<br>Ideal para entusiastas.';
+$s['latestDevReleaseSub'] = 'Compilações pouco confiáveis com os recursos mais recentes.<br>Ideal para usuários altamente técnicos.';
 $s['latestBetaRelease'] = 'Recente Compilação do Canal Beta';
 $s['latestBetaReleaseSub'] = 'Compilações confiáveis com a maioria dos recursos futuros disponíveis.<br>Ideal para os usuários iniciantes.';
 $s['latestRPRelease'] = 'Recente Compilação de Prévias de Lançamento';
@@ -176,7 +174,6 @@ $s['legalCope2'] = 'As imagens e suas implantações <b>não são suportadas</b>
 $s['legalCope3v2'] = '<b>Os autores não são responsáveis por quaisquer danos</b> causados pelo uso indevido do site';
 $s['win1122h2OrLater'] = 'Windows 11, versão 22H2 ou posterior';
 $s['requiresWindows102004'] = 'Esta compilação requer o uso do Windows 10, versão 2004 ou posterior para que o ISO seja criado corretamente. Scripts para outras plataformas produzirão um ISO corrompido.';
-$s['aria2Opt4'] = 'Criar um pacote de download para os arquivos de atualizações';
 
 //get.php
 $s['listOfFilesFor'] = 'Lista de ficheiros para %s'; //List of files for Windows 10 Insider Preview 18890.1000 (rs_prerelease) amd64
@@ -214,8 +211,8 @@ $s['arm64Warning2022b'] = '<p>Esta versão é compatível apenas com:</p><ul><li
 //Error messages
 $s['error_ERROR'] = 'Erro genérico.';
 $s['error_UNSUPPORTED_API'] = 'A versão da API instalada não é compatível com esta versão do dump UUP.';
-$s['error_NO_FILEINFO_DIR'] = 'O diretório (fileinfo) não existe.';
-$s['error_NO_BUILDS_IN_FILEINFO'] = 'O banco de dados (fileinfo) não contém nenhuma compilação.';
+$s['error_NO_FILEINFO_DIR'] = 'O diretório fileinfo não existe.';
+$s['error_NO_BUILDS_IN_FILEINFO'] = 'O banco de dados fileinfo não contém nenhuma compilação.';
 $s['error_SEARCH_NO_RESULTS'] = 'Nenhum item pode ser encontrado para a consulta especificada.';
 $s['error_UNKNOWN_ARCH'] = 'Arquitetura do processador desconhecida.';
 $s['error_UNKNOWN_RING'] = 'Ring desconhecido.';
@@ -288,11 +285,22 @@ $s['lang_zh-hk'] = 'Chinês (Hong Kong)';
 $s['lang_zh-tw'] = 'Chinês (Tradicional)';
 
 //Channels
-$s['channel_msit'] = 'MSIT';
-$s['channel_canary'] = 'Canal Canary';
 $s['channel_skipAhead'] = 'Seguindo em frente - "Skip Ahead"';
 $s['channel_dev'] = 'Canal Dev';
 $s['channel_beta'] = 'Canal Beta';
 $s['channel_releasepreview'] = 'Canal Prévia de Lançamentos "Release Preview"';
 $s['channel_retail'] = 'Retail';
+
+//latest.php
+$s['latestFetchLatest'] = 'Pesquisar a compilação mais recente';
+$s['latestTestingOnly'] = 'Somente para teste';
+$s['latestTestingOnlyWarn'] = '<b> Esta página é fornecida apenas para testes. </ b> As compilações recuperadas por esta página que não foram processadas pelo servidor de back-end serão fornecidas usando os pacotes de fallback, que podem fornecer resultados incompletos. Se quiser fazer o download de uma compilação já conhecida, para obter a melhor experiência, use a página de compilações conhecidas.';
+$s['latestDoYouWantKnown'] = 'Gostaria de continuar a pesquisar na lista de compilações conhecidas?';
+$s['chooseOptions'] = 'Selecionar opções';
+$s['buildOfPretendedClient'] = 'Número da compilação do cliente pretendido do Windows Update';
+$s['editionOfPretendedClient'] = 'Edição do sistema pretendido';
+$s['skipAheadLabel'] = 'Skip ahead flight';
+$s['skipAheadOption'] = 'Use o flightl ahead flighting (apenas no Insider Fast)';
+$s['fetchUpdates'] = 'Pesquisar atualizações';
+$s['fetchUpdatesInfo'] = 'Clique no botão <i>Pesquisar atualizações</i> para enviar a sua solicitação para os servidores do Windows Update.';
 

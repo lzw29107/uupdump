@@ -152,6 +152,18 @@ if(!$packsAvailable) {
     $updateBlocked = true;
 }
 
+$files = uupGetFiles($updateId, 0, 'updateonly', 2);
+
+if(isset($files['hasUpdates'])) {
+  $hasUpdates = $files['hasUpdates'];
+} else {
+  $hasUpdates = false;
+}
+
+$UpdateButton = (!$generatePacksButton && $hasUpdates);
+
+$urlUpd = "./get.php?id=$updateId&pack=0&edition=updateOnly";
+
 $templateOk = true;
 
 styleUpper('downloads', sprintf($s['selectLangFor'], $updateTitle));
