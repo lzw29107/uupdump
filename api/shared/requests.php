@@ -182,7 +182,7 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
         'GStatus_RS5=2',
         'GenTelRunTimestamp_19H1='.(time()-3600),
         'HidparseDriversVer='.$build,
-        'HotPatchEKBInstalled=1',
+        //'HotPatchEKBInstalled=1',
         'InstallDate=1438196400',
         'InstallLanguage=en-US',
         'InstallationType='.$insType,
@@ -623,7 +623,7 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
                         <XmlUpdateFragmentType>LocalizedProperties</XmlUpdateFragmentType>
                     </XmlUpdateFragmentTypes>
                     <Locales>
-                        <string>zh-CN</string>
+                        <string>en-US</string>
                     </Locales>
                 </ExtendedUpdateInfoParameters>
                 <ClientPreferredLanguages/>
