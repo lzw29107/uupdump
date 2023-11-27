@@ -17,16 +17,16 @@ limitations under the License.
 if(!isset($templateOk)) die();
 ?>
 <div class="welcome-text">
-    <img src="img/logo.svg" class="logo" alt="{$s['uupdump']}">
+    <img src="static/images/logo.svg" class="logo" alt="<?= $s['uupdump'] ?>">
     <p class="header"><?= $s['uupdump'] ?></p>
-    <p class="sub"><i><?= $s['slogan'] ?></i></p>
+    <p class="sub"><?= $s['slogan'] ?></p>
 </div>
 
-<form class="ui form" action="known.php" method="get">
+<form class="ui form home-search" action="known.php" method="get">
     <div class="field">
         <div class="ui big action input">
             <input type="text" name="q" placeholder="<?= $s['seachForBuilds'] ?>">
-            <button class="ui big blue icon button" type="submit"><i class="search icon"></i></button>
+            <button class="ui big blue icon button" type="submit"><i class="fa-solid fa-magnifying-glass icon"></i>
         </div>
     </div>
 </form>
@@ -34,21 +34,21 @@ if(!isset($templateOk)) die();
 <div class="quick-search-buttons">
     <div class="ui tiny compact menu">
         <a class="item" href="known.php?q=category:canary">
-            <i class="search icon"></i>
+            <i class="fa-solid fa-magnifying-glass icon"></i>
             <?= $s['channel_canary'] ?>
         </a>
     </div>
 
     <div class="ui tiny compact menu">
         <a class="item" href="known.php?q=category:dev">
-            <i class="search icon"></i>
+            <i class="fa-solid fa-magnifying-glass icon"></i>
             <?= $s['channel_dev'] ?>
         </a>
     </div>
 
     <div class="ui tiny compact menu">
         <div class="ui dropdown item">
-            <i class="search icon"></i>
+            <i class="fa-solid fa-magnifying-glass icon"></i>
             Windows 11
             <i class="dropdown icon"></i>
 
@@ -56,6 +56,7 @@ if(!isset($templateOk)) die();
                 <a class="item" href="known.php?q=category:w11-23h2-pm-beta">
                     23H2 Post Moment Beta
                 </a>
+              
                 <a class="item" href="known.php?q=category:w11-23h2">
                     23H2
                 </a>
@@ -89,7 +90,7 @@ if(!isset($templateOk)) die();
 
     <div class="ui tiny compact menu">
         <div class="ui dropdown item">
-            <i class="search icon"></i>
+            <i class="fa-solid fa-magnifying-glass icon"></i>
             Windows Server
             <i class="dropdown icon"></i>
 
@@ -136,7 +137,7 @@ if(!isset($templateOk)) die();
 
     <div class="ui tiny compact menu">
         <div class="ui dropdown item">
-            <i class="search icon"></i>
+            <i class="fa-solid fa-magnifying-glass icon"></i>
             Windows 10
             <i class="dropdown icon"></i>
 
@@ -191,102 +192,115 @@ if(!isset($templateOk)) die();
 
 <h3 class="ui centered header">
     <div class="content">
-        <i class="fitted rocket icon"></i>&nbsp;
+        <i class="fa-solid fa-paper-plane fa-mr"></i>
         <?= $s['quickOptions'] ?>
     </div>
 </h3>
 
-<table class="ui large tablet stackable padded top attached table">
-    <thead>
-        <tr>
-            <th><?= $s['tHeadReleaseType'] ?></th>
-            <th><?= $s['tHeadDescription'] ?></th>
-            <th><?= $s['tHeadArchitectures'] ?></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td class="collapsing">
-                <i class="large box icon"></i>
-                <b><?= $s['latestPublicRelease'] ?></b>
-            </td>
-            <td><?= $s['latestPublicReleaseSub'] ?></td>
-            <td class="center aligned collapsing">
-                <a href="fetchupd.php?arch=amd64&ring=retail&build=<?= $retailLatestBuild ?>"><button class="ui blue button">x64</button></a>
-                <a href="fetchupd.php?arch=arm64&ring=retail&build=<?= $retailLatestBuild ?>"><button class="ui button">arm64</button></a>
-                <a href="fetchupd.php?arch=all&ring=retail&build=<?= $retailLatestBuild ?>"><button class="ui black button">all</button></a>
-            </td>
-        </tr>
-        <tr>
-            <td class="collapsing">
-                <i class="large fire extinguisher icon"></i>
-                <b><?= $s['latestRPRelease'] ?></b>
-            </td>
-            <td><?= $s['latestRPReleaseSub'] ?></td>
-            <td class="center aligned">
-                <a href="fetchupd.php?arch=amd64&ring=rp&build=<?= $rpLatestBuild ?>"><button class="ui blue button">x64</button></a>
-                <a href="fetchupd.php?arch=arm64&ring=rp&build=<?= $rpLatestBuild ?>"><button class="ui button">arm64</button></a>
-				<a href="fetchupd.php?arch=all&ring=rp&build=<?= $rpLatestBuild ?>"><button class="ui black button">all</button></a>
-            </td>
-        </tr>
-        <tr>
-            <td class="collapsing">
-                <i class="large fire icon"></i>
-                <b><?= $s['latestBetaRelease'] ?></b>
-            </td>
-            <td><?= $s['latestBetaReleaseSub'] ?></td>
-            <td class="center aligned">
-                <a href="fetchupd.php?arch=amd64&ring=wis&build=<?= $betaLatestBuild ?>"><button class="ui blue button">x64</button></a>
-                <a href="fetchupd.php?arch=arm64&ring=wis&build=<?= $betaLatestBuild ?>"><button class="ui button">arm64</button></a>
-				<a href="fetchupd.php?arch=all&ring=wis&build=<?= $betaLatestBuild ?>"><button class="ui black button">all</button></a>
-            </td>
-        </tr>
-        <tr>
-            <td class="collapsing">
-                <i class="large bomb icon"></i>
-                <b><?= $s['latestDevRelease'] ?></b>
-            </td>
-            <td><?= $s['latestDevReleaseSub'] ?></td>
-            <td class="center aligned">
-                <a href="fetchupd.php?arch=amd64&ring=wif&build=<?= $devLatestBuild ?>"><button class="ui blue button">x64</button></a>
-                <a href="fetchupd.php?arch=arm64&ring=wif&build=<?= $devLatestBuild ?>"><button class="ui button">arm64</button></a>
-				<a href="fetchupd.php?arch=all&ring=wif&build=<?= $devLatestBuild ?>"><button class="ui black button">all</button></a>
-            </td>
-        </tr>
-        <tr>
-            <td class="collapsing">
-                <i class="large flask icon"></i>
-                <b><?= $s['latestCanaryRelease'] ?></b>
-            </td>
-            <td><?= $s['latestCanaryReleaseSub'] ?></td>
-            <td class="center aligned">
-                <a href="fetchupd.php?arch=amd64&ring=canary&build=latest"><button class="ui blue button">x64</button></a>
-                <a href="fetchupd.php?arch=arm64&ring=canary&build=latest"><button class="ui button">arm64</button></a>
-				<a href="fetchupd.php?arch=all&ring=canary&build=latest"><button class="ui black button">all</button></a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="home-quick-options">
+    <table class="ui top attached padded large tablet stackable table">
+        <thead>
+            <tr>
+                <th class="collapsing"><?= $s['tHeadReleaseType'] ?></th>
+                <th><?= $s['tHeadDescription'] ?></th>
+                <th class="collapsing"><?= $s['tHeadArchitectures'] ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="collapsing">
+                    <div class="ui small header">
+                        <i class="fa-solid fa-box fa-fw fa-xl fa-mr"></i>
+                        <?= $s['latestPublicRelease'] ?>
+                    </div>
+                </td>
+                <td><?= $s['latestPublicReleaseSub'] ?></td>
+                <td class="collapsing center aligned">
+                    <a class="ui blue button" href="fetchupd.php?arch=amd64&ring=retail&build=<?= $retailLatestBuild ?>">x64</a>
+                    <a class="ui button" href="fetchupd.php?arch=arm64&ring=retail&build=<?= $retailLatestBuild ?>">arm64</a>
+                    <a class="ui black button" href="fetchupd.php?arch=all&ring=retail&build=<?= $retailLatestBuild ?>">all</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="collapsing">
+                    <div class="ui small header">
+                        <i class="fa-solid fa-dolly fa-fw fa-xl fa-mr"></i>
+                        <?= $s['latestRPRelease'] ?>
+                    </div>
+                </td>
+                <td><?= $s['latestRPReleaseSub'] ?></td>
+                <td class="collapsing center aligned">
+                    <a class="ui blue button" href="fetchupd.php?arch=amd64&ring=rp&build=<?= $rpLatestBuild ?>">x64</a>
+                    <a class="ui button" href="fetchupd.php?arch=arm64&ring=rp&build=<?= $rpLatestBuild ?>">arm64</a>
+    				<a class="ui black button" href="fetchupd.php?arch=all&ring=rp&build=<?= $rpLatestBuild ?>">all</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="collapsing">
+                    <div class="ui small header">
+                        <i class="fa-solid fa-paint-roller fa-fw fa-xl fa-mr"></i>
+                        <?= $s['latestBetaRelease'] ?>
+                    </div>
+                </td>
+                <td><?= $s['latestBetaReleaseSub'] ?></td>
+                <td class="collapsing center aligned">
+                    <a class="ui blue button" href="fetchupd.php?arch=amd64&ring=wis&build=<?= $betaLatestBuild ?>">x64</a>
+                    <a class="ui button" href="fetchupd.php?arch=arm64&ring=wis&build=<?= $betaLatestBuild ?>">arm64</a>
+				    <a class="ui black button" href="fetchupd.php?arch=all&ring=wis&build=<?= $betaLatestBuild ?>">all</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="collapsing">
+                    <div class="ui small header">
+                        <i class="fa-solid fa-laptop-code fa-fw fa-xl fa-mr"></i>
+                        <?= $s['latestDevRelease'] ?>
+                    </div>
+                </td>
+                <td><?= $s['latestDevReleaseSub'] ?></td>
+                <td class="collapsing center aligned">
+                    <a class="ui blue button" href="fetchupd.php?arch=amd64&ring=wif&build=<?= $devLatestBuild ?>">x64</a>
+                    <a class="ui button" href="fetchupd.php?arch=arm64&ring=wif&build=<?= $devLatestBuild ?>">arm64</a>
+				    <a class="ui black button" href="fetchupd.php?arch=all&ring=wif&build=<?= $devLatestBuild ?>">all</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="collapsing">
+                    <div class="ui small header">
+                        <i class="fa-solid fa-flask fa-fw fa-xl fa-mr"></i>
+                        <?= $s['latestCanaryRelease'] ?>
+                    </div>
+                </td>
+                <td><?= $s['latestCanaryReleaseSub'] ?></td>
+                <td class="collapsing center aligned">
+                    <a class="ui blue button" href="fetchupd.php?arch=amd64&ring=canary&build=latest">x64</a>
+                    <a class="ui button" href="fetchupd.php?arch=arm64&ring=canary&build=latest">arm64</a>
+    				<a class="ui black button" href="fetchupd.php?arch=all&ring=canary&build=latest">all</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 <div class="ui bottom attached info message">
-  <i class="icon lightbulb outline"></i>
+  <i class="fa-regular fa-lightbulb icon"></i>
   <?= $s['checkOutAddANewBuild'] ?></div>
 
 
 <h3 class="ui centered header">
     <div class="content">
-        <i class="fitted star outline icon"></i>&nbsp;
+        <i class="fa-solid fa-clock fa-mr"></i>
         <?= $s['newlyAdded'] ?>
     </div>
 </h3>
 
 <?php if(isset($idsError) && $idsError == true): echo $s['error_SEARCH_NO_RESULTS']; ?>
 <?php else: ?>
-<table class="ui striped table">
+<table class="ui celled striped table">
     <thead>
         <tr>
             <th><?= $s['build'] ?></th>
-            <th><?= $s['arch'] ?></th>
-            <th><?= $s['dateAdded'] ?></th>
+            <th class="collapsing"><?= $s['arch'] ?></th>
+            <th class="collapsing"><?= $s['dateAdded'] ?></th>
         </tr>
     </thead>
 
@@ -297,13 +311,13 @@ if(!isset($templateOk)) die();
         <?php if($arch == 'amd64') $arch = 'x64'; ?>
 
         <tr><td>
-            <i class="windows icon"></i>
+            <i class="fa-brands fa-microsoft icon"></i>
             <a href="selectlang.php?id=<?= htmlentities($val['uuid']) ?>">
                 <?= htmlentities($val['title']) ?> <?= htmlentities($val['arch']) ?>
             </a>
-            </td><td>
+            </td><td class="collapsing">
                 <?= htmlentities($arch) ?>
-            </td><td>
+            </td><td class="collapsing">
 
             <?php if($val['created'] == null): ?>
                 <?= $s['unknown'] ?>

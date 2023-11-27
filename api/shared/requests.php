@@ -39,11 +39,7 @@ function composeDeviceAttributes($flight, $ring, $build, $arch, $sku, $type, $fl
         $insType = 'Server';
         $blockUpgrades = 1;
     }
-      // WNC
-    if($sku == 210) {
-        $dvcFamily = 'Windows.CorePC';
-        $insType = 'CorePC';
-    }
+
 if(uupApiConfigIsTrue('enable_unsupported_features')) {
     // Hololens
     if($sku == 135) {
@@ -419,10 +415,6 @@ function composeFetchUpdRequest($arch, $flight, $ring, $build, $sku = 48, $type 
     if(uupApiIsServer($sku)) {
         $mainProduct = 'Server.OS';
     }
-    // WNC
-    if($sku == 210) {
-        $mainProduct = 'NextCorePC.OS';
-    }
 if(uupApiConfigIsTrue('enable_unsupported_features')) {
     // Hololens
     if($sku == 135) {
@@ -481,7 +473,7 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
         $products[] = "PN=MSRT.$currArch&Source=UpdateOrchestrator&V=0.0.0.0";
         $products[] = "PN=SedimentPack.$currArch&Source=UpdateOrchestrator&V=0.0.0.0";
         $products[] = "PN=UUS.$currArch&Source=UpdateOrchestrator&V=0.0.0.0";
-        $products[] = "PN=Hotpatch.$currArch&Name=Hotpatch Enrollment Package&V=10.0.20348.465";
+        //$products[] = "PN=Hotpatch.$currArch&Name=Hotpatch Enrollment Package&V=10.0.20348.465";
     }
 
     $callerAttrib = array(

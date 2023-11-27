@@ -18,7 +18,7 @@ if(!isset($templateOk)) die();
 ?>
 <h3 class="ui centered header">
     <div class="content">
-        <i class="fitted shopping basket icon"></i>&nbsp;
+        <i class="fa-solid fa-magnifying-glass fa-mr"></i>
         <?= $s['browseKnown'] ?>
     </div>
 </h3>
@@ -26,22 +26,182 @@ if(!isset($templateOk)) die();
 <div class="ui top attached segment">
     <form class="ui form" action="<?= $_SERVER['PHP_SELF']; ?>" method="get">
         <div class="field">
-            <div class="ui big action input">
+            <div class="ui big labeled action input">
+                <div class="ui basic label">
+                    <div class="ui checkbox" title="<?= $s['sortByDate'] ?>">
+                        <input type="checkbox" name="sort" value="1" >
+                        <label><i class="fa-solid fa-calendar-day"></i></label>
+                    </div>
+                </div>
+
                 <input type="text" name="q" value="<?= $htmlQuery ?>" placeholder="<?= $s['seachForBuilds'] ?>">
-                <button class="ui big blue icon button" type="submit"><i class="search icon"></i></button>
-            </div>
-        </div>
-        <div class="field">
-            <div class="ui checkbox">
-                <input type="checkbox" name="sort" value="1" <?= $dateSortChecked ?>>
-                <label><?= $s['sortByDate'] ?></label>
+                <button class="ui big blue icon button" type="submit"><i class="fa-solid fa-magnifying-glass icon"></i></button>
             </div>
         </div>
     </form>
+
+    <div class="quick-search-buttons">
+        <div class="ui tiny compact menu">
+            <a class="item" href="known.php?q=category:canary">
+                <i class="fa-solid fa-magnifying-glass icon"></i>
+                <?= $s['channel_canary'] ?>
+            </a>
+        </div>
+
+        <div class="ui tiny compact menu">
+            <a class="item" href="known.php?q=category:dev">
+                <i class="fa-solid fa-magnifying-glass icon"></i>
+                <?= $s['channel_dev'] ?>
+            </a>
+        </div>
+
+        <div class="ui tiny compact menu">
+            <div class="ui dropdown item">
+                <i class="fa-solid fa-magnifying-glass icon"></i>
+                Windows 11
+                <i class="dropdown icon"></i>
+
+                <div class="menu">
+                    <a class="item" href="known.php?q=category:w11-23h2-pm-beta">
+                        23H2 Post Moment Beta
+                    </a>
+
+                    <a class="item" href="known.php?q=category:w11-23h2">
+                        23H2
+                    </a>
+
+                    <a class="item" href="known.php?q=category:w11-22h2m4-23h2-beta">
+                        22H2 Moment 4/23H2 Beta
+                    </a>
+
+                    <a class="item" href="known.php?q=category:w11-22h2m3">
+                        22H2 Moment 3 Beta
+                    </a>
+
+                    <a class="item" href="known.php?q=category:w11-22h2m2">
+                        22H2 Moment 2 Beta
+                    </a>
+
+                    <a class="item" href="known.php?q=category:w11-22h2m1">
+                        22H2 Moment 1 Beta
+                    </a>
+
+                    <a class="item" href="known.php?q=category:w11-22h2">
+                        22H2
+                    </a>
+
+                    <a class="item" href="known.php?q=category:w11-21h2">
+                        21H2
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui tiny compact menu">
+            <div class="ui dropdown item">
+                <i class="fa-solid fa-magnifying-glass icon"></i>
+                Windows Server
+                <i class="dropdown icon"></i>
+
+                <div class="menu">
+                    <a class="item" href="known.php?q=category:server-23h2">
+                        23H2
+                    </a>
+                    <a class="item" href="known.php?q=category:server-22h2">
+                        22H2 (HCI only)
+                    </a>
+                    <a class="item" href="known.php?q=category:server-21h2">
+                        LTSC 2022 (21H2)
+                    </a>
+                    <a class="item" href="known.php?q=category:server-21h1">
+                        21H1
+                    </a>
+                    <a class="item" href="known.php?q=category:server-20h2">
+                        20H2(2009)
+                    </a>
+                    <a class="item" href="known.php?q=category:server-2004">
+                        20H1(2004)
+                    </a>
+                    <a class="item" href="known.php?q=category:server-1909">
+                        19H2(1909)
+                    </a>
+                    <a class="item" href="known.php?q=category:server-1903">
+                        19H1(1903)
+                    </a>
+                    <a class="item" href="known.php?q=category:server-20h2-hci">
+                        20H2 (HCI only)
+                    </a>
+                    <a class="item" href="known.php?q=category:server-1809">
+                        LTSC 2019 (1809)
+                    </a>
+                    <a class="item" href="known.php?q=category:server-1803">
+                        1803
+                    </a>
+                    <a class="item" href="known.php?q=category:server-1709">
+                        1709
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui tiny compact menu">
+            <div class="ui dropdown item">
+                <i class="fa-solid fa-magnifying-glass icon"></i>
+                Windows 10
+                <i class="dropdown icon"></i>
+
+                <div class="menu">
+                    <a class="item" href="known.php?q=category:w10-22h2">
+                        22H2
+                    </a>
+
+                    <a class="item" href="known.php?q=category:w10-21h2">
+                        LTSC 2022 (21H2)
+                    </a>
+
+                    <a class="item" href="known.php?q=category:w10-21h1">
+                        21H1
+                    </a>
+
+                    <a class="item" href="known.php?q=category:w10-20h2">
+                        20H2(2009)
+                    </a>
+
+                    <a class="item" href="known.php?q=category:w10-2004">
+                        20H1(2004)
+                    </a>
+
+                    <a class="item" href="known.php?q=category:w10-1909">
+                        19H2(1909)
+                    </a>
+
+                    <a class="item" href="known.php?q=category:w10-1903">
+                        19H1(1903)
+                    </a>
+
+                    <a class="item" href="known.php?q=category:w10-1809">
+                        LTSC 2019 (1809)
+                    </a>
+
+                    <a class="item" href="known.php?q=category:w10-1803">
+                        1803
+                    </a>
+
+                    <a class="item" href="known.php?q=category:w10-1709">
+                        1709
+                    </a>
+
+                    <a class="item" href="known.php?q=category:w10-1703">
+                        1703
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="ui bottom attached success message">
-    <i class="search icon"></i>
+    <i class="fa-solid fa-magnifying-glass icon"></i>
     <?php printf($s['weFoundBuilds'], $count); ?>
 </div>
 
@@ -49,8 +209,8 @@ if(!isset($templateOk)) die();
     <thead>
         <tr>
             <th><?= $s['build'] ?></th>
-            <th><?= $s['arch'] ?></th>
-            <th><?= $s['dateAdded'] ?></th>
+            <th class="collapsing"><?= $s['arch'] ?></th>
+            <th class="collapsing"><?= $s['dateAdded'] ?></th>
         </tr>
     </thead>
     <?php foreach($idsPaginated as $val): ?>
@@ -58,13 +218,13 @@ if(!isset($templateOk)) die();
         <?php if($arch == 'amd64') $arch = 'x64'; ?>
 
         <tr><td>
-            <i class="windows icon"></i>
+            <i class="fa-brands fa-microsoft icon"></i>
             <a href="./selectlang.php?id=<?= htmlentities($val['uuid']) ?>">
                 <?= htmlentities($val['title']) ?> <?= htmlentities($val['arch']) ?>
             </a>
-            </td><td>
+            </td><td class="collapsing">
                 <?= htmlentities($arch) ?>
-            </td><td>
+            </td><td class="collapsing">
 
             <?php if($val['created'] == null): ?>
                 <?= $s['unknown'] ?>

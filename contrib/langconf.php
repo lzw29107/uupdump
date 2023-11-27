@@ -62,3 +62,25 @@ $autoLangMappings = [
     'ro' => 'ro-ro',
     'ru' => 'ru-ru',
 ];
+
+//Language selector configuration
+$selectorConf = [
+    ['de-de', 'de', 'Deutsch'],
+    ['en-us', 'us', 'English (United States)'],
+    ['es-ar', 'ar', 'Español (Argentina)'],
+    ['fr-fr', 'fr', 'Français (France)'],
+    ['it-it', 'it', 'Italiano'],
+    ['hu-hu', 'hu', 'Magyar'],
+    ['nl-nl', 'nl', 'Nederlands'],
+    ['pl-pl', 'pl', 'polski'],
+    ['pt-br', 'br', 'Português (Brasil)'],
+    ['pt-pt', 'pt', 'Português (Portugal)'],
+    ['ru-ru', 'ru', 'Русский'],
+    ['ro-ro', 'ro', 'Română (România)'],
+    ['tr-tr', 'tr', 'Türkçe'],
+    ['ar-sa', 'sa', 'العربية'],
+    ['ko-kr', 'kr', '한국어'],
+    ['zh-cn', 'cn', '中文（简体）'],
+    ['zh-tw', 'tw', '中文（繁體）'],
+    ['ja-jp', 'jp', '日本語'],
+];

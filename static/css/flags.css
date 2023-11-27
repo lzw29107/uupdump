@@ -1,0 +1,96 @@
+/*
+* UUP dump Flags Style Sheet
+* https://uupdump.net/
+* 
+* Copyright (C) 2023 UUP dump authors. All rights reserved.
+*
+* The GoSquared Flags Icon Set is released under the MIT License
+* https://github.com/gosquared/flags/blob/master/LICENSE.txt
+*/
+
+.flag {
+    background: url('/static/images/flags.png') no-repeat top left;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin: 0 .4em -3px 0;
+}
+
+.flag.ar {
+    background-position: 0 0;
+}
+
+.flag.br {
+    background-position: -16px 0;
+}
+
+.flag.cn {
+    background-position: 0 -16px;
+}
+
+.flag.de {
+    background-position: -16px -16px;
+}
+
+.flag.fr {
+    background-position: -32px 0;
+}
+
+.flag.hu {
+    background-position: -32px -16px;
+}
+
+.flag.it {
+    background-position: 0 -32px;
+}
+
+.flag.jp {
+    background-position: -16px -32px;
+}
+
+.flag.kr {
+    background-position: -32px -32px;
+}
+
+.flag.nl {
+    background-position: -48px 0;
+}
+
+.flag.pl {
+    background-position: -48px -16px;
+}
+
+.flag.pt {
+    background-position: -48px -32px;
+}
+
+.flag.ro {
+    background-position: 0 -48px;
+}
+
+.flag.ru {
+    background-position: -16px -48px;
+}
+
+.flag.sa {
+    background-position: -32px -48px;
+}
+
+.flag.tr {
+    background-position: -48px -48px;
+}
+
+.flag.tw {
+    background-position: -64px 0;
+}
+
+.flag.us {
+    background-position: -64px -16px;
+}
+
+@media (min-resolution: 192dpi) {
+    .flag {
+        background: url('/static/images/flags_2x.png') no-repeat top left;
+        background-size: 80px 64px;
+    }
+}

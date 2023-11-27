@@ -18,7 +18,7 @@ if(!isset($templateOk)) die();
 ?>
 <h3 class="ui centered header">
     <div class="content">
-        <i class="fitted list icon"></i>&nbsp;
+        <i class="fa-brands fa-microsoft fa-mr"></i>
         <?= htmlentities($updateName.' '.$updateArch) ?>
     </div>
 </h3>
@@ -29,9 +29,9 @@ if(!isset($templateOk)) die();
     <thead>
         <tr>
             <th><?= $s['file'] ?></th>
-            <th><?= $s['expires'] ?></th>
-            <th><?= $s['sha1'] ?></th>
-            <th><?= $s['size'] ?></th>
+            <th class="collapsing"><?= $s['expires'] ?></th>
+            <th class="collapsing"><?= $s['sha1'] ?></th>
+            <th class="collapsing"><?= $s['size'] ?></th>
         </tr>
     </thead>
     <?php $totalSize = 0; foreach($filesKeys as $val): ?>
@@ -43,11 +43,11 @@ if(!isset($templateOk)) die();
             <a href="<?= $files[$val]['url'] ?>">
                 <?= $val ?>
             </a>
-        </td><td>
+        </td><td class="collapsing">
             <?= date("Y-m-d H:i:s T", $files[$val]['expire']) ?>
-        </td><td>
+        </td><td class="collapsing">
             <code><?= $files[$val]['sha1'] ?></code>
-        </td><td>
+        </td><td class="collapsing">
             <?= $size ?>
         </td></tr>
     <?php endforeach; ?>
@@ -57,7 +57,7 @@ if(!isset($templateOk)) die();
 </table>
 
 <div class="ui info message">
-    <i class="info icon"></i>
+    <i class="fa-solid fa-info icon"></i>
     <?php printf($s['totalSizeOfFiles'], $totalSize); ?>
 </div>
 
@@ -66,7 +66,7 @@ if(!isset($templateOk)) die();
 <div class="ui divider"></div>
 
 <div class="ui icon positive message">
-    <i class="terminal icon"></i>
+    <i class="fa-solid fa-terminal icon"></i>
     <div class="content">
         <div class="header"><?= $s['fileRenamingScript'] ?></div>
         <p>
@@ -85,7 +85,7 @@ if(!isset($templateOk)) die();
 <div class="ui divider"></div>
 
 <div class="ui icon positive message">
-    <i class="check circle outline icon"></i>
+    <i class="fa-solid fa-file-circle-check icon"></i>
     <div class="content">
         <div class="header"><?= $s['sha1File'] ?></div>
         <p><?= $s['sha1FileDesc'] ?></p>

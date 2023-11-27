@@ -109,27 +109,27 @@ function styleUpper($pageType = 'home', $subtitle = '') {
     $url = htmlentities(getUrlWithoutParam('theme'));
 
     if($theme == 'auto') {
-        $ThemeMode = '<style>@import url(\'css/darkmode.css\') (prefers-color-scheme: dark);</style>';
+        $ThemeMode = '<style>@import url(\'static/css/dark.css\') (prefers-color-scheme: dark);</style>';
     } elseif($theme == 'light') {
       $ThemeMode = '';
     } elseif($theme == 'dark') {
-      $ThemeMode = '<link rel="stylesheet" href="css/darkmode.css">';
+      $ThemeMode = '<link rel="stylesheet" href="static/css/dark.css">';
     } elseif($theme == 'legacy') {
-      $ThemeMode = '<link rel="stylesheet" href="css/legacy.css">';
+      $ThemeMode = '<link rel="stylesheet" href="static/css/legacy.css">';
     }
 
     switch ($pageType) {
         case 'home':
-            $navbarLink = '<a class="active item" href="./"><i class="home icon"></i>'.$s['home'].'</a>'.
-                          '<a class="item" href="known.php"><i class="download icon"></i>'.$s['downloads'].'</a>'.
-                          '<a class="item" target=_blank href="https://git.uupdump.net/uup-dump/containment-zone/src/branch/master/FAQ.md"><i class="question circle icon"></i>'.$s['faq'].'</a>';
+            $navbarLink = '<a class="active item" href="./"><i class="fa-solid fa-house icon"></i>'.$s['home'].'</a>'.
+                          '<a class="item" href="known.php"><i class="fa-solid fa-download icon"></i>'.$s['downloads'].'</a>'.
+                          '<a class="item" target=_blank href="https://git.uupdump.net/uup-dump/containment-zone/src/branch/master/FAQ.md"><i class="fa-solid fa-question icon"></i>'.$s['faq'].'</a>';
             $pageheader = '<div class="page-header extended">';
         break;
 
         case 'downloads':
-            $navbarLink = '<a class="item" href="./"><i class="home icon"></i>'.$s['home'].'</a>'.
-                          '<a class="active item" href="known.php"><i class="download icon"></i>'.$s['downloads'].'</a>'.
-                          '<a class="item" target=_blank href="https://git.uupdump.net/uup-dump/containment-zone/src/branch/master/FAQ.md"><i class="question circle icon"></i>'.$s['faq'].'</a>';
+            $navbarLink = '<a class="item" href="./"><i class="fa-solid fa-house icon"></i>'.$s['home'].'</a>'.
+                          '<a class="active item" href="known.php"><i class="fa-solid fa-download icon"></i>'.$s['downloads'].'</a>'.
+                          '<a class="item" target=_blank href="https://git.uupdump.net/uup-dump/containment-zone/src/branch/master/FAQ.md"><i class="fa-solid fa-question icon"></i>'.$s['faq'].'</a>';
             $pageheader = '<div class="page-header regular">';
         break;
 
@@ -139,10 +139,10 @@ function styleUpper($pageType = 'home', $subtitle = '') {
         break;
     }
 
-    $langSelect = '<a class="item language-selector-btn"><i class="globe icon"></i>'.$s['currentLanguage'].'</a>';
-    $ThemeSelect = '<a class="item theme-selector-btn"><i class="paint brush icon"></i>'.$s['themeButton'].'</a>';
-    $sourceCodeLink = '<a class="item" href="https://git.uupdump.net/uup-dump"><i class="code icon"></i>'.$s['sourceCode'].'</a>';
-    $discordInvite = '<a class="item" href="https://discord.gg/yVRbtb2"><i class="discord icon"></i>Discord</a>';
+    $langSelect = '<a class="item language-selector-btn"><i class="fa-solid fa-globe icon"></i>'.$s['currentLanguage'].'</a>';
+    $ThemeSelect = '<a class="item theme-selector-btn"><i class="fa-solid fa-brush icon"></i>'.$s['themeButton'].'</a>';
+    $sourceCodeLink = '<a class="item" href="https://git.uupdump.net/uup-dump"><i class="fa-solid fa-code icon"></i>'.$s['sourceCode'].'</a>';
+    $discordInvite = '<a class="item" href="https://discord.gg/yVRbtb2"><i class="fa-brands fa-discord icon"></i>Discord</a>';
 
     $navbarRight = $langSelect.$ThemeSelect.$sourceCodeLink.$discordInvite;
     $navbarMobile = $ThemeSelect.$sourceCodeLink.$discordInvite.$langSelect;
@@ -163,15 +163,17 @@ function styleUpper($pageType = 'home', $subtitle = '') {
         <meta property="og:title" content="$subTitleOnly">
         <meta property="og:type" content="website">
         <meta property="og:description" content="$description">
-        <meta property="og:image" content="$baseUrl/img/cover.png">
+        <meta property="og:image" content="$baseUrl/static/images/cover.png">
         <meta property="og:url" content="$fullUrl">
 
-        <link rel="stylesheet" href="css/semantic.min.css">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="static/semantic-ui/semantic.min.css">
+        <link rel="stylesheet" href="static/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="static/css/flags.css">
+        <link rel="stylesheet" href="static/css/light.css">
         $ThemeMode
-        <script src="js/jquery.min.js"></script>
-        <script src="js/semantic.min.js"></script>
-        <script src="js/common.js" defer></script>
+        <script src="static/js/jquery.min.js"></script>
+        <script src="static/semantic-ui/semantic.min.js"></script>
+        <script src="static/js/common.js" defer></script>
 
         <title>$title</title>
     </head>
@@ -184,7 +186,7 @@ function styleUpper($pageType = 'home', $subtitle = '') {
         <div class="pusher">
             $pageheader
                 <div class="ui title container">
-                    <h1><img src="img/logo.svg" class="logo" alt="{$s['uupdump']}">{$s['uupdump']}</h1>
+                    <h1><img src="static/images/logo.svg" class="logo" alt="{$s['uupdump']}">{$s['uupdump']}</h1>
                 </div>
 
                 <div class="ui one column grid page-header-menu">
@@ -196,15 +198,19 @@ function styleUpper($pageType = 'home', $subtitle = '') {
                             </div>
                         </div>
                     </div>
+      
                     <div class="ui attached secondary menu mobile tablet only column">
                         <div class="ui container">
-                            <a class="item sidebar-open-btn"><i class="bars icon"></i>{$s['menu']}</a>
+                            <a class="item sidebar-open-btn">
+                                <i class="fa-solid fa-bars icon"></i>{$s['menu']}
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="ui container">
+                
 HTML;
 }
 
@@ -232,28 +238,28 @@ function styleLower() {
         </div>
         <div class="content">
             <p><a class="ui primary fluid labeled icon button" href="{$url}theme=auto">
-                <i class="magic icon"></i>
+                <i class="fa-solid fa-wand-magic-sparkles icon"></i>
                 {$s['themeAuto']}
             </a></p>
 
             <div class="ui divider"></div>
 
             <p><a class="ui fluid labeled icon button" href="{$url}theme=light">
-                <i class="sun icon"></i>
+                <i class="fa-solid fa-sun icon"></i>
                 {$s['themeLight']}
             </a></p>
             <p><a class="ui fluid labeled icon button" href="{$url}theme=dark">
-                <i class="moon icon"></i>
+                <i class="fa-solid fa-moon icon"></i>
                 {$s['themeDark']}
             </a></p>
             <p><a class="ui fluid labeled icon button" href="{$url}theme=legacy">
-                <i class="undo icon"></i>
+                <i class="fa-solid fa-rotate-left icon"></i>
                 {$s['themeLegacy']}
             </a></p>
         </div>
         <div class="actions">
             <div class="ui ok button">
-                <i class="close icon"></i>
+                <i class="fa-solid fa-xmark icon"></i>
                 {$s['cancel']}
             </div>
         </div>
@@ -262,19 +268,21 @@ function styleLower() {
     EOD;
   
     echo <<<HTML
-                <div class="ui justified container footer">
+                <div class="ui center aligned container footer">
                     <div class="ui divider"></div>
                     <p><i>$renderText
-                        <b>{$s['uupdump']}</b> v$websiteVersion  
-                        <b>API</b> v$api
+                        <b>{$s['uupdump']}</b> $websiteVersion /
+                        <b>API</b> $api (<a href="https://git.uupdump.net/uup-dump/api/commit/d10e24cf5bbbb2f209ec8a2eb2a6177e4f6cc0f5">d10e24c</a>) /
+                        <b>contrib</b> <a href="https://git.uupdump.net/uup-dump/contrib/commit/bb9b3c430ebc91d28122d02009dd877025e49010">bb9b3c4</a> /
+                        <b>misc</b> <a href="https://git.uupdump.net/uup-dump/misc/commit/4793c77895393becd06e23775d2a459d0702dbf1">4793c77</a><br/>
                         $copyright
                         <span class="info">{$s['notAffiliated']}</span>
                     </i></p>
                 </div>
             </div>
         </div>
-        $ThemeCoreSelectorModal
         $languageCoreSelectorModal
+        $ThemeCoreSelectorModal
     </body>
 </html>
 HTML;
@@ -424,7 +432,7 @@ function fancyError($errorCode = 'ERROR', $pageType = 'home', $moreText = 0) {
 
     echo <<<ERROR
 <h1 class="ui red center aligned icon header error-page-message">
-    <i class="times circle icon"></i>
+    <i class="fa-solid fa-circle-xmark icon"></i>
     <div class="content">
         {$s['error']}
         <div class="sub header">
@@ -442,7 +450,7 @@ function styleCluelessUserArm64Warn() {
 
     echo <<<INFO
 <div class="ui warning message">
-    <i class="mobile alternate icon"></i>
+    <i class="fa-solid fa-mobile-screen icon"></i>
     {$s['arm64Warning2023']}
 </div>
 
