@@ -191,7 +191,7 @@ $s['fileRenamingScriptDescFindFiles'] = '如果你要对从此页面下载的文
 $s['fileRenamingScriptGenW'] = '生成重命名脚本（Windows）';
 $s['fileRenamingScriptGenL'] = '生成重命名脚本（Linux、macOS）';
 $s['searchForFiles'] = '搜索文件……';
-$s['weFoundFiles'] = '根据在你的查询，已找到 <b>%d</b> 个文件。'; //<b>692</b> files were found for your query.
+$s['weFoundFiles'] = '根据你的查询，已找到 <b>%d</b> 个文件。'; //<b>692</b> files were found for your query.
 $s['sizeOfShownFiles'] = '显示文件大小：%s'; //Size of shown files: 2.86 GiB
 
 //style.php

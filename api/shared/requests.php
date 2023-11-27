@@ -39,11 +39,7 @@ function composeDeviceAttributes($flight, $ring, $build, $arch, $sku, $type, $fl
         $insType = 'Server';
         $blockUpgrades = 1;
     }
-      // WNC
-    if($sku == 210) {
-        $dvcFamily = 'Windows.CorePC';
-        $insType = 'CorePC';
-    }
+
 if(uupApiConfigIsTrue('enable_unsupported_features')) {
     // Hololens
     if($sku == 135) {
@@ -182,7 +178,7 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
         'GStatus_RS5=2',
         'GenTelRunTimestamp_19H1='.(time()-3600),
         'HidparseDriversVer='.$build,
-        'HotPatchEKBInstalled=1',
+        //'HotPatchEKBInstalled=1',
         'InstallDate=1438196400',
         'InstallLanguage=en-US',
         'InstallationType='.$insType,
@@ -419,10 +415,6 @@ function composeFetchUpdRequest($arch, $flight, $ring, $build, $sku = 48, $type 
     if(uupApiIsServer($sku)) {
         $mainProduct = 'Server.OS';
     }
-    // WNC
-    if($sku == 210) {
-        $mainProduct = 'NextCorePC.OS';
-    }
 if(uupApiConfigIsTrue('enable_unsupported_features')) {
     // Hololens
     if($sku == 135) {
@@ -481,7 +473,7 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
         $products[] = "PN=MSRT.$currArch&Source=UpdateOrchestrator&V=0.0.0.0";
         $products[] = "PN=SedimentPack.$currArch&Source=UpdateOrchestrator&V=0.0.0.0";
         $products[] = "PN=UUS.$currArch&Source=UpdateOrchestrator&V=0.0.0.0";
-        $products[] = "PN=Hotpatch.$currArch&Name=Hotpatch Enrollment Package&V=10.0.20348.465";
+        //$products[] = "PN=Hotpatch.$currArch&Name=Hotpatch Enrollment Package&V=10.0.20348.465";
     }
 
     $callerAttrib = array(
@@ -623,7 +615,7 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
                         <XmlUpdateFragmentType>LocalizedProperties</XmlUpdateFragmentType>
                     </XmlUpdateFragmentTypes>
                     <Locales>
-                        <string>zh-CN</string>
+                        <string>en-US</string>
                     </Locales>
                 </ExtendedUpdateInfoParameters>
                 <ClientPreferredLanguages/>

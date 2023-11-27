@@ -101,34 +101,23 @@ if($sendCookie) {
 }
 
 $url = htmlentities(getUrlWithoutParam('lang'));
+
+$langselector = '';
+foreach($selectorConf as $l) {
+    $langselector .= "<p><a href=\"{$url}lang={$l[0]}\"><i class=\"{$l[1]} flag\"></i>{$l[2]}</a></p>";
+}
+
 $languageCoreSelectorModal = <<<EOD
 <div class="ui normal mini modal select-language">
     <div class="header">
         {$s['selectLanguage']}
     </div>
     <div class="content">
-        <p><a href="{$url}lang=de-de"><i class="de flag"></i>Deutsch</a></p>
-        <p><a href="{$url}lang=en-us"><i class="us flag"></i>English (United States)</a></p>
-        <p><a href="{$url}lang=es-ar"><i class="ar flag"></i>Español (Argentina)</a></p>
-        <p><a href="{$url}lang=fr-fr"><i class="fr flag"></i>Français (France)</a></p>
-        <p><a href="{$url}lang=it-it"><i class="it flag"></i>Italiano</a></p>
-        <p><a href="{$url}lang=hu-hu"><i class="hu flag"></i>Magyar</a></p>
-        <p><a href="{$url}lang=nl-nl"><i class="nl flag"></i>Nederlands</a></p>
-        <p><a href="{$url}lang=pl-pl"><i class="pl flag"></i>polski</a></p>
-        <p><a href="{$url}lang=pt-br"><i class="br flag"></i>Português (Brasil)</a></p>
-        <p><a href="{$url}lang=pt-pt"><i class="pt flag"></i>Português (Portugal)</a></p>
-        <p><a hreF="{$url}lang=ru-ru"><i class="ru flag"></i>Русский</a></p>
-        <p><a href="{$url}lang=ro-ro"><i class="ro flag"></i>Română (România)</a></p>
-        <p><a href="{$url}lang=tr-tr"><i class="tr flag"></i>Türkçe</a></p>
-        <p><a href="{$url}lang=ar-sa"><i class="sa flag"></i>العربية</a></p>
-        <p><a href="{$url}lang=ko-kr"><i class="kr flag"></i>한국어</a></p>
-        <p><a href="{$url}lang=zh-cn"><i class="cn flag"></i>中文（简体）</a></p>
-        <p><a href="{$url}lang=zh-tw"><i class="tw flag"></i>中文（繁體）</a></p>
-        <p><a href="{$url}lang=ja-jp"><i class="jp flag"></i>日本語</a></p>
+    $langselector
 </div>
     <div class="actions">
         <div class="ui ok button">
-            <i class="close icon"></i>
+            <i class="fa-solid fa-xmark icon"></i>
             {$s['cancel']}
         </div>
     </div>

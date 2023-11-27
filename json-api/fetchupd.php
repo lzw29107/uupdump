@@ -10,6 +10,9 @@ $flight = isset($_GET['flight']) ? $_GET['flight'] : 'Active';
 $build = isset($_GET['build']) ? $_GET['build'] : 'latest';
 $sku = isset($_GET['sku']) ? $_GET['sku'] : '48';
 $type = isset($_GET['type']) ? $_GET['type'] : 'Production';
+if(isset($_GET['flags'])) {
+    $build .= $_GET['flags'];
+}
 
 header('Content-Type: application/json');
 

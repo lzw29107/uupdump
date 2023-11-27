@@ -136,14 +136,6 @@ foreach($filesApp as $file) {
         $totalSize += $file['size'];
     }
   }
-  if(isset($neutraleditions['APP_MOMENT'])) {
-    $filesAppMoment = uupGetFiles($updateId, 'neutral', 'APP_MOMENT', 2);
-    $filesAppMoment = $filesAppMoment['files'];
-
-    foreach($filesAppMoment as $file) {
-        $totalSize += $file['size'];
-    }
-  }
 }
 
 $totalSize = readableSize($totalSize, 2);

@@ -18,19 +18,19 @@ if(!isset($templateOk)) die();
 ?>
 <h3 class="ui centered header">
     <div class="content">
-        <i class="fitted cubes icon"></i>&nbsp;
+        <i class="fa-brands fa-microsoft fa-mr"></i>
         <?= htmlentities($updateTitle) ?>
     </div>
 </h3>
 
-<script src="js/selectedition.js" defer></script>
+<script src="static/js/selectedition.js" defer></script>
 
 <?php if($updateArch == 'arm64') styleCluelessUserArm64Warn(); ?>
 
 <div class="ui equal width mobile stackable grid">
     <div class="column">
         <h3 class="ui header">
-            <i class="archive icon"></i>
+            <i class="fa-solid fa-box-archive icon"></i>
             <div class="content">
                 <?= $s['chooseEdition']; ?>
                 <div class="sub header"><?= $s['chooseEditionDesc'] ?></div>
@@ -43,7 +43,7 @@ if(!isset($templateOk)) die();
             <div class="field">
                 <label><?= $s['lang'] ?></label>
                 <p>
-                    <i class="green checkmark icon"></i>
+                    <i class="fa-solid fa-check green icon"></i>
                     <?= $selectedLangName ?>
                 </p>
             </div>
@@ -73,11 +73,11 @@ if(!isset($templateOk)) die();
             <p><?php if(!$disableVE) echo $s['additionalEditionsInfo'] ?></p>
 
             <button id="edition-selection-confirm" class="ui fluid right labeled icon primary button" type="submit">
-                <i class="right arrow icon"></i>
+                <i class="fa-solid fa-angle-right icon"></i>
                 <?= $s['next'] ?>
             </button>
             <div class="ui info message">
-                <i class="info icon"></i>
+                <i class="fa-solid fa-info icon"></i>
                 <?= $s['selectEditionInfoText'] ?>
             </div>
         </form>
@@ -143,7 +143,7 @@ if(!isset($templateOk)) die();
 
 <div class="ui fluid tiny three steps">
       <div class="completed step">
-            <i class="world icon"></i>
+            <i class="fa-solid fa-globe icon"></i>
             <div class="content">
                 <div class="title"><?= $s['chooseLang'] ?></div>
                 <div class="description"><?= $s['chooseLangDesc'] ?></div>
@@ -151,7 +151,7 @@ if(!isset($templateOk)) die();
       </div>
 
       <div class="active step">
-            <i class="archive icon"></i>
+            <i class="fa-solid fa-box-archive icon"></i>
             <div class="content">
                 <div class="title"><?= $s['chooseEdition'] ?></div>
                 <div class="description"><?= $s['chooseEditionDesc'] ?></div>
@@ -159,7 +159,7 @@ if(!isset($templateOk)) die();
       </div>
 
       <div class="step">
-            <i class="briefcase icon"></i>
+            <i class="fa-solid fa-briefcase icon"></i>
             <div class="content">
                 <div class="title"><?= $s['summary'] ?></div>
                 <div class="description"><?= $s['summaryDesc'] ?></div>

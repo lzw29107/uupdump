@@ -1,3 +1,4 @@
+
 /*
 * UUP dump Light Theme Style Sheet
 * https://uupdump.net/
@@ -12,7 +13,7 @@
 }
 
 .page-header.regular {
-    background-image: url('/img/bg_light.png');
+    background-image: url('/static/images/bg_light.png');
     background-color: #f2f4f6;
     box-shadow: 0 0 48px #0003;
     border-bottom: 1px solid #d3d3d3;
@@ -37,7 +38,7 @@
     left: 0;
     z-index: -1;
     height: calc(100% + 32rem);
-    background-image: linear-gradient(#fff0, #fff), url('/img/bg_light_extended.png');
+    background-image: linear-gradient(#fff0, #fff), url('/static/images/bg_light_extended.png');
 }
 
 .page-header.extended .title {
@@ -92,13 +93,13 @@
 }
 
 .welcome-text .header {
-    font-size: 30pt;
+    font-size: 3rem;
     font-weight: 700;
     margin: 0;
 }
 
 .welcome-text .sub {
-    font-size: 12pt;
+    font-size: 1.1rem;
     opacity: 0.5;
 }
 
@@ -113,6 +114,21 @@
     max-width: 700px;
 }
 
+i.fa-mr {
+    margin: 0 .2em 0 0;
+}
+
+.home-search {
+    border-radius: .286rem;
+    box-shadow: 0 2px 4px 0 #0001;
+}
+
+.home-quick-options {
+    margin-top: 1.1em;
+    border-radius: .286rem;
+    box-shadow: 0 8px 16px 0 #0001;
+}
+
 body.pushable {
     background-color: revert !important;
 }
@@ -121,8 +137,19 @@ body.pushable {
     background-color: revert !important;
 }
 
+.ui.labeled.action.input input {
+    width: 50% !important;
+}
+
 .content.field.transition.hidden:not(.active) {
-    display: none !important;
+  display: none !important;
+}
+
+@media only screen and (max-width: 991px) {
+    .home-quick-options .ui.top.attached.table {
+        width: calc(100% + 2px) !important;
+        margin-bottom: -2px;
+    }
 }
 
 @media only screen and (min-width: 1392px) {

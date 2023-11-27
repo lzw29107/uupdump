@@ -70,10 +70,10 @@ parameters. (like "Fetch the latest build" on the website)
 
 Parameters:
  - `arch` - Specifies which architecture the API will return.
-   - **Supported values:** `amd64`, `x86`, `arm`, `arm64`, `all`
+   - **Supported values:** `amd64`, `x86`, `arm64`, `all`
 
  - `ring` - Specifies the channel (ring) the API uses when querying Windows Update servers.
-   - **Supported values:** `CanaryChannel`, `Dev`, `Beta`, `ReleasePreview`, `Retail`, `MSIT`
+   - **Supported values:** `Dev`, `Beta`, `ReleasePreview`, `Retail`
    - **Supported Ring values :** `WIF`, `WIS`, `RP`, `RETAIL`
 
  - `flight` - Content (Flight) tye to use when fetching information

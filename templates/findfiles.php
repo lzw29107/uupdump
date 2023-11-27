@@ -18,7 +18,7 @@ if(!isset($templateOk)) die();
 ?>
 <h3 class="ui centered header">
     <div class="content">
-        <i class="fitted list icon"></i>&nbsp;
+        <i class="fa-brands fa-microsoft fa-mr"></i>
         <?= htmlentities($updateName.' '.$updateArch) ?>
     </div>
 </h3>
@@ -29,22 +29,22 @@ if(!isset($templateOk)) die();
             <div class="ui big action input">
                 <input type="hidden" name="id" value="<?= htmlentities($updateId) ?>">
                 <input type="text" name="q" value="<?= $htmlQuery ?>" placeholder="<?= $s['searchForFiles'] ?>">
-                <button class="ui big blue icon button" type="submit"><i class="search icon"></i></button>
+                <button class="ui big blue icon button" type="submit"><i class="fa-solid fa-magnifying-glass icon"></i></button>
             </div>
         </div>
     </form>
 </div>
 <div class="ui bottom attached success message">
-    <i class="search icon"></i>
+    <i class="fa-solid fa-magnifying-glass icon"></i>
     <?php printf($s['weFoundFiles'], $count); ?>
 </div>
 
-<table class="ui fixed celled striped tablet stackable table">
+<table class="ui celled striped tablet stackable table">
     <thead>
         <tr>
-            <th class="eight wide"><?= $s['file'] ?></th>
-            <th class="six wide"><?= $s['sha1'] ?></th>
-            <th class="two wide"><?= $s['size'] ?></th>
+            <th><?= $s['file'] ?></th>
+            <th class="collapsing"><?= $s['sha1'] ?></th>
+            <th class="collapsing"><?= $s['size'] ?></th>
         </tr>
     </thead>
     <?php $totalSize = 0; foreach($filesKeys as $val): ?>
@@ -56,9 +56,9 @@ if(!isset($templateOk)) die();
             <a href="<?= $urlBase ?>&file=<?= $val ?>">
                 <?= $val ?>
             </a>
-        </td><td>
+        </td><td class="collapsing">
             <code><?= $files[$val]['sha1'] ?></code>
-        </td><td>
+        </td><td class="collapsing">
             <?= $size ?>
         </td></tr>
     <?php endforeach; ?>
@@ -68,14 +68,14 @@ if(!isset($templateOk)) die();
 </table>
 
 <div class="ui info message">
-    <i class="info icon"></i>
+    <i class="fa-solid fa-info icon"></i>
     <?php printf($s['sizeOfShownFiles'], $totalSize); ?>
 </div>
 
 <div class="ui divider"></div>
 
 <div class="ui icon message">
-    <i class="terminal icon"></i>
+    <i class="fa-solid fa-terminal icon"></i>
     <div class="content">
         <div class="header"><?= $s['fileRenamingScript'] ?></div>
         <p><?= $s['fileRenamingScriptDescFindFiles'] ?></p>
@@ -84,7 +84,7 @@ if(!isset($templateOk)) die();
             <div class="column">
                 <a class="ui fluid labeled icon button"
                 href="get.php?id=<?= $updateId ?>&renscript=1">
-                    <i class="windows icon"></i>
+                    <i class="fa-brands fa-microsoft icon"></i>
                     <?= $s['fileRenamingScriptGenW'] ?>
                 </a>
             </div>
@@ -92,7 +92,7 @@ if(!isset($templateOk)) die();
             <div class="column">
                 <a class="ui fluid labeled icon button"
                 href="get.php?id=<?= $updateId ?>&renscript=2">
-                    <i class="linux icon"></i>
+                    <i class="fa-brands fa-linux icon"></i>
                     <?= $s['fileRenamingScriptGenL'] ?>
                 </a>
             </div>
@@ -103,7 +103,7 @@ if(!isset($templateOk)) die();
 <div class="ui divider"></div>
 
 <div class="ui icon message">
-    <i class="check circle outline icon"></i>
+    <i class="fa-solid fa-file-circle-check icon"></i>
     <div class="content">
         <div class="header"><?= $s['sha1File'] ?></div>
         <p><?= $s['sha1FileDesc'] ?></p>

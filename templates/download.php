@@ -18,19 +18,19 @@ if(!isset($templateOk)) die();
 ?>
 <h3 class="ui centered header">
     <div class="content">
-        <i class="fitted briefcase icon"></i>&nbsp;
+        <i class=""fa-solid fa-briefcase fa-mr"></i>
         <?= $s['summaryOfSelection'] ?>
     </div>
 </h3>
 
-<script src="js/download.js" defer></script>
+<script src="static/js/download.js" defer></script>
 
 <?php if($updateArch == 'arm64') styleCluelessUserArm64Warn(); ?>
 
 <div class="ui two columns mobile reversed stackable centered grid">
     <div class="column">
         <h3 class="ui header">
-            <i class="download icon"></i>
+            <i class="fa-solid fa-download icon"></i>
             <div class="content">
                 <?= $s['selectDownloadOptions'] ?>
                 <div class="sub header"><?= $s['selectDownloadOptionsSub'] ?></div>
@@ -43,8 +43,7 @@ if(!isset($templateOk)) die();
                 <div class="grouped fields">
                     <div class="field">
                         <div class="ui radio checkbox">
-                            <input type="radio" name="autodl" value="1"
-                            <?= $dlOnly ? 'checked' : '' ?>>
+                            <input type="radio" name="autodl" value="1"<?= $dlOnly ? ' checked' : '' ?>>
                             <label>
                                 <?= $s['aria2Opt1']; ?><br/>
                                 <small><?= $s['aria2Opt1Desc']; ?></small>
@@ -117,7 +116,7 @@ if(!isset($templateOk)) die();
                   <div class="field">
                       <div class="ui accordion field">
                       <div class="title">
-                        <i class="icon dropdown"></i>
+                        <i class="dropdown icon"></i>
                         <label><?= $s['conversionAdvOptions'] ?></label>
                       </div>
                       <div class="content field transition hidden">
@@ -133,28 +132,8 @@ if(!isset($templateOk)) die();
                 </div>
             </div>
 
-            <div class="field" id="additional-editions-list">
-                <label><?= $s['selAdditionalEditions'] ?></label>
-                <div class="grouped fields">
-                    <?php $printedEditions = 0; ?>
-                    <?php if(!$disableVE) foreach($virtualEditions as $key => $val): ?>
-                        <div class="field">
-                            <div class="ui checkbox">
-                                <input class="virtual-edition" type="checkbox" name="virtualEditions[]" value="<?= $key ?>" checked>
-                                <label><?= $val ?></label>
-                            </div>
-                        </div>
-                        <?php $printedEditions++; ?>
-                    <?php endforeach; ?>
-
-                    <?php if(!$printedEditions): ?>
-                        <p><?= $s['noAdditionalEditions'] ?></p>
-                    <?php endif; ?>
-                </div>
-            </div>
-
             <div class="ui negative justified container message" id="legal-cope">
-                <i class="balance scale icon"></i>
+                <i class="fa-solid fa-scale-balanced icon"></i>
                 <b><?= $s['legalCopeHarder'] ?></b>
 
                 <div class="ui bulleted list">
@@ -165,7 +144,7 @@ if(!isset($templateOk)) die();
             </div>
 
             <button class="ui fluid right labeled icon primary button" type="submit">
-                <i class="download icon"></i>
+                <i class="fa-solid fa-download icon"></i>
                 <?= $s['startDownload'] ?>
             </button>
         </form>
@@ -173,7 +152,7 @@ if(!isset($templateOk)) die();
 
     <div class="column">
         <div class="ui small header">
-            <i class="cubes icon"></i>
+            <i class="fa-brands fa-microsoft icon"></i>
             <div class="content">
                 <?= $s['update']; ?>
                 <div class="sub header"><?= htmlentities($updateTitle) ?></div>
@@ -181,7 +160,7 @@ if(!isset($templateOk)) die();
         </div>
 
         <div class="ui small header">
-            <i class="globe icon"></i>
+            <i class="fa-brands fa-globe icon"></i>
             <div class="content">
                 <?= $s['lang']; ?>
                 <div class="sub header"><?= $selectedLangName ?></div>
@@ -189,7 +168,7 @@ if(!isset($templateOk)) die();
         </div>
 
         <div class="ui small header">
-            <i class="archive icon"></i>
+            <i class="fa-solid fa-box-archive icon"></i>
             <div class="content">
                 <?= $s['edition']; ?>
                 <div class="sub header"><?= $selectedEditionName ?></div>
@@ -197,7 +176,7 @@ if(!isset($templateOk)) die();
         </div>
 
         <div class="ui small header">
-            <i class="download icon"></i>
+            <i class="fa-solid fa-download icon"></i>
             <div class="content">
                 <?= $s['totalDlSize']; ?>
                 <div class="sub header"><?= $totalSize ?></div>
@@ -206,7 +185,7 @@ if(!isset($templateOk)) die();
 
         <?php if($build > 22557): ?>
         <div class="ui small red header">
-            <i class="exclamation triangle icon"></i>
+            <i class="fa-solid fa-triangle-exclamation icon"></i>
             <div class="content">
                 <?= $s['win1122h2OrLaterv2'] ?>
                 <div class="sub header"><?= $s['requiresWindows102004v2'] ?></div>
@@ -216,7 +195,7 @@ if(!isset($templateOk)) die();
 
         <?php if($hasUpdates): ?>
             <div class="ui small header" style="margin-bottom:0;">
-                <i class="info icon"></i>
+                <i class="fa-solid fa-info icon"></i>
                 <div class="content">
                     <?= $s['additionalUpdates'] ?>
                     <div class="sub header">
@@ -231,7 +210,7 @@ if(!isset($templateOk)) die();
 
             <div class="ui center aligned container">
                 <a class="ui tiny labeled icon button" href="<?= $urlUpd; ?>" style="margin-top:1em;">
-                    <i class="folder open icon"></i>
+                    <i class="fa-regular fa-folder-open icon"></i>
                     <?= $s['browseUpdatesList'] ?>
                 </a>
             </div>
@@ -239,7 +218,7 @@ if(!isset($templateOk)) die();
 
         <div class="ui divider"></div>
         <a class="ui fluid right labeled icon button" href="<?= $url; ?>">
-            <i class="list icon"></i>
+            <i class="fa-solid fa-list icon"></i>
             <?= $s['browseList'] ?>
         </a>
     </div>
@@ -268,7 +247,7 @@ if(!isset($templateOk)) die();
 
 <div class="ui fluid tiny three steps">
     <div class="completed step">
-          <i class="world icon"></i>
+          <i class="fa-solid fa-globe icon"></i>
           <div class="content">
               <div class="title"><?= $s['chooseLang'] ?></div>
               <div class="description"><?= $s['chooseLangDesc'] ?></div>
@@ -276,7 +255,7 @@ if(!isset($templateOk)) die();
     </div>
 
     <div class="completed step">
-          <i class="archive icon"></i>
+          <i class="fa-solid fa-box-archive icon"></i>
           <div class="content">
               <div class="title"><?= $s['chooseEdition'] ?></div>
               <div class="description"><?= $s['chooseEditionDesc'] ?></div>
@@ -284,7 +263,7 @@ if(!isset($templateOk)) die();
     </div>
 
     <div class="active step">
-          <i class="briefcase icon"></i>
+          <i class="fa-solid fa-briefcase icon"></i>
           <div class="content">
               <div class="title"><?= $s['summary'] ?></div>
               <div class="description"><?= $s['summaryDesc'] ?></div>
@@ -324,7 +303,7 @@ if(!isset($templateOk)) die();
     </div>
     <div class="actions">
         <div class="ui primary ok button">
-            <i class="checkmark icon"></i>
+            <i class="fa-solid fa-check icon"></i>
             <?= $s['ok'] ?>
         </div>
     </div>
@@ -345,7 +324,7 @@ if(!isset($templateOk)) die();
     </div>
     <div class="actions">
         <div class="ui primary ok button">
-            <i class="checkmark icon"></i>
+            <i class="fa-solid fa-check icon"></i>
             <?= $s['ok'] ?>
         </div>
     </div>

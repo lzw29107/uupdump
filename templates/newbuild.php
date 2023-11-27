@@ -1,17 +1,17 @@
 <?php if(!isset($templateOk)) die(); ?>
 <h3 class="ui centered header">
     <div class="content">
-        <i class="fitted plus icon"></i>&nbsp;
+        <i class="fa-solid fa-plus fa-mr"></i>
         <?= $s['addNewBuild'] ?>
     </div>
 </h3>
 
-<script src="js/newbuild.js" defer></script>
+<script src="static/js/newbuild.js" defer></script>
 
 <div class="ui two columns mobile stackable centered grid">
     <div class="column">
         <div class="ui red header">
-            <i class="exclamation triangle icon"></i>
+            <i class="fa-solid fa-triangle-exclamation icon"></i>
             <div class="ui justified container content">
                 <?= $s['optionsNotice'] ?>                <div class="sub header"><?= $s['optionsNoticeText'] ?></div>
             </div>
@@ -86,14 +86,14 @@
                 <div class="grouped fields">
                     <div class="field">
                         <div class="ui checkbox">
-                            <input type="checkbox" id="thisonly" value="thisonly" class="other-options">
+                            <input type="checkbox" name="flags[]" value="thisonly" class="other-options">
                             <label><?= $s['otherOpt1'] ?></label>
                         </div>
                     </div>
                     <div class="field">
                         <div class="ui checkbox"
                             <?= uupApiConfigIsTrue('allow_corpnet') ? '' : 'style="display:none;"' ?>>
-                            <input type="checkbox" id="corpnet" value="corpnet" class="other-options"
+                            <input type="checkbox" name="flags[]" value="corpnet" class="other-options"
                             <?= uupApiConfigIsTrue('allow_corpnet') ? 'checked' : 'disabled' ?>>
                             <label><?= $s['otherOpt2'] ?><?= $enableuf ? "{$s['otherOptNotice']}" : ''?></label>
                         </div>
@@ -101,16 +101,14 @@
                 </div>
             </div>
 
-            <input type="hidden" value="" name="flags">
-
             <button class="ui fluid right labeled icon primary button" id="submitForm" type="submit">
-                <i class="right arrow icon"></i>
+                <i class="fa-solid fa-angle-right icon"></i>
                 <?= $s['next'] ?>
             </button>
         </form>
 
         <div class="ui info message">
-            <i class="info icon"></i>
+            <i class="fa-solid fa-info icon"></i>
             <?= $s['newBuildNextText'] ?>
         </div>
     </div>
@@ -118,7 +116,7 @@
     <div class="column">
         <div class="ui centered header">
             <div class="content">
-                <i class="fitted rocket icon"></i>&nbsp;
+                <i class="fa-solid fa-paper-plane fa-mr"></i>
                 <?= $s['quickOptions'] ?>
             </div>
         </div>
@@ -133,8 +131,10 @@
             <tbody>
                 <tr>
                     <td>
-                        <i class="large box icon"></i>
-                        <b><?= $s['latestPublicRelease'] ?></b>
+                        <div class="ui small header">
+                            <i class="fa-solid fa-box fa-fw fa-xl fa-mr"></i>
+                            <?= $s['latestPublicRelease'] ?>
+                        </div>
                     </td>
                     <td class="collapsing center aligned">
                         <a class="ui button" href="fetchupd.php?arch=amd64&ring=retail&build=<?= $retailLatestBuild ?>">x64</a>
@@ -143,8 +143,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <i class="large fire extinguisher icon"></i>
-                        <b><?= $s['latestRPRelease'] ?></b>
+                        <div class="ui small header">
+                            <i class="fa-solid fa-dolly fa-fw fa-xl fa-mr"></i>
+                            <?= $s['latestRPRelease'] ?>
+                        </div>
                     </td>
                     <td class="collapsing center aligned">
                         <a class="ui button" href="fetchupd.php?arch=amd64&ring=rp&build=<?= $rpLatestBuild ?>">x64</a>
@@ -153,8 +155,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <i class="large fire icon"></i>
-                        <b><?= $s['latestBetaRelease'] ?></b>
+                        <div class="ui small header">
+                            <i class="fa-solid fa-paint-roller fa-fw fa-xl fa-mr"></i>
+                            <?= $s['latestBetaRelease'] ?>
+                        </div>
                     </td>
                     <td class="collapsing center aligned">
                         <a class="ui button" href="fetchupd.php?arch=amd64&ring=wis&build=<?= $betaLatestBuild ?>">x64</a>
@@ -163,8 +167,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <i class="large bomb icon"></i>
-                        <b><?= $s['latestDevRelease'] ?></b>
+                        <div class="ui small header">
+                            <i class="fa-solid fa-laptop-code fa-fw fa-xl fa-mr"></i>
+                            <?= $s['latestDevRelease'] ?>
+                        </div>
                     </td>
                     <td class="collapsing center aligned">
                         <a class="ui button" href="fetchupd.php?arch=amd64&ring=wif&build=<?= $devLatestBuild ?>">x64</a>
@@ -173,8 +179,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <i class="large flask icon"></i>
-                        <b><?= $s['latestCanaryRelease'] ?></b>
+                        <div class="ui small header">
+                            <i class="fa-solid fa-flask fa-fw fa-xl fa-mr"></i>
+                            <?= $s['latestCanaryRelease'] ?>
+                        </div>
                     </td>
                     <td class="collapsing center aligned">
                         <a class="ui button" href="fetchupd.php?arch=amd64&ring=canary&build=latest">x64</a>

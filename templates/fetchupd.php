@@ -18,21 +18,21 @@ if(!isset($templateOk)) die();
 ?>
 <h3 class="ui centered header">
     <div class="content">
-        <i class="fitted binoculars icon"></i>&nbsp;
+        <i class="fa-solid fa-binoculars fa-mr"></i>
         <?php printf($s['foundUpdates'], count($updateArray)); ?>
     </div>
 </h3>
 
 <div class="ui info message">
-    <i class="check info icon"></i>
+    <i class="fa-solid fa-info icon"></i>
     <?= $s['foundTheseUpdates'] ?>
 </div>
 <table class="ui celled striped table">
     <thead>
         <tr>
             <th><?= $s['update'] ?></th>
-            <th><?= $s['arch'] ?></th>
-            <th><?= $s['updateid'] ?></th>
+            <th class="collapsing"<?= $s['arch'] ?></th>
+            <th class="collapsing"><?= $s['updateid'] ?></th>
         </tr>
     </thead>
     <?php foreach($updateArray as $update): ?>
@@ -41,17 +41,17 @@ if(!isset($templateOk)) die();
         <?php if($arch == 'amd64') $arch = 'x64'; ?>
   
         <tr><td>
-            <h4 class="ui header">
-                <i class="windows icon"></i>
+            <div class="ui small header">
+                <i class="fa-brands fa-microsoft icon"></i>
                 <div class="content">
                     <a href="selectlang.php?id=<?= htmlentities($update['updateId']) ?>">
                         <?= htmlentities($update['updateTitle']) ?> <?= htmlentities($update['arch']) ?></a>
                     <div class="sub header">
                         <?php printf($s['buildNumber'], $update['foundBuild']); ?></div>
                 </div>
-            </h4>
-        </td><td>
-            <?= htmlentities($arch) ?>        </td><td>
+            </div>
+        </td><td class="collapsing">
+            <?= htmlentities($arch) ?>        </td><td class="collapsing">
             <code><?= htmlentities($update['updateId']) ?></code>
         </td></tr>
     <?php endforeach; ?>

@@ -18,7 +18,7 @@ if(!isset($templateOk)) die();
 ?>
 <h3 class="ui centered header">
     <div class="content">
-        <i class="fitted cubes icon"></i>&nbsp;
+        <i class="fa-brands fa-microsoft fa-mr"></i>
         <?= htmlentities($updateTitle) ?>
     </div>
 </h3>
@@ -28,7 +28,7 @@ if(!isset($templateOk)) die();
 <div class="ui two columns mobile stackable centered grid">
     <div class="column" style="display: flex; flex-direction: column;">
         <h3 class="ui header">
-            <i class="globe icon"></i>
+            <i class="fa-solid fa-globe icon"></i>
             <div class="content">
                 <?= $s['chooseLang']; ?>
                 <div class="sub header"><?= $s['chooseLangDesc'] ?></div>
@@ -39,7 +39,7 @@ if(!isset($templateOk)) die();
             <div class="ui center aligned one column padded relaxed grid">
                 <div class="row">
                     <div class="column">
-                        <i class="huge <?= $noLangsIcon ?> icon"></i>
+                        <i class="fa-solid fa-<?= $noLangsIcon ?> huge icon"></i>
                     </div>
                 </div>
                 <div class="row">
@@ -50,7 +50,7 @@ if(!isset($templateOk)) die();
                                 <input type="hidden" name="id" value="<?= $updateId ?>" />
                                 <input type="hidden" name="packs" value="1" />
                                 <button class="ui fluid right labeled icon button">
-                                    <i class="pencil alternate icon"></i>
+                                    <i class="fa-solid fa-pencil-alt icon"></i>
                                     <?= $s['Generatemetadata'] ?>
                                 </button>
                             </form>
@@ -73,13 +73,13 @@ if(!isset($templateOk)) die();
                 </div>
 
                 <button class="ui fluid right labeled icon blue button" id="submitForm" type="submit">
-                    <i class="right arrow icon"></i>
+                    <i class="fa-solid fa-angle-right icon"></i>
                     <?= $s['next'] ?>
                 </button>
             </form>
 
             <div class="ui info message" style="flex: 1; display: flex; align-items: center">
-                <i class="info icon" style="margin-bottom:0.75em;"></i>
+                <i class="fa-solid fa-info icon" style="margin-bottom:0.75em;"></i>
                 <p style="margin-top:0;"><?= $s['selectLangInfoText1'] ?></p>
             </div>
         <?php endif; ?>
@@ -87,7 +87,7 @@ if(!isset($templateOk)) die();
 
     <div class="column">
         <h3 class="ui header">
-            <i class="open folder icon"></i>
+            <i class="fa-regular fa-folder-open icon"></i>
             <div class="content">
                 <?= $s['browseFiles']; ?>
                 <div class="sub header"><?= $s['browseFilesDesc']; ?></div>
@@ -100,20 +100,20 @@ if(!isset($templateOk)) die();
                 <div class="ui action input">
                     <input type="hidden" name="id" value="<?= htmlentities($updateId) ?>">
                     <input type="text" name="q" placeholder="<?= $s['searchForFiles'] ?>">
-                    <button class="ui blue icon button" type="submit"><i class="search icon"></i></button>
+                    <button class="ui blue icon button" type="submit"><i class="fa-solid fa-magnifying-glass icon"></i></button>
                 </div>
             </div>
         </form>
 
         <a class="ui fluid right labeled icon button" href="<?= $findFilesUrl; ?>" style="margin-top:1rem;">
-            <i class="open folder icon"></i>
+            <i class="fa-regular fa-folder-open icon"></i>
             <?= $s['allFiles']; ?>
         </a>
 
         <div class="ui positive message" style="display: flex; justify-content: space-between; align-items: center
 ;flex-wrap: wrap;">
             <div>
-                <i class="paper plane icon"></i>
+                <i class="fa-solid fa-paper-plane icon"></i>
                     <?php printf(
                         $s['toSearchForCUUseQuery'],
                         "<a href=\"$findFilesUrl&q=!updates\">!updates</a>"
@@ -122,7 +122,7 @@ if(!isset($templateOk)) die();
             <?php if($UpdateButton): ?>
                 <form class="ui form" action="<?= $urlUpd; ?>" method="post" id="download-updates">
                     <button class="ui tiny right labeled icon primary button" type="submit" name="autodl" value="1">
-                        <i class="download icon"></i>
+                        <i class="fa-solid fa-download icon"></i>
                         <?= $s['aria2Opt4'] ?>
                     </button>
                 </form>
@@ -133,7 +133,7 @@ if(!isset($templateOk)) die();
 
 <div class="ui fluid tiny three steps">
       <div class="active step">
-            <i class="world icon"></i>
+            <i class="fa-solid fa-globe icon"></i>
             <div class="content">
                 <div class="title"><?= $s['chooseLang'] ?></div>
                 <div class="description"><?= $s['chooseLangDesc'] ?></div>
@@ -141,7 +141,7 @@ if(!isset($templateOk)) die();
       </div>
 
       <div class="step">
-            <i class="archive icon"></i>
+            <i class="fa-solid fa-box-archive icon"></i>
             <div class="content">
                 <div class="title"><?= $s['chooseEdition'] ?></div>
                 <div class="description"><?= $s['chooseEditionDesc'] ?></div>
@@ -149,7 +149,7 @@ if(!isset($templateOk)) die();
       </div>
 
       <div class="step">
-            <i class="briefcase icon"></i>
+            <i class="fa-solid fa-briefcase icon"></i>
             <div class="content">
                 <div class="title"><?= $s['summary'] ?></div>
                 <div class="description"><?= $s['summaryDesc'] ?></div>
@@ -166,7 +166,7 @@ if(!isset($templateOk)) die();
 <div class="ui four columns mobile stackable centered grid" style="margin-top: 1em;">
     <div class="column">
         <h4 class="ui center aligned tiny icon header">
-            <i class="archive icon"></i>
+            <i class="fa-brands fa-microsoft icon"></i>
             <div class="content">
                 <?= $s['build']; ?>
                 <div class="sub header"><?= $build ?></div>
@@ -176,7 +176,7 @@ if(!isset($templateOk)) die();
   
     <div class="column">
         <h4 class="ui center aligned tiny icon header">
-            <i class="microchip icon"></i>
+            <i class="fa-solid fa-microchip icon"></i>
             <div class="content">
                 <?= $s['arch']; ?>
                 <div class="sub header"><?= $updateArch ?></div>
@@ -186,7 +186,7 @@ if(!isset($templateOk)) die();
   
     <div class="column">
         <h4 class="ui center aligned tiny icon header">
-            <i class="cogs icon"></i>
+            <i class="fa-solid fa-people-group icon"></i>
             <div class="content">
                 <?= $s['ring']; ?>
                 <div class="sub header"><?= $fancyChannelName ?></div>
@@ -196,7 +196,7 @@ if(!isset($templateOk)) die();
 
     <div class="column">
         <h4 class="ui center aligned tiny icon header">
-            <i class="calendar icon"></i>
+            <i class="fa-solid fa-calendar-days icon"></i>
             <div class="content">
                 <?= $s['dateAdded']; ?>
                 <div class="sub header">

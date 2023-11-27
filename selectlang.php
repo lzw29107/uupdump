@@ -137,7 +137,7 @@ $findFilesUrl = "findfiles.php?id=".htmlentities($updateId);
 $langsAvailable = count($langs) > 0;
 $packsAvailable = uupApiPacksExist($updateId);
 
-$noLangsIcon = 'times circle outline';
+$noLangsIcon = 'info';
 $noLangsCause = $s['updateIsBlocked'];
 $generatePacksButton = false;
 
