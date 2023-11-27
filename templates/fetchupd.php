@@ -31,7 +31,7 @@ if(!isset($templateOk)) die();
     <thead>
         <tr>
             <th><?= $s['update'] ?></th>
-            <th class="collapsing"<?= $s['arch'] ?></th>
+            <th class="collapsing"><?= $s['arch'] ?></th>
             <th class="collapsing"><?= $s['updateid'] ?></th>
         </tr>
     </thead>
