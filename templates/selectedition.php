@@ -120,6 +120,10 @@ if(!isset($templateOk)) die();
                         <td><?= $s['edition_PROFESSIONAL'] ?></td>
                     </tr>
                     <tr>
+                        <td><?= $s['edition_IOTENTERPRISEK'] ?></td>
+                        <td><?= $s['edition_PROFESSIONAL'] ?></td>
+                    </tr>
+                    <tr>
                         <td><?= $s['edition_PROFESSIONALWORKSTATIONN'] ?></td>
                         <td><?= $s['edition_PROFESSIONALN'] ?></td>
                     </tr>

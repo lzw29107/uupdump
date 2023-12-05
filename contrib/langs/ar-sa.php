@@ -99,16 +99,18 @@ $s['selectLangFor'] = 'اختيار اللغة - %s'; //Select language for Wind
 $s['chooseLang'] = 'اختيار اللغة';
 $s['chooseLangDesc'] = 'اختر اللغة المرغوبة';
 $s['allLangs'] = 'كل اللغات';
-$s['selLangFiles'] = 'الملفات';
 $s['allFiles'] = 'كل الملفات';
 $s['selectLangInfoText1'] = 'اضغط زر التالي لاختيار النسخة التي تود تنزيلها';
-$s['noLangsAvailable'] = 'لا توجد لغات متاحة<br>لا يمكن إنشاء ملف آيزو من هذا الإصدار<br>لمزيد من التفاصيل راجع الأسئلة الشائعة';
 $s['browseFiles'] = 'تصفح الملفات';
 $s['browseFilesDesc'] = 'عرض قائمة الملفات للتحميل يدوياً من الإصدار المحدد';
 $s['searchFiles'] = 'البحث في الملفات';
 $s['toSearchForCUUseQuery'] = '<i>%s</i> لعرض ملفات التحديثات فقط استخدم جملة البحث'; //To search for Cumulative Updates use the <i>Windows10 KB</i> search query.
-$s['updateNotProcessed'] = 'لم يتم تجهيز بيانات هذا الإصدار بعد - تتم المعالجة آلياً كل %d دقيقة. يمكنك تصفح وتحميل ملفات الإصدار يدوياً إلى حين ذلك'; //UUP dump hasn't processed this update's metadata yet - this happens automatically once every 30 minutes. You can only browse the update's file list until then.
-$s['updateIsBlocked'] = 'هذا الإصدار لا يوفر جميع الملفات اللازمة لإنشاء آيزو متكامل. بالإمكان فقط تصفح وتحميل الملفات أو التحديثات المضمنة يدوياً';
+$s['aboutBuild'] = 'معلومات الإصدار';
+$s['downloadNotAvailable'] = 'التنزيل غير متاح';
+$s['processingUpdate'] = '...المعالجة جارية';
+$s['noLangsAvailablev2'] = 'لا يمكن إنشاء ملف آيزو من هذا الإصدار<br>لمزيد من التفاصيل راجع الأسئلة الشائعة';
+$s['updateIsBlockedv2'] = 'هذا الإصدار لا يوفر إمكانية إنشاء آيزو مكتمل<br>لمزيد من التفاصيل راجع الأسئلة الشائعة';
+$s['updateNotProcessedv2'] = 'خيارات التنزيل لهذا الإصدار غير متوفرة لحين اكتمال المعالجة<br>حاول مجدداً بعد عدة دقائق';
 
 //selectedition.php
 $s['selectEditionFor'] = 'اختيار النسخة - %s'; //Select edition for Windows 10 Insider Preview 18890.1000 (rs_prerelease) amd64, English (United States)

@@ -65,7 +65,7 @@ if(!isset($templateOk)) die();
 
 <div class="ui divider"></div>
 
-<div class="ui icon positive message">
+<div class="ui icon message">
     <i class="fa-solid fa-terminal icon"></i>
     <div class="content">
         <div class="header"><?= $s['fileRenamingScript'] ?></div>

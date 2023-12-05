@@ -34,7 +34,6 @@ require_once 'api/updateinfo.php';
 require_once 'contrib/get.php';
 require_once 'shared/style.php';
 require_once 'shared/ratelimits.php';
-require_once 'contrib/autodl.php';
 
 if(!$updateId) {
     fancyError('UNSPECIFIED_UPDATE', 'downloads');

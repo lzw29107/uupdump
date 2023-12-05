@@ -103,18 +103,20 @@ $s['selectLangFor'] = 'Select language for %s'; //Select language for Windows 10
 $s['chooseLang'] = 'Choose language';
 $s['chooseLangDesc'] = 'Choose your desired language';
 $s['allLangs'] = 'All languages';
-$s['selLangFiles'] = 'Files';
 $s['allFiles'] = 'All files';
 $s['selectLangInfoText1'] = 'Click the <i>Next</i> button to select the desired edition.';
-$s['noLangsAvailable'] = 'There are no languages available for this build.<br>This build cannot be converted to an ISO image.<br>See the FAQ for details.';
 $s['Metadatanotgenerated'] = 'Metadata for this update is not generated.';
 $s['Generatemetadata'] = 'Generate metadata';
 $s['browseFiles'] = 'Browse files';
 $s['browseFilesDesc'] = 'Quickly browse files in selected build';
 $s['searchFiles'] = 'Search files';
 $s['toSearchForCUUseQuery'] = 'To search for Cumulative Updates use the <i>%s</i> search query.'; //To search for Cumulative Updates use the <i>Windows10 KB</i> search query.
-$s['updateNotProcessed'] = 'UUP dump hasn\'t processed this update\'s metadata yet - this happens automatically once every %d minutes. You can only browse the update\'s file list until then.'; //UUP dump hasn't processed this update's metadata yet - this happens automatically once every 30 minutes. You can only browse the update's file list until then.
-$s['updateIsBlocked'] = 'This update has known issues preventing the creation of a working ISO. Because of this, you can only manually browse its files.';
+$s['aboutBuild'] = 'Build information';
+$s['downloadNotAvailable'] = 'No downloads available';
+$s['processingUpdate'] = 'Processing build...';
+$s['noLangsAvailablev2'] = 'This build can\'t be converted to an ISO image.<br>See the FAQ for details.';
+$s['updateIsBlockedv2'] = 'This build has known issues preventing the creation of a working ISO.<br>See the FAQ for details.';
+$s['updateNotProcessedv2'] = 'Download options for this build are not yet available as it is being processed.<br>Please try again in a minute.';
 
 //selectedition.php
 $s['selectEditionFor'] = 'Select edition for %s'; //Select edition for Windows 10 Insider Preview 18890.1000 (rs_prerelease) amd64, English (United States)

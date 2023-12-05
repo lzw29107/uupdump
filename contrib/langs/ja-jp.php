@@ -99,16 +99,18 @@ $s['selectLangFor'] = '%s の言語を選択'; //Select language for Windows 10 
 $s['chooseLang'] = '言語を選択';
 $s['chooseLangDesc'] = '利用したい言語を選択してください';
 $s['allLangs'] = 'すべての言語';
-$s['selLangFiles'] = 'ファイル';
 $s['allFiles'] = 'すべてのファイル';
 $s['selectLangInfoText1'] = '<i>次へ</i>ボタンをクリックして、目的のエディションを選択します。';
-$s['noLangsAvailable'] = 'このビルドで使用できる言語はありません。<br>このビルドはISOイメージに変換できません。<br>詳細は FAQ を参照してください。';
 $s['browseFiles'] = 'ファイルを参照';
 $s['browseFilesDesc'] = '選択したビルドのファイルをすばやく参照する';
 $s['searchFiles'] = 'ファイルを検索';
 $s['toSearchForCUUseQuery'] = '累積的な更新プログラムを検索するには、<i>%s</i> 検索クエリを使用します。'; //To search for Cumulative Updates use the <i>Windows10 KB</i> search query.
-$s['updateNotProcessed'] = 'UUP dumpはまだこの更新のメタデータを処理していません、これは%d分に1回自動的に発生します。 それまでは、更新のファイルを参照することしかできません。'; //UUP dump hasn't processed this update's metadata yet - this happens automatically once every 30 minutes. You can only browse the update's file list until then.
-$s['updateIsBlocked'] = 'この更新には、ISOの作成を妨げる既知の問題があります。 それまでは、手動で更新のファイルを参照することしかできません。';
+$s['aboutBuild'] = 'ビルド情報';
+$s['downloadNotAvailable'] = 'ダウンロードは見つかりません';
+$s['processingUpdate'] = 'ビルドを処理中…';
+$s['noLangsAvailablev2'] = 'このビルドはISOイメージに変換できません。<br>詳細は FAQ を参照してください。';
+$s['updateIsBlockedv2'] = 'この更新には、ISOの作成を妨げる既知の問題があります。<br>詳細は FAQ を参照してください。';
+$s['updateNotProcessedv2'] = 'このビルドは処理中のため、ダウンロードオプションはまだ利用できません。<br>しばらくしてから、もう一度お試しください。';
 
 //selectedition.php
 $s['selectEditionFor'] = '%s のエディションを選択'; //Select edition for Windows 10 Insider Preview 18890.1000 (rs_prerelease) amd64, English (United States)
@@ -221,7 +223,7 @@ $s['error_RATE_LIMITED'] = 'レート制限が課せられています。数秒�
 $s['error_UNSPECIFIED_VE'] = '追加のエディションを選択していません。追加のエディションを作成したくない場合は <i>aria2を使用してダウンロード後に変換</i> のオプションを使用してください。';
 $s['error_VE_UNAVAILABLE'] = '指定した項目では、追加エディションはサポートされていません。';
 $s['error_INVALID_PAGE'] = '指定されたページが無効';
-$s['error_WU_REQUEST_FAILED'] = 'Windows Updateサービスへのリクエストが失敗になるました。';
+$s['error_WU_REQUEST_FAILED'] = 'Windows Updateサービスへのリクエストが失敗になりました。';
 $s['errorNoMessage'] = 'エラーメッセージは利用できません.';
 
 //Languages

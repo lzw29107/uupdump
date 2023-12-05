@@ -35,7 +35,7 @@ if(!checkUpdateIdValidity($updateId)) {
     die();
 }
 
-$files = uupGetFiles($updateId, 0, 0, 2);
+$files = ($search != '!updates') ? uupGetFiles($updateId, 0, 0, 2) : uupGetFiles($updateId, 0, 'updateonly', 2);
 if(isset($files['error'])) {
     fancyError($files['error'], 'downloads');
     die();
@@ -60,10 +60,6 @@ if($search != null) {
     }
 
     $removeKeys = preg_grep('/.*'.$searchSafe.'.*/i', $filesKeys, PREG_GREP_INVERT);
-    if($search == "!updates") {
-        $removeKeys = array_merge($removeKeys, preg_grep('/Windows(10|11)\.0-KB.*-EXPRESS|SSU-.*-EXPRESS|SSU-.*?\.psf/i', $filesKeys));
-        if($updateBuild < 17763) $removeKeys = array_merge($removeKeys, preg_grep('/Windows(10|11)\.0-KB.*_\d\.psf$/i', $filesKeys));
-    }
 
     foreach($removeKeys as $value) {
         unset($files[$value]);

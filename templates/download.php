@@ -113,22 +113,26 @@ if(!isset($templateOk)) die();
                             <label><?= $s['convOpt1'] ?></label>
                         </div>
                     </div>
-                  <div class="field">
-                      <div class="ui accordion field">
-                      <div class="title">
-                        <i class="dropdown icon"></i>
-                        <label><?= $s['conversionAdvOptions'] ?></label>
-                      </div>
-                      <div class="content field transition hidden">
-                        <div class="grouped fields transition hidden">
-                          <div class="ui checkbox">
-                            <input type="checkbox" name="appstub" value="1" class="conversionadv-option">
-                            <label><?= $s['convAdvOpt1'] ?></label>
-                          </div>
+                </div>
+            </div>
+
+            <div class="field" id="additional-editions-list">
+                <label><?= $s['selAdditionalEditions'] ?></label>
+                <div class="grouped fields">
+                    <?php $printedEditions = 0; ?>
+                    <?php if(!$disableVE) foreach($virtualEditions as $key => $val): ?>
+                        <div class="field">
+                            <div class="ui checkbox">
+                                <input class="virtual-edition" type="checkbox" name="virtualEditions[]" value="<?= $key ?>" checked>
+                                <label><?= $val ?></label>
+                            </div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
+                        <?php $printedEditions++; ?>
+                    <?php endforeach; ?>
+
+                    <?php if(!$printedEditions): ?>
+                        <p><?= $s['noAdditionalEditions'] ?></p>
+                    <?php endif; ?>
                 </div>
             </div>
 

@@ -137,18 +137,24 @@ $findFilesUrl = "findfiles.php?id=".htmlentities($updateId);
 $langsAvailable = count($langs) > 0;
 $packsAvailable = uupApiPacksExist($updateId);
 
-$noLangsIcon = 'info';
-$noLangsCause = $s['updateIsBlocked'];
+$noLangsIcon = 'file-circle-xmark';
+$noLangsCause = $s['updateIsBlockedv2'];
 $generatePacksButton = false;
 
-if(!$packsAvailable) {
+$corpnet = strpos($updateTitle, 'Internal Corpnet Required');
+if($corpnet)
+{
+    $noLangsIcon = 'file-circle-xmark';
+    $noLangsCause = '';
+    $updateBlocked = true;
+} else if(!$packsAvailable) {
     $noLangsIcon = 'industry';
     $noLangsCause = $s['Metadatanotgenerated'];
     $updateBlocked = true;
-	$generatePacksButton = true;
+	  $generatePacksButton = true;
 } else if(!$updateBlocked && !$langsAvailable) {
-    $noLangsIcon = 'info';
-    $noLangsCause = $s['noLangsAvailable'];
+    $noLangsIcon = 'file-circle-xmark';
+    $noLangsCause = $s['noLangsAvailablev2'];
     $updateBlocked = true;
 }
 
@@ -160,7 +166,7 @@ if(isset($files['hasUpdates'])) {
   $hasUpdates = false;
 }
 
-$UpdateButton = (!$generatePacksButton && $hasUpdates);
+$UpdateButton = (!$generatePacksButton && $hasUpdates && !$corpnet);
 
 $urlUpd = "./get.php?id=$updateId&pack=0&edition=updateOnly";
 
