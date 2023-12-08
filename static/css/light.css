@@ -1,4 +1,3 @@
-
 /*
 * UUP dump Light Theme Style Sheet
 * https://uupdump.net/
@@ -8,7 +7,7 @@
 
 .page-header {
     position: relative;
-    padding: 0.75em;
+    padding: .75em;
     margin-bottom: 1.125em;
 }
 
@@ -46,13 +45,13 @@
 }
 
 .page-header .title {
-    padding-top: 0.3em;
+    padding-top: .3em;
     padding-bottom: 1em;
 }
 
 .page-header .title .logo {
     height: 36px;
-    margin: -0.2em 0.25em -0.25em 0.25em
+    margin: -.2em .25em -.25em .25em
 }
 
 .page-header .title h1 {
@@ -80,7 +79,7 @@
 }
 
 .footer .info {
-    opacity: 0.5;
+    opacity: .5;
 }
 
 .welcome-text {
@@ -100,7 +99,7 @@
 
 .welcome-text .sub {
     font-size: 1.1rem;
-    opacity: 0.5;
+    opacity: .5;
 }
 
 .quick-search-buttons {
@@ -112,6 +111,10 @@
 .error-page-message {
     padding: 6rem 0 6rem !important;
     max-width: 700px;
+}
+
+.selectlang-error {
+    padding: .75rem 0 .75rem !important;
 }
 
 i.fa-mr {

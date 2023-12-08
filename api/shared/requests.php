@@ -39,7 +39,11 @@ function composeDeviceAttributes($flight, $ring, $build, $arch, $sku, $type, $fl
         $insType = 'Server';
         $blockUpgrades = 1;
     }
-
+      // WNC
+    if($sku == 210) {
+        $dvcFamily = 'Windows.CorePC';
+        $insType = 'CorePC';
+    }
 if(uupApiConfigIsTrue('enable_unsupported_features')) {
     // Hololens
     if($sku == 135) {
@@ -414,6 +418,10 @@ function composeFetchUpdRequest($arch, $flight, $ring, $build, $sku = 48, $type 
     $mainProduct = 'Client.OS.rs2';
     if(uupApiIsServer($sku)) {
         $mainProduct = 'Server.OS';
+    }
+    // WNC
+    if($sku == 210) {
+        $mainProduct = 'NextCorePC.OS';
     }
 if(uupApiConfigIsTrue('enable_unsupported_features')) {
     // Hololens

@@ -121,6 +121,7 @@ if($usePack && $desiredEdition) {
             $edition = strtoupper($edition);
             $fancyNames[] = $s["edition_$edition"];
         }
+        asort($fancyNames);
         $selectedEditionName = implode(', ', $fancyNames);
     }
 } else {
@@ -156,6 +157,10 @@ if(preg_grep('/^.*Professional_.*\.esd/i', $filesKeys)) {
 
     if($build >= 18277) {
         $virtualEditions['IoTEnterprise'] = $s['edition_IOTENTERPRISE'];
+    }
+
+    if($build >= 25967) {
+        $virtualEditions['IoTEnterpriseK'] = $s['edition_IOTENTERPRISEK'];
     }
 }
 

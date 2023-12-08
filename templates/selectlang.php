@@ -36,16 +36,16 @@ if(!isset($templateOk)) die();
         </h3>
 
         <?php if($updateBlocked): ?>
-            <div class="ui center aligned one column padded relaxed grid">
-                <div class="row">
-                    <div class="column">
-                        <i class="fa-solid fa-<?= $noLangsIcon ?> huge icon"></i>
+            <?php if($generatePacksButton): ?>
+                <div class="ui center aligned one column padded relaxed grid">
+                    <div class="row">
+                        <div class="column">
+                            <i class="fa-solid fa-<?= $noLangsIcon ?> huge icon"></i>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="column">
-                        <p><?= $noLangsCause ?></p>
-                        <?php if($generatePacksButton): ?>
+                    <div class="row">
+                        <div class="column">
+                            <p><?= $noLangsCause ?></p>
                             <form action="selectlang.php" method="get">
                                 <input type="hidden" name="id" value="<?= $updateId ?>" />
                                 <input type="hidden" name="packs" value="1" />
@@ -54,10 +54,17 @@ if(!isset($templateOk)) die();
                                     <?= $s['Generatemetadata'] ?>
                                 </button>
                             </form>
-                        <?php endif; ?>
+            <?php else: ?>
+                <div class="ui center aligned icon header selectlang-error">
+                    <i class="fa-solid fa-<?= $noLangsIcon ?> huge icon"></i>
+                    <div class="content">
+                        <?= $s['downloadNotAvailable'] ?>
+                        <div class="sub header">
+                            <p><?= $noLangsCause ?></p>
+            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
-            </div>
         <?php else: ?>
             <form class="ui form" action="selectedition.php" method="get" id="langForm">
                 <input type="hidden" name="id" value="<?= $updateId ?>">
@@ -158,7 +165,7 @@ if(!isset($templateOk)) die();
 </div>
 
 <h4 class="ui horizontal divider">
-    <?= $s['information']; ?>
+    <?= $s['aboutBuild']; ?>
 </h4>
 
 <?php if($updateArch == 'amd64') $updateArch = 'x64'; ?>

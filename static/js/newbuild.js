@@ -9,7 +9,7 @@ function checkfetchOpt() {
     }
 }
 
-$('select[name="sku"]).on('click change', function() {
+$('select[name="sku"]').on('click change', function() {
     checkfetchOpt();
 });
 

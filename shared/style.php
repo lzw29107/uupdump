@@ -31,74 +31,26 @@ function styleUpper($pageType = 'home', $subtitle = '') {
         $subTitleOnly = htmlentities($s['uupdump']);
     }
 
-    if($_SERVER['SERVER_NAME'] == '0.0.0.0') {
-        //$domain = $_SERVER['REMOTE_ADDR'];
-        $domain = preg_replace('/:.*/', '', $_SERVER['HTTP_HOST']);
-    } else {
-        $domain = $_SERVER['SERVER_NAME'];
-    }
-
-    $ThemeOptions = array(
-        'expires' => time()+60*60*24*30,
-        'path' => '/',
-        'domain' => $domain,
-        'secure' => isset($_SERVER['HTTPS']) ? true : false,
-        'httponly' => true,
-        'samesite' => 'Strict'
-    );
-
     $theme = 'auto';
-    if(isset($_GET['theme'])) {
-        switch($_GET['theme']) {
-            case 'auto':
-                setcookie('Website-Theme', 'auto', $ThemeOptions);
-                $theme = 'auto';
-                break;
-
-            case 'light':
-                setcookie('Website-Theme', 'light', $ThemeOptions);
-                $theme = 'light';
-                break;
-          
-            case 'dark':
-                setcookie('Website-Theme', 'dark', $ThemeOptions);
-                $theme = 'dark';
-                break;
-          
-            case 'legacy':
-                setcookie('Website-Theme', 'legacy', $ThemeOptions);
-                $theme = 'legacy';
-                break;
-
-            default:
-                setcookie('Website-Theme', 'auto', $ThemeOptions);
-                $theme = 'auto';
-                break;
-        }
-    } elseif(isset($_COOKIE['Website-Theme'])) {
+    if(isset($_COOKIE['Website-Theme'])) {
         switch($_COOKIE['Website-Theme']) {
             case 'auto':
-                setcookie('Website-Theme', 'auto', $ThemeOptions);
                 $theme = 'auto';
                 break;
 
             case 'light':
-                setcookie('Website-Theme', 'light', $ThemeOptions);
                 $theme = 'light';
                 break;
 
             case 'dark':
-                setcookie('Website-Theme', 'dark', $ThemeOptions);
                 $theme = 'dark';
                 break;
 
             case 'legacy':
-                setcookie('Website-Theme', 'legacy', $ThemeOptions);
                 $theme = 'legacy';
                 break;
 
             default:
-                setcookie('Website-Theme', 'auto', $ThemeOptions);
                 $theme = 'auto';
                 break;
         }
@@ -106,7 +58,6 @@ function styleUpper($pageType = 'home', $subtitle = '') {
 
     $baseUrl = getBaseUrl();
     $fullUrl = htmlentities(getBaseUrl().$_SERVER['REQUEST_URI']);
-    $url = htmlentities(getUrlWithoutParam('theme'));
 
     if($theme == 'auto') {
         $ThemeMode = '<style>@import url(\'static/css/dark.css\') (prefers-color-scheme: dark);</style>';
@@ -229,7 +180,6 @@ function styleLower() {
         $s['copyrightNew'],
         date('Y')
     );
-    $url = htmlentities(getUrlWithoutParam('theme'));
 
     $ThemeCoreSelectorModal = <<<EOD
     <div class="ui normal mini modal select-theme">
@@ -237,22 +187,22 @@ function styleLower() {
             {$s['selectTheme']}
         </div>
         <div class="content">
-            <p><a class="ui primary fluid labeled icon button" href="{$url}theme=auto">
+            <p><a class="ui primary fluid labeled icon button change-theme" theme-select="auto" href>
                 <i class="fa-solid fa-wand-magic-sparkles icon"></i>
                 {$s['themeAuto']}
             </a></p>
 
             <div class="ui divider"></div>
 
-            <p><a class="ui fluid labeled icon button" href="{$url}theme=light">
+            <p><a class="ui fluid labeled icon button change-theme" theme-select="light" href>
                 <i class="fa-solid fa-sun icon"></i>
                 {$s['themeLight']}
             </a></p>
-            <p><a class="ui fluid labeled icon button" href="{$url}theme=dark">
+            <p><a class="ui fluid labeled icon button change-theme" theme-select="dark" href>
                 <i class="fa-solid fa-moon icon"></i>
                 {$s['themeDark']}
             </a></p>
-            <p><a class="ui fluid labeled icon button" href="{$url}theme=legacy">
+            <p><a class="ui fluid labeled icon button change-theme" theme-select="legacy" href>
                 <i class="fa-solid fa-rotate-left icon"></i>
                 {$s['themeLegacy']}
             </a></p>
@@ -273,8 +223,8 @@ function styleLower() {
                     <p><i>$renderText
                         <b>{$s['uupdump']}</b> $websiteVersion /
                         <b>API</b> $api (<a href="https://git.uupdump.net/uup-dump/api/commit/d10e24cf5bbbb2f209ec8a2eb2a6177e4f6cc0f5">d10e24c</a>) /
-                        <b>contrib</b> <a href="https://git.uupdump.net/uup-dump/contrib/commit/bb9b3c430ebc91d28122d02009dd877025e49010">bb9b3c4</a> /
-                        <b>misc</b> <a href="https://git.uupdump.net/uup-dump/misc/commit/4793c77895393becd06e23775d2a459d0702dbf1">4793c77</a><br/>
+                        <b>contrib</b> <a href="https://git.uupdump.net/uup-dump/contrib/commit/935557254c7efb05e966da088cc7c1c7dfd20fac">9355572</a> /
+                        <b>misc</b> <a href="https://git.uupdump.net/uup-dump/misc/commit/6891493dac8629dd2859354b3d511f4b5b768be6">6891493</a><br/>
                         $copyright
                         <span class="info">{$s['notAffiliated']}</span>
                     </i></p>

@@ -92,6 +92,9 @@ if($selectedLang) {
         die();
     }
     $editions = $editions['editionFancyNames'];
+    foreach($editions as $key => $val) {
+        $editions[$key] = $s['edition_'.$key];
+    }
     asort($editions);
 } else {
     $editions = array();

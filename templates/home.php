@@ -26,7 +26,7 @@ if(!isset($templateOk)) die();
     <div class="field">
         <div class="ui big action input">
             <input type="text" name="q" placeholder="<?= $s['seachForBuilds'] ?>">
-            <button class="ui big blue icon button" type="submit"><i class="fa-solid fa-magnifying-glass icon"></i>
+            <button class="ui big blue icon button" type="submit"><i class="fa-solid fa-magnifying-glass icon"></i></button>
         </div>
     </div>
 </form>

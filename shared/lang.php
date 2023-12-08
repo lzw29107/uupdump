@@ -35,13 +35,9 @@ $pageLanguageOptions = array(
     'samesite' => 'Strict'
 );
 
-$sendCookie = false;
-if(isset($_GET['lang'])) {
-    $lang = strtolower($_GET['lang']);
-    $sendCookie = true;
-} elseif(isset($_COOKIE['Page-Language'])) {
+
+if(isset($_COOKIE['Page-Language'])) {
     $lang = strtolower($_COOKIE['Page-Language']);
-    $sendCookie = true;
 } elseif(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) && strlen($_SERVER['HTTP_ACCEPT_LANGUAGE']) > 0) {
     // regex inspired from @GabrielAnderson on http://stackoverflow.com/questions/6038236/http-accept-language
     $acceptLanguage = preg_replace('/-han[st]/', '', strtolower($_SERVER['HTTP_ACCEPT_LANGUAGE']));
@@ -96,15 +92,9 @@ if(!in_array("$lang", $supportedLangs)) {
 
 require_once "contrib/langs/$lang.php";
 
-if($sendCookie) {
-    setcookie('Page-Language', $lang, $pageLanguageOptions);
-}
-
-$url = htmlentities(getUrlWithoutParam('lang'));
-
 $langselector = '';
 foreach($selectorConf as $l) {
-    $langselector .= "<p><a href=\"{$url}lang={$l[0]}\"><i class=\"{$l[1]} flag\"></i>{$l[2]}</a></p>";
+    $langselector .= "<p><a class=\"change-language\" lang-select=\"{$l[0]}\" href><span class=\"{$l[1]} flag\"></span>{$l[2]}</a></p>";
 }
 
 $languageCoreSelectorModal = <<<EOD
@@ -128,4 +118,4 @@ EOD;
 $s['currentLanguage'] = $s["lang_$lang"];
 date_default_timezone_set($s['timeZone']);
 
-unset($url, $sendCookie, $supportedLangs, $pageLanguageOptions);
+unset($supportedLangs, $pageLanguageOptions);
