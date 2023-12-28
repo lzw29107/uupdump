@@ -24,7 +24,7 @@ require_once 'shared/style.php';
 
 $searchstr = $search;
 
-if(isset($search) && strpos($search, 'category:') == 0) {
+if(isset($search) && strstr($search, 'category:')) {
     $Category = strtolower(substr($search,9));
     switch ($Category) {
         case 'canary':
