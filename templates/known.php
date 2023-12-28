@@ -276,7 +276,7 @@ if(!isset($templateOk)) die();
         <a class="item" href="<?= $PageBaseUrl ?><?= ($page-1) ?>"><?= ($page-1) ?></a>
         <a class="active item"><b><?= $page ?></b></a>
         <a class="item" href="<?= $PageBaseUrl ?><?= ($page+1) ?>"><?= ($page+1) ?></a>
-        <?php if($page == ($pages - 4)): ?>
+        <?php if($page <= ($pages - 4)): ?>
         <div class="disabled item">...</div>
         <?php else: ?>
         <a class="item" href="<?= $PageBaseUrl ?><?= ($pages-1) ?>"><?= ($pages-1) ?></a>
