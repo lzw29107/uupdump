@@ -39,11 +39,7 @@ function composeDeviceAttributes($flight, $ring, $build, $arch, $sku, $type, $fl
         $insType = 'Server';
         $blockUpgrades = 1;
     }
-      // WNC
-    if($sku == 210) {
-        $dvcFamily = 'Windows.CorePC';
-        $insType = 'CorePC';
-    }
+
 if(uupApiConfigIsTrue('enable_unsupported_features')) {
     // Hololens
     if($sku == 135) {
@@ -126,11 +122,13 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
     }
 
     $internal = (in_array('corpnet', $flags) && uupApiConfigIsTrue('allow_corpnet')) ? '1' : '0';
+    $vbs = (in_array('vbs', $flags)) ? '2' : '0';
+
     $attrib = array(
         'ActivationChannel=Retail',
         'App=WU_OS',
         'AppVer='.$build,
-        'AttrDataVer=247',
+        'AttrDataVer=265',
         'AllowInPlaceUpgrade=1',
         'AllowUpgradesWithUnsupportedTPMOrCPU=1',
         'AllowOptionalContent=1',
@@ -158,6 +156,7 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
         'DeploymentAction=*',
         'DeviceFamily='.$dvcFamily,
         'DeviceInfoGatherSuccessful=1',
+        'DL_OSVersion='.$build,
         'EKB19H2InstallCount=1',
         'EKB19H2InstallTimeEpoch=1255000000',
         'FirmwareVersion=7704',
@@ -182,7 +181,7 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
         'GStatus_RS5=2',
         'GenTelRunTimestamp_19H1='.(time()-3600),
         'HidparseDriversVer='.$build,
-        //'HotPatchEKBInstalled=1',
+        'HotPatchEKBInstalled=1',
         'InstallDate=1438196400',
         'InstallLanguage=en-US',
         'InstallationType='.$insType,
@@ -196,6 +195,7 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
         'IsRetailOS='.$isRetail,
         'IsWDAGEnabled=1',
         'IsVbsEnabled=1',
+        'LCUVer=10.0.0.0',
         'MediaBranch='.$branch,
         'MediaVersion='.$build,
         'MobileOperatorCommercialized=000-88',
@@ -250,6 +250,7 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
         'UpgradeAccepted=1',
         'UpgradeEligible=1',
         'UserInPlaceUpgrade=1',
+        'VBSState='.$vbs,
         'Version_RS5=2000000000',
         'WuClientVer='.$build,
     );
@@ -353,7 +354,7 @@ function composeFileGetRequest($updateId, $info, $rev = 1, $type = 'Production')
         isset($info['arch']) ? $info['arch'] : 'amd64',
         isset($info['sku']) ? $info['sku'] : 48,
         $type,
-        isset($info['flags']) ? $info['flags'] : [],
+        isset($info['flags']) ? $info['flags'] : ['vbs'],
     );
 
     return <<<XML
@@ -419,10 +420,7 @@ function composeFetchUpdRequest($arch, $flight, $ring, $build, $sku = 48, $type 
     if(uupApiIsServer($sku)) {
         $mainProduct = 'Server.OS';
     }
-    // WNC
-    if($sku == 210) {
-        $mainProduct = 'NextCorePC.OS';
-    }
+
 if(uupApiConfigIsTrue('enable_unsupported_features')) {
     // Hololens
     if($sku == 135) {
@@ -462,13 +460,15 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
         $arch = array($arch);
     }
 
+    $bldnum = explode('.', $build)[2];
+
     $products = array();
     foreach($arch as $currArch) {
         $products[] = "PN=$mainProduct.$currArch&Branch=$branch&PrimaryOSProduct=1&Repairable=1&V=$build&ReofferUpdate=1";
         $products[] = "PN=Adobe.Flash.$currArch&Repairable=1&V=0.0.0.0";
         $products[] = "PN=Microsoft.Edge.Stable.$currArch&Repairable=1&V=0.0.0.0";
-        $products[] = "PN=Microsoft.NETFX.$currArch&V=2018.12.2.0";
-        $products[] = "PN=Windows.Autopilot.$currArch&Repairable=1&V=0.0.0.0";
+        $products[] = "PN=Microsoft.NETFX.$currArch&V=2400.$bldnum.0.0";
+        $products[] = "PN=Windows.Autopilot.$currArch&Repairable=1&V=$build";
         $products[] = "PN=Windows.AutopilotOOBE.$currArch&Repairable=1&V=0.0.0.0";
         $products[] = "PN=Windows.Appraiser.$currArch&Repairable=1&V=$build";
         $products[] = "PN=Windows.AppraiserData.$currArch&Repairable=1&V=$build";
@@ -481,7 +481,9 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
         $products[] = "PN=MSRT.$currArch&Source=UpdateOrchestrator&V=0.0.0.0";
         $products[] = "PN=SedimentPack.$currArch&Source=UpdateOrchestrator&V=0.0.0.0";
         $products[] = "PN=UUS.$currArch&Source=UpdateOrchestrator&V=0.0.0.0";
-        //$products[] = "PN=Hotpatch.$currArch&Name=Hotpatch Enrollment Package&V=10.0.20348.465";
+        $products[] = "PN=osclient.a9.$currArch&V=$build";
+        $products[] = "PN=OSClient.SxS.$currArch&V=0.0.0.0";
+        $products[] = "PN=Hotpatch.$currArch&Name=Hotpatch Enrollment Package&V=$build";
     }
 
     $callerAttrib = array(

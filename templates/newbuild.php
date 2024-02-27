@@ -98,6 +98,12 @@
                             <label><?= $s['otherOpt2'] ?><?= $enableuf ? "{$s['otherOptNotice']}" : ''?></label>
                         </div>
                     </div>
+                    <div class="field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="flags[]" value="vbs" class="other-options" checked>
+                            <label><?= $s['otherOpt3'] ?></label>
+                        </div>
+                    </div>
                 </div>
             </div>
 

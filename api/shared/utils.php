@@ -110,6 +110,8 @@ function sendWuPostRequestHelper(
     if($postData === false)
         return false;
 
+    if(uupApiConfigIsTrue('debug')) file_put_contents('lastpostdata.xml', $postData);
+
     $data = sendWuPostRequestInternal($endpoints[$endpoint], $postData, $saveCookie);
 
     if($data['error'] == 500 && preg_match('/<ErrorCode>(ConfigChanged|CookieExpired|InvalidCookie)<\/ErrorCode>/', $data['out'])) {
@@ -117,6 +119,8 @@ function sendWuPostRequestHelper(
         $postData = call_user_func_array($postComposer, $postComposerArgs);
         return sendWuPostRequestInternal($endpoints[$endpoint], $postData, $saveCookie);
     }
+
+    if(uupApiConfigIsTrue('debug')) file_put_contents('lastfetched.xml', $data['out']);
 
     return $data;
 }
@@ -197,7 +201,7 @@ function uupApiConfigIsTrue($config) {
 }
 
 function getAllowedFlags() {
-    $flags = ['thisonly'];
+    $flags = ['thisonly', 'vbs'];
 
     if(uupApiConfigIsTrue('allow_corpnet'))
         $flags[] = 'corpnet';

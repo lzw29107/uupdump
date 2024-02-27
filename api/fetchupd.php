@@ -124,6 +124,7 @@ function uupFetchUpd(
     consoleLogger('Fetching information from the server...');
     $composerArgs = [$arch, $flight, $ring, $build, $sku, $type, $flags];
     $out = sendWuPostRequestHelper('client', 'composeFetchUpdRequest', $composerArgs);
+
     if($out === false || $out['error'] != 200) {
         consoleLogger('The request has failed');
         return array('error' => 'WU_REQUEST_FAILED');

@@ -86,6 +86,7 @@ $s['otherOptions'] = 'Other options';
 $s['otherOpt1'] = 'Check only the specified build';
 $s['otherOpt2'] = 'Check for internal updates marked as [Internal Corpnet Required]';
 $s['otherOptNotice'] = ' (Desktop SKU only) ';
+$s['otherOpt3'] = 'Enable VBS';
 
 //known.php
 $s['browseKnown'] = 'Browse known builds';
@@ -333,5 +334,6 @@ $s['edition_SERVERSTANDARD'] = 'Windows Server Standard';
 $s['edition_SERVERSTANDARDCORE'] = 'Windows Server Standard (Core)';
 $s['edition_SERVERTURBINE'] = 'Windows Server Datacenter: Azure Edition';
 $s['edition_SERVERTURBINECOR'] = 'Windows Server Datacenter: Azure Edition (Core)';
+$s['edition_SERVERTURBINECORE'] = 'Windows Server Datacenter: Azure Edition (Core)';
 $s['edition_SERVERSTANDARDACOR'] = 'Windows Server Standard (Semi-Annual Channel)';
 $s['edition_SERVERDATACENTERACOR'] = 'Windows Server Datacenter (Semi-Annual Channel)';

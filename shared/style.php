@@ -223,8 +223,8 @@ function styleLower() {
                     <p><i>$renderText
                         <b>{$s['uupdump']}</b> $websiteVersion /
                         <b>API</b> $api (<a href="https://git.uupdump.net/uup-dump/api/commit/d10e24cf5bbbb2f209ec8a2eb2a6177e4f6cc0f5">d10e24c</a>) /
-                        <b>contrib</b> <a href="https://git.uupdump.net/uup-dump/contrib/commit/935557254c7efb05e966da088cc7c1c7dfd20fac">9355572</a> /
-                        <b>misc</b> <a href="https://git.uupdump.net/uup-dump/misc/commit/6891493dac8629dd2859354b3d511f4b5b768be6">6891493</a><br/>
+                        <b>contrib</b> <a href="https://git.uupdump.net/uup-dump/contrib/commit/1f317d0dfff71336c01d7e1220f73e5807a7f633">1f317d0</a> /
+                        <b>misc</b> <a href="https://git.uupdump.net/uup-dump/misc/commit/4c9abfcd17509ce133cf3801b13421fdbe52e6ae">4c9abfc</a><br/>
                         $copyright
                         <span class="info">{$s['notAffiliated']}</span>
                     </i></p>

@@ -321,5 +321,6 @@ $s['edition_SERVERSTANDARD'] = 'Windows Server Standard';
 $s['edition_SERVERSTANDARDCORE'] = 'Windows Server Standard (Core)';
 $s['edition_SERVERTURBINE'] = 'Windows Server Datacenter: Azure Edition';
 $s['edition_SERVERTURBINECOR'] = 'Windows Server Datacenter: Azure Edition (Core)';
+$s['edition_SERVERTURBINECORE'] = 'Windows Server Datacenter: Azure Edition (Core)';
 $s['edition_SERVERSTANDARDACOR'] = 'Windows Server Standard (Semi-Annual Channel)';
 $s['edition_SERVERDATACENTERACOR'] = 'Windows Server Datacenter (Semi-Annual Channel)';

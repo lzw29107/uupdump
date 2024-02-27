@@ -321,5 +321,6 @@ $s['edition_SERVERSTANDARD'] = 'Windows Server Standard';
 $s['edition_SERVERSTANDARDCORE'] = 'Windows Server Standard - بدون الواجهة الرسومية';
 $s['edition_SERVERTURBINE'] = 'Windows Server Datacenter: Azure Edition';
 $s['edition_SERVERTURBINECOR'] = 'Windows Server Datacenter: Azure Edition - بدون الواجهة الرسومية';
+$s['edition_SERVERTURBINECORE'] = 'Windows Server Datacenter: Azure Edition - بدون الواجهة الرسومية';
 $s['edition_SERVERSTANDARDACOR'] = 'Windows Server Standard - القناة نصف السنوية';
 $s['edition_SERVERDATACENTERACOR'] = 'Windows Server Datacenter - القناة نصف السنوية';

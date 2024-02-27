@@ -165,6 +165,10 @@ function uupGetFiles(
         }
     }
 
+    if(!isset($info['flags'])) {
+        $info['flags'] = ['vbs'];
+    }
+
     if($requestType < 2) {
         $filesInfoList = uupGetOnlineFiles($updateId, $rev, $info, $requestType, $type);
     } else {

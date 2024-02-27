@@ -87,6 +87,7 @@ $s['otherOptions'] = '其他选项';
 $s['otherOpt1'] = '只检查指定的内部版本';
 $s['otherOpt2'] = '检查标记为 [Internal Corpnet Required] 的内部更新';
 $s['otherOptNotice'] = '（仅对桌面版本生效）';
+$s['otherOpt3'] = '启用 VBS';
 
 //known.php
 $s['browseKnown'] = '浏览已知内部版本';
@@ -334,5 +335,6 @@ $s['edition_SERVERSTANDARD'] = 'Windows Server Standard';
 $s['edition_SERVERSTANDARDCORE'] = 'Windows Server Standard（Core）';
 $s['edition_SERVERTURBINE'] = 'Windows Server Datacenter：Azure Edition';
 $s['edition_SERVERTURBINECOR'] = 'Windows Server Datacenter：Azure Edition（Core）';
+$s['edition_SERVERTURBINECORE'] = 'Windows Server Datacenter：Azure Edition（Core）';
 $s['edition_SERVERSTANDARDACOR'] = 'Windows Server Standard（半年频道）';
 $s['edition_SERVERDATACENTERACOR'] = 'Windows Server Datacenter（半年频道）';
