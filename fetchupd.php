@@ -17,26 +17,35 @@ limitations under the License.
 
 $arch = isset($_GET['arch']) ? $_GET['arch'] : 'amd64';
 $ring = isset($_GET['ring']) ? $_GET['ring'] : 'WIF';
+$branch = isset($_GET['branch']) ? $_GET['branch'] : 'auto';
 $flight = isset($_GET['flight']) ? $_GET['flight'] : 'Active';
 $build = isset($_GET['build']) ? $_GET['build'] : 16251;
 $minor = isset($_GET['minor']) ? $_GET['minor'] : 0;
 $sku = isset($_GET['sku']) ? $_GET['sku'] : 48;
 $type = isset($_GET['type']) ? $_GET['type'] : 'Production';
-if(isset($_GET['flags'])) {
-    $build .= '+'.implode(',', $_GET['flags']);
-}
+$flags = isset($_GET['flags']) ? $_GET['flags'] : [];
 
 require_once 'api/fetchupd.php';
 require_once 'shared/style.php';
 require_once 'shared/ratelimits.php';
 
-$resource = hash('sha1', strtolower("fetch-$arch-$ring-$flight-$build-$minor-$sku-$type"));
+$resource = hash('sha1', strtolower("fetch-$arch-$ring-$branch-$flight-$build-$minor-$sku-$type-$flags"));
 if(checkIfUserIsRateLimited($resource)) {
     fancyError('RATE_LIMITED', 'downloads');
     die();
 }
 
-$fetchUpd = uupFetchUpd($arch, $ring, $flight, $build, $minor, $sku, $type, 1);
+$fetchUpd = uupFetchUpd2([
+    'arch' => $arch,
+    'ring' => $ring,
+    'branch' => $branch,
+    'flight' => $flight,
+    'build' => $build,
+    'sku' => $sku,
+    'type' => $type,
+    'flags' => $flags,
+]);
+
 if(isset($fetchUpd['error'])) {
     fancyError($fetchUpd['error'], 'downloads');
     die();

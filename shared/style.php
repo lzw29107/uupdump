@@ -222,8 +222,8 @@ function styleLower() {
                     <div class="ui divider"></div>
                     <p><i>$renderText
                         <b>{$s['uupdump']}</b> $websiteVersion /
-                        <b>API</b> $api (<a href="https://git.uupdump.net/uup-dump/api/commit/d10e24cf5bbbb2f209ec8a2eb2a6177e4f6cc0f5">d10e24c</a>) /
-                        <b>contrib</b> <a href="https://git.uupdump.net/uup-dump/contrib/commit/1f317d0dfff71336c01d7e1220f73e5807a7f633">1f317d0</a> /
+                        <b>API</b> $api (<a href="https://git.uupdump.net/uup-dump/api/commit/ca818356095fc0817d01f512ce82260565bee043">ca81835</a>) /
+                        <b>contrib</b> <a href="https://git.uupdump.net/uup-dump/contrib/commit/f587655e99a39180c64b14e53df56c49dc888957">f587655</a> /
                         <b>misc</b> <a href="https://git.uupdump.net/uup-dump/misc/commit/4c9abfcd17509ce133cf3801b13421fdbe52e6ae">4c9abfc</a><br/>
                         $copyright
                         <span class="info">{$s['notAffiliated']}</span>

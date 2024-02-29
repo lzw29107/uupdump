@@ -5,7 +5,7 @@ function checkfetchOpt() {
         $('#type').slideDown(300);
     } else {
         $('#type').slideUp(300);
-        $('.ui.dropdown.selection:eq(3)').dropdown('restore defaults')
+        $('.ui.dropdown.selection:eq(4)').dropdown('restore defaults')
     }
 }
 

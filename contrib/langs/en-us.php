@@ -19,6 +19,7 @@ $s['uupdumpSub'] = '%s - UUP dump'; //Browse known builds - UUP dump
 $s['build'] = 'Build';
 $s['arch'] = 'Architecture';
 $s['ring'] = 'Channel';
+$s['branch'] = 'Branch';
 $s['updateid'] = 'Update ID';
 $s['update'] = 'Update';
 $s['lang'] = 'Language';
@@ -82,11 +83,11 @@ $s['addNewBuild'] = 'Add a new build';
 $s['newBuildNextText'] = 'Click the <i>Next</i> button to start searching with the specified options.';
 $s['optionsNotice'] = 'Options notice';
 $s['optionsNoticeText'] = 'Options found here configure how the underlying Windows Update client reports itself to the Microsoft servers. It is crucial to set these properly, otherwise you will receive an error.';
-$s['otherOptions'] = 'Other options';
-$s['otherOpt1'] = 'Check only the specified build';
-$s['otherOpt2'] = 'Check for internal updates marked as [Internal Corpnet Required]';
-$s['otherOptNotice'] = ' (Desktop SKU only) ';
-$s['otherOpt3'] = 'Enable VBS';
+$s['autoSelect'] = 'Automatic selection';
+$s['thisOnly'] = 'Return the specified build only';
+$s['corpnet'] = 'Check for internal updates marked as [Internal Corpnet Required]';
+$s['corpnetNotice'] = ' (Desktop SKU only) ';
+$s['vbs'] = 'Enable VBS';
 
 //known.php
 $s['browseKnown'] = 'Browse known builds';

@@ -19,6 +19,7 @@ $s['uupdumpSub'] = '%s - UUP dump'; //Browse known builds - UUP dump
 $s['build'] = '内部版本';
 $s['arch'] = '体系结构';
 $s['ring'] = '推送渠道';
+$s['branch'] = '分支';
 $s['updateid'] = '更新 ID';
 $s['update'] = '更新名称';
 $s['lang'] = '语言';
@@ -83,11 +84,11 @@ $s['addNewBuild'] = '添加新内部版本';
 $s['newBuildNextText'] = '单击<i>下一步</i>按钮开始搜索指定的选项。';
 $s['optionsNotice'] = '选项注意';
 $s['optionsNoticeText'] = '在此处找到的选项是配置基础 Windows 更新客户端向 Microsoft 服务器报告自身的方式。正确设置这些内容至关重要，否则你将会遇到错误，从而无法完成添加。';
-$s['otherOptions'] = '其他选项';
-$s['otherOpt1'] = '只检查指定的内部版本';
-$s['otherOpt2'] = '检查标记为 [Internal Corpnet Required] 的内部更新';
-$s['otherOptNotice'] = '（仅对桌面版本生效）';
-$s['otherOpt3'] = '启用 VBS';
+$s['autoSelect'] = '自动选择';
+$s['thisOnly'] = '仅返回指定的内部版本';
+$s['corpnet'] = '检查标记为 [Internal Corpnet Required] 的内部更新';
+$s['corpnetNotice'] = '（仅对桌面版本生效）';
+$s['vbs'] = '启用 VBS';
 
 //known.php
 $s['browseKnown'] = '浏览已知内部版本';

@@ -42,6 +42,27 @@
             </div>
 
             <div class="field">
+                <label><?= $s['branch'] ?></label>
+                <select class="ui dropdown" name="branch">
+                    <option value="auto" selected><?= $s['autoSelect'] ?></option>
+                    <option value="rs_prerelease">rs_prerelease</option>
+                    <option value="rs2_release">rs2_release</option>
+                    <option value="rs3_release">rs3_release</option>
+                    <option value="rs4_release">rs4_release</option>
+                    <option value="rs5_release">rs5_release</option>
+                    <option value="rs5_release_svc_hci">rs5_release_svc_hci</option>
+                    <option value="19h1_release">19h1_release</option>
+                    <option value="vb_release">vb_release</option>
+                    <option value="fe_release_10x">fe_release_10x</option>
+                    <option value="fe_release">fe_release</option>
+                    <option value="co_release">co_release</option>
+                    <option value="ni_release">ni_release</option>
+                    <option value="zn_release">zn_release</option>
+                    <option value="ge_release">ge_release</option>
+                </select>
+            </div>
+
+            <div class="field">
                 <label><?= $s['build'] ?></label>
                 <input type="text" value="22631.1" name="build">
             </div>
@@ -82,12 +103,11 @@
             </div>
 
             <div class="field" id="other-options">
-                <label><?= $s['otherOptions'] ?></label>
                 <div class="grouped fields">
                     <div class="field">
                         <div class="ui checkbox">
                             <input type="checkbox" name="flags[]" value="thisonly" class="other-options">
-                            <label><?= $s['otherOpt1'] ?></label>
+                            <label><?= $s['thisOnly'] ?></label>
                         </div>
                     </div>
                     <div class="field">
@@ -95,13 +115,13 @@
                             <?= uupApiConfigIsTrue('allow_corpnet') ? '' : 'style="display:none;"' ?>>
                             <input type="checkbox" name="flags[]" value="corpnet" class="other-options"
                             <?= uupApiConfigIsTrue('allow_corpnet') ? 'checked' : 'disabled' ?>>
-                            <label><?= $s['otherOpt2'] ?><?= $enableuf ? "{$s['otherOptNotice']}" : ''?></label>
+                            <label><?= $s['corpnet'] ?><?= $enableuf ? "{$s['corpnetNotice']}" : ''?></label>
                         </div>
                     </div>
                     <div class="field">
                         <div class="ui checkbox">
                             <input type="checkbox" name="flags[]" value="vbs" class="other-options" checked>
-                            <label><?= $s['otherOpt3'] ?></label>
+                            <label><?= $s['vbs'] ?></label>
                         </div>
                     </div>
                 </div>

@@ -19,6 +19,7 @@ $s['uupdumpSub'] = '%s - UUP dump'; //Browse known builds - UUP dump
 $s['build'] = 'Kompilacja';
 $s['arch'] = 'Architektura';
 $s['ring'] = 'Kanał';
+$s['branch'] = 'Gałąź';
 $s['updateid'] = 'Identyfikator aktualizacji';
 $s['update'] = 'Aktualizacja';
 $s['lang'] = 'Język';
@@ -82,6 +83,8 @@ $s['addNewBuild'] = 'Dodaj nową kompilację';
 $s['newBuildNextText'] = 'Kliknij przycisk <i>Dalej</i>, aby rozpocząć wyszukiwanie przy użyciu wybranych opcji.';
 $s['optionsNotice'] = 'Uwaga dotycząca opcji';
 $s['optionsNoticeText'] = 'Opcje dostępne tutaj konfigurują sposób w jaki klient usługi Windows Update raportuje się serwerom firmy Microsoft. Ważne jest, aby ustawić je prawidłowo, w przeciwnym wypadku otrzymany zostanie błąd.';
+$s['autoSelect'] = 'Wybór automatyczny';
+$s['thisOnly'] = 'Zwróć wyłącznie podaną kompilację';
 
 //known.php
 $s['browseKnown'] = 'Przeglądaj znane kompilacje';
