@@ -6,13 +6,9 @@ function get7ZipLocation() {
     if(PHP_OS == 'WINNT') {
         $z7z = realpath(dirname(__FILE__)).'\7za.exe';
         if(!file_exists($z7z)) return false;
-    } else {
-        shell_exec('command -v 7z', $out, $errCode);
-        if($errCode != 0) {
-            return false;
-        }
-        $z7z = '7z';
-    }
+    } else if(!shell_exec('command -v 7z')) {
+        return false;
+    } else $z7z = '7z';
 
     return $z7z;
 }

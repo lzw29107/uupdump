@@ -19,6 +19,7 @@ $s['uupdumpSub'] = '%s - UUP dump'; //Browse known builds - UUP dump
 $s['build'] = 'ビルド';
 $s['arch'] = 'アーキテクチャ';
 $s['ring'] = 'チャネル';
+$s['branch'] = 'ブランチ';
 $s['updateid'] = '更新 ID';
 $s['update'] = '更新';
 $s['lang'] = '言語';
@@ -82,6 +83,8 @@ $s['addNewBuild'] = '新しいビルドを追加';
 $s['newBuildNextText'] = '<i>次へ</i>ボタンをクリックして、目的のオプションで検索します。';
 $s['optionsNotice'] = 'オプションのお知らせ';
 $s['optionsNoticeText'] = 'ここにあるオプションは、基礎となるWindows UpdateクライアントがMicrosoftサーバーにどのように報告するかを設定します。 正しく設定しないとエラーになります。';
+$s['autoSelect'] = '自動選択';
+$s['thisOnly'] = '選択されたビルドのみを検索';
 
 //known.php
 $s['browseKnown'] = '既知のビルドを参照';
