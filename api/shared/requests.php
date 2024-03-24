@@ -448,6 +448,11 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
         $mainProduct = 'IoTCore.OS.rs2';
     }
 }
+    // WNC
+    if($sku == 210) {
+        $mainProduct = 'WNC.OS';
+    }
+
     if($arch == 'all') {
         $arch = array(
             'amd64',

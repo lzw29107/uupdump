@@ -77,6 +77,7 @@ function uupApiPrivateNormalizeFetchParams($params) {
         'flight' => 'Active',
         'branch' => 'ge_release',
         'build' => 'latest',
+        'minor' => 0,
         'sku' => 48,
         'type' => 'Production',
         'flags' => [],
@@ -89,6 +90,7 @@ function uupApiPrivateNormalizeFetchParams($params) {
     $np['flight'] = ucwords(strtolower($np['flight']));
     $np['branch'] = strtolower($np['branch']);
     $np['build'] = strtolower($np['build']);
+    $np['minor'] = intval($np['minor']);
     $np['sku'] = intval($np['sku']);
     $np['type'] = ucwords(strtolower($np['type']));
     $np['flags'] = array_map('strtolower', $np['flags']);
@@ -113,6 +115,7 @@ function uupFetchUpd(
         'ring' => $ring,
         'flight' => $flight,
         'build' => $build,
+        'minor' => $minor,
         'sku' => $sku,
         'type' => $type,
         'flags' => $flags,
@@ -131,6 +134,7 @@ function uupFetchUpd2($params, $cacheRequests = 0) {
     $flight = 'Active';
     $branch = $np['branch'];
     $build = $np['build'];
+    $minor = $np['minor'];
     $sku = $np['sku'];
     $type = $np['type'];
     $flags = $np['flags'];

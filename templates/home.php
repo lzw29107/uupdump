@@ -206,6 +206,7 @@ if(!isset($templateOk)) die();
                 <th class="collapsing"><?= $s['tHeadArchitectures'] ?></th>
             </tr>
         </thead>
+
         <tbody>
             <tr>
                 <td class="collapsing">
@@ -279,12 +280,11 @@ if(!isset($templateOk)) die();
             </tr>
         </tbody>
     </table>
-</div>
 
 <div class="ui bottom attached info message">
   <i class="fa-regular fa-lightbulb icon"></i>
   <?= $s['checkOutAddANewBuild'] ?></div>
-
+</div>
 
 <h3 class="ui centered header">
     <div class="content">

@@ -41,6 +41,7 @@ $fetchUpd = uupFetchUpd2([
     'branch' => $branch,
     'flight' => $flight,
     'build' => $build,
+    'minor' => $minor,
     'sku' => $sku,
     'type' => $type,
     'flags' => $flags,
