@@ -53,34 +53,30 @@ if(!isset($templateOk)) die();
             <i class="dropdown icon"></i>
 
             <div class="menu">
+                <a class="item" href="known.php?q=category:w11-24h2">
+                    24H2
+                </a>
                 <a class="item" href="known.php?q=category:w11-23h2-pm-beta">
                     23H2 Post Moment Beta
                 </a>
-              
                 <a class="item" href="known.php?q=category:w11-23h2">
                     23H2
                 </a>
-			
                 <a class="item" href="known.php?q=category:w11-22h2m4-23h2-beta">
                     22H2 Moment 4/23H2 Beta
                 </a>
-			
                 <a class="item" href="known.php?q=category:w11-22h2m3">
                     22H2 Moment 3 Beta
                 </a>
-			
                 <a class="item" href="known.php?q=category:w11-22h2m2">
                     22H2 Moment 2 Beta
                 </a>
-			
                 <a class="item" href="known.php?q=category:w11-22h2m1">
                     22H2 Moment 1 Beta
                 </a>
-			
                 <a class="item" href="known.php?q=category:w11-22h2">
                     22H2
                 </a>
-
                 <a class="item" href="known.php?q=category:w11-21h2">
                     21H2
                 </a>

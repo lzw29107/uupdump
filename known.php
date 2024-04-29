@@ -36,6 +36,9 @@ if(isset($search) && strstr($search, 'category:')) {
         case 'w11-23h2-pm-beta':
             $searchstr = 'regex:11.*Insider.*22635.*';
             break;
+        case 'w11-24h2':
+            $searchstr = '26100';
+            break;
         case 'w11-23h2':
             $searchstr = 'regex:\(22631';
             break;

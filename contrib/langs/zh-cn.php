@@ -323,6 +323,7 @@ $s['edition_LITE'] = 'Windows 10X';
 $s['edition_PPIPRO'] = 'Windows 协同版';
 $s['edition_PROFESSIONAL'] = 'Windows 专业版';
 $s['edition_PROFESSIONALN'] = 'Windows 专业版 N';
+$s['edition_PROFESSIONALCOUNTRYSPECIFIC'] = 'Windows 专业中文版';
 $s['edition_PROFESSIONALWORKSTATION'] = 'Windows 专业工作站版';
 $s['edition_PROFESSIONALWORKSTATIONN'] = 'Windows 专业工作站版 N';
 $s['edition_PROFESSIONALEDUCATION'] = 'Windows 专业教育版';

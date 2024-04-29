@@ -311,6 +311,7 @@ $s['edition_LITE'] = 'Windows 10X';
 $s['edition_PPIPRO'] = 'Windows Team';
 $s['edition_PROFESSIONAL'] = 'Windows Pro';
 $s['edition_PROFESSIONALN'] = 'Windows Pro N';
+$s['edition_PROFESSIONALCOUNTRYSPECIFIC'] = 'Windows Pro China Only';
 $s['edition_PROFESSIONALWORKSTATION'] = 'Windows Pro لمحطات العمل';
 $s['edition_PROFESSIONALWORKSTATIONN'] = 'Windows Pro N لمحطات العمل';
 $s['edition_PROFESSIONALEDUCATION'] = 'Windows Pro لعملاء التعليم';
