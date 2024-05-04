@@ -15,9 +15,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-$search = isset($_GET['q']) ? $_GET['q'] : null;
-$page = isset($_GET['p']) ? intval($_GET['p']) : 1;
-$sort = isset($_GET['sort']) ? $_GET['sort'] : null;
+$search = $_GET['q'] ?? null;
+$page = $_GET['p'] ?? 1;
+$sort = $_GET['sort'] ?? null;
 
 require_once 'api/listid.php';
 require_once 'shared/style.php';

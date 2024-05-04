@@ -17,9 +17,9 @@ limitations under the License.
 
 require_once 'shared/style.php';
 
-$updateId = isset($_POST['id']) ? $_POST['id'] : null;
-$usePack = isset($_POST['pack']) ? $_POST['pack'] : 0;
-$desiredEdition = isset($_POST['edition']) ? $_POST['edition'] : 0;
+$updateId = $_POST['id'] ?? null;
+$usePack = $_POST['pack'] ?? 0;
+$desiredEdition = $_POST['edition'] ?? 0;
 
 if($desiredEdition == null || !is_array($desiredEdition)) {
    fancyError('UNSUPPORTED_COMBINATION');

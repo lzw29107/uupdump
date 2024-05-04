@@ -15,9 +15,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-$updateId = isset($_GET['id']) ? $_GET['id'] : null;
-$search = isset($_GET['q']) ? $_GET['q'] : null;
-$aria2 = isset($_GET['aria2']) ? $_GET['aria2'] : null;
+$updateId = $_GET['id'] ?? null;
+$search = $_GET['q'] ?? null;
+$aria2 = $_GET['aria2'] ?? null;
 
 require_once 'api/get.php';
 require_once 'api/updateinfo.php';

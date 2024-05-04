@@ -15,10 +15,11 @@ function createUupConvertPackage(
     $moreOptions = [],
     $app = null
 ) {
-    $updates = isset($moreOptions['updates']) ? $moreOptions['updates'] : 0;
-    $cleanup = isset($moreOptions['cleanup']) ? $moreOptions['cleanup'] : 0;
-    $netfx = isset($moreOptions['netfx']) ? $moreOptions['netfx'] : 0;
-    $esd = isset($moreOptions['esd']) ? $moreOptions['esd'] : 0;
+    $updates = $moreOptions['updates'] ?? 0;
+    $cleanup = $moreOptions['cleanup'] ?? 0;
+    $resetbase = $moreOptions['resetbase'] ?? 0;
+    $netfx = $moreOptions['netfx'] ?? 0;
+    $esd = $moreOptions['esd'] ?? 0;
 
     $type = $esd ? 'esd' : 'wim';
 
@@ -278,7 +279,7 @@ foreach($desiredVE as $edition) {
 AutoStart    =1
 AddUpdates   =$updates
 Cleanup      =$cleanup
-ResetBase    =0
+ResetBase    =$resetbase
 NetFx3       =$netfx
 StartVirtual =$virtualEditions
 wim2esd      =$esd

@@ -64,11 +64,13 @@ function sendWuPostRequestInternal($url, $postData, $saveCookie = true) {
     curl_setopt($req, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($req, CURLOPT_ENCODING, '');
     curl_setopt($req, CURLOPT_POSTFIELDS, $postData);
-    curl_setopt($req, CURLOPT_CONNECTTIMEOUT, 5);
   
     if(isset($config['fetch_timeout']) && intval($config['fetch_timeout']) > 0) {
+      set_time_limit($config['fetch_timeout']);
       curl_setopt($req, CURLOPT_TIMEOUT, $config['fetch_timeout']);
+      curl_setopt($req, CURLOPT_CONNECTTIMEOUT, $config['fetch_timeout'] / 3);
     } else {
+      curl_setopt($req, CURLOPT_CONNECTTIMEOUT, 5);
       curl_setopt($req, CURLOPT_TIMEOUT, 15);
     }
     curl_setopt($req, CURLOPT_SSL_VERIFYPEER, 0);

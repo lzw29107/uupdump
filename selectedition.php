@@ -15,8 +15,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-$updateId = isset($_GET['id']) ? $_GET['id'] : 0;
-$selectedLang = isset($_GET['pack']) ? $_GET['pack'] : 0;
+$updateId = $_GET['id'] ?? 0;
+$selectedLang = $_GET['pack'] ?? 0;
 
 require_once 'api/listlangs.php';
 require_once 'api/listeditions.php';
@@ -40,7 +40,7 @@ if(!uupApiPacksExist($updateId)) {
 }
 
 $updateInfo = uupUpdateInfo($updateId, ignoreFiles: true);
-$updateInfo = isset($updateInfo['info']) ? $updateInfo['info'] : array();
+$updateInfo = $updateInfo['info'] ?? array();
 
 if(!isset($updateInfo['title'])) {
     $updateTitle = 'Unknown update: '.$updateId;
@@ -63,7 +63,7 @@ if(!isset($updateInfo['sku'])) {
 $hiddenEditions = ['PPIPRO'];
 $recommendedEditions = ['CORE', 'PROFESSIONAL'];
 
-$build = isset($updateInfo['build']) ? $updateInfo['build'] : null;
+$build = $updateInfo['build'] ?? null;
 $buildNum = uupApiBuildMajor($build);
 $disableVE = 0;
 if(!areVirtualEditonsSupported($buildNum, $uSku)) {

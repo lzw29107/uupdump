@@ -15,21 +15,21 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-$arch = isset($_GET['arch']) ? $_GET['arch'] : 'amd64';
-$ring = isset($_GET['ring']) ? $_GET['ring'] : 'WIF';
-$branch = isset($_GET['branch']) ? $_GET['branch'] : 'auto';
-$flight = isset($_GET['flight']) ? $_GET['flight'] : 'Active';
-$build = isset($_GET['build']) ? $_GET['build'] : 16251;
-$minor = isset($_GET['minor']) ? $_GET['minor'] : 0;
-$sku = isset($_GET['sku']) ? $_GET['sku'] : 48;
-$type = isset($_GET['type']) ? $_GET['type'] : 'Production';
-$flags = isset($_GET['flags']) ? $_GET['flags'] : [];
+$arch = $_GET['arch'] ?? 'amd64';
+$ring = $_GET['ring'] ?? 'WIF';
+$branch = $_GET['branch'] ?? 'auto';
+$flight = $_GET['flight'] ?? 'Active';
+$build = $_GET['build'] ?? 16251;
+$minor = $_GET['minor'] ?? 0;
+$sku = $_GET['sku'] ?? 48;
+$type = $_GET['type'] ?? 'Production';
+$flags = $_GET['flags'] ?? [];
 
 require_once 'api/fetchupd.php';
 require_once 'shared/style.php';
 require_once 'shared/ratelimits.php';
 
-$resource = hash('sha1', strtolower("fetch-$arch-$ring-$branch-$flight-$build-$minor-$sku-$type-$flags"));
+$resource = hash('sha1', strtolower("fetch-$arch-$ring-$branch-$flight-$build-$minor-$sku-$type"));
 if(checkIfUserIsRateLimited($resource)) {
     fancyError('RATE_LIMITED', 'downloads');
     die();

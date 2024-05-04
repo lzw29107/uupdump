@@ -15,9 +15,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-$updateId = isset($_GET['id']) ? $_GET['id'] : null;
-$usePack = isset($_GET['pack']) ? $_GET['pack'] : 0;
-$desiredEdition = isset($_GET['edition']) ? $_GET['edition'] : 0;
+$updateId = $_GET['id'] ?? null;
+$usePack = $_GET['pack'] ?? 0;
+$desiredEdition = $_GET['edition'] ?? 0;
 
 require_once 'api/get.php';
 require_once 'api/listlangs.php';

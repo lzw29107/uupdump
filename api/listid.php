@@ -67,10 +67,10 @@ function uupApiPrivateGetFromFileinfo($sortByDate = 0) {
         if(!isset($database[$uuid])) {
             $info = uupApiReadFileinfoMeta($uuid);
 
-            $title = isset($info['title']) ? $info['title'] : 'UNKNOWN';
-            $build = isset($info['build']) ? $info['build'] : 'UNKNOWN';
-            $arch = isset($info['arch']) ? $info['arch'] : 'UNKNOWN';
-            $created = isset($info['created']) ? $info['created'] : null;
+            $title = $info['title'] ?? 'UNKNOWN';
+            $build = $info['build'] ?? 'UNKNOWN';
+            $arch = $info['arch'] ?? 'UNKNOWN';
+            $created = $info['created'] ?? null;
 
             $temp = array(
                 'title' => $title,

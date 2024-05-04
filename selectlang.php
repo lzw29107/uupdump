@@ -15,8 +15,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-$updateId = isset($_GET['id']) ? $_GET['id'] : 0;
-$getPacks = isset($_GET['packs']) ? $_GET['packs'] : 0;
+$updateId = $_GET['id'] ?? 0;
+$getPacks = $_GET['packs'] ?? 0;
 
 require_once 'api/listlangs.php';
 require_once 'api/updateinfo.php';
@@ -58,7 +58,7 @@ if($getPacks) {
 }
 
 $updateInfo = uupUpdateInfo($updateId, ignoreFiles: true);
-$updateInfo = isset($updateInfo['info']) ? $updateInfo['info'] : array();
+$updateInfo = $updateInfo['info'] ?? array();
 
 if(!isset($updateInfo['title'])) {
     $updateTitle = 'Unknown update: '.$updateId;

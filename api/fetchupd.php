@@ -195,7 +195,11 @@ function uupFetchUpd2($params, $cacheRequests = 0) {
 
     consoleLogger('Fetching information from the server...');
     $composerArgs = [$arch, $flight, $ring, $build, $sku, $type, $flags, $branch];
-    $out = sendWuPostRequestHelper('client', 'composeFetchUpdRequest', $composerArgs);
+    $retry = 0;
+    do {
+        $retry++;
+        $out = sendWuPostRequestHelper('client', 'composeFetchUpdRequest', $composerArgs);
+    } while ($retry <= 3 && ($out === false || $out['error'] != 200));
 
     if($out === false || $out['error'] != 200) {
         consoleLogger('The request has failed');
