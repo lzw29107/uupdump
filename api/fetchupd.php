@@ -437,6 +437,7 @@ function parseFetchUpdate($updateInfo, $out, $arch, $ring, $flight, $build, $sku
         $temp['flight'] = $flight;
         $temp['branch'] = $branch;
         $temp['arch'] = $foundArch;
+        $temp['fetchArch'] = $arch == 'all' ? 'amd64' : $arch;
         $temp['build'] = $foundBuild;
         $temp['checkBuild'] = $build;
         $temp['sku'] = $sku;

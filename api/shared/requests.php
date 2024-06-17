@@ -350,11 +350,19 @@ function composeFileGetRequest($updateId, $info, $rev = 1, $type = 'Production')
     $created = gmdate(DATE_W3C, $createdTime);
     $expires = gmdate(DATE_W3C, $expiresTime);
 
+    $arch = 'amd64';
+
+    if(isset($info['fetchArch'])) {
+        $arch = $info['fetchArch'];
+    } elseif(isset($info['arch'])) {
+        $arch = $info['arch'];
+    }
+
     $deviceAttributes = composeDeviceAttributes(
         isset($info['flight']) ? $info['flight'] : 'Active',
         isset($info['ring']) ? $info['ring'] : 'RETAIL',
         isset($info['checkBuild']) ? $info['checkBuild'] : '10.0.19041.1',
-        isset($info['arch']) ? $info['arch'] : 'amd64',
+        $arch,
         isset($info['sku']) ? $info['sku'] : 48,
         $type,
         isset($info['flags']) ? $info['flags'] : ['vbs'],
