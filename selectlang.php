@@ -26,19 +26,20 @@ require_once dirname(__FILE__).'/sta/main.php';
 require_once dirname(__FILE__).'/sta/genpack.php';
 
 function getLangs($updateId, $s) {
-    $langs = uupListLangs($updateId);
-    $langsTemp = array();
+    $langsTemp = uupListLangs($updateId)['langList'];
+    $langs = [];
 
-    foreach($langs['langList'] as $lang) {
+    foreach($LangsTemp as $lang) {
         if(isset($s["lang_$lang"])) {
-            $langsTemp[$lang] = $s["lang_$lang"];
+            $langs['langs'][$lang] = $s["lang_$lang"];
         } else {
-            $langsTemp[$lang] = $langs['langFancyNames'][$lang];
+            $langs['langs'][$lang] = $langsTemp['langFancyNames'][$lang];
         }
     }
 
-    $langs = $langsTemp;
-    locasort($langs, $s['code']);
+    $langs['langs'] = $langsTemp;
+    $langs['appxPresent'] = $langsTemp['appxPresent'];
+    locasort($langs['langs'], $s['code']);
 
     return $langs;
 }
@@ -103,7 +104,7 @@ $updateTitle = $updateTitle.' '.$updateArch;
 $updateBlocked = isUpdateBlocked($buildNum, $updateTitle);
 $langs = $updateBlocked ? [] : getLangs($updateId, $s);
 
-if(in_array(strtolower($s['code']), array_keys($langs))) {
+if(in_array(strtolower($s['code']), array_keys($langs['langs']))) {
     $defaultLang = strtolower($s['code']);
 } else {
     $defaultLang = 'en-us';
@@ -134,7 +135,7 @@ if($ring == 'CANARY' && $flight == 'Active') {
 
 $findFilesUrl = "findfiles.php?id=".htmlentities($updateId);
 
-$langsAvailable = count($langs) > 0;
+$langsAvailable = count($langs['langs']) > 0;
 $packsAvailable = uupApiPacksExist($updateId);
 
 $noLangsIcon = 'file-circle-xmark';
@@ -149,9 +150,13 @@ if($corpnet)
     $updateBlocked = true;
 } else if(!$packsAvailable) {
     $noLangsIcon = 'industry';
-    $noLangsCause = $s['Metadatanotgenerated'];
+    $noLangsCause = $s['metadataNotGenerated'];
     $updateBlocked = true;
-	  $generatePacksButton = true;
+    $generatePacksButton = true;
+} else if(!$langs['appxPresent']) {
+    $noLangsIcon = 'file-circle-xmark';
+    $noLangsCause = $s['updateIsBlockedv2'];
+    $updateBlocked = true;
 } else if(!$updateBlocked && !$langsAvailable) {
     $noLangsIcon = 'file-circle-xmark';
     $noLangsCause = $s['noLangsAvailablev2'];

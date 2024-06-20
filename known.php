@@ -33,11 +33,14 @@ if(isset($search) && strstr($search, 'category:')) {
         case 'dev':
             $searchstr = 'regex:2((3[4-6]\d{2}\.100\d)|(6(?!0[0-4])\d{3}\.\d))';
             break;
-        case 'w11-23h2-pm-beta':
-            $searchstr = 'regex:11.*Insider.*22635.*';
+        case 'w11-24h2-current-beta':
+            $searchstr = '26120';
             break;
         case 'w11-24h2':
             $searchstr = '26100';
+            break;
+        case 'w11-23h2-current-beta':
+            $searchstr = '22635';
             break;
         case 'w11-23h2':
             $searchstr = 'regex:\(22631';
@@ -59,6 +62,9 @@ if(isset($search) && strstr($search, 'category:')) {
             break;
         case 'w11-21h2':
             $searchstr = '22000';
+            break;
+        case 'server-24h2':
+            $searchstr = 'regex:Server.*26100.*';
             break;
         case 'server-23h2':
             $searchstr = '25398';
