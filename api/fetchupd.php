@@ -50,6 +50,54 @@ function uupApiPrivateGetLatestBuild() {
     return $build;
 }
 
+function uupApiPrivateGetAcceptableBranches() {
+    return [
+        'auto',
+        'rs2_release',
+        'rs3_release',
+        'rs4_release',
+        'rs5_release',
+        'rs5_release_svc_hci',
+        '19h1_release',
+        'vb_release',
+        'fe_release_10x',
+        'fe_release',
+        'co_release',
+        'ni_release',
+        'zn_release',
+        'ge_release',
+        'rs_prerelease',
+    ];
+}
+
+function uupApiPrivateNormalizeFetchParams($params) {
+    $np = array_replace([
+        'arch' => 'amd64',
+        'ring' => 'WIF',
+        'flight' => 'Active',
+        'branch' => 'ge_release',
+        'build' => 'latest',
+        'minor' => 0,
+        'sku' => 48,
+        'type' => 'Production',
+        'flags' => [],
+    ], $params);
+
+    if(!is_array($np['flags'])) $np['flags'] = [];
+
+    $np['arch'] = strtolower($np['arch']);
+    $np['ring'] = strtoupper($np['ring']);
+    $np['flight'] = ucwords(strtolower($np['flight']));
+    $np['branch'] = strtolower($np['branch']);
+    $np['build'] = strtolower($np['build']);
+    $np['minor'] = intval($np['minor']);
+    $np['sku'] = intval($np['sku']);
+    $np['type'] = ucwords(strtolower($np['type']));
+    $np['flags'] = array_map('strtolower', $np['flags']);
+
+    return $np;
+}
+
 function uupFetchUpd(
     $arch = 'amd64',
     $ring = 'WIF',
@@ -60,14 +108,36 @@ function uupFetchUpd(
     $type = 'Production',
     $cacheRequests = 0
 ) {
+    [$build, $flags] = uupApiPrivateParseFlags($build);
+
+    $params = [
+        'arch' => $arch,
+        'ring' => $ring,
+        'flight' => $flight,
+        'build' => $build,
+        'minor' => $minor,
+        'sku' => $sku,
+        'type' => $type,
+        'flags' => $flags,
+    ];
+
+    return uupFetchUpd2($params, $cacheRequests);
+}
+
+function uupFetchUpd2($params, $cacheRequests = 0) {
     uupApiPrintBrand();
 
-    $arch = strtolower($arch);
-    $ring = strtoupper($ring);
-    $flight = ucwords(strtolower($flight));
-    $flight = 'Active';
+    $np = uupApiPrivateNormalizeFetchParams($params);
 
-    [$build, $flags] = uupApiPrivateParseFlags($build);
+    $arch = $np['arch'];
+    $ring = $np['ring'];
+    $flight = 'Active';
+    $branch = $np['branch'];
+    $build = $np['build'];
+    $minor = $np['minor'];
+    $sku = $np['sku'];
+    $type = $np['type'];
+    $flags = $np['flags'];
     $flagsStr = implode(',', $flags);
 
     if(strtolower($build) == 'latest' || (!$build)) {
@@ -77,7 +147,6 @@ function uupFetchUpd(
     $build = explode('.', $build);
     if(isset($build[1])) $minor = intval($build[1]);
     $build = intval($build[0]);
-    $sku = intval($sku);
 
     if(!($arch == 'amd64' || $arch == 'x86' || $arch == 'arm64' || $arch == 'arm' || $arch == 'all')) {
         return array('error' => 'UNKNOWN_ARCH');
@@ -103,6 +172,9 @@ function uupFetchUpd(
         return array('error' => 'ILLEGAL_MINOR');
     }
 
+    if(!in_array($branch, uupApiPrivateGetAcceptableBranches()))
+        $branch = 'auto';
+
     if($ring == 'DEV') $ring = 'WIF';
     if($ring == 'BETA') $ring = 'WIS';
     if($ring == 'RELEASEPREVIEW') $ring = 'RP';
@@ -116,14 +188,19 @@ function uupFetchUpd(
         $type = 'Production';
     }
 
-    $res = "api-fetch-$arch-$ring-$flight-$build-$flagsStr-$minor-$sku-$type";
+    $res = "api-fetch-$arch-$ring-$flight-$branch-$build-$flagsStr-$minor-$sku-$type";
     $cache = new UupDumpCache($res);
     $fromCache = $cache->get();
     if($fromCache !== false) return $fromCache;
 
     consoleLogger('Fetching information from the server...');
-    $composerArgs = [$arch, $flight, $ring, $build, $sku, $type, $flags];
-    $out = sendWuPostRequestHelper('client', 'composeFetchUpdRequest', $composerArgs);
+    $composerArgs = [$arch, $flight, $ring, $build, $sku, $type, $flags, $branch];
+    $retry = 0;
+    do {
+        $retry++;
+        $out = sendWuPostRequestHelper('client', 'composeFetchUpdRequest', $composerArgs);
+    } while ($retry <= 3 && ($out === false || $out['error'] != 200));
+
     if($out === false || $out['error'] != 200) {
         consoleLogger('The request has failed');
         return array('error' => 'WU_REQUEST_FAILED');
@@ -150,7 +227,7 @@ function uupFetchUpd(
         $num++;
         consoleLogger("Checking build information for update {$num} of {$updatesNum}...");
 
-        $info = parseFetchUpdate($val, $out, $arch, $ring, $flight, $build, $sku, $type, $flags);
+        $info = parseFetchUpdate($val, $out, $arch, $ring, $flight, $build, $sku, $type, $flags, $branch);
         if(isset($info['error'])) {
             $errorCount++;
             continue;
@@ -180,7 +257,7 @@ function uupFetchUpd(
     return $data;
 }
 
-function parseFetchUpdate($updateInfo, $out, $arch, $ring, $flight, $build, $sku, $type, $flags) {
+function parseFetchUpdate($updateInfo, $out, $arch, $ring, $flight, $build, $sku, $type, $flags, $branch) {
     $updateNumId = preg_replace('/<UpdateInfo><ID>|<\/ID>.*/i', '', $updateInfo);
 
     $updates = preg_replace('/<Update>/', "\n<Update>", $out);
@@ -358,7 +435,9 @@ function parseFetchUpdate($updateInfo, $out, $arch, $ring, $flight, $build, $sku
         $temp['title'] = $updateTitle;
         $temp['ring'] = $ring;
         $temp['flight'] = $flight;
+        $temp['branch'] = $branch;
         $temp['arch'] = $foundArch;
+        $temp['fetchArch'] = $arch == 'all' ? 'amd64' : $arch;
         $temp['build'] = $foundBuild;
         $temp['checkBuild'] = $build;
         $temp['sku'] = $sku;

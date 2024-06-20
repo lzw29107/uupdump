@@ -2,7 +2,7 @@
 require_once dirname(__FILE__).'/../api/shared/main.php';
 
 function brand($script = null) {
-    $projVersion = '3.72.0-featuredev-231204';
+    $projVersion = '3.74.1-featuredev-240620';
     return 'UUP dump v'.$projVersion;
 }
 

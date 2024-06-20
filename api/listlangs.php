@@ -31,7 +31,7 @@ function uupListLangsInternal($updateId) {
             continue;
         }
 
-        $fancyName = isset($fancyLangNames[$key]) ? $fancyLangNames[$key] : $key;
+        $fancyName = $fancyLangNames[$key] ?? $key;
 
         $langList[] = $key;
         $langListFancy[$key] = $fancyName;
@@ -40,22 +40,22 @@ function uupListLangsInternal($updateId) {
     return [
         'langList' => $langList,
         'langFancyNames' => $langListFancy,
+        'appxPresent' => isset($genPack['neutral']['APP']),
     ];
 }
 
 function uupListLangs($updateId = 0, $returnInfo = true) {
     if($returnInfo) {
         $info = uupUpdateInfo($updateId, ignoreFiles: true);
-        $info = isset($info['info']) ? $info['info'] : false;
+        $info = $info['info'] ?? false;
     }
 
     $langList = uupListLangsInternal($updateId);
 
-    $response = [
-        'apiVersion' => uupApiVersion(),
-        'langList' => $langList['langList'],
-        'langFancyNames' => $langList['langFancyNames'],
-    ];
+    $response = array_merge(
+        ['apiVersion' => uupApiVersion()],
+        $langList
+    );
 
     if($returnInfo) $response['updateInfo'] = $info;
 

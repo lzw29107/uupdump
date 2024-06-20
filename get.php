@@ -16,18 +16,25 @@ limitations under the License.
 */
 
 //get parameters
-$updateId = isset($_GET['id']) ? $_GET['id'] : null;
-$simple = isset($_GET['simple']) ? $_GET['simple'] : 0;
-$aria2 = isset($_GET['aria2']) ? $_GET['aria2'] : 0;
-$renameScript = isset($_GET['renscript']) ? $_GET['renscript'] : 0;
-$autoDl = isset($_GET['autodl']) ? $_GET['autodl'] : 0;
-$usePack = isset($_GET['pack']) ? $_GET['pack'] : 0;
-$desiredEdition = isset($_GET['edition']) ? $_GET['edition'] : 0;
-$sha1 = isset($_GET['sha1']) ? $_GET['sha1'] : 0;
+$updateId = $_GET['id'] ?? null;
+$simple = $_GET['simple'] ?? 0;
+$aria2 = $_GET['aria2'] ?? 0;
+$renameScript = $_GET['renscript'] ?? 0;
+$autoDl = $_GET['autodl'] ?? 0;
+$usePack = $_GET['pack'] ?? 0;
+$desiredEdition = $_GET['edition'] ?? 0;
+$sha1 = $_GET['sha1'] ?? 0;
 
 //post parameters
-$autoDl = isset($_POST['autodl']) ? $_POST['autodl'] : $autoDl;
-$desiredVE = isset($_POST['virtualEditions']) ? $_POST['virtualEditions'] : array();
+$autoDl = $_POST['autodl'] ?? $autoDl;
+$desiredVE = $_POST['virtualEditions'] ?? array();
+$moreOptions = [
+    'updates' => $_POST['updates'] ?? 0,
+    'cleanup' => $_POST['cleanup'] ?? 0,
+    'resetbase' => $_POST['resetbase'] ?? 0,
+    'netfx' => $_POST['netfx'] ?? 0,
+    'esd' => $_POST['esd'] ?? 0,
+];
 
 require_once 'api/get.php';
 require_once 'api/updateinfo.php';
@@ -67,108 +74,46 @@ if(is_array($desiredEdition)) {
 }
 
 if($autoDl && !$aria2) {
-    $autoDlConfig = new AutoDlConfig(
-        $autoDl,
-        $updateId,
-        $usePack,
-        $desiredEdition,
-        $desiredEditionMixed,
-        $desiredVE
-    );
+    $files = uupGetFiles($updateId, $usePack, $desiredEditionMixed, 2);
+    $urls = setUrlsForPacks($updateId, $usePack, $desiredEdition);
+    $archiveName = setArchiveNames($usePack, $desiredEditionMixed, $updateId, $files['build'], $files['arch']);
 
-    $autoDlConfig->createPackage();
-    die();
-}
+    if($autoDl <= 1) {
+        createAria2Package($urls['url'], $archiveName, $urls['app']);
+    } else createUupConvertPackage($urls['url'], $archiveName, $virtualEditions = ($autoDl - 2), $desiredVE, $moreOptions, $urls['app']);
+} else {
+    $files = uupGetFiles($updateId, $usePack, $desiredEditionMixed, 1);
 
-$files = uupGetFiles($updateId, $usePack, $desiredEditionMixed, 1);
+    if($aria2 && !$sha1) {
+        header('Content-Type: text/plain');
 
-if($aria2 && !$sha1) {
-    header('Content-Type: text/plain');
-
-    if(isset($files['error'])) {
-        if($aria2 == 2) {
-            echo '#UUPDUMP_ERROR:';
-        } else {
-            http_response_code(400);
-        }
-
-        echo $files['error'];
-        die();
-    }
-
-    if($autoDl) {
-        header('Content-Disposition: attachment; filename="aria2_script.txt"');
-    }
-
-    $files = $files['files'];
-    $filesKeys = array_keys($files);
-
-    usort($filesKeys, 'sortBySize');
-    foreach($filesKeys as $val) {
-        echo $files[$val]['url']."\n";
-        echo '  out='.$val."\n";
-        echo '  checksum=sha-1='.$files[$val]['sha1']."\n\n";
-    }
-    /*
-    //add debugging information to the file
-    echo "# --- BEGIN UUP DUMP DEBUG INFO ---\n";
-    foreach($filesKeys as $val) {
-        echo "#debug=";
-        echo base64_encode($val);
-        echo ":";
-        echo base64_encode($files[$val]['debug']);
-        echo "\n";
-    }
-    echo "# --- END UUP DUMP DEBUG INFO ---\n";
-    */
-    die();
-}
-
-if(isset($files['error'])) {
-    if($files['error'] == 'EMPTY_FILELIST') {
-        $oldError = $files['error'];
-        $files = uupGetFiles($updateId, $usePack, $desiredEditionMixed, 2);
         if(isset($files['error'])) {
-            $files['error'] = 'NOT_FOUND';
-        } else {
-            $files['error'] = $oldError;
+            if($aria2 == 2) {
+                echo '#UUPDUMP_ERROR:';
+            } else {
+                http_response_code(400);
+            }
+
+            echo $files['error'];
+            die();
         }
-    }
 
-    fancyError($files['error'], 'downloads');
-    die();
-}
+        if($autoDl) {
+            header('Content-Disposition: attachment; filename="aria2_script.txt"');
+        }
 
-$updateName = $files['updateName'];
-$updateBuild = $files['build'];
-$updateArch = $files['arch'];
-$files = $files['files'];
-$filesKeys = array_keys($files);
+        $files = $files['files'];
+        $filesKeys = array_keys($files);
 
-$request = explode('?', $_SERVER['REQUEST_URI'], 2);
-
-if($sha1) {
-    $id = substr($updateId, 0, 8);
-    header('Content-Type: text/plain');
-    header('Content-Disposition: attachment; filename="checksums_'.$id.'.sha1"');
-    foreach($filesKeys as $val) {
-        echo $files[$val]['sha1'].' *'.$val."\n";
-    }
-    die();
-}
-
-if($renameScript) {
-    if($renameScript == 2) {
-        header('Content-Type: application/sh');
-        header('Content-Disposition: attachment; filename="rename_script.sh"');
-
-        echo "#!/bin/bash\n\n";
+        usort($filesKeys, 'sortBySize');
         foreach($filesKeys as $val) {
-            echo 'mv "'.$files[$val]['uuid'].'" "'.$val."\" 2>/dev/null\n";
+            echo $files[$val]['url']."\n";
+            echo '  out='.$val."\n";
+            echo '  checksum=sha-1='.$files[$val]['sha1']."\n\n";
         }
         /*
         //add debugging information to the file
-        echo "\n# --- BEGIN UUP DUMP DEBUG INFO ---\n";
+        echo "# --- BEGIN UUP DUMP DEBUG INFO ---\n";
         foreach($filesKeys as $val) {
             echo "#debug=";
             echo base64_encode($val);
@@ -181,51 +126,109 @@ if($renameScript) {
         die();
     }
 
-    header('Content-Type: application/cmd');
-    header('Content-Disposition: attachment; filename="rename_script.cmd"');
+    if(isset($files['error'])) {
+        if($files['error'] == 'EMPTY_FILELIST') {
+            $oldError = $files['error'];
+            $files = uupGetFiles($updateId, $usePack, $desiredEditionMixed, 2);
+            if(isset($files['error'])) {
+                $files['error'] = 'NOT_FOUND';
+            } else {
+                $files['error'] = $oldError;
+            }
+        }
 
-    echo "@echo off\r\ncd /d \"%~dp0\"\r\n\r\n";
-    foreach($filesKeys as $val) {
-        echo "IF EXIST \"{$files[$val]['uuid']}\" ";
-        echo 'RENAME "'.$files[$val]['uuid'].'" "'.$val."\"\r\n";
+        fancyError($files['error'], 'downloads');
+        die();
     }
-    /*
-    //add debugging information to the file
-    echo "\n:: --- BEGIN UUP DUMP DEBUG INFO ---\n";
-    foreach($filesKeys as $val) {
-        echo "::debug=";
-        echo base64_encode($val);
-        echo ":";
-        echo base64_encode($files[$val]['debug']);
-        echo "\n";
+
+    $updateName = $files['updateName'];
+    $updateBuild = $files['build'];
+    $updateArch = $files['arch'];
+    $files = $files['files'];
+    $filesKeys = array_keys($files);
+
+    $request = explode('?', $_SERVER['REQUEST_URI'], 2);
+
+    if($sha1) {
+        $id = substr($updateId, 0, 8);
+        header('Content-Type: text/plain');
+        header('Content-Disposition: attachment; filename="checksums_'.$id.'.sha1"');
+        foreach($filesKeys as $val) {
+            echo $files[$val]['sha1'].' *'.$val."\n";
+        }
+        die();
     }
-    echo ":: --- END UUP DUMP DEBUG INFO ---\n";
-    */
-    die();
-}
 
-if($simple) {
-    header('Content-Type: text/plain');
-    usort($filesKeys, 'sortBySize');
-    foreach($filesKeys as $val) {
-        echo $val."|".$files[$val]['sha1']."|".$files[$val]['url']."\n";
+    if($renameScript) {
+        if($renameScript == 2) {
+            header('Content-Type: application/sh');
+            header('Content-Disposition: attachment; filename="rename_script.sh"');
+
+            echo "#!/bin/bash\n\n";
+            foreach($filesKeys as $val) {
+                echo 'mv "'.$files[$val]['uuid'].'" "'.$val."\" 2>/dev/null\n";
+            }
+            /*
+            //add debugging information to the file
+            echo "\n# --- BEGIN UUP DUMP DEBUG INFO ---\n";
+            foreach($filesKeys as $val) {
+                echo "#debug=";
+                echo base64_encode($val);
+                echo ":";
+                echo base64_encode($files[$val]['debug']);
+                echo "\n";
+            }
+            echo "# --- END UUP DUMP DEBUG INFO ---\n";
+            */
+            die();
+        }
+
+        header('Content-Type: application/cmd');
+        header('Content-Disposition: attachment; filename="rename_script.cmd"');
+
+        echo "@echo off\r\ncd /d \"%~dp0\"\r\n\r\n";
+        foreach($filesKeys as $val) {
+            echo "IF EXIST \"{$files[$val]['uuid']}\" ";
+            echo 'RENAME "'.$files[$val]['uuid'].'" "'.$val."\"\r\n";
+        }
+        /*
+        //add debugging information to the file
+        echo "\n:: --- BEGIN UUP DUMP DEBUG INFO ---\n";
+        foreach($filesKeys as $val) {
+            echo "::debug=";
+            echo base64_encode($val);
+            echo ":";
+            echo base64_encode($files[$val]['debug']);
+            echo "\n";
+        }
+        echo ":: --- END UUP DUMP DEBUG INFO ---\n";
+        */
+        die();
     }
-    die();
+
+    if($simple) {
+        header('Content-Type: text/plain');
+        usort($filesKeys, 'sortBySize');
+        foreach($filesKeys as $val) {
+            echo $val."|".$files[$val]['sha1']."|".$files[$val]['url']."\n";
+        }
+        die();
+    }
+
+    $renameTextArea = "@echo off\n";
+    $renameTextArea .= "cd /d \"%~dp0\"\n";
+    foreach($filesKeys as $val) {
+        $renameTextArea .= 'rename "'.$files[$val]['uuid'].'" "'.$val."\"\n";
+    }
+
+    $sha1TextArea = '';
+    foreach($filesKeys as $val) {
+        $sha1TextArea .= $files[$val]['sha1'].' *'.$val."\n";
+    }
+
+    $templateOk = true;
+
+    styleUpper('downloads', sprintf($s['listOfFilesFor'], "$updateName $updateArch"));
+    require 'templates/get.php';
+    styleLower();
 }
-
-$renameTextArea = "@echo off\n";
-$renameTextArea .= "cd /d \"%~dp0\"\n";
-foreach($filesKeys as $val) {
-    $renameTextArea .= 'rename "'.$files[$val]['uuid'].'" "'.$val."\"\n";
-}
-
-$sha1TextArea = '';
-foreach($filesKeys as $val) {
-    $sha1TextArea .= $files[$val]['sha1'].' *'.$val."\n";
-}
-
-$templateOk = true;
-
-styleUpper('downloads', sprintf($s['listOfFilesFor'], "$updateName $updateArch"));
-require 'templates/get.php';
-styleLower();

@@ -80,11 +80,10 @@ function checkUpdateIdValidity($updateId) {
 }
 
 function getBaseUrl() {
-    $baseUrl = '';
     if(isset($_SERVER['HTTPS'])) {
-        $baseUrl .= 'https://';
+        $baseUrl = 'https://';
     } else {
-        $baseUrl .= 'http://';
+        $baseUrl = 'http://';
     }
 
     $baseUrl .=  $_SERVER['HTTP_HOST'];
@@ -109,6 +108,39 @@ function getUrlWithoutParam($param = null) {
     $url = $baseUrl.$shelf[0].$params;
 
     return $url;
+}
+
+function setUrlsForPacks($updateId, $usePack, $desiredEdition) {
+    $url .=  getBaseUrl() . $_SERVER['PHP_SELF'];
+    $app = $url;
+
+    $urls['url'] = $url . '?id='.$updateId.'&pack='.$usePack.'&edition='.$desiredEdition.'&aria2=2';
+    $app .= '?id='.$updateId.'&pack=neutral&edition=app&aria2=2';
+
+    $supportsApps = isAppEdition($desiredEdition);
+    $urls['app'] = $supportsApps ? $app : null;
+    return $urls;
+}
+
+function setArchiveNames($usePack, $desiredEditionMixed, $updateId, $build, $arch) {
+    $lang = $usePack ? $usePack : 'all';
+    
+    if(is_array($desiredEditionMixed)) {
+        $edition = count($desiredEditionMixed) == 1 ? strtolower($desiredEditionMixed[0]) : 'multi';
+    } else {
+        $edition = $desiredEditionMixed ? strtolower($desiredEditionMixed) : 'all';
+    }
+
+    if($edition == 'multi') {
+        foreach($desiredEditionMixed as $val) {
+            if(strtolower($val) == 'app' || strtolower($val) == 'app_moment') $edition = 'app';
+        }
+    }
+
+    $id = substr($updateId, 0, 8);
+    $archiveName = $edition == 'updateonly' ? "{$build}_{$arch}_updates_{$id}" : "{$build}_{$arch}_{$lang}_{$edition}_{$id}";
+
+    return $archiveName;
 }
 
 function locasort(&$data, $locale = 'en_US') {
@@ -176,4 +208,14 @@ function urlWithoutLang($lang) {
     $len = strlen($part);
     $uri = $_SERVER['REQUEST_URI'];
     return str_starts_with($uri, $part) ? substr($uri, $len-1) : $uri;
+}
+
+function sortBySize($a, $b) {
+    global $files;
+
+    if ($files[$a]['size'] == $files[$b]['size']) {
+        return 0;
+    }
+
+    return ($files[$a]['size'] < $files[$b]['size']) ? -1 : 1;
 }

@@ -64,11 +64,13 @@ function sendWuPostRequestInternal($url, $postData, $saveCookie = true) {
     curl_setopt($req, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($req, CURLOPT_ENCODING, '');
     curl_setopt($req, CURLOPT_POSTFIELDS, $postData);
-    curl_setopt($req, CURLOPT_CONNECTTIMEOUT, 5);
   
     if(isset($config['fetch_timeout']) && intval($config['fetch_timeout']) > 0) {
+      set_time_limit($config['fetch_timeout']);
       curl_setopt($req, CURLOPT_TIMEOUT, $config['fetch_timeout']);
+      curl_setopt($req, CURLOPT_CONNECTTIMEOUT, $config['fetch_timeout'] / 3);
     } else {
+      curl_setopt($req, CURLOPT_CONNECTTIMEOUT, 5);
       curl_setopt($req, CURLOPT_TIMEOUT, 15);
     }
     curl_setopt($req, CURLOPT_SSL_VERIFYPEER, 0);
@@ -110,6 +112,8 @@ function sendWuPostRequestHelper(
     if($postData === false)
         return false;
 
+    if(uupApiConfigIsTrue('debug')) file_put_contents('lastpostdata.xml', $postData);
+
     $data = sendWuPostRequestInternal($endpoints[$endpoint], $postData, $saveCookie);
 
     if($data['error'] == 500 && preg_match('/<ErrorCode>(ConfigChanged|CookieExpired|InvalidCookie)<\/ErrorCode>/', $data['out'])) {
@@ -117,6 +121,8 @@ function sendWuPostRequestHelper(
         $postData = call_user_func_array($postComposer, $postComposerArgs);
         return sendWuPostRequestInternal($endpoints[$endpoint], $postData, $saveCookie);
     }
+
+    if(uupApiConfigIsTrue('debug')) file_put_contents('lastfetched.xml', $data['out']);
 
     return $data;
 }
@@ -197,7 +203,7 @@ function uupApiConfigIsTrue($config) {
 }
 
 function getAllowedFlags() {
-    $flags = ['thisonly'];
+    $flags = ['thisonly', 'vbs'];
 
     if(uupApiConfigIsTrue('allow_corpnet'))
         $flags[] = 'corpnet';

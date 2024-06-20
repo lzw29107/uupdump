@@ -83,6 +83,7 @@ function uupGetInfoTexts() {
         'PPIPRO' => 'Windows Team',
         'PROFESSIONAL' => 'Windows Pro',
         'PROFESSIONALN' => 'Windows Pro N',
+        'PROFESSIONALCOUNTRYSPECIFIC' => 'Windows Pro China Only',
         'SERVERSTANDARD' => 'Windows Server Standard',
         'SERVERSTANDARDCORE' => 'Windows Server Standard, Core',
         'SERVERDATACENTER' => 'Windows Server Datacenter',

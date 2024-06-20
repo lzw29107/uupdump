@@ -62,8 +62,16 @@ if(!isset($templateOk)) die();
                 <i class="dropdown icon"></i>
 
                 <div class="menu">
-                    <a class="item" href="known.php?q=category:w11-23h2-pm-beta">
-                        23H2 Post Moment Beta
+		    <a class="item" href="known.php?q=category:w11-24h2-current-beta">
+                        24H2 Current Beta
+                    </a>
+		    
+		    <a class="item" href="known.php?q=category:w11-24h2">
+                        24H2
+                    </a>
+		    
+                    <a class="item" href="known.php?q=category:w11-23h2-current-beta">
+                        23H2 Current Beta
                     </a>
 
                     <a class="item" href="known.php?q=category:w11-23h2">
@@ -104,6 +112,9 @@ if(!isset($templateOk)) die();
                 <i class="dropdown icon"></i>
 
                 <div class="menu">
+		    <a class="item" href="known.php?q=category:server-24h2">
+                        LTSC 2025 (24H2)
+                    </a>
                     <a class="item" href="known.php?q=category:server-23h2">
                         23H2
                     </a>

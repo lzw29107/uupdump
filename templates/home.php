@@ -53,34 +53,33 @@ if(!isset($templateOk)) die();
             <i class="dropdown icon"></i>
 
             <div class="menu">
-                <a class="item" href="known.php?q=category:w11-23h2-pm-beta">
-                    23H2 Post Moment Beta
+                <a class="item" href="known.php?q=category:w11-24h2-current-beta">
+                24H2 Current Beta
                 </a>
-              
+                <a class="item" href="known.php?q=category:w11-24h2">
+                    24H2
+                </a>    
+                <a class="item" href="known.php?q=category:w11-23h2-current-beta">
+                    23H2 Current Beta
+                </a>
                 <a class="item" href="known.php?q=category:w11-23h2">
                     23H2
                 </a>
-			
                 <a class="item" href="known.php?q=category:w11-22h2m4-23h2-beta">
                     22H2 Moment 4/23H2 Beta
                 </a>
-			
                 <a class="item" href="known.php?q=category:w11-22h2m3">
                     22H2 Moment 3 Beta
                 </a>
-			
                 <a class="item" href="known.php?q=category:w11-22h2m2">
                     22H2 Moment 2 Beta
                 </a>
-			
                 <a class="item" href="known.php?q=category:w11-22h2m1">
                     22H2 Moment 1 Beta
                 </a>
-			
                 <a class="item" href="known.php?q=category:w11-22h2">
                     22H2
                 </a>
-
                 <a class="item" href="known.php?q=category:w11-21h2">
                     21H2
                 </a>
@@ -95,6 +94,9 @@ if(!isset($templateOk)) die();
             <i class="dropdown icon"></i>
 
             <div class="menu">
+	        <a class="item" href="known.php?q=category:server-24h2">
+                    LTSC 2025 (24H2)
+                </a>
                 <a class="item" href="known.php?q=category:server-23h2">
                     23H2
                 </a>
@@ -206,6 +208,7 @@ if(!isset($templateOk)) die();
                 <th class="collapsing"><?= $s['tHeadArchitectures'] ?></th>
             </tr>
         </thead>
+
         <tbody>
             <tr>
                 <td class="collapsing">
@@ -279,12 +282,11 @@ if(!isset($templateOk)) die();
             </tr>
         </tbody>
     </table>
-</div>
 
 <div class="ui bottom attached info message">
   <i class="fa-regular fa-lightbulb icon"></i>
   <?= $s['checkOutAddANewBuild'] ?></div>
-
+</div>
 
 <h3 class="ui centered header">
     <div class="content">

@@ -1,11 +1,11 @@
 <?php
-$arch = isset($argv[1]) ? $argv[1] : 'amd64';
-$ring = isset($argv[2]) ? $argv[2] : 'WIF';
-$flight = isset($argv[3]) ? $argv[3] : 'Active';
-$build = isset($argv[4]) ? $argv[4] : 16251;
-$minor = isset($argv[5]) ? intval($argv[5]) : 0;
-$sku = isset($argv[6]) ? intval($argv[6]) : 48;
-$type = isset($argv[7]) ? $argv[7] : 'Production';
+$arch = $argv[1] ?? 'amd64';
+$ring = $argv[2] ?? 'WIF';
+$flight = $argv[3] ?? 'Active';
+$build = $argv[4] ?? 16251;
+$minor = $argv[5] ?? 0;
+$sku = $argv[6] ?? 48;
+$type = $argv[7] ?? 'Production';
 
 require_once dirname(__FILE__).'/../api/fetchupd.php';
 require_once dirname(__FILE__).'/main.php';

@@ -15,9 +15,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-$updateId = isset($_GET['id']) ? $_GET['id'] : null;
-$file = isset($_GET['file']) ? $_GET['file'] : null;
-$aria2 = isset($_GET['aria2']) ? $_GET['aria2'] : 0;
+$updateId = $_GET['id'] ?? null;
+$file = $_GET['file'] ?? null;
+$aria2 = $_GET['aria2'] ?? 0;
 
 if(empty($updateId)) die('Unspecified update id');
 if(empty($file)) die('Unspecified file');

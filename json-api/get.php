@@ -4,10 +4,10 @@ require_once 'shared/ratelimits.php';
 include_once 'shared/unsymlink.php';
 require_once 'api/get.php';
 
-$updateId = isset($_GET['id']) ? $_GET['id'] : null;
-$usePack = isset($_GET['lang']) ? $_GET['lang'] : 0;
-$desiredEdition = isset($_GET['edition']) ? $_GET['edition'] : 0;
-$noLinks = isset($_GET['noLinks']) ? $_GET['noLinks'] : 0;
+$updateId = $_GET['id'] ?? null;
+$usePack = $_GET['lang'] ?? 0;
+$desiredEdition = $_GET['edition'] ?? 0;
+$noLinks = $_GET['noLinks'] ?? 0;
 
 header('Content-Type: application/json');
 

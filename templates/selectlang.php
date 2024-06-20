@@ -51,7 +51,7 @@ if(!isset($templateOk)) die();
                                 <input type="hidden" name="packs" value="1" />
                                 <button class="ui fluid right labeled icon button">
                                     <i class="fa-solid fa-pencil-alt icon"></i>
-                                    <?= $s['Generatemetadata'] ?>
+                                    <?= $s['generateMetadata'] ?>
                                 </button>
                             </form>
             <?php else: ?>

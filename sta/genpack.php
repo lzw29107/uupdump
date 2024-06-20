@@ -4,15 +4,11 @@ require_once dirname(__FILE__).'/main.php';
 
 function get7ZipLocation() {
     if(PHP_OS == 'WINNT') {
-        $z7z = realpath(dirname(__FILE__)).'/7za.exe';
+        $z7z = realpath(dirname(__FILE__)).'\7za.exe';
         if(!file_exists($z7z)) return false;
-    } else {
-        exec('command -v 7z', $out, $errCode);
-        if($errCode != 0) {
-            return false;
-        }
-        $z7z = '7z';
-    }
+    } else if(!shell_exec('command -v 7z')) {
+        return false;
+    } else $z7z = '7z';
 
     return $z7z;
 }
@@ -267,6 +263,7 @@ function generatePack($updateId, $removedFailed = 0) {
                 if(isset($ftr['Group']) && ($ftr['Group'] == 'PreinstalledApps')) $optAppx[] = strtolower($ftr['FeatureID']);
             }
         }
+        if(!isset($packages[$lang][$edition])) continue;
 
         $packages[$lang][$edition] = array_unique($packages[$lang][$edition]);
         sort($packages[$lang][$edition]);
@@ -323,6 +320,7 @@ function generatePack($updateId, $removedFailed = 0) {
                 $packages[$lang][$edition][] = $paks[$chk][0];
             }
         }
+        if(!isset($packages[$lang][$edition])) continue;
 
         $packages[$lang][$edition] = array_unique($packages[$lang][$edition]);
         sort($packages[$lang][$edition]);

@@ -165,6 +165,10 @@ function uupGetFiles(
         }
     }
 
+    if(!isset($info['flags'])) {
+        $info['flags'] = ['vbs'];
+    }
+
     if($requestType < 2) {
         $filesInfoList = uupGetOnlineFiles($updateId, $rev, $info, $requestType, $type);
     } else {
@@ -442,7 +446,7 @@ function uupGetOnlineFiles($updateId, $rev, $info, $cacheRequests, $type) {
     $files = array();
     foreach($fileLocations->FileLocation as $val) {
         $sha1 = bin2hex(base64_decode((string)$val->FileDigest));
-        $sha256 = isset($info[$sha1]['sha256']) ? $info[$sha1]['sha256'] : null;
+        $sha256 = $info[$sha1]['sha256'] ?? null;
         $url = (string)$val->Url;
 
         preg_match('/files\/(.{8}-.{4}-.{4}-.{4}-.{12})/', $url, $guid);
@@ -531,7 +535,7 @@ function uupGetOfflineFiles($info) {
     foreach($info['files'] as $sha1 => $val) {
         $name = $val['name'];
         $size = $val['size'];
-        $sha256 = isset($val['sha256']) ? $val['sha256'] : null;
+        $sha256 = $val['sha256'] ?? null;
 
         if($sha256capable) {
             $tempname = uupCleanSha256($name);

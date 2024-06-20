@@ -15,9 +15,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-$search = isset($_GET['q']) ? $_GET['q'] : null;
-$page = isset($_GET['p']) ? intval($_GET['p']) : 1;
-$sort = isset($_GET['sort']) ? $_GET['sort'] : null;
+$search = $_GET['q'] ?? null;
+$page = $_GET['p'] ?? 1;
+$sort = $_GET['sort'] ?? null;
 
 require_once 'api/listid.php';
 require_once 'shared/style.php';
@@ -31,10 +31,16 @@ if(isset($search) && strstr($search, 'category:')) {
             $searchstr = 'regex:(2((2(?!000|6[2-4][1-9])\d{3})|(5(?!398)\d{3})|[6-9]\d{3}))\.[1-9]|([3-9]\d{4})\.[1-9]';
             break;
         case 'dev':
-            $searchstr = 'regex:(2[3-4]\d{3})\.[1-9]';
+            $searchstr = 'regex:2((3[4-6]\d{2}\.100\d)|(6(?!0[0-4])\d{3}\.\d))';
             break;
-        case 'w11-23h2-pm-beta':
-            $searchstr = 'regex:11.*Insider.*22635.*';
+        case 'w11-24h2-current-beta':
+            $searchstr = '26120';
+            break;
+        case 'w11-24h2':
+            $searchstr = '26100';
+            break;
+        case 'w11-23h2-current-beta':
+            $searchstr = '22635';
             break;
         case 'w11-23h2':
             $searchstr = 'regex:\(22631';
@@ -56,6 +62,9 @@ if(isset($search) && strstr($search, 'category:')) {
             break;
         case 'w11-21h2':
             $searchstr = '22000';
+            break;
+        case 'server-24h2':
+            $searchstr = 'regex:Server.*26100.*';
             break;
         case 'server-23h2':
             $searchstr = '25398';

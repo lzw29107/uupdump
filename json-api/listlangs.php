@@ -3,7 +3,7 @@ require_once 'shared/main.php';
 include_once 'shared/unsymlink.php';
 require_once 'api/listlangs.php';
 
-$updateId = isset($_GET['id']) ? $_GET['id'] : null;
+$updateId = $_GET['id'] ?? null;
 
 header('Content-Type: application/json');
 

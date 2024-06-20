@@ -1,5 +1,5 @@
 <?php
-$removedFailed = isset($argv[1]) ? intval($argv[1]) : 0;
+$removedFailed = $argv[1] ?? 0;
 
 require_once dirname(__FILE__).'/../api/listid.php';
 require_once dirname(__FILE__).'/main.php';
