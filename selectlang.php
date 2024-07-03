@@ -29,7 +29,7 @@ function getLangs($updateId, $s) {
     $langsTemp = uupListLangs($updateId)['langList'];
     $langs = [];
 
-    foreach($LangsTemp as $lang) {
+    foreach($langsTemp as $lang) {
         if(isset($s["lang_$lang"])) {
             $langs['langs'][$lang] = $s["lang_$lang"];
         } else {
