@@ -26,10 +26,12 @@ require_once dirname(__FILE__).'/sta/main.php';
 require_once dirname(__FILE__).'/sta/genpack.php';
 
 function getLangs($updateId, $s) {
-    $langsTemp = uupListLangs($updateId)['langList'];
-    $langs = [];
+    $langsTemp = uupListLangs($updateId);
+    $langs = [
+        'langs' => []
+    ];
 
-    foreach($langsTemp as $lang) {
+    foreach($langsTemp['langList'] as $lang) {
         if(isset($s["lang_$lang"])) {
             $langs['langs'][$lang] = $s["lang_$lang"];
         } else {
@@ -37,7 +39,6 @@ function getLangs($updateId, $s) {
         }
     }
 
-    $langs['langs'] = $langsTemp;
     $langs['appxPresent'] = $langsTemp['appxPresent'];
     locasort($langs['langs'], $s['code']);
 
