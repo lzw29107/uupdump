@@ -71,7 +71,7 @@ if(!isset($templateOk)) die();
                 <div class="field">
                     <label><?= $s['lang'] ?></label>
                     <select class="ui search dropdown" name="pack">
-                        <?php foreach($langs as $key => $val): ?>
+                        <?php foreach($langs['langs'] as $key => $val): ?>
                             <option value="<?= $key ?>" <?= ($key == $defaultLang) ? 'selected' : '' ?>>
                                 <?= $val ?>
                             </option>
