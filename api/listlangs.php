@@ -40,7 +40,7 @@ function uupListLangsInternal($updateId) {
     return [
         'langList' => $langList,
         'langFancyNames' => $langListFancy,
-        'appxPresent' => isset($genPack['neutral']['APP']),
+        'appxPresent' => uupAreAppxPresent($genPack),
     ];
 }
 

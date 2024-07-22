@@ -238,7 +238,10 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
         'TPMVersion=2',
         'UpdateManagementGroup=2',
         'UpdateOfferedDays=0',
+        'UpgEx_GE24H2Setup=Green',
+        'UpgEx_GE24H2=Green',
         'UpgEx_CU23H2=Green',
+        'UpgEx_NI23H2=Green',
         'UpgEx_NI22H2=Green',
         'UpgEx_CO21H2=Green',
         'UpgEx_23H2=Green',
@@ -608,6 +611,7 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
                     <int>2359977</int>
                     <int>24513870</int>
                     <int>28880263</int>
+                    <int>296374060</int>
                     <int>3</int>
                     <int>30077688</int>
                     <int>30486944</int>

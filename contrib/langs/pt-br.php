@@ -193,7 +193,7 @@ $s['sizeOfShownFiles'] = 'Tamanho dos arquivos mostrados: %s'; //Tamanho dos arq
 
 //Error pages
 $s['error'] = 'Erro';
-$s['arm64Warning2023'] = '<b>Esta é uma compilação <a href="https://support.microsoft.com/en-us/windows/477f51df-2e3b-f68f-31b0-06f5e4f8ebb5">ARM64</ a>.</b> Os autores do dump UUP não possuem um único dispositivo compatível com ele e portanto <b>não fornecerão absolutamente nenhum suporte</b>.';
+$s['arm64Warning2023'] = '<b>Esta é uma compilação <a href="https://support.microsoft.com/en-us/windows/477f51df-2e3b-f68f-31b0-06f5e4f8ebb5">ARM64</a>.</b> Os autores do dump UUP não possuem um único dispositivo compatível com ele e portanto <b>não fornecerão absolutamente nenhum suporte</b>.';
 
 //Error messages
 $s['error_ERROR'] = 'Erro genérico.';
