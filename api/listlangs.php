@@ -58,6 +58,5 @@ function uupListLangs($updateId = 0, $returnInfo = true) {
     );
 
     if($returnInfo) $response['updateInfo'] = $info;
-
     return $response;
 }

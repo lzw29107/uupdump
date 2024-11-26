@@ -94,6 +94,7 @@ function uupGetInfoTexts() {
         'SERVERSTANDARDACOR' => 'Windows Server Standard SAC',
         'SERVERDATACENTERACOR' => 'Windows Server Datacenter SAC',
         'SERVERARM64' => 'Windows Server ARM64',
+        'WNC'=> 'Windows WNC',
     );
 
     $allEditions = array(
