@@ -299,6 +299,15 @@ function parseFetchUpdate($updateInfo, $out, $arch, $ring, $flight, $build, $sku
         $foundBuild = @$info[3];
     }
 
+    $isNet = 0;
+    if(strpos($foundArch, 'netfx') !== false) {
+        $isNet = 1;
+        preg_match('/ProductReleaseInstalled Name\=".*\.(.*?)\.(.*?)" Version\=".*\.\d{5}\.(.*?)"/', $updateInfo, $info);
+        $foundType = @strtolower($info[1]);
+        $foundArch = @strtolower($info[2]);
+        $foundBuild = @$info[3];
+    }
+
     $updateTitle = preg_grep('/<Title>.*<\/Title>/', $updateMeta);
     sort($updateTitle);
 
@@ -318,7 +327,11 @@ function parseFetchUpdate($updateInfo, $out, $arch, $ring, $flight, $build, $sku
     $isCumulativeUpdate = 0;
     if(preg_match('/\d{4}-\d{2}.+Update|Cumulative Update|Microsoft Edge|Windows Feature Experience Pack|Cumulative security Hotpatch/i', $updateTitle)) {
         $isCumulativeUpdate = 1;
-        $updateTitle = preg_replace('/ for .{3,5}-based systems| \(KB.*?\)/i', '', $updateTitle);
+        if($isNet) {
+            $updateTitle = preg_replace("/3.5 and 4.8.1 |3.5 and 4.8 | for $foundArch| for x64| \(KB.*?\)/i", '', $updateTitle);
+        } else {
+            $updateTitle = preg_replace('/ for .{3,5}-based systems| \(KB.*?\)/i', '', $updateTitle);
+        }
     }
 
     $updateTitle = preg_replace("/ ?\d{4}-\d{2}\D ?| ?$foundArch ?| ?x64 ?/i", '', $updateTitle);

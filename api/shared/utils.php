@@ -210,3 +210,7 @@ function getAllowedFlags() {
 
     return $flags;
 }
+
+function uupAreAppxPresent($genPack) {
+    return isset($genPack['neutral']['APP']);
+}

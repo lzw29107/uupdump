@@ -102,10 +102,10 @@ if(!isset($updateInfo['created'])) {
 
 $updateTitle = $updateTitle.' '.$updateArch;
 
-$updateBlocked = isUpdateBlocked($buildNum, $updateTitle);
+$updateBlocked = isUpdateBlocked($buildNum, $updateTitle, $langs['appxPresent']);
 $langs = $updateBlocked ? [] : getLangs($updateId, $s);
 
-if(in_array(strtolower($s['code']), array_keys($langs['langs']))) {
+if(isset($langs['langs']) && in_array(strtolower($s['code']), array_keys($langs['langs']))) {
     $defaultLang = strtolower($s['code']);
 } else {
     $defaultLang = 'en-us';
@@ -136,7 +136,7 @@ if($ring == 'CANARY' && $flight == 'Active') {
 
 $findFilesUrl = "findfiles.php?id=".htmlentities($updateId);
 
-$langsAvailable = count($langs['langs']) > 0;
+$langsAvailable = (isset($langs['langs']) && count($langs['langs']) > 0) ? true : false;
 $packsAvailable = uupApiPacksExist($updateId);
 
 $noLangsIcon = 'file-circle-xmark';
@@ -154,10 +154,6 @@ if($corpnet)
     $noLangsCause = $s['metadataNotGenerated'];
     $updateBlocked = true;
     $generatePacksButton = true;
-} else if(!$langs['appxPresent']) {
-    $noLangsIcon = 'file-circle-xmark';
-    $noLangsCause = $s['updateIsBlockedv2'];
-    $updateBlocked = true;
 } else if(!$updateBlocked && !$langsAvailable) {
     $noLangsIcon = 'file-circle-xmark';
     $noLangsCause = $s['noLangsAvailablev2'];

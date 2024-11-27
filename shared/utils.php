@@ -166,11 +166,12 @@ function readableSize($size, $round = 0) {
     return "$size {$prefix}B";
 }
 
-function isUpdateBlocked($buildNum, $updateTitle) {
+function isUpdateBlocked($buildNum, $updateTitle, $appxPresent) {
     $isCumulative = str_contains($updateTitle, 'Cumulative Update');
     $isServer = str_contains($updateTitle, 'Server') || str_contains($updateTitle, 'Azure Stack');
+    $isWNC = str_contains($updateTitle, 'Cloud');
 
-    return $buildNum > 22557 && $isCumulative && !$isServer;
+    return $buildNum > 22557 && ($isCumulative || $appxPresent) && !$isServer && !$isWNC;
 }
 
 function areVirtualEditonsSupported($build, $sku) {

@@ -32,12 +32,14 @@ function composeDeviceAttributes($flight, $ring, $build, $arch, $sku, $type, $fl
 
     $dvcFamily = 'Windows.Desktop';
     $insType = 'Client';
+    $prodType = 'WinNT';
     if($sku == 119) {
         $dvcFamily = 'Windows.Team';
     }
     if(uupApiIsServer($sku)) {
         $dvcFamily = 'Windows.Server';
         $insType = 'Server';
+        $prodType = 'ServerNT';
         $blockUpgrades = 1;
     }
 
@@ -129,15 +131,20 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
         'ActivationChannel=Retail',
         'App=WU_OS',
         'AppVer='.$build,
-        'AttrDataVer=265',
+        'AttrDataVer=281',
+        'AdminOptedIntoRebootlessUpdates=1',
+        'AdminOptedIntoRebootlessUpdates_Server=1',
         'AllowInPlaceUpgrade=1',
         'AllowUpgradesWithUnsupportedTPMOrCPU=1',
         'AllowOptionalContent=1',
+        'ARCHotpatchAttached_State=1',
         'Bios=2019',
         'BlockFeatureUpdates='.$blockUpgrades,
         'BranchReadinessLevel=CB',
         'CIOptin=1',
         'CurrentBranch='.$branch,
+        'DataExpDateEpoch_GE24H2='.(time()+82800),
+        'DataExpDateEpoch_GE24H2Setup='.(time()+82800),
         'DataExpDateEpoch_CU23H2='.(time()+82800),
         'DataExpDateEpoch_CU23H2Setup='.(time()+82800),
         'DataExpDateEpoch_NI22H2='.(time()+82800),
@@ -165,8 +172,11 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
         //'FlightContent='.$fltContent,
         'FlightRing='.$fltRing,
         'Free=gt64',
+        'GStatus_GE24H2=2',
+        'GStatus_GE24H2Setup=2',
         'GStatus_CU23H2=2',
         'GStatus_CU23H2Setup=2',
+        'GStatus_NI23H2=2',
         'GStatus_NI22H2=2',
         'GStatus_NI22H2Setup=2',
         'GStatus_CO21H2=2',
@@ -192,6 +202,8 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
         'IsDeviceRetailDemo=0',
         'IsEdgeWithChromiumInstalled=1',
         'IsFlightingEnabled='.$flightEnabled,
+        'IsMsftOwned=1',
+        'IsTestLab=1',
         'IsMDMEnrolled=0',
         'IsRetailOS='.$isRetail,
         'IsWDAGEnabled=1',
@@ -215,6 +227,7 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
         'ProcessorIdentifier=Intel64 Family 6 Model 186 Stepping 3',
         'ProcessorManufacturer=GenuineIntel',
         'ProcessorModel=13th Gen Intel(R) Core(TM) i7-1355U',
+        'ProductType='.$prodType,
         'ReleaseType='.$type,
         'SdbVer_20H1=2000000000',
         'SdbVer_19H1=2000000000',
@@ -223,13 +236,15 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
         'TelemetryLevel=3',
         'TencentType=1',
         'TencentReg=79 d0 01 d7 9f 54 d5 01',
+        'TimestampEpochString_GE24H2='.(time()-3600),
+        'TimestampEpochString_GE24H2Setup='.(time()-3600),
         'TimestampEpochString_CU23H2='.(time()-3600),
         'TimestampEpochString_CU23H2Setup='.(time()-3600),
+        'TimestampEpochString_NI23H2='.(time()-3600),
         'TimestampEpochString_NI22H2='.(time()-3600),
         'TimestampEpochString_NI22H2Setup='.(time()-3600),
         'TimestampEpochString_CO21H2='.(time()-3600),
         'TimestampEpochString_CO21H2Setup='.(time()-3600),
-        'TimestampEpochString_23H2='.(time()-3600),
         'TimestampEpochString_22H2='.(time()-3600),
         'TimestampEpochString_21H2='.(time()-3600),
         'TimestampEpochString_21H1='.(time()-3600),
@@ -238,7 +253,10 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
         'TPMVersion=2',
         'UpdateManagementGroup=2',
         'UpdateOfferedDays=0',
+        'UpgEx_GE24H2Setup=Green',
+        'UpgEx_GE24H2=Green',
         'UpgEx_CU23H2=Green',
+        'UpgEx_NI23H2=Green',
         'UpgEx_NI22H2=Green',
         'UpgEx_CO21H2=Green',
         'UpgEx_23H2=Green',
@@ -485,7 +503,7 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
         $products[] = "PN=$mainProduct.$currArch&Branch=$branch&PrimaryOSProduct=1&Repairable=1&V=$build&ReofferUpdate=1";
         $products[] = "PN=Adobe.Flash.$currArch&Repairable=1&V=0.0.0.0";
         $products[] = "PN=Microsoft.Edge.Stable.$currArch&Repairable=1&V=0.0.0.0";
-        $products[] = "PN=Microsoft.NETFX.$currArch&V=2400.$bldnum.0.0";
+        $products[] = "PN=Microsoft.NETFX.$currArch&V=0.0.0.0";
         $products[] = "PN=Windows.Autopilot.$currArch&Repairable=1&V=$build";
         $products[] = "PN=Windows.AutopilotOOBE.$currArch&Repairable=1&V=0.0.0.0";
         $products[] = "PN=Windows.Appraiser.$currArch&Repairable=1&V=$build";
@@ -608,6 +626,7 @@ if(uupApiConfigIsTrue('enable_unsupported_features')) {
                     <int>2359977</int>
                     <int>24513870</int>
                     <int>28880263</int>
+                    <int>296374060</int>
                     <int>3</int>
                     <int>30077688</int>
                     <int>30486944</int>

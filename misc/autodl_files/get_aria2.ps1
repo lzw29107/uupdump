@@ -48,6 +48,8 @@ if(-not (Test-Path -PathType Container -Path "files")) {
     $null = New-Item -Path "files" -ItemType Directory
 }
 
+$ProgressPreference = 'SilentlyContinue'
+
 try {
     Retrieve-File -File $file -Url $url
 } catch {

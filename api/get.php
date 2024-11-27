@@ -76,6 +76,8 @@ function uupGetFiles(
         $info['sku'] = 48;
     }
 
+    $genPack = [];
+
     if($usePack) {
         $genPack = uupApiGetPacks($updateId);
         if(empty($genPack)) return array('error' => 'UNSUPPORTED_COMBINATION');
@@ -302,7 +304,7 @@ function uupGetFiles(
 
         $temp = preg_grep('/Windows(10|11)\.0-KB.*-baseless/i', $filesInfoKeys, PREG_GREP_INVERT);
         if($appEdition) {
-            $temp = preg_grep('/.*?AggregatedMetadata.*?\.cab|.*?DesktopDeployment.*?\.cab/i', $temp);
+            $temp = preg_grep('/.*?AggregatedMetadata.*?\.cab/i', $temp);
         } else if($build > 21380) {
             $temp = preg_grep('/Windows(10|11)\.0-KB|SSU-.*?\....$|.*?AggregatedMetadata.*?\.cab|.*?DesktopDeployment.*?\.cab/i', $temp);
         } else {
@@ -376,6 +378,7 @@ function uupGetFiles(
         'build' => $updateBuild,
         'sku' => $updateSku,
         'hasUpdates' => $hasUpdates,
+        'appxPresent' => uupAreAppxPresent($genPack),
         'files' => $files,
     ];
 
