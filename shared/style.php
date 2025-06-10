@@ -73,14 +73,14 @@ function styleUpper($pageType = 'home', $subtitle = '') {
         case 'home':
             $navbarLink = '<a class="active item" href="./"><i class="fa-solid fa-house icon"></i>'.$s['home'].'</a>'.
                           '<a class="item" href="known.php"><i class="fa-solid fa-download icon"></i>'.$s['downloads'].'</a>'.
-                          '<a class="item" target=_blank href="https://git.uupdump.net/uup-dump/containment-zone/src/branch/master/FAQ.md"><i class="fa-solid fa-question icon"></i>'.$s['faq'].'</a>';
+                          '<a class="item" target=_blank href="https://git.uupdump.net/uup-dump/misc/src/branch/master/FAQ.md"><i class="fa-solid fa-question icon"></i>'.$s['faq'].'</a>';
             $pageheader = '<div class="page-header extended">';
         break;
 
         case 'downloads':
             $navbarLink = '<a class="item" href="./"><i class="fa-solid fa-house icon"></i>'.$s['home'].'</a>'.
                           '<a class="active item" href="known.php"><i class="fa-solid fa-download icon"></i>'.$s['downloads'].'</a>'.
-                          '<a class="item" target=_blank href="https://git.uupdump.net/uup-dump/containment-zone/src/branch/master/FAQ.md"><i class="fa-solid fa-question icon"></i>'.$s['faq'].'</a>';
+                          '<a class="item" target=_blank href="https://git.uupdump.net/uup-dump/misc/src/branch/master/FAQ.md"><i class="fa-solid fa-question icon"></i>'.$s['faq'].'</a>';
             $pageheader = '<div class="page-header regular">';
         break;
 
@@ -222,9 +222,9 @@ function styleLower() {
                     <div class="ui divider"></div>
                     <p><i>$renderText
                         <b>{$s['uupdump']}</b> $websiteVersion /
-                        <b>API</b> $api (<a href="https://git.uupdump.net/uup-dump/api/commit/7b3cd4eb10e75a556ff740b2eab0e8055e45739c">7b3cd4e</a>) /
-                        <b>contrib</b> <a href="https://git.uupdump.net/uup-dump/contrib/commit/7813a24b320b3e7dbae32e757de3b0b903630731">7813a24</a> /
-                        <b>misc</b> <a href="https://git.uupdump.net/uup-dump/misc/commit/52da5b41b63b50f05ba776dbde59e99f38cc101d">52da5b4</a><br/>
+                        <b>API</b> $api (<a href="https://git.uupdump.net/uup-dump/api/commit/37cefa11c65dea250e1dcc03facc28b9834d1fdc">37cefa1</a>) /
+                        <b>contrib</b> <a href="https://git.uupdump.net/uup-dump/contrib/commit/060027d8005bb0a5201e063eeefb2421c7570a8b">060027d</a> /
+                        <b>misc</b> <a href="https://git.uupdump.net/uup-dump/misc/commit/15733464a44f03d0a7fc281c7dcdcead88ee82e2">1573346</a><br/>
                         $copyright
                         <span class="info">{$s['notAffiliated']}</span>
                     </i></p>

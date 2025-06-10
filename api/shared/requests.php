@@ -70,7 +70,7 @@ function composeDeviceAttributes($flight, $ring, $build, $arch, $sku, $type, $fl
     $fltRing = 'External';
     $flight = 'Active';
 
-    $allowCorpnet = uupApiConfigIsTrue('allow_corpnet');
+    $allowCorpnet = !uupApiConfigIsTrue('production_mode') && uupApiConfigIsTrue('allow_corpnet');
 
     if ($ring == 'RETAIL') {
         $fltContent = $flight;
