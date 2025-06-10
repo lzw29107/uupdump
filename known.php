@@ -27,11 +27,14 @@ $searchstr = $search;
 if(isset($search) && strstr($search, 'category:')) {
     $Category = strtolower(substr($search,9));
     switch ($Category) {
-        case 'canary':
+        case 'canarychannel':
             $searchstr = 'regex:(2((2(?!000|6[2-4][1-9])\d{3})|(5(?!398)\d{3})|[6-9]\d{3}))\.[1-9]|([3-9]\d{4})\.[1-9]';
             break;
         case 'dev':
             $searchstr = 'regex:2((3[4-6]\d{2}\.100\d)|(6(?!0[0-4])\d{3}\.\d))';
+            break;
+        case 'w11-24h2-current-dev':
+            $searchstr = '26200';
             break;
         case 'w11-24h2-current-beta':
             $searchstr = '26120';

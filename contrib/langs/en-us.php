@@ -67,15 +67,15 @@ $s['tHeadArchitectures'] = 'Architectures';
 $s['latestPublicRelease'] = 'Latest Public Release build';
 $s['latestPublicReleaseSub'] = 'Latest updated build for regular users.';
 $s['latestDevRelease'] = 'Latest Dev Channel build';
-$s['latestDevReleaseSub'] = 'Somewhat unreliable builds with new ideas and long lead features.<br>Ideal for enthusiasts.';
+$s['latestDevReleaseSub'] = 'Somewhat unreliable builds with new ideas and long lead features. Ideal for enthusiasts.';
 $s['latestBetaRelease'] = 'Latest Beta Channel build';
-$s['latestBetaReleaseSub'] = 'Reliable builds with most upcoming features available.<br>Ideal for early adopters.';
+$s['latestBetaReleaseSub'] = 'Reliable builds with most upcoming features available. Ideal for early adopters.';
 $s['latestRPRelease'] = 'Latest Release Preview build';
-$s['latestRPReleaseSub'] = 'Reliable builds for previewing the next release.<br>Ideal for trying out upcoming releases.';
+$s['latestRPReleaseSub'] = 'Reliable builds for previewing the next release. Ideal for trying out upcoming releases.';
 $s['newlyAdded'] = 'Recently added builds';
 $s['dateAdded'] = 'Date added';
 $s['latestCanaryRelease'] = 'Latest Canary Channel build';
-$s['latestCanaryReleaseSub'] = 'Somewhat unstable builds with latest platform changes and early features.<br>Ideal for highly technical users.';
+$s['latestCanaryReleaseSub'] = 'Somewhat unstable builds with latest platform changes and early features. Ideal for highly technical users.';
 $s['checkOutAddANewBuild'] = 'Haven\'t found a desired option? Check out the <i><a href="newbuild.php">Add a new build</a></i> page.';
 
 //newbuild.php
@@ -283,8 +283,10 @@ $s['lang_zh-hk'] = 'Chinese (Hong Kong)';
 $s['lang_zh-tw'] = 'Chinese (Traditional)';
 
 //Channels
+$s['channel_canary'] = 'Canary';
+$s['channel_osg'] = 'OSG';
 $s['channel_msit'] = 'MSIT';
-$s['channel_canary'] = 'Canary Channel';
+$s['channel_canarychannel'] = 'Canary Channel';
 $s['channel_skipAhead'] = 'Skip Ahead';
 $s['channel_dev'] = 'Dev Channel';
 $s['channel_beta'] = 'Beta Channel';

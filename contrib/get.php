@@ -1,5 +1,5 @@
 <?php
-// Copyright (C) 2023 UUP dump authors. All rights reserved.
+// Copyright (C) 2024 UUP dump authors. All rights reserved.
 
 /* 
 * Changing anything in this file is a really painful experience.
@@ -32,7 +32,7 @@ function createUupConvertPackage(
 
 :DOWNLOAD_APPS
 echo Retrieving aria2 script for Microsoft Store Apps...
-"%aria2%" --no-conf --console-log-level=warn --log-level=info --log="aria2_download.log" -o"%aria2Script%" --allow-overwrite=true --auto-file-renaming=false "$app"
+"%aria2%" --no-conf --async-dns=false --console-log-level=warn --log-level=info --log="aria2_download.log" -o"%aria2Script%" --allow-overwrite=true --auto-file-renaming=false "$app"
 if %ERRORLEVEL% GTR 0 call :DOWNLOAD_ERROR & exit /b 1
 echo.
 
@@ -46,7 +46,7 @@ if NOT [%DETECTED_ERROR%] == [] (
 )
 
 echo Downloading Microsoft Store Apps...
-"%aria2%" --no-conf --console-log-level=warn --log-level=info --log="aria2_download.log" -x16 -s16 -j25 -c -R -d"%destDir%" -i"%aria2Script%"
+"%aria2%" --no-conf --async-dns=false --console-log-level=warn --log-level=info --log="aria2_download.log" -x16 -s16 -j25 -c -R -d"%destDir%" -i"%aria2Script%"
 if %ERRORLEVEL% GTR 0 goto :DOWNLOAD_APPS
 echo.
 
@@ -120,7 +120,7 @@ powershell -NoProfile -ExecutionPolicy Unrestricted .\\files\\get_aria2.ps1 || (
 echo.
 
 echo Downloading the UUP converter...
-"%aria2%" --no-conf --console-log-level=warn --log-level=info --log="aria2_download.log" -x16 -s16 -j2 -c -R -d"files" -i"files\\converter_windows"
+"%aria2%" --no-conf --async-dns=false --console-log-level=warn --log-level=info --log="aria2_download.log" -x16 -s16 -j2 -c -R -d"files" -i"files\\converter_windows"
 if %ERRORLEVEL% GTR 0 call :DOWNLOAD_CONVERTER_ERROR & exit /b 1
 echo.
 
@@ -135,7 +135,7 @@ echo.
 $downloadapp
 :DOWNLOAD_UUPS
 echo Retrieving aria2 script for the UUP set...
-"%aria2%" --no-conf --console-log-level=warn --log-level=info --log="aria2_download.log" -o"%aria2Script%" --allow-overwrite=true --auto-file-renaming=false "$url"
+"%aria2%" --no-conf --async-dns=false --console-log-level=warn --log-level=info --log="aria2_download.log" -o"%aria2Script%" --allow-overwrite=true --auto-file-renaming=false "$url"
 if %ERRORLEVEL% GTR 0 call :DOWNLOAD_ERROR & exit /b 1
 echo.
 
@@ -149,7 +149,7 @@ if NOT [%DETECTED_ERROR%] == [] (
 )
 
 echo Downloading the UUP set...
-"%aria2%" --no-conf --console-log-level=warn --log-level=info --log="aria2_download.log" -x16 -s16 -j5 -c -R -d"%destDir%" -i"%aria2Script%"
+"%aria2%" --no-conf --async-dns=false --console-log-level=warn --log-level=info --log="aria2_download.log" -x16 -s16 -j5 -c -R -d"%destDir%" -i"%aria2Script%"
 if %ERRORLEVEL% GTR 0 goto :DOWNLOAD_UUPS & exit /b 1
 
 if EXIST convert-UUP.cmd goto :START_CONVERT
@@ -287,6 +287,7 @@ wim2swm      =0
 SkipISO      =0
 SkipWinRE    =0
 LCUwinre     =0
+LCUmsuExpand =0
 UpdtBootFiles=0
 ForceDism    =0
 RefESD       =0
@@ -372,7 +373,7 @@ function createAria2Package($url, $archiveName, $app = null) {
     $time = gmdate("Y-m-d H:i:s T", time());
 
     $ariacmd = <<<TEXT
-"%aria2%" --no-conf --console-log-level=warn --log-level=info --log="aria2_download.log" -x16 -s16 -j5 -c -R -d"%destDir%" -i"%aria2Script%"
+"%aria2%" --no-conf --async-dns=false --console-log-level=warn --log-level=info --log="aria2_download.log" -x16 -s16 -j5 -c -R -d"%destDir%" -i"%aria2Script%"
 TEXT;
 
     $ariabash = <<<TEXT
@@ -381,7 +382,7 @@ TEXT;
 
     if(strpos($archiveName, "_app")) {
         $ariacmd = <<<TEXT
-"%aria2%" --no-conf --console-log-level=warn --log-level=info --log="aria2_download.log" -x16 -s16 -j25 -c -R -d"%destDir%" -i"%aria2Script%"
+"%aria2%" --no-conf --async-dns=false --console-log-level=warn --log-level=info --log="aria2_download.log" -x16 -s16 -j25 -c -R -d"%destDir%" -i"%aria2Script%"
 TEXT;
 
         $ariabash = <<<TEXT
@@ -395,7 +396,7 @@ TEXT;
 
 :DOWNLOAD_APPS
 echo Retrieving aria2 script for Microsoft Store Apps...
-"%aria2%" --no-conf --console-log-level=warn --log-level=info --log="aria2_download.log" -o"%aria2Script%" --allow-overwrite=true --auto-file-renaming=false "$app"
+"%aria2%" --no-conf --async-dns=false --console-log-level=warn --log-level=info --log="aria2_download.log" -o"%aria2Script%" --allow-overwrite=true --auto-file-renaming=false "$app"
 if %ERRORLEVEL% GTR 0 call :DOWNLOAD_ERROR & exit /b 1
 echo.
 
@@ -409,7 +410,7 @@ if NOT [%DETECTED_ERROR%] == [] (
 )
 
 echo Downloading Microsoft Store Apps...
-"%aria2%" --no-conf --console-log-level=warn --log-level=info --log="aria2_download.log" -x16 -s16 -j25 -c -R -d"%destDir%" -i"%aria2Script%"
+"%aria2%" --no-conf --async-dns=false --console-log-level=warn --log-level=info --log="aria2_download.log" -x16 -s16 -j25 -c -R -d"%destDir%" -i"%aria2Script%"
 if %ERRORLEVEL% GTR 0 goto :DOWNLOAD_APPS
 echo.
 
@@ -448,7 +449,7 @@ echo.
 $downloadapp
 :DOWNLOAD_UUPS
 echo Retrieving aria2 script for the UUP set...
-"%aria2%" --no-conf --console-log-level=warn --log-level=info --log="aria2_download.log" -o"%aria2Script%" --allow-overwrite=true --auto-file-renaming=false "$url"
+"%aria2%" --no-conf --async-dns=false --console-log-level=warn --log-level=info --log="aria2_download.log" -o"%aria2Script%" --allow-overwrite=true --auto-file-renaming=false "$url"
 if %ERRORLEVEL% GTR 0 call :DOWNLOAD_ERROR & exit /b 1
 echo.
 

@@ -67,15 +67,15 @@ $s['tHeadArchitectures'] = 'アーキテクチャ';
 $s['latestPublicRelease'] = '最新の公開ビルド';
 $s['latestPublicReleaseSub'] = '一般的なユーザー向けに更新された最新ビルドです。';
 $s['latestDevRelease'] = '最新のDev チャネル';
-$s['latestDevReleaseSub'] = '新しいアイデアやリードタイムの長い機能については、信頼性の低いビルド。<br>非常に専門的なユーザーに最適です。';
+$s['latestDevReleaseSub'] = '新しいアイデアやリードタイムの長い機能については、信頼性の低いビルド。非常に専門的なユーザーに最適です。';
 $s['latestBetaRelease'] = '最新のベータチャネル';
-$s['latestBetaReleaseSub'] = '今後提供されるほとんどの機能を備えたDev チャネルより信頼性の高いビルド。<br>早期導入者に最適です。';
+$s['latestBetaReleaseSub'] = '今後提供されるほとんどの機能を備えたDev チャネルより信頼性の高いビルド。早期導入者に最適です。';
 $s['latestRPRelease'] = '最新のリリースプレビューチャネル';
-$s['latestRPReleaseSub'] = '次のリリースをプレビューするための信頼性の高いビルド。<br>今後のリリースを試すのに最適です。';
+$s['latestRPReleaseSub'] = '次のリリースをプレビューするための信頼性の高いビルド。今後のリリースを試すのに最適です。';
 $s['newlyAdded'] = '最近追加されたビルド';
 $s['dateAdded'] = '追加された日付';
 $s['latestCanaryRelease'] = '最新のCanary チャネル';
-$s['latestCanaryReleaseSub'] = '最新のプラットフォームの変更と初期の機能を含む、不安定なビルド。<br>上級ユーザーに最適です。';
+$s['latestCanaryReleaseSub'] = '最新のプラットフォームの変更と初期の機能を含む、不安定なビルド。上級ユーザーに最適です。';
 $s['checkOutAddANewBuild'] = '目的のオプションがない場合は、<i><a href="newbuild.php">新しいビルドを追加</a></i>ページをご覧ください。';
 
 //newbuild.php
@@ -273,7 +273,7 @@ $s['lang_zh-hk'] = '中国語（香港）';
 $s['lang_zh-tw'] = '中国語（繁体字）';
 
 //Channels
-$s['channel_canary'] = 'Canary チャネル';
+$s['channel_canarychannel'] = 'Canary チャネル';
 $s['channel_skipAhead'] = 'Skip Ahead';
 $s['channel_dev'] = 'Dev チャネル';
 $s['channel_beta'] = 'ベータチャネル';
@@ -328,3 +328,4 @@ $s['edition_SERVERTURBINECOR'] = 'Windows Server Datacenter: Azure Edition (Core
 $s['edition_SERVERTURBINECORE'] = 'Windows Server Datacenter: Azure Edition (Core)';
 $s['edition_SERVERSTANDARDACOR'] = 'Windows Server Standard (Semi-Annual Channel)';
 $s['edition_SERVERDATACENTERACOR'] = 'Windows Server Datacenter (Semi-Annual Channel)';
+$s['edition_WNC'] = 'Windows WNC';

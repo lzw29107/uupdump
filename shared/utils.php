@@ -171,7 +171,7 @@ function isUpdateBlocked($buildNum, $updateTitle, $appxPresent) {
     $isServer = str_contains($updateTitle, 'Server') || str_contains($updateTitle, 'Azure Stack');
     $isWNC = str_contains($updateTitle, 'Cloud');
 
-    return $buildNum > 22557 && ($isCumulative || $appxPresent) && !$isServer && !$isWNC;
+    return $buildNum > 22557 && ($isCumulative || !$appxPresent) && !$isServer && !$isWNC;
 }
 
 function areVirtualEditonsSupported($build, $sku) {

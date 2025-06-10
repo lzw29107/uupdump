@@ -6,27 +6,28 @@ $build = $argv[4] ?? 16251;
 $minor = $argv[5] ?? 0;
 $sku = $argv[6] ?? 48;
 $type = $argv[7] ?? 'Production';
+$branch = $argv[8] ?? 'auto';
 
-require_once dirname(__FILE__).'/../api/fetchupd.php';
-require_once dirname(__FILE__).'/main.php';
-require_once dirname(__FILE__).'/genpack.php';
+require_once dirname(__FILE__) . '/../api/fetchupd.php';
+require_once dirname(__FILE__) . '/main.php';
+require_once dirname(__FILE__) . '/genpack.php';
 
 consoleLogger(brand('fetchupd'));
 
-if(!get7ZipLocation()) {
+if (!get7ZipLocation()) {
     throwError('NO_7ZIP');
 }
 
-$fetchedUpdate = uupFetchUpd($arch, $ring, $flight, $build, $minor, $sku, $type);
-if(isset($fetchedUpdate['error'])) {
+$fetchedUpdate = uupFetchUpd($arch, $ring, $flight, $build, $minor, $sku, $type, $branch);
+if (isset($fetchedUpdate['error'])) {
     throwError($fetchedUpdate['error']);
 }
 
-foreach($fetchedUpdate['updateArray'] as $update) {
+foreach ($fetchedUpdate['updateArray'] as $update) {
     generatePack($update['updateId']);
 }
 
-foreach($fetchedUpdate['updateArray'] as $update) {
+foreach ($fetchedUpdate['updateArray'] as $update) {
     echo $update['foundBuild'];
     echo '|';
     echo $update['arch'];

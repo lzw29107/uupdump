@@ -1,4 +1,4 @@
-<?php if(!isset($templateOk)) die(); ?>
+<?php if (!isset($templateOk)) die(); ?>
 <h3 class="ui centered header">
     <div class="content">
         <i class="fa-solid fa-plus fa-mr"></i>
@@ -13,14 +13,14 @@
         <div class="ui red header">
             <i class="fa-solid fa-triangle-exclamation icon"></i>
             <div class="ui justified container content">
-                <?= $s['optionsNotice'] ?>                <div class="sub header"><?= $s['optionsNoticeText'] ?></div>
+                <?= $s['optionsNotice'] ?> <div class="sub header"><?= $s['optionsNoticeText'] ?></div>
             </div>
         </div>
 
         <form class="ui form" action="fetchupd.php" method="get">
             <div class="field">
                 <label><?= $s['arch'] ?></label>
-                <select class="ui dropdown"  name="arch">
+                <select class="ui dropdown" name="arch">
                     <option value="all">all</option>
                     <option value="amd64" selected>x64 / amd64</option>
                     <option value="x86">x86</option>
@@ -32,8 +32,12 @@
             <div class="field">
                 <label><?= $s['ring'] ?></label>
                 <select class="ui dropdown" name="ring">
-                    <option value="msit"><?= $s['channel_msit'] ?></option>
-                    <option value="canary" selected><?= $s['channel_canary'] ?></option>
+                    <?php if (uupApiConfigIsTrue('allow_corpnet')): ?>
+                        <option value="msit"><?= $s['channel_msit'] ?></option>
+                        <option value="canary"><?= $s['channel_canary'] ?></option>
+                        <option value="osg"><?= $s['channel_osg'] ?></option>
+                    <?php endif; ?>
+                    <option value="canarychannel" selected><?= $s['channel_canarychannel'] ?></option>
                     <option value="wif"><?= $s['channel_dev'] ?></option>
                     <option value="wis"><?= $s['channel_beta'] ?></option>
                     <option value="rp"><?= $s['channel_releasepreview'] ?></option>
@@ -43,7 +47,7 @@
 
             <div class="field">
                 <label><?= $s['branch'] ?></label>
-                <select class="ui dropdown" name="branch">
+                <select class="ui search dropdown" name="branch">
                     <option value="auto" selected><?= $s['autoSelect'] ?></option>
                     <option value="rs_prerelease">rs_prerelease</option>
                     <option value="rs2_release">rs2_release</option>
@@ -81,19 +85,19 @@
                     <option value="210">WNC</option>
                     <option value="406"><?= $s['edition_SERVERAZURESTACKHCICOR'] ?></option>
                     <option value="407"><?= $s['edition_SERVERTURBINE'] ?></option>
-                    <?php if($enableuf): ?>
-                    <option value="104">MobileCore</option>
-                    <option value="123">IoTUAP</option>
-                    <option value="131">IoTUAPCommercial</option>
-                    <option value="133">MobileEnterprise</option>
-                    <option value="135"><?= $s['edition_HOLOGRAPHIC'] ?></option>
-                    <option value="180">HubOS</option>
-                    <option value="184">Andromeda</option>
-                    <option value="189"><?= $s['edition_LITE'] ?></option>
+                    <?php if ($enableuf): ?>
+                        <option value="104">MobileCore</option>
+                        <option value="123">IoTUAP</option>
+                        <option value="131">IoTUAPCommercial</option>
+                        <option value="133">MobileEnterprise</option>
+                        <option value="135"><?= $s['edition_HOLOGRAPHIC'] ?></option>
+                        <option value="180">HubOS</option>
+                        <option value="184">Andromeda</option>
+                        <option value="189"><?= $s['edition_LITE'] ?></option>
                     <?php endif; ?>
                 </select>
             </div>
-          
+
             <div class="field" id="type" style="display: none;"
                 <label><?= $s['type'] ?></label>
                 <select class="ui dropdown" name="type">
@@ -114,8 +118,8 @@
                         <div class="ui checkbox"
                             <?= uupApiConfigIsTrue('allow_corpnet') ? '' : 'style="display:none;"' ?>>
                             <input type="checkbox" name="flags[]" value="corpnet" class="other-options"
-                            <?= uupApiConfigIsTrue('allow_corpnet') ? 'checked' : 'disabled' ?>>
-                            <label><?= $s['corpnet'] ?><?= $enableuf ? "{$s['corpnetNotice']}" : ''?></label>
+                                <?= uupApiConfigIsTrue('allow_corpnet') ? 'checked' : 'disabled' ?>>
+                            <label><?= $s['corpnet'] ?><?= $enableuf ? "{$s['corpnetNotice']}" : '' ?></label>
                         </div>
                     </div>
                     <div class="field">
@@ -211,10 +215,10 @@
                         </div>
                     </td>
                     <td class="collapsing center aligned">
-                        <a class="ui button" href="fetchupd.php?arch=amd64&ring=canary&build=latest">x64</a>
-                        <a class="ui button" href="fetchupd.php?arch=arm64&ring=canary&build=latest">arm64</a>
+                        <a class="ui button" href="fetchupd.php?arch=amd64&ring=canarychannel&build=latest">x64</a>
+                        <a class="ui button" href="fetchupd.php?arch=arm64&ring=canarychannel&build=latest">arm64</a>
                     </td>
                 </tr>
             </tbody>
         </table>
-</div>
+    </div>

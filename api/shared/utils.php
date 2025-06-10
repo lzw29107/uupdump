@@ -69,7 +69,7 @@ function sendWuPostRequestInternal($url, $postData, $saveCookie = true) {
       set_time_limit($config['fetch_timeout']);
       curl_setopt($req, CURLOPT_TIMEOUT, $config['fetch_timeout']);
       curl_setopt($req, CURLOPT_CONNECTTIMEOUT, $config['fetch_timeout'] / 3);
-    } else {
+    } else if(uupApiConfigIsTrue('production_mode')) {
       curl_setopt($req, CURLOPT_CONNECTTIMEOUT, 5);
       curl_setopt($req, CURLOPT_TIMEOUT, 15);
     }
@@ -112,7 +112,7 @@ function sendWuPostRequestHelper(
     if($postData === false)
         return false;
 
-    if(uupApiConfigIsTrue('debug')) file_put_contents('lastpostdata.xml', $postData);
+    if(!uupApiConfigIsTrue('production_mode')) file_put_contents('lastpostdata.xml', $postData);
 
     $data = sendWuPostRequestInternal($endpoints[$endpoint], $postData, $saveCookie);
 
@@ -122,7 +122,7 @@ function sendWuPostRequestHelper(
         return sendWuPostRequestInternal($endpoints[$endpoint], $postData, $saveCookie);
     }
 
-    if(uupApiConfigIsTrue('debug')) file_put_contents('lastfetched.xml', $data['out']);
+    if(!uupApiConfigIsTrue('production_mode')) file_put_contents('lastfetched.xml', $data['out']);
 
     return $data;
 }

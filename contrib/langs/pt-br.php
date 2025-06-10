@@ -68,15 +68,15 @@ $s['tHeadArchitectures'] = 'Arquitetura';
 $s['latestPublicRelease'] = 'Recente Compilação de Lançamento Público';
 $s['latestPublicReleaseSub'] = 'Última Compilação Atualizada para usuários regulares.';
 $s['latestDevRelease'] = 'Recente Compilação do Canal de Desenvolvimento';
-$s['latestDevReleaseSub'] = 'Compilações pouco confiáveis com os recursos mais recentes.<br>Ideal para usuários altamente técnicos.';
+$s['latestDevReleaseSub'] = 'Compilações pouco confiáveis com os recursos mais recentes. Ideal para usuários altamente técnicos.';
 $s['latestBetaRelease'] = 'Recente Compilação do Canal Beta';
-$s['latestBetaReleaseSub'] = 'Compilações confiáveis com a maioria dos recursos futuros disponíveis.<br>Ideal para os usuários iniciantes.';
+$s['latestBetaReleaseSub'] = 'Compilações confiáveis com a maioria dos recursos futuros disponíveis. Ideal para os usuários iniciantes.';
 $s['latestRPRelease'] = 'Recente Compilação de Prévias de Lançamento';
-$s['latestRPReleaseSub'] = 'Compilações confiáveis para ter um vislumbre do próximo lançamento.<br>Ideal para experimentar os próximos lançamentos.';
+$s['latestRPReleaseSub'] = 'Compilações confiáveis para ter um vislumbre do próximo lançamento. Ideal para experimentar os próximos lançamentos.';
 $s['newlyAdded'] = 'Novas compilações adicionadas';
 $s['dateAdded'] = 'Adicionada em';
 $s['latestCanaryRelease'] = 'Canal Canário - compilações mais recente';
-$s['latestCanaryReleaseSub'] = 'Compilações um pouco instáveis, com as últimas mudanças de plataforma e recursos em fases iniciais de desenvolvimento.<br>Ideal para usuários altamente técnicos.';
+$s['latestCanaryReleaseSub'] = 'Compilações um pouco instáveis, com as últimas mudanças de plataforma e recursos em fases iniciais de desenvolvimento. Ideal para usuários altamente técnicos.';
 $s['checkOutAddANewBuild'] = 'Não encontrou a opção desejada? Confira a página <i><a href="newbuild.php">Adicionar uma nova compilação</a></i>.';
 
 //newbuild.php
@@ -274,7 +274,7 @@ $s['lang_zh-hk'] = 'Chinês (Hong Kong)';
 $s['lang_zh-tw'] = 'Chinês (Tradicional)';
 
 //Channels
-$s['channel_canary'] = 'Canal Canário - "Canary"';
+$s['channel_canarychannel'] = 'Canal Canário - "Canary"';
 $s['channel_skipAhead'] = 'Seguindo em frente - "Skip Ahead"';
 $s['channel_dev'] = 'Canal Dev';
 $s['channel_beta'] = 'Canal Beta';
@@ -329,3 +329,4 @@ $s['edition_SERVERTURBINECOR'] = 'Windows Server Datacenter: Azure Edition (Core
 $s['edition_SERVERTURBINECORE'] = 'Windows Server Datacenter: Azure Edition (Core)';
 $s['edition_SERVERSTANDARDACOR'] = 'Windows Server Standard (Semi-Annual Channel)';
 $s['edition_SERVERDATACENTERACOR'] = 'Windows Server Datacenter (Semi-Annual Channel)';
+$s['edition_WNC'] = 'Windows WNC';

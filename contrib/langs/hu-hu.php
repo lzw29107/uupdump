@@ -65,11 +65,11 @@ $s['tHeadArchitectures'] = 'Architektúrák';
 $s['latestPublicRelease'] = 'Legújabb nyilvános kiadás';
 $s['latestPublicReleaseSub'] = 'Legfrissebb frissített kiadás a rendszeres felhasználók számára.';
 $s['latestDevRelease'] = 'A fejlesztői csatorna legújabb verziója';
-$s['latestDevReleaseSub'] = 'Kissé megbízhatatlanul kiadások a legújabb funkciókkal.<br>Ideális a magas technikai felkészültségű felhasználók számára.';
+$s['latestDevReleaseSub'] = 'Kissé megbízhatatlanul kiadások a legújabb funkciókkal. Ideális a magas technikai felkészültségű felhasználók számára.';
 $s['latestBetaRelease'] = 'A béta-csatorna legújabb kiadása';
-$s['latestBetaReleaseSub'] = 'Megbízható buildek a legtöbb hamarosan elérhető funkcióval.<br>Ideális a korai alkalmazók számára.';
+$s['latestBetaReleaseSub'] = 'Megbízható buildek a legtöbb hamarosan elérhető funkcióval. Ideális a korai alkalmazók számára.';
 $s['latestRPRelease'] = 'Legújabb előnézeti kiadás';
-$s['latestRPReleaseSub'] = 'Megbízható buildek a következő kiadás előzetes megtekintéséhez.<br>Ideális a közelgő kiadások kipróbálásához.';
+$s['latestRPReleaseSub'] = 'Megbízható buildek a következő kiadás előzetes megtekintéséhez. Ideális a közelgő kiadások kipróbálásához.';
 $s['advOptions'] = 'Haladó beállítások';
 $s['browseBuilds'] = 'Keressen az ismert építmények listájából';
 $s['browseBuildsSub'] = 'Válasszon egy már ismert kiadást, és töltse le.';
@@ -78,7 +78,7 @@ $s['fetchLatestSub'] = 'A legfrissebb összeállítási információk lekérése
 $s['newlyAdded'] = 'Nemrég hozzáadott összeállítások';
 $s['dateAdded'] = 'Hozzáadás dátuma';
 $s['latestCanaryRelease'] = 'Legújabb Canary Channel build';
-$s['latestCanaryReleaseSub'] = 'Kissé instabil buildek a legújabb platformváltozásokkal és korai funkciókkal.<br>Ideális a magasan képzett felhasználók számára.';
+$s['latestCanaryReleaseSub'] = 'Kissé instabil buildek a legújabb platformváltozásokkal és korai funkciókkal. Ideális a magasan képzett felhasználók számára.';
 
 //newbuild.php
 $s['newBuild'] = 'Új build';
@@ -284,7 +284,7 @@ $s['lang_zh-hk'] = 'Chinese (Hong Kong)';
 $s['lang_zh-tw'] = 'Chinese (Traditional)';
 
 //Channels
-$s['channel_canary'] = 'Canary Csatorna';
+$s['channel_canarychannel'] = 'Canary Csatorna';
 $s['channel_skipAhead'] = 'Skip Ahead';
 $s['channel_dev'] = 'Dev Csatorna';
 $s['channel_beta'] = 'Beta Csatorna';

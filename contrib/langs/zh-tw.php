@@ -67,15 +67,15 @@ $s['tHeadArchitectures'] = '架構';
 $s['latestPublicRelease'] = '最新公開發行組建版本';
 $s['latestPublicReleaseSub'] = '供一般使用者下載的最新更新組建版本。';
 $s['latestDevRelease'] = '最新開發人員通道組建版本';
-$s['latestDevReleaseSub'] = '有點不穩定的組建版本，包含新的想法和長期領先功能。<br>適合非常熟悉電腦操作的使用者的理想選擇。';
+$s['latestDevReleaseSub'] = '有點不穩定的組建版本，包含新的想法和長期領先功能。適合非常熟悉電腦操作的使用者的理想選擇。';
 $s['latestBetaRelease'] = '最新 Beta 版通道組建版本';
-$s['latestBetaReleaseSub'] = '包含了大多數即將推出的功能可靠組建。<br>適合想提早熟悉新功能的使用者的理想選擇。';
+$s['latestBetaReleaseSub'] = '包含了大多數即將推出的功能可靠組建。適合想提早熟悉新功能的使用者的理想選擇。';
 $s['latestRPRelease'] = '最新版本預覽通道組建版本';
-$s['latestRPReleaseSub'] = '用於預覽下個發行版本的可靠組建版本。<br>非常適合嘗鮮即將發佈的版本的使用者。';
+$s['latestRPReleaseSub'] = '用於預覽下個發行版本的可靠組建版本。非常適合嘗鮮即將發佈的版本的使用者。';
 $s['newlyAdded'] = '新加入的組建版本';
 $s['dateAdded'] = '加入日期';
 $s['latestCanaryRelease'] = '最新 Canary 版通道組建版本';
-$s['latestCanaryReleaseSub'] = '包含最新平台和早期功能改進的不穩定組建版本。<br>非常適合技術含量高的使用者。';
+$s['latestCanaryReleaseSub'] = '包含最新平台和早期功能改進的不穩定組建版本。非常適合技術含量高的使用者。';
 $s['checkOutAddANewBuild'] = '還沒有找到所需的選項？請查看<i><a href="newbuild.php">「添加新組建版本」</a></i>頁面。';
 
 //newbuild.php
@@ -273,7 +273,7 @@ $s['lang_zh-hk'] = '中文 (香港)';
 $s['lang_zh-tw'] = '中文 (繁體)';
 
 //Channels
-$s['channel_canary'] = 'Canary 通道';
+$s['channel_canarychannel'] = 'Canary 通道';
 $s['channel_skipAhead'] = 'Skip Ahead';
 $s['channel_dev'] = '開發人員通道';
 $s['channel_beta'] = 'Beta 版通道';
@@ -328,3 +328,4 @@ $s['edition_SERVERTURBINECOR'] = 'Windows Server Datacenter: Azure Edition (Core
 $s['edition_SERVERTURBINECORE'] = 'Windows Server Datacenter: Azure Edition (Core)';
 $s['edition_SERVERSTANDARDACOR'] = 'Windows Server Standard (Semi-Annual Channel)';
 $s['edition_SERVERDATACENTERACOR'] = 'Windows Server Datacenter (Semi-Annual Channel)';
+$s['edition_WNC'] = 'Windows WNC';

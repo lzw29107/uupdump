@@ -67,15 +67,15 @@ $s['tHeadArchitectures'] = 'Architektury';
 $s['latestPublicRelease'] = 'Najnowsza publicznie wydana kompilacja';
 $s['latestPublicReleaseSub'] = 'Najnowsza kompilacja dla zwykłych użytkowników.';
 $s['latestDevRelease'] = 'Najnowsza kompilacja kanału deweloperów';
-$s['latestDevReleaseSub'] = 'Poniekąd niepewne kompilacje zawierające z dużym wyprzedzeniem nowe funkcje oraz nowe pomysły.<br>Idealne dla entuzjastów.';
+$s['latestDevReleaseSub'] = 'Poniekąd niepewne kompilacje zawierające z dużym wyprzedzeniem nowe funkcje oraz nowe pomysły. Idealne dla entuzjastów.';
 $s['latestBetaRelease'] = 'Najnowsza kompilacja kanału beta';
-$s['latestBetaReleaseSub'] = 'Pewne kompilacje z większością nowych funkcji.<br>Idealne dla wczesnych adaptacji.';
+$s['latestBetaReleaseSub'] = 'Pewne kompilacje z większością nowych funkcji. Idealne dla wczesnych adaptacji.';
 $s['latestRPRelease'] = 'Najnowsza kompilacja zapoznawcza';
-$s['latestRPReleaseSub'] = 'Pewne kompilacje z podglądami następnego wydania.<br>Idealne do spróbowania nadchodzących wydań.';
+$s['latestRPReleaseSub'] = 'Pewne kompilacje z podglądami następnego wydania. Idealne do spróbowania nadchodzących wydań.';
 $s['newlyAdded'] = 'Ostatnio dodane kompilacje';
 $s['dateAdded'] = 'Data dodania';
 $s['latestCanaryRelease'] = 'Najnowsza kompilacja kanału Canary';
-$s['latestCanaryReleaseSub'] = 'Poniekąd niestabilne kompilacje z najnowszymi zmianami platformy i wczesnymi funkcjami.<br>Idealne dla wysoce kompetentnych technicznie użytkowników.';
+$s['latestCanaryReleaseSub'] = 'Poniekąd niestabilne kompilacje z najnowszymi zmianami platformy i wczesnymi funkcjami. Idealne dla wysoce kompetentnych technicznie użytkowników.';
 $s['checkOutAddANewBuild'] = 'Brakuje interesującej Cię opcji? Sprawdź stronę <i><a href="newbuild.php">Dodaj nową kompilację</a></i>.';
 
 //newbuild.php
@@ -273,7 +273,7 @@ $s['lang_zh-hk'] = 'chiński (Hong Kong)';
 $s['lang_zh-tw'] = 'chiński (tradycyjny)';
 
 //Channels
-$s['channel_canary'] = 'Kanał Canary';
+$s['channel_canarychannel'] = 'Kanał canarychannel';
 $s['channel_skipAhead'] = 'Skip Ahead';
 $s['channel_dev'] = 'Kanał deweloperów';
 $s['channel_beta'] = 'Kanał beta';
@@ -328,3 +328,4 @@ $s['edition_SERVERTURBINECOR'] = 'Windows Server Datacenter: Azure Edition (Core
 $s['edition_SERVERTURBINECORE'] = 'Windows Server Datacenter: Azure Edition (Core)';
 $s['edition_SERVERSTANDARDACOR'] = 'Windows Server Standard (Semi-Annual Channel)';
 $s['edition_SERVERDATACENTERACOR'] = 'Windows Server Datacenter (Semi-Annual Channel)';
+$s['edition_WNC'] = 'Windows WNC';

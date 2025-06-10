@@ -70,11 +70,11 @@ $s['tHeadArchitectures'] = 'Architekturen';
 $s['latestPublicRelease'] = 'Letzter Build der öffentlichen Version';
 $s['latestPublicReleaseSub'] = 'Neuester aktualisierter Build für normale Benutzer.';
 $s['latestDevRelease'] = 'Neueste Dev Channel-Version';
-$s['latestDevReleaseSub'] = 'Etwas unzuverlässigere Builds mit den neuesten Funktionen.<br>Ideal für hochtechnische Benutzer.';
+$s['latestDevReleaseSub'] = 'Etwas unzuverlässigere Builds mit den neuesten Funktionen. Ideal für hochtechnische Benutzer.';
 $s['latestBetaRelease'] = 'Neueste Beta Channel-Version';
-$s['latestBetaReleaseSub'] = 'Zuverlässigere Builds mit den meisten verfügbaren Funktionen.<br>Ideal für Personen, die gerne früh neue Funktionen wollen.';
+$s['latestBetaReleaseSub'] = 'Zuverlässigere Builds mit den meisten verfügbaren Funktionen. Ideal für Personen, die gerne früh neue Funktionen wollen.';
 $s['latestRPRelease'] = 'Neueste Release Vorschau-Version';
-$s['latestRPReleaseSub'] = 'Zuverlässiges Build für die Vorschau auf die nächste Version.<br>Ideal zum Ausprobieren kommender öffentlichen Versionen.';
+$s['latestRPReleaseSub'] = 'Zuverlässiges Build für die Vorschau auf die nächste Version. Ideal zum Ausprobieren kommender öffentlichen Versionen.';
 $s['advOptions'] = 'Erweiterte Optionen';
 $s['browseBuilds'] = 'Bekannte Builds durchsuchen.';
 $s['browseBuildsSub'] = 'Wählen Sie ein bereits bekanntes Build aus und laden Sie es herunter.';
@@ -83,7 +83,7 @@ $s['fetchLatestSub'] = 'Abrufen der neuesten Buildinformationen von Windows Upda
 $s['newlyAdded'] = 'Kürzlich hinzugefügte Builds';
 $s['dateAdded'] = 'Datum des Hinzufügens';
 $s['latestCanaryRelease'] = 'Letzte Canary Channel-Version';
-// $s['latestCanaryReleaseSub'] = 'Somewhat unstable builds with latest platform changes and early features.<br>Ideal for highly technical users.';
+// $s['latestCanaryReleaseSub'] = 'Somewhat unstable builds with latest platform changes and early features. Ideal for highly technical users.';
 $s['checkOutAddANewBuild'] = 'Nicht die gewünschte Option gefunden? Schau doch mal auf der <i><a href="newbuild.php">Neuen Build hinzufügen</a></i> Seite nach.';
 
 //newbuild.php
@@ -292,7 +292,7 @@ $s['lang_zh-hk'] = 'Chinesisch (Hong Kong)';
 $s['lang_zh-tw'] = 'Chinesisch (Traditionell)';
 
 //Channels
-$s['channel_canary'] = 'Canary Channel';
+$s['channel_canarychannel'] = 'Canary Channel';
 $s['channel_skipAhead'] = 'Skip Ahead';
 $s['channel_dev'] = 'Dev Channel';
 $s['channel_beta'] = 'Beta Channel';
@@ -346,3 +346,4 @@ $s['edition_SERVERTURBINECOR'] = 'Windows Server Datacenter: Azure Edition (Core
 $s['edition_SERVERTURBINECORE'] = 'Windows Server Datacenter: Azure Edition (Core)';
 $s['edition_SERVERSTANDARDACOR'] = 'Windows Server Standard (Semi-Annual Channel)';
 $s['edition_SERVERDATACENTERACOR'] = 'Windows Server Datacenter (Semi-Annual Channel)';
+$s['edition_WNC'] = 'Windows WNC';

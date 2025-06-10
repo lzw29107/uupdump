@@ -22,17 +22,18 @@ require_once 'api/listlangs.php';
 require_once 'api/updateinfo.php';
 require_once 'shared/style.php';
 require_once 'shared/utils.php';
-require_once dirname(__FILE__).'/sta/main.php';
-require_once dirname(__FILE__).'/sta/genpack.php';
+require_once dirname(__FILE__) . '/sta/main.php';
+require_once dirname(__FILE__) . '/sta/genpack.php';
 
-function getLangs($updateId, $s) {
+function getLangs($updateId, $s)
+{
     $langsTemp = uupListLangs($updateId);
     $langs = [
         'langs' => []
     ];
 
-    foreach($langsTemp['langList'] as $lang) {
-        if(isset($s["lang_$lang"])) {
+    foreach ($langsTemp['langList'] as $lang) {
+        if (isset($s["lang_$lang"])) {
             $langs['langs'][$lang] = $s["lang_$lang"];
         } else {
             $langs['langs'][$lang] = $langsTemp['langFancyNames'][$lang];
@@ -45,36 +46,36 @@ function getLangs($updateId, $s) {
     return $langs;
 }
 
-if(!$updateId) {
+if (!$updateId) {
     fancyError('UNSPECIFIED_UPDATE', 'downloads');
     die();
 }
 
-if(!checkUpdateIdValidity($updateId)) {
+if (!checkUpdateIdValidity($updateId)) {
     fancyError('INCORRECT_ID', 'downloads');
     die();
 }
 
-if($getPacks) {
+if ($getPacks) {
     generatePack($updateId);
 }
 
 $updateInfo = uupUpdateInfo($updateId, ignoreFiles: true);
 $updateInfo = $updateInfo['info'] ?? array();
 
-if(!isset($updateInfo['title'])) {
-    $updateTitle = 'Unknown update: '.$updateId;
+if (!isset($updateInfo['title'])) {
+    $updateTitle = 'Unknown update: ' . $updateId;
 } else {
     $updateTitle = $updateInfo['title'];
 }
 
-if(!isset($updateInfo['arch'])) {
+if (!isset($updateInfo['arch'])) {
     $updateArch = '';
 } else {
     $updateArch = $updateInfo['arch'];
 }
 
-if(!isset($updateInfo['build'])) {
+if (!isset($updateInfo['build'])) {
     $build = $s['unknown'];
     $buildNum = false;
 } else {
@@ -82,59 +83,60 @@ if(!isset($updateInfo['build'])) {
     $buildNum = @explode('.', $build)[0];
 }
 
-if(!isset($updateInfo['ring'])) {
+if (!isset($updateInfo['ring'])) {
     $ring = null;
 } else {
     $ring = $updateInfo['ring'];
 }
 
-if(!isset($updateInfo['flight'])) {
+if (!isset($updateInfo['flight'])) {
     $flight = null;
 } else {
     $flight = $updateInfo['flight'];
 }
 
-if(!isset($updateInfo['created'])) {
+if (!isset($updateInfo['created'])) {
     $created = null;
 } else {
     $created = $updateInfo['created'];
 }
 
-$updateTitle = $updateTitle.' '.$updateArch;
+$updateTitle = $updateTitle . ' ' . $updateArch;
+
+$langs = getLangs($updateId, $s);
 
 $updateBlocked = isUpdateBlocked($buildNum, $updateTitle, $langs['appxPresent']);
-$langs = $updateBlocked ? [] : getLangs($updateId, $s);
 
-if(isset($langs['langs']) && in_array(strtolower($s['code']), array_keys($langs['langs']))) {
+if (isset($langs['langs']) && in_array(strtolower($s['code']), array_keys($langs['langs']))) {
     $defaultLang = strtolower($s['code']);
 } else {
     $defaultLang = 'en-us';
 }
 
 //Set fancy name for channel and flight of build
-if($ring == 'CANARY' && $flight == 'Active') {
-    $fancyChannelName = $s['channel_canary'];
-} elseif($ring == 'WIF' && $flight == 'Skip') {
+if ($ring == 'CANARYCHANNEL' && $flight == 'Active') {
+    $fancyChannelName = $s['channel_canarychannel'];
+} elseif ($ring == 'WIF' && $flight == 'Skip') {
     $fancyChannelName = $s['channel_skipAhead'];
-} elseif($ring == 'WIF' && $flight == 'Active') {
+} elseif ($ring == 'WIF' && $flight == 'Active') {
     $fancyChannelName = $s['channel_dev'];
-} elseif($ring == 'WIS' && $flight == 'Active') {
+} elseif ($ring == 'WIS' && $flight == 'Active') {
     $fancyChannelName = $s['channel_beta'];
-} elseif($ring == 'RP' && $flight == 'Current') {
+} elseif ($ring == 'RP' && $flight == 'Current') {
     $fancyChannelName = $s['channel_releasepreview'];
-} elseif($ring == 'RETAIL') {
+} elseif ($ring == 'RETAIL') {
     $fancyChannelName = $s['channel_retail'];
 } else {
-    if($ring && $flight) {
+    if ($ring && $flight) {
         $fancyChannelName = "$ring, $flight";
-    } elseif($ring) {
+    } elseif ($ring) {
         $fancyChannelName = "$ring";
     } else {
         $fancyChannelName = $s['unknown'];
     }
 }
 
-$findFilesUrl = "findfiles.php?id=".htmlentities($updateId);
+$findFilesUrl = "findfiles.php?id=" . htmlentities($updateId);
 
 $langsAvailable = (isset($langs['langs']) && count($langs['langs']) > 0) ? true : false;
 $packsAvailable = uupApiPacksExist($updateId);
@@ -144,17 +146,16 @@ $noLangsCause = $s['updateIsBlockedv2'];
 $generatePacksButton = false;
 
 $corpnet = strpos($updateTitle, 'Internal Corpnet Required');
-if($corpnet)
-{
+if ($corpnet) {
     $noLangsIcon = 'file-circle-xmark';
     $noLangsCause = '';
     $updateBlocked = true;
-} else if(!$packsAvailable) {
+} else if (!$packsAvailable) {
     $noLangsIcon = 'industry';
     $noLangsCause = $s['metadataNotGenerated'];
     $updateBlocked = true;
     $generatePacksButton = true;
-} else if(!$updateBlocked && !$langsAvailable) {
+} else if (!$updateBlocked && !$langsAvailable) {
     $noLangsIcon = 'file-circle-xmark';
     $noLangsCause = $s['noLangsAvailablev2'];
     $updateBlocked = true;
@@ -162,10 +163,10 @@ if($corpnet)
 
 $files = uupGetFiles($updateId, 0, 'updateonly', 2);
 
-if(isset($files['hasUpdates'])) {
-  $hasUpdates = $files['hasUpdates'];
+if (isset($files['hasUpdates'])) {
+    $hasUpdates = $files['hasUpdates'];
 } else {
-  $hasUpdates = false;
+    $hasUpdates = false;
 }
 
 $UpdateButton = (!$generatePacksButton && $hasUpdates && !$corpnet);

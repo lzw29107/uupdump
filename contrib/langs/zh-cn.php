@@ -68,15 +68,15 @@ $s['tHeadArchitectures'] = '体系结构';
 $s['latestPublicRelease'] = '公开发布的最新内部版本';
 $s['latestPublicReleaseSub'] = '面向普通用户的最新更新版本。';
 $s['latestDevRelease'] = '最新 Dev 渠道版本';
-$s['latestDevReleaseSub'] = '具有新想法和长期领先功能的内部版本，运行有些不可靠。<br>它是面向爱好者的理想之选。';
+$s['latestDevReleaseSub'] = '具有新想法和长期领先功能的内部版本，运行有些不可靠。它是面向爱好者的理想之选。';
 $s['latestBetaRelease'] = '最新 Beta 渠道版本';
-$s['latestBetaReleaseSub'] = '具有大多数即将推出的功能的可靠版本。<br>它是早期采用者的理想选择。';
+$s['latestBetaReleaseSub'] = '具有大多数即将推出的功能的可靠版本。它是早期采用者的理想选择。';
 $s['latestRPRelease'] = '最新 Release Preview 渠道版本';
-$s['latestRPReleaseSub'] = '预览下一个发行版本，拥有更好的可靠性。<br>它是试用即将发布版本的理想选择。';
+$s['latestRPReleaseSub'] = '预览下一个发行版本，拥有更好的可靠性。它是试用即将发布版本的理想选择。';
 $s['newlyAdded'] = '最近添加的内部版本';
 $s['dateAdded'] = '添加日期';
 $s['latestCanaryRelease'] = '最新 Canary 渠道版本';
-$s['latestCanaryReleaseSub'] = '具有最新平台更改和早期功能的内部版本，运行有些不稳定。<br>非常适合高度技术性用户。';
+$s['latestCanaryReleaseSub'] = '具有最新平台更改和早期功能的内部版本，运行有些不稳定。非常适合高度技术性用户。';
 $s['checkOutAddANewBuild'] = '没有找到所需的选项？请查看<i><a href="newbuild.php">添加新内部版本</a></i>页面。';
 
 //newbuild.php
@@ -285,7 +285,7 @@ $s['lang_zh-tw'] = '中文（繁体）';
 
 //Channels
 $s['channel_msit'] = 'MSIT';
-$s['channel_canary'] = 'Canary 渠道';
+$s['channel_canarychannel'] = 'Canary 渠道';
 $s['channel_skipAhead'] = 'Skip Ahead';
 $s['channel_dev'] = 'Dev 渠道';
 $s['channel_beta'] = 'Beta 渠道';
@@ -340,3 +340,4 @@ $s['edition_SERVERTURBINECOR'] = 'Windows Server Datacenter：Azure Edition（Co
 $s['edition_SERVERTURBINECORE'] = 'Windows Server Datacenter：Azure Edition（Core）';
 $s['edition_SERVERSTANDARDACOR'] = 'Windows Server Standard（半年频道）';
 $s['edition_SERVERDATACENTERACOR'] = 'Windows Server Datacenter（半年频道）';
+$s['edition_WNC'] = 'Windows WNC';
