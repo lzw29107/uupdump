@@ -33,32 +33,35 @@ if(isset($search) && strstr($search, 'category:')) {
         case 'dev':
             $searchstr = 'regex:2((3[4-6]\d{2}\.100\d)|(6(?!0[0-4])\d{3}\.\d))';
             break;
-        case 'w11-24h2-current-dev':
-            $searchstr = '26200';
+        case 'w11-24h2-25h2-current-dev':
+            $searchstr = 'regex:Insider.*26200\.(5[5-9]|[6-9])';
+            break;
+        case 'w11-25h2':
+            $searchstr = 'regex:11.*25H2.*26200';
             break;
         case 'w11-24h2-current-beta':
             $searchstr = '26120';
             break;
         case 'w11-24h2':
-            $searchstr = '26100';
+            $searchstr = 'regex:11.*24H2.*26100';
             break;
         case 'w11-23h2-current-beta':
             $searchstr = '22635';
             break;
         case 'w11-23h2':
-            $searchstr = 'regex:\(22631';
+            $searchstr = 'regex:11.*23H2.*22631';
             break;
         case 'w11-22h2m4-23h2-beta':
-            $searchstr = 'regex:11.*Insider.*22631.*';
+            $searchstr = 'regex:Insider.*22631';
             break;
         case 'w11-22h2m3':
-            $searchstr = 'regex:11.*Insider.*2262[1-4]\.1[3-7]\d{2}.*';
+            $searchstr = 'regex:Insider.*2262[1-4]\.1[3-7]\d{2}';
             break;
         case 'w11-22h2m2':
-            $searchstr = 'regex:11.*Insider.*2262[1-3]\.(1)?(?(1)[0-3]|[7-9])\d{2}\s.*';
+            $searchstr = 'regex:Insider.*2262[1-3]\.(1)?(?(1)[0-3]|[7-9])\d{2}';
             break;
         case 'w11-22h2m1':
-            $searchstr = 'regex:11.*Insider.*2262[1-2]\.[1-6]\d{2}\s.*';
+            $searchstr = 'regex:Insider.*2262[1-2]\.[1-6]\d{2}\s';
             break;
         case 'w11-22h2':
             $searchstr = 'regex:\(2262\d';
@@ -67,7 +70,7 @@ if(isset($search) && strstr($search, 'category:')) {
             $searchstr = '22000';
             break;
         case 'server-24h2':
-            $searchstr = 'regex:Server.*26100.*';
+            $searchstr = 'regex:Server.*26100';
             break;
         case 'server-23h2':
             $searchstr = '25398';
@@ -79,31 +82,31 @@ if(isset($search) && strstr($search, 'category:')) {
             $searchstr = '20348';
             break;
         case 'server-21h1':
-            $searchstr = 'regex:Server.*19043.*';
+            $searchstr = 'regex:Server.*19043';
             break;
         case 'server-20h2':
-            $searchstr = 'regex:Server.*19042.*';
+            $searchstr = 'regex:Server.*19042';
             break;
         case 'server-2004':
-            $searchstr = 'regex:Server.*19041.*';
+            $searchstr = 'regex:Server.*19041';
             break;
         case 'server-1909':
-            $searchstr = 'regex:Server.*18363.*';
+            $searchstr = 'regex:Server.*18363';
             break;
         case 'server-1903':
-            $searchstr = 'regex:Server.*18362.*';
+            $searchstr = 'regex:Server.*18362';
             break;
         case 'server-1809-hci':
             $searchstr = '17784';
             break;
         case 'server-1809':
-            $searchstr = 'regex:Server.*17763.*';
+            $searchstr = 'regex:Server.*17763';
             break;
         case 'server-1803':
-            $searchstr = 'regex:Server.*17134.*';
+            $searchstr = 'regex:Server.*17134';
             break;
         case 'server-1709':
-            $searchstr = 'regex:Server.*16299\.\d{2}.*';
+            $searchstr = 'regex:Server.*16299\.\d{2}';
             break;
         case 'w10-22h2':
             $searchstr = '19045';
@@ -112,28 +115,28 @@ if(isset($search) && strstr($search, 'category:')) {
             $searchstr = '19044';
             break;
         case 'w10-21h1':
-            $searchstr = '19043';
+            $searchstr = 'regex:10.*19043';
             break;
         case 'w10-20h2':
-            $searchstr = '19042';
+            $searchstr = 'regex:10.*19042';
             break;
         case 'w10-2004':
-            $searchstr = '19041';
+            $searchstr = 'regex:10.*19041';
             break;
         case 'w10-1909':
-            $searchstr = '18363';
+            $searchstr = 'regex:10.*18363';
             break;
         case 'w10-1903':
-            $searchstr = '18362';
+            $searchstr = 'regex:10.*18362';
             break;
         case 'w10-1809':
-            $searchstr = '17763';
+            $searchstr = 'regex:10.*17763';
             break;
         case 'w10-1803':
-            $searchstr = '17134';
+            $searchstr = 'regex:10.*17134';
             break;
         case 'w10-1709':
-            $searchstr = 'regex:16299.\d{2}.*';
+            $searchstr = 'regex:10.*16299.\d{2}';
             break;
         case 'w10-1703':
             $searchstr = '15063';
