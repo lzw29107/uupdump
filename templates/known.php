@@ -62,8 +62,12 @@ if (!isset($templateOk)) die();
                 <i class="dropdown icon"></i>
 
                 <div class="menu">
-                    <a class="item" href="known.php?q=category:w11-24h2-current-dev">
-                        24H2 Current Dev
+                    <a class="item" href="known.php?q=category:w11-24h2-25h2-current-dev">
+                        24H2/25H2 Current Dev
+                    </a>
+
+                    <a class="item" href="known.php?q=category:w11-25h2">
+                        25H2
                     </a>
 
                     <a class="item" href="known.php?q=category:w11-24h2-current-beta">
